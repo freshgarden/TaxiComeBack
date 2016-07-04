@@ -1,0 +1,522 @@
+﻿@{
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+<!--BODY_START-->
+<body id="body">
+    <div id="wrapvh">
+        <div id="headervh">
+            <div id="routetcb">
+                <div class="divchesn"></div>
+                <div class="divlogtcbnew">
+                    <p class="titsignew">Lộ trình</p> <a href="#" id="closeRoute"><p class="iconhp closedpopdknew closedsign"></p></a>
+                    <div class="divpopsignk">
+                        <div class="divroute">
+                            <p class="ptextroute">
+                                Tên tài xế
+                            </p>
+                            <p class="ptextroute">
+                                Biến số xe
+                            </p>
+                            <p class="ptextroute">
+                                Hãng xe
+                            </p>
+                            <p class="ptextroute">
+                                Điện thoại liên hệ
+                            </p>
+                        </div>
+                        <div class="divroute2">
+                            <p class="ptextroute2">Nguyễn Xuân Phúc</p>
+                            <p class="ptextroute2">29X2-4672</p>
+                            <p class="ptextroute2">VIC Taxi</p>
+                            <p class="ptextroute2">0984xxxxxx</p>
+                        </div>
+                        <div class="divroute2">
+                            <div class="divroute2">
+                                <p class="ptextroute">
+                                    Tên khách hàng
+                                </p>
+                                <p class="ptextroute">
+                                    Số điện thoại KH
+                                </p>
+                            </div>
+                            <div class="divroute2">
+                                <form name="regcar" action="" method="post">
+                                    <p>
+                                        <input id="fullname" class="ptextroute3" type="text" name="fullname" value="" placeholder="Họ và tên" maxlength="50">
+                                    </p>
+                                    <p>
+                                        <input id="phoneNumber" class="ptextroute3" type="tel" name="phoneNumber" value="" placeholder="Số điện thoại" maxlength="14">
+                                    </p>
+                                    <div class="clear"></div>
+
+                                </form>
+                            </div>
+                            <p class="ptextroute4"><input type="checkbox" class="checkbox-style" class="ptextroute" /> Bạn chỉ phải trả 50% cho chuyến đi này</p> <p style="text-align:center;">(Đơn giá: 4.500đ/1km)</p>
+                            <input type="submit" value="" id="btnCreate" name="btnCreate" class="iconhp btnsignlog">
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="headerhomeh">
+                <div class="logohead">
+                    <a href="#" title="TaxiComeback"><img class="imglogo" src="~/Content/Images/logo/logovnl_03.png" alt="logo" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="bodymap">
+        <div class="loadingmap"></div>
+        <div class="drelbdo">
+            <div id="mapdirdd"></div> <a href="#" id="locate2"><span class="backmapnew spandvitk btngetdv"></span></a>
+            <div style="position:absolute; top:0; left:0; width:100%; z-index:5">
+                <div class="leftbdonew">
+                    <div class="topmapnew">
+                        <div class="topmapnew_1">
+                            <div class="topmapnew2">
+                                <div id="findCarBySearch" class="ptimvtri backcolorms1"> <b class="backmapnew"></b> <span>Tìm xe</span> </div>
+                                <div id="findCarByLocation" class="ptimduong"> <b class="backmapnew"></b> <span>Điểm đến</span> </div>
+                                <p class="clear"></p>
+                                <div id="findCarBySearchPanel" class="divmstr1" style="display:block">
+                                    <div class="custom-div">
+                                        <p class="pmapnewh"><span class="backmapnew ddmapz1"></span></p>
+                                        <input id="startPoint" onkeypress="return calcdir(event)" type="text" placeholder="Nhập điểm bắt đầu" autocomplete="off" class="inptduongmap" maxlength="100">
+                                        <input type="button" value="" class="backmapnew btndirect" id="searchCar">
+                                        <input type="hidden" value="subdri" id="hidsubmap"><p class="clear"></p>
+                                    </div>
+                                    <div class="custom-div">
+                                        <p class="pmapnewh"><span class="backmapnew ddmapz2"></span></p>
+                                        <input id="endPoint" onkeypress="return calcdir(event)" type="text" placeholder="Nhập điểm đến" autocomplete="off" class="inptduongmap" maxlength="100">
+                                        <input type="button" id="switchSearchValue" class="backmapnew btnwapdd">
+                                        <input type="hidden" value="subdri" id="hidsubmap"><p class="clear"></p>
+                                    </div>
+                                    <div class="custom-div">
+                                        <p class="pmapnewh"><span class="backmapnew ddmapz3"></span></p>
+                                        <input type="button" value="" disabled class="backmapnew btnwapdd2">
+                                        <input id="xe7cho" style="text-align:right; vertical-align:middle" type="radio" class="css-checkbox" name="cartype" value="7seat">
+                                        <label for="xe7cho" class="css-label radGroup2">7 Chỗ</label>
+                                        <input id="xe4cho" checked style="text-align:right; vertical-align:middle" type="radio" class="css-checkbox" name="cartype" value="4seat">
+                                        <label for="xe4cho" class="css-label radGroup2">4 Chỗ</label>
+                                    </div>
+                                </div>
+                                <div id="findCarByLocationPanel" class="divmstr1" style="display:none">
+                                    <div class="custom-div">
+                                        <div class="pseldate"><p class="pcentertext"></p></div>
+                                        <p class="ptextroute5">
+                                            Có 50 chuyến xe đang sẵn sàng
+                                        </p>
+                                    </div>
+                                    <div class="custom-div">
+                                        <div class="pseldate"><p class="pcentertext">25</p></div>
+                                        <p class="ptextroute5">
+                                            Nam Định
+                                        </p>
+                                    </div>
+                                    <div class="custom-div">
+                                        <div class="pseldate"><p class="pcentertext">10</p></div>
+                                        <p class="ptextroute5">
+                                            Thái Bình
+                                        </p>
+                                    </div>
+                                    <div class="custom-div">
+                                        <div class="pseldate"><p class="pcentertext">10</p></div>
+                                        <p class="ptextroute5">
+                                            Nghệ An
+                                        </p>
+                                    </div>
+                                    <div class="custom-div">
+                                        <div class="pseldate"><p class="pcentertext">5</p></div>
+                                        <p class="ptextroute5">
+                                            Thanh Hóa
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="bottopmap">
+                                    <div class="dbotm1"><a class="botuseguide" id="userguide" href="#"><b class="backmapnew"></b><span>Hướng dẫn sử dụng</span></a></div>
+                                    <div class="dbotm3 btngetdv"><a class="botuseguide" id="locate" href="#"><b class="backmapnew"></b><span>Định vị</span></a></div>
+                                    <p class="clear"></p>
+                                </div>
+                            </div>
+                            <div class="backmtkiem"></div>
+                            <div class="dboxgtm" id="userGuidePanel" style="max-height: 260px;display:none">
+                                <div class="maphdan2">
+                                    <p class="dboxt1">Hướng dẫn tìm vị trí</p>
+                                    <a href="#" class="botuseguide2" id="closeUserGuidePanel"><p class="dboxt2">X</p></a>
+                                    <p class="clear"></p>
+                                    <div class="dboxt4"><h2 style="margin-bottom:6px" class="pdboxms3">Ứng dụng Bản đồ Việt Nam trực tuyến Online, tìm đường đi nhanh và gần nhất, xem bản đồ các tỉnh thành như Hà Nội, Sài Gòn, TP.HCM, Đà Nẵng, Cần Thơ, Hải Phòng, Nha Trang, Bình Dương, Đà Lạt… chỉ đường đi nhanh nhất, ngắn nhất đến các địa điểm, địa chỉ, vị trí,khu vui chơi, khu du lịch, giải trí, khách sạn, nhà hàng trên khắp Việt Nam. Bản đồ vệ tinh, danh bạ địa chỉ số tiện dụng nhất hiện nay.</h2><p class="pdboxms3">Nhập địa chỉ muốn tìm vào khung tìm kiếm trên bản đồ hoặc click vào icon <span class="backmapnew icgetlct"></span> để hệ thống tự lấy vị trí hiện tại của bạn.</p><p class="pdboxms3">Sau đó bấm phím <b>"Enter"</b> hoặc click chuột vào icon <span class="backmapnew icclick"></span> để bắt đầu quá trình tìm kiếm.</p></div>
+                                </div>
+                            </div>
+                            <div class="dboxgtm" id="directionsPanel">
+                                <div id="routeListPanel" class="maphdan">
+                                    <div class="search-fixed">
+                                        <div class="psearch backcolorms1"> <b class="backmapnew"></b> <span class="search-result-header-text">Kết quả tìm kiếm</span></div>
+                                        <div id="distanceAndTime" class="psearch-result">
+                                            <span style="font-weight:bold" >
+                                                100 km - 1giờ 15 phút<span>
+                                                    <a href="#" class="botuseguide2" id="closeRouteListPanel"><p class="dboxt2">X</p></a>
+                                        </div>
+                                    </div>
+                                    <p class="clear"></p>
+                                    <div class="divresult" style="display:block">
+                                        <p class="dboxt1"></p>
+                                        <p class="clear"></p>
+                                        <br />
+                                        <p class="clear"></p>
+                                        <div class="dboxt3" id="noSearchResult"><span style="margin:80px;">Không có kết quả nào được tìm thấy</span></div>
+                                        <div class="dboxt3" id="searchResultContent">
+                                            <div class="custom-div2">
+                                                <button href="#" onclick="showRoute('MS01')" class="route-btn"><p class="button-font-size">Lộ trình số 1 - MS01</p></button>
+                                            </div>
+                                            <div class="custom-div2">
+                                                <button href="#" onclick="showRoute('MS02')" class="route-btn"><p class="button-font-size">Lộ trình số 2 - MS02</p></button>
+                                            </div>
+                                            <div class="custom-div2">
+                                                <button href="#" onclick="showRoute('MS03')" class="route-btn"><p class="button-font-size">Lộ trình số 3 - MS03</p></button>
+                                            </div>
+                                            <div class="custom-div2">
+                                                <button href="#" onclick="showRoute('MS04')" class="route-btn"><p class="button-font-size">Lộ trình số 4 - MS04</p></button>
+                                            </div>
+                                            <div class="custom-div2">
+                                                <button href="#" onclick="showRoute('MS05')" class="route-btn"><p class="button-font-size">Lộ trình số 5 - MS05</p></button>
+                                            </div>
+                                            <div class="custom-div2">
+                                                <button href="#" onclick="showRoute('MS06')" class="route-btn"><p class="button-font-size">Lộ trình số 6 - MS06</p></button>
+                                            </div>
+                                            <div class="custom-div2">
+                                                <button href="#" onclick="showRoute('MS07')" class="route-btn"><p class="button-font-size">Lộ trình số 7 - MS07</p></button>
+                                            </div>
+                                            <div class="custom-div2">
+                                                <button href="#" onclick="showRoute('MS08')" class="route-btn"><p class="button-font-size">Lộ trình số 8 - MS08</p></button>
+                                            </div>
+                                            <div class="custom-div2">
+                                                <button href="#" onclick="showRoute('MS04')" class="route-btn"><p class="button-font-size">Lộ trình số 4 - MS04</p></button>
+                                            </div>
+                                            <div class="custom-div2">
+                                                <button href="#" onclick="showRoute('MS04')" class="route-btn"><p class="button-font-size">Lộ trình số 4 - MS04</p></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <script>
+			$(document).mouseup(function (e) {
+				var container = $(".divlogvnlnew");
+				if (!container.is(e.target) // if the target of the click isn't the container...
+					&& container.has(e.target).length === 0) // ... nor a descendant of the container
+				{
+					if ($('#signupvnl').css("display") == 'block') {
+						$('#signupvnl').css("display", "none");
+					}
+				}
+				var container2 = $(".divlogtcbnew");
+				if (!container2.is(e.target) // if the target of the click isn't the container...
+					&& container2.has(e.target).length === 0) // ... nor a descendant of the container
+				{
+					if ($("#routetcb").css("display") == 'block') {
+						$("#routetcb").css("display", "none");
+					}
+				}
+			});
+
+			function showRoute(param) {
+				$("#routetcb").css("display", "block");
+			}
+
+			function positionFooter() {
+				var window_height = $(window).height(); var dif = window_height - 69; var dif1 = window_height - 350;
+				$("#mapdirdd").css({ height: dif + "px" }); $('#directionsPanel').css({ 'max-height': dif1 + "px" });
+			}
+
+			$("#findCarBySearch").click(function () {
+				$("#findCarByLocation").removeClass("backcolorms2");
+				$("#findCarBySearch").addClass("backcolorms1");
+				$("#findCarByLocationPanel").css("display", "none");
+				$("#findCarBySearchPanel").css("display", "block");
+				$("#directionsPanel").css("display", "block");
+			});
+
+			$("#findCarByLocation").click(function () {
+				$("#findCarBySearch").removeClass("backcolorms1");
+				$("#findCarByLocation").addClass("backcolorms2");
+				$("#findCarBySearchPanel").css("display", "none");
+				$("#findCarByLocationPanel").css("display", "block");
+				$("#directionsPanel").css("display", "none");
+			});
+
+			$("#closeRoute").click(function () {
+				$("#routetcb").css("display", "none");
+			});
+
+			$('#closeUserGuidePanel').click(function (e) {
+				$('#userGuidePanel').css("display", "none");
+			});
+			$('#userguide').click(function (e) {
+				$('#routeListPanel').css("display", "none");
+				$('#userGuidePanel').css("display", "block");
+			})
+
+			$('#searchCar').click(function () {
+			    if (startPointPlace != null && endPointPlace != null) {
+			        route(origin_place_id, destination_place_id, travel_mode,
+                          directionsService, directionsDisplay);
+			        $.ajax({
+			            url: "/Home/Search",
+			            type: 'GET',
+			            data: {
+			                'StartLocationLat': startPointPlace.geometry.location.lat,
+			                'StartLocationLng': startPointPlace.geometry.location.lng,
+			                'EndLocationLat': endPointPlace.geometry.location.lat,
+			                'EndLocationLng': endPointPlace.geometry.location.lng,
+			                'CarType': $('input[name=cartype]:checked').val()
+			            },
+			            dataType: 'json',
+			            success: function (data) {
+			                if (data.length === undefined) {
+			                    $('#searchResultContent').css("display", "none");
+			                    $('#noSearchResult').css("display", "block");		                    
+			                    
+			                }
+			                else {
+			                    $('#noSearchResult').css("display", "none");
+			                    $('#searchResultContent').css("display", "block");
+			                }
+			                
+			                console.log(data);
+			                getDistanceAndTime();
+			                $('#userGuidePanel').css("display", "none");
+			                $('#routeListPanel').css("display", "block");
+			            }
+			        });
+			    }
+			})
+			$("#closeRouteListPanel").on("click", function () {
+				$('#routeListPanel').css("display", "none");
+			});
+
+			var map = null;
+			var zoomValue = 12;
+			var latValue = 21.022736;
+			var lngValue = 105.8019441;
+			var startPointPlace = null;
+			var endPointPlace = null;
+			var origin_place_id = null;
+			var destination_place_id = null;
+			var directionsService = null;
+			var directionsDisplay = null;
+			var travel_mode = null;
+			
+			function loadScript(src, callback) {
+				var script = document.createElement("script");
+				script.type = "text/javascript";
+				if (callback) script.onload = callback;
+				document.getElementsByTagName("head")[0].appendChild(script);
+				script.src = src;
+			}
+
+			loadScript('http://maps.googleapis.com/maps/api/js?key=AIzaSyA1naPg1USZOsy3uiEJv0A71GwcGeaOTS8&v=3&libraries=places&sensor=false&callback=initialize', function () { positionFooter(); });
+			function initialize() {
+
+				$(window).resize(positionFooter());
+				
+				var mapOptions = {
+					zoom: zoomValue,
+					center: new google.maps.LatLng(latValue, lngValue),
+					mapTypeControl: true,
+					mapTypeControlOptions: {
+						position: google.maps.ControlPosition.TOP_RIGHT
+					},
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				map = new google.maps.Map(document.getElementById('mapdirdd'),
+						mapOptions);
+				directionsDisplay = new google.maps.DirectionsRenderer;
+				directionsService = new google.maps.DirectionsService;
+				travel_mode = google.maps.TravelMode.DRIVING
+				directionsDisplay.setMap(map);
+				var myCenter = new google.maps.LatLng(latValue, lngValue);
+				
+				var marker = new google.maps.Marker({
+					position: myCenter,
+					animation: google.maps.Animation.BOUNCE,
+					icon: "/Content/Images/icons/location-icon2.png"
+				});
+
+				marker.setMap(map);
+				var geocoder = new google.maps.Geocoder;
+				var infowindow = new google.maps.InfoWindow();
+
+				var latlng = { lat: latValue, lng: lngValue };
+				geocoder.geocode({ 'location': latlng }, function (results, status) {
+					if (status === google.maps.GeocoderStatus.OK) {
+						if (results[1]) {
+							infowindow.setContent(results[1].formatted_address);
+						}
+					}
+				});
+
+				google.maps.event.addListener(marker, 'click', function () {
+					infowindow.open(map, marker);
+				});
+
+				google.maps.event.addDomListener(window, 'load', initialize);
+
+			}
+			$("#locate,#locate2").click(function () {
+			    zoomValue = 16;
+			    // Try HTML5 geolocation.
+			    if (navigator.geolocation) {
+			        navigator.geolocation.getCurrentPosition(locate, showError);
+			    }
+			});
+
+			function showError(error) {
+				switch (error.code) {
+					case error.PERMISSION_DENIED:
+						console.log("User denied the request for Geolocation.")
+						break;
+					case error.POSITION_UNAVAILABLE:
+						console.log("Location information is unavailable.")
+						break;
+					case error.TIMEOUT:
+						console.log("The request to get user location timed out.")
+						break;
+					case error.UNKNOWN_ERROR:
+						console.log("An unknown error occurred.")
+						break;
+				}
+			}
+
+			function locate(position) {
+				latValue = position.coords.latitude;
+				lngValue = position.coords.longitude;
+				initialize();
+				var latlng = { lat: latValue, lng: lngValue };
+				var geocoder = new google.maps.Geocoder;
+				geocoder.geocode({ 'location': latlng }, function (results, status) {
+				    if (status === google.maps.GeocoderStatus.OK) {
+				        if (results[1]) {
+				            origin_place_id = results[1].place_id;
+				            startPointPlace = results[1];
+				            document.getElementById('startPoint').value = results[1].formatted_address;
+				        }
+				    }
+				});
+			}
+
+			function calcdir(event) {			   			    
+
+			    function expandViewportToFitPlace(map, place) {
+			        if (place.geometry.viewport) {
+			            map.fitBounds(place.geometry.viewport);
+			        } else {
+			            map.setCenter(place.geometry.location);
+			            map.setZoom(17);
+			        }
+			    }
+			    // Create the search box and link it to the UI element.
+			    var startPoint = document.getElementById('startPoint');
+			    var options = {
+			        componentRestrictions: { country: 'vn' }//Vietnam only
+			    };
+			    var startPointSearchBox = new google.maps.places.Autocomplete(startPoint,options);
+			    startPointSearchBox.addListener('place_changed', function () {
+			        startPointPlace = startPointSearchBox.getPlace();
+			        if (!startPointPlace.geometry) {
+			            window.alert("Autocomplete's returned place contains no geometry");
+			            return;
+			        }
+			        expandViewportToFitPlace(map, startPointPlace);
+
+			        // If the place has a geometry, store its place ID and route if we have
+			        // the other place ID
+			        origin_place_id = startPointPlace.place_id;
+			        route(origin_place_id, destination_place_id, travel_mode,
+                          directionsService, directionsDisplay);
+			    });
+			    var endPoint = document.getElementById('endPoint');
+			    var endPointSearchBox = new google.maps.places.Autocomplete(endPoint,options);
+			    endPointSearchBox.addListener('place_changed', function () {
+			        endPointPlace = endPointSearchBox.getPlace();
+			        if (!endPointPlace.geometry) {
+			            window.alert("Autocomplete's returned place contains no geometry");
+			            return;
+			        }
+			        expandViewportToFitPlace(map, endPointPlace);
+
+			        // If the place has a geometry, store its place ID and route if we have
+			        // the other place ID
+			        destination_place_id = endPointPlace.place_id;
+			        route(origin_place_id, destination_place_id, travel_mode,
+                          directionsService, directionsDisplay);
+			    });
+
+			}
+			
+
+			function route(origin_place_id, destination_place_id, travel_mode,
+                           directionsService, directionsDisplay) {
+			    if (!origin_place_id || !destination_place_id) {
+			        return;
+			    }
+			    directionsService.route({
+			        origin: { 'placeId': origin_place_id },
+			        destination: { 'placeId': destination_place_id },
+			        travelMode: travel_mode
+			    }, function (response, status) {
+			        if (status === google.maps.DirectionsStatus.OK) {
+			            directionsDisplay.setDirections(response);
+			        } else {
+			            window.alert('Không thể tìm đường!');
+			        }
+			    });
+			}
+			function getDistanceAndTime() {
+			    var service = new google.maps.DistanceMatrixService();
+			    service.getDistanceMatrix({
+			        origins: [document.getElementById('startPoint').value],
+			        destinations: [document.getElementById('endPoint').value],
+			        travelMode: google.maps.TravelMode.DRIVING,
+			        unitSystem: google.maps.UnitSystem.METRIC,
+			        avoidHighways: false,
+			        avoidTolls: false
+			    }, function (response, status) {
+			        if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
+			            var distance = response.rows[0].elements[0].distance.text;
+			            var duration = response.rows[0].elements[0].duration.text;
+			            $('#distanceAndTime span').text(distance + ' - ' + duration);
+
+			            console.log(distance);
+			            console.log(duration);
+
+			        } else {
+			            alert("Unable to find the distance via road.");
+			        }
+			    });
+			}
+
+			$("#switchSearchValue").click(function () {
+			    var startPoint = document.getElementById('startPoint');
+			    var endPoint = document.getElementById('endPoint');
+			    var flag = startPoint.value;
+			    startPoint.value = endPoint.value;
+			    endPoint.value = flag;
+			    var placeFlag = startPointPlace;
+			    startPointPlace = endPointPlace;
+			    endPointPlace = placeFlag;
+			    var flagDirection = origin_place_id;
+			    origin_place_id = destination_place_id;
+			    destination_place_id = flagDirection;
+			    route(origin_place_id, destination_place_id, travel_mode,
+                          directionsService, directionsDisplay);
+			});
+    </script>
+</body>
+<!--BODY_END-->
