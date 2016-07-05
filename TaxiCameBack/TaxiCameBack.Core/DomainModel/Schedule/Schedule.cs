@@ -9,8 +9,8 @@ namespace TaxiCameBack.Core.DomainModel.Schedule
     {
         [Key]
         public int Id { get; set; }
-        [Required]
-        public int UserId { get; set; }
+//        [Required]
+//        public int UserId { get; set; }
         [Required]
         [MaxLength(300)]
         public string BeginLocation { get; set; }
@@ -19,7 +19,7 @@ namespace TaxiCameBack.Core.DomainModel.Schedule
         public string EndLocation { get; set; }
         [Required]
         public System.DateTime StartDate { get; set; }
-        public ScheduleGeolocation ScheduleGeolocation { get; set; }
+//        public ScheduleGeolocation ScheduleGeolocation { get; set; }
         public virtual ICollection<ScheduleGeolocation> ScheduleGeolocations { get; set; }
 
     }

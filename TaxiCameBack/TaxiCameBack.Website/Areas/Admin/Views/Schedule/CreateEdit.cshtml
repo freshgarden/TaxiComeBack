@@ -1,5 +1,12 @@
-﻿<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+﻿@{
+    ViewBag.Title = "Schedule";
+}
+@Html.AntiForgeryToken()
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="~/Scripts/knockout-2.2.0.js"></script>
+<script src="~/Scripts/knockout.validation.js"></script>
+<script src="~/Scripts/aftp.js"></script>
 <form action="#" id="form" onsubmit="GetRoute(); return false;">
     <table class="table">
         <tr>
@@ -7,17 +14,17 @@
         </tr>
         <tr></tr>
         <tbody data-bind="with: schedule">
-        <tr>
-            <td>
-                <input id="txtSource" class="input-large" data-bind="value: BeginLocation, valueUpdate: 'afterkeydown'" placeholder="Begin Location"/>
-            </td>
-            <td>
-                <input id="txtDestination" class="input-large" data-bind="value: EndLocation, valueUpdate: 'afterkeydown'" placeholder="End Location"/>
-            </td>
-            <td>
-                <input class="input-large" id="txtStartDate" data-bind="value: StartDate, valueUpdate: 'afterkeydown'" placeholder="Start Date"/>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    <input id="txtSource" class="input-large" data-bind="value: BeginLocation, valueUpdate: 'afterkeydown'" placeholder="Begin Location" />
+                </td>
+                <td>
+                    <input id="txtDestination" class="input-large" data-bind="value: EndLocation, valueUpdate: 'afterkeydown'" placeholder="End Location" />
+                </td>
+                <td>
+                    <input class="input-large" id="txtStartDate" data-bind="value: StartDate, valueUpdate: 'afterkeydown'" placeholder="Start Date" />
+                </td>
+            </tr>
         </tbody>
     </table>
 </form>
@@ -25,10 +32,10 @@
 <button class="btn btn-small btn-success" data-bind="click: saveSchedule">Save Schedule</button>
 <input class="btn btn-small btn-primary" type="button" value="Back To Schedule List" data-bind="click:$root.backToScheduleList" />
 
-<hr/>
+<hr />
 <div id="dvMap" style="width: 1150px; height: 400px; float: left;"></div>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=places&sensor=false&key=AIzaSyAjnlRqvU0vljMnlPB7Y6gmBAUk4ShnAXQ"></script>
-<script src="~/Scripts/aftp.js"></script>
+@*<script src="~/Scripts/aftp.js"></script>*@
 <script src="~/Scripts/ScheduleCreateEdit.js"></script>
 <script>
     var source, destination;
@@ -58,10 +65,10 @@
             $('input[type=submit]').hide();
         });
     });
-    
+
 
     function GetRoute() {
-        
+
 //        directionsDisplay.setPanel(document.getElementById('dvPanel'));
 
         //*********DIRECTIONS AND ROUTE**********************//

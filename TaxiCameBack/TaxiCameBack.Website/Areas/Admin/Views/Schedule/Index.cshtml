@@ -1,26 +1,19 @@
 ﻿@{
-    ViewBag.Title = "Schedule";
+    ViewBag.Title = "Schedules Manager";
 }
-<script src="~/Scripts/knockout-2.2.0.js"></script>
-<script src="~/Scripts/knockout.validation.js"></script>
-<h2>Schedule Manager</h2>
-<br />
-<input type="button" class="btn btn-small btn-primary" value="New Schedule" data-bind="click:$root.createSchedule" />
-<hr />
-<table class="table table-striped table-bordered table-condensed">
-    <tr>
-        <th>Begin Location</th>
-        <th>End Location</th>
-        <th>Start Date</th>
-        <th></th>
-    </tr>
-    <tbody data-bind="foreach: Schedules">
-        <tr>
-            <td class="name"><a data-bind="text: BeginLocation, click: $parent.editSchedule"></a></td>
-            <td data-bind="text: EndLocation"></td>
-            <td data-bind="text: StartDate"></td>
-            <td><button class="btn btn-mini btn-danger" data-bind="click: $parent.removeSchedule">remove</button></td>
-        </tr>
-    </tbody>
-</table>
-<script src="~/Scripts/Schedule.js"></script>
+
+@section AdminHeader{
+@*    <link href="@Url.Content("~/Content/bootstrap/css/bootstrap.min.css")" rel="stylesheet" />*@
+    <link href="@Url.Content("~/Content/jquery-ui-1.9.2.custom.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/fullcalendar.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/view_calendar.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/fullcalendar.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.9.2.custom.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/view_calendar.js")"></script>
+}
+
+@Html.Partial("_ScheduleNavButtons")
+
+
+@Html.Action("GetMainSchedules")

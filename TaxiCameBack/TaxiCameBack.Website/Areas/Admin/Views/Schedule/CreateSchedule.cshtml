@@ -1,0 +1,102 @@
+﻿@model TaxiCameBack.Website.Areas.Admin.Models.ScheduleViewModel
+
+@{
+    ViewBag.Title = "Creat Schedule";
+}
+
+@section AdminHeader
+{
+    <link href="@Url.Content("~/Content/jquery-ui-1.9.2.custom.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.9.2.custom.min.js")"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=places&sensor=false&key=AIzaSyAjnlRqvU0vljMnlPB7Y6gmBAUk4ShnAXQ"></script>
+    <script>
+        var source, destination;
+        var directionsDisplay;
+        var directionsService = new google.maps.DirectionsService();
+        google.maps.event.addDomListener(window, 'load', function () {
+            new google.maps.places.SearchBox(document.getElementById('BeginLocation'));
+            new google.maps.places.SearchBox(document.getElementById('EndLocation'));
+            directionsDisplay = new google.maps.DirectionsRenderer({ 'draggable': true });
+            var mumbai = new google.maps.LatLng(21.0031201, 105.82013870000003);
+            var mapOptions = {
+                zoom: 7,
+                center: mumbai
+            };
+            map = new google.maps.Map(document.getElementById('dvMap'), mapOptions);
+            directionsDisplay.setMap(map);
+        });
+        $(function () {
+            $('#form').each(function () {
+                $('input').keypress(function (e) {
+                    // Enter pressed?
+                    if (e.which == 10 || e.which == 13) {
+                        GetRoute();
+                    }
+                });
+
+                $('input[type=submit]').hide();
+            });
+            $("#StartDate").datepicker({
+                dateFormat: 'dd/mm/yy',
+                minDate: 0
+            });
+        });
+
+
+        function GetRoute() {
+
+            //        directionsDisplay.setPanel(document.getElementById('dvPanel'));
+
+            //*********DIRECTIONS AND ROUTE**********************//
+            source = document.getElementById("BeginLocation").value;
+            destination = document.getElementById("EndLocation").value;
+
+            var request = {
+                origin: source,
+                destination: destination,
+                travelMode: google.maps.TravelMode.DRIVING
+            };
+            directionsService.route(request, function (response, status) {
+                if (status === google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                    SetScheduleGeolocation(response);
+                }
+            });
+        }
+
+        function SetScheduleGeolocation(response) {
+            var rleg = response.routes[0].legs[0];
+            var wp = response.routes[0].overview_path;
+            window.vm.addScheduleGeolocation([rleg.start_location.lat(), rleg.start_location.lng()]);
+            for (var i = 0; i < wp.length; i++) {
+                window.vm.addScheduleGeolocation([wp[i].lat(), wp[i].lng()]);
+            }
+            window.vm.addScheduleGeolocation([rleg.end_location.lat(), rleg.end_location.lng()]);
+        }
+
+        
+    </script>
+}
+
+@Html.Partial("_ScheduleNavButtons")
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        @using (Html.BeginForm("CreateSchedule", "Schedule", FormMethod.Post, new { onkeydown = "return event.keyCode!=13" }))
+        {
+            @Html.ValidationSummary(false)
+            @Html.AntiForgeryToken()
+
+            @Html.Partial("_ScheduleField")
+
+            <div class="submit-holder">
+                <input type="submit" class="btn-mvc-green" value="Create" />
+            </div>
+        }
+        <hr />
+        <div id="dvMap" style="width: 100%; height: 400px; position: relative;"></div>
+    </div>
+</div>

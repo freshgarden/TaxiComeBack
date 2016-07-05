@@ -249,6 +249,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Models\ScheduleViewModel.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ScheduleController.cs" />
@@ -813,6 +815,7 @@
     <Content Include="Content\custom\maps.css" />
     <Content Include="Content\custom\stylevh1.css" />
     <Content Include="Content\Emails\EmailNotification.htm" />
+    <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\Images\ajaxloader-large.gif" />
     <Content Include="Content\Images\ajaxloader.gif" />
     <Content Include="Content\Images\arrow-spinner-blue.gif" />
@@ -913,6 +916,23 @@
     <Content Include="Content\Images\social-icons\xanga.png" />
     <Content Include="Content\Images\social-icons\yahoo.png" />
     <Content Include="Content\Images\social-icons\youtube.png" />
+    <Content Include="Content\Images\ui-bg_flat_100_fcfdfd_40x100.png" />
+    <Content Include="Content\Images\ui-bg_flat_45_0078ae_40x100.png" />
+    <Content Include="Content\Images\ui-bg_flat_45_e14f1c_40x100.png" />
+    <Content Include="Content\Images\ui-bg_flat_50_6eac2c_40x100.png" />
+    <Content Include="Content\Images\ui-bg_flat_55_999999_40x100.png" />
+    <Content Include="Content\Images\ui-bg_flat_55_f8da4e_40x100.png" />
+    <Content Include="Content\Images\ui-bg_flat_75_2191c0_40x100.png" />
+    <Content Include="Content\Images\ui-bg_flat_75_79c9ec_40x100.png" />
+    <Content Include="Content\Images\ui-bg_flat_75_aaaaaa_40x100.png" />
+    <Content Include="Content\Images\ui-icons_0078ae_256x240.png" />
+    <Content Include="Content\Images\ui-icons_056b93_256x240.png" />
+    <Content Include="Content\Images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Content\Images\ui-icons_e0fdff_256x240.png" />
+    <Content Include="Content\Images\ui-icons_f5e175_256x240.png" />
+    <Content Include="Content\Images\ui-icons_f7a50d_256x240.png" />
+    <Content Include="Content\Images\ui-icons_fcd113_256x240.png" />
+    <Content Include="Content\jquery-ui-1.9.2.custom.css" />
     <Content Include="Content\jstree\jstree.js" />
     <Content Include="Content\jstree\jstree.min.js" />
     <Content Include="Content\jstree\themes\default\30px.png" />
@@ -956,6 +976,7 @@
     <Content Include="Content\uploads\afe9517a-2139-40ca-a7f4-a02800e572a4\bbb42d4d-cd4e-4f37-9d75-a1a500aebffc_file-three.txt" />
     <Content Include="Content\uploads\afe9517a-2139-40ca-a7f4-a02800e572a4\e7928396-d57a-404a-be5d-a1a501287fbd_capture.jpg" />
     <Content Include="Content\uploads\readme.txt" />
+    <Content Include="Content\view_calendar.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1025,6 +1046,10 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminScript.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\MainAdminNav.cshtml" />
+    <Content Include="Areas\Admin\Views\Schedule\CreateEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\Schedule\CreateSchedule.cshtml" />
+    <Content Include="Areas\Admin\Views\Schedule\GetMainSchedules.cshtml" />
     <None Include="Areas\Admin\Views\Schedule\Index.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Content\admin\Admin.css.map" />
@@ -1046,6 +1071,8 @@
     <Content Include="Content\jstree\themes\proton\fonts\titillium\titilliumweb-regular-webfont.woff" />
     <Content Include="Scripts\bbeditor\themes\monocons\monocons.eot" />
     <Content Include="Scripts\bbeditor\themes\monocons\monocons.ttf" />
+    <Content Include="Areas\Admin\Views\Schedule\_ScheduleField.cshtml" />
+    <Content Include="Areas\Admin\Views\Schedule\_ScheduleNavButtons.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cache\Cache.txt" />
     <Content Include="Scripts\Contact.js" />
@@ -1063,6 +1090,7 @@
     <Content Include="Scripts\fancybox\jquery.fancybox.css" />
     <Content Include="Scripts\fancybox\jquery.fancybox.js" />
     <Content Include="Scripts\fancybox\jquery.fancybox.pack.js" />
+    <Content Include="Scripts\fullcalendar.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -1072,6 +1100,8 @@
     <Content Include="Scripts\jquery-3.0.0.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-migrate.min.js" />
+    <Content Include="Scripts\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery-ui\images\ui-icons_444444_256x240.png" />
     <Content Include="Scripts\jquery-ui\images\ui-icons_555555_256x240.png" />
     <Content Include="Scripts\jquery-ui\images\ui-icons_777777_256x240.png" />
@@ -1267,6 +1297,7 @@
     <Content Include="Scripts\tinymce\themes\modern\theme.min.js" />
     <Content Include="Scripts\tinymce\tinymce.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
+    <Content Include="Scripts\view_calendar.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1320,7 +1351,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Content\Images\error\" />
     <Folder Include="Content\Images\home\" />
     <Folder Include="Content\Images\icons\" />

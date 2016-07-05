@@ -8,12 +8,13 @@ namespace TaxiCameBack.Data.Mapping.Schedule
         public ScheduleGeolocationMapping()
         {
             HasKey(s => s.Id);
+            Property(s => s.ScheduleId).IsRequired();
             Property(s => s.Latitude).IsRequired();
             Property(s => s.Longitude).IsRequired();
 
-            HasRequired(s => s.Schedule)
-                .WithMany(s => s.ScheduleGeolocations)
-                .HasForeignKey(s => s.ScheduleId);
+//            HasRequired(s => s.Schedule)
+//                .WithMany(s => s.ScheduleGeolocations)
+//                .HasForeignKey(s => s.ScheduleId);
         }
     }
 }

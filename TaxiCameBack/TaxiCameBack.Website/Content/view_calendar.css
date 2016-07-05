@@ -1,0 +1,43 @@
+#content_wrapper{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#calendar{
+	width: 73%;
+	float: right;
+}
+
+#container {
+    background-color: #ffffff;
+    position: relative;
+    bottom: 20%;
+}
+
+#datepicker{
+	width: 18%;
+	float: left;
+}
+
+select {
+	color: black;
+	font-weight: bold;
+}
+
+#calendar .ui-widget-header{
+	font-weight: normal;
+	padding: 3px 3px 3px 3px;
+}
+
+#calendar .fc-header-title{
+	font-weight: normal;
+}
+
+.pac-container {
+    background-color: #FFF;
+    z-index: 20;
+    position: fixed;
+    display: inline-block;
+    float: left;
+}

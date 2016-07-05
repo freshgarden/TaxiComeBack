@@ -1,0 +1,21 @@
+﻿@model TaxiCameBack.Website.Areas.Admin.Models.ListScheduleViewModel
+@{
+    var mainSchedules = Model.Schedules.ToList();
+
+}
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>All Schedules</h5>
+    </div>
+    <div class="panel-content">
+        <div id="container">
+            <div id="datepicker">
+            </div>
+            <!-- Calendar div -->
+            <div id="calendar">
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+</div>
