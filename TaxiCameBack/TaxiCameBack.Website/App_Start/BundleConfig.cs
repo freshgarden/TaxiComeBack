@@ -16,20 +16,19 @@ namespace TaxiCameBack.Website
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui/jquery-ui.min.js"));
             bundles.Add(new ScriptBundle("~/bundles/jquery-migrate").Include("~/Scripts/jquery-migrate.min"));
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.unobtrusive*",
-                        "~/Scripts/jquery.validate*"));
+           
+            //Backend js
+            bundles.Add(new ScriptBundle("~/admin/js").Include(
+                "~/Scripts/plugins/jQuery/jquery-2.2.3.min.js",
+                "~/Content/bootstrap/js/bootstrap.min.js"
+                ));
+            bundles.Add(new ScriptBundle("~/app/js").Include(
+                "~/Content/dist/js/app.min.js"
+                ));
 
-
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
-
-
-            bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
-                                    "~/Scripts/knockout-{version}.js",
-                        "~/Scripts/knockout.validation.js"));
+            bundles.Add(new ScriptBundle("~/js/icheck").Include(
+                "~/Scripts/plugins/iCheck/icheck.min.js"
+                ));
 
             //Register Css
             bundles.Add(new StyleBundle("~/custom/css").Include("~/Content/custom/custom-style.css"));
@@ -39,6 +38,20 @@ namespace TaxiCameBack.Website
                 "~/Scripts/jquery-ui/jquery-ui.theme.min.css"
                 ));
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/bootstrap.css", "~/Content/Site.css"));
+
+            //backend css
+            bundles.Add(new StyleBundle("~/admin/css").Include(
+                "~/Content/bootstrap/css/bootstrap.min.css",
+                "~/Content/font-awesome-4.6.3/css/font-awesome.min.css",                
+                "~/Content/ionicons-2.0.1/css/ionicons.min.css",
+                "~/Content/dist/css/AdminLTE.min.css"                
+                ));
+            bundles.Add(new StyleBundle("~/css/skins").Include(
+                "~/Content/skins/_all-skins.min.css"
+                ));
+            bundles.Add(new StyleBundle("~/css/icheck").Include(
+                "~/Scripts/plugins/iCheck/square/blue.css"
+                ));
         }
     }
 }

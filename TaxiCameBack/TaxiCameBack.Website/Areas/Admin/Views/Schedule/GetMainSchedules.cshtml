@@ -3,19 +3,42 @@
     var mainSchedules = Model.Schedules.ToList();
 
 }
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Dashboard
+        <small>Version 2.0</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+</section>
 
-<div class="panel">
-    <div class="panel-heading">
-        <h5>All Schedules</h5>
-    </div>
-    <div class="panel-content">
-        <div id="container">
-            <div id="datepicker">
+<!-- Main content -->
+<section class="content">
+    <!-- Info boxes -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <a href="@Url.Action("Index")" role="button" class="btn-mvc-green">Manage Schedules</a>
+                    <a href="@Url.Action("CreateSchedule")" role="button" class="btn-mvc-green">Create New</a>
+                    <div class="box-tools pull-right">
+
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <!-- Calendar div -->
+                        <div id="calendar">
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                </div>
             </div>
-            <!-- Calendar div -->
-            <div id="calendar">
-            </div>
-            <div style="clear: both"></div>
         </div>
     </div>
-</div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->

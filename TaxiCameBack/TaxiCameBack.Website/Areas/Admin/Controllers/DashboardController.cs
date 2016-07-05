@@ -2,7 +2,7 @@
 
 namespace TaxiCameBack.Website.Areas.Admin.Controllers
 {
-    public class DashboardController : Controller
+    public class DashboardController : BaseController
     {
         public PartialViewResult MainAdminNav()
         {

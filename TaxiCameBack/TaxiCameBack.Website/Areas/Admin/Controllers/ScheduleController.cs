@@ -8,7 +8,7 @@ using TaxiCameBack.Website.Areas.Admin.Models;
 
 namespace TaxiCameBack.Website.Areas.Admin.Controllers
 {
-    public partial class ScheduleController : Controller
+    public partial class ScheduleController : BaseController
     {
         private readonly IScheduleService _scheduleService;
 

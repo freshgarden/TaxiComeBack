@@ -5,8 +5,9 @@
 }
 
 #calendar{
-	width: 73%;
-	float: right;
+	width: 98%;
+    margin-left:1%;
+    margin-right:1%;    
 }
 
 #container {
@@ -15,10 +16,6 @@
     bottom: 20%;
 }
 
-#datepicker{
-	width: 18%;
-	float: left;
-}
 
 select {
 	color: black;
