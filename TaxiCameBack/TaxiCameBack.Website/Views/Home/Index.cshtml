@@ -1,4 +1,5 @@
-﻿@{
+﻿@using TaxiCameBack.Website.App_LocalResources
+@{
     Layout = "~/Views/Shared/_Home.cshtml";
 }
 
@@ -9,20 +10,20 @@
             <div id="routetcb">
                 <div class="divchesn"></div>
                 <div class="divlogtcbnew">
-                    <p class="titsignew">Lộ trình</p> <a href="#" id="closeRoute"><p class="iconhp closedpopdknew closedsign"></p></a>
+                    <p class="titsignew">@Home.lbl_Route</p> <a href="#" id="closeRoute"><p class="iconhp closedpopdknew closedsign"></p></a>
                     <div class="divpopsignk">
                         <div class="divroute">
                             <p class="ptextroute">
-                                Tên tài xế
+                                @Home.lbl_DriverName
                             </p>
                             <p class="ptextroute">
-                                Biến số xe
+                                @Home.lbl_PlateNumber
                             </p>
                             <p class="ptextroute">
-                                Hãng xe
+                                @Home.lbl_CarType
                             </p>
                             <p class="ptextroute">
-                                Điện thoại liên hệ
+                                @Home.lbl_DriverPhone
                             </p>
                         </div>
                         <div class="divroute2">
@@ -34,25 +35,25 @@
                         <div class="divroute2">
                             <div class="divroute2">
                                 <p class="ptextroute">
-                                    Tên khách hàng
+                                    @Home.lbl_CustomerName
                                 </p>
                                 <p class="ptextroute">
-                                    Số điện thoại KH
+                                    @Home.lbl_CustomerPhone
                                 </p>
                             </div>
                             <div class="divroute2">
                                 <form name="regcar" action="" method="post">
                                     <p>
-                                        <input id="fullname" class="ptextroute3" type="text" name="fullname" value="" placeholder="Họ và tên" maxlength="50">
+                                        <input id="fullname" class="ptextroute3" type="text" name="fullname" value="" placeholder="@Home.plh_FullName" maxlength="50">
                                     </p>
                                     <p>
-                                        <input id="phoneNumber" class="ptextroute3" type="tel" name="phoneNumber" value="" placeholder="Số điện thoại" maxlength="14">
+                                        <input id="phoneNumber" class="ptextroute3" type="tel" name="phoneNumber" value="" placeholder="@Home.plh_PhoneNumber" maxlength="14">
                                     </p>
                                     <div class="clear"></div>
 
                                 </form>
                             </div>
-                            <p class="ptextroute4"><input type="checkbox" class="checkbox-style" class="ptextroute" /> Bạn chỉ phải trả 50% cho chuyến đi này</p> <p style="text-align:center;">(Đơn giá: 4.500đ/1km)</p>
+                            <p class="ptextroute4"><input type="checkbox" class="checkbox-style" class="ptextroute" /> @Home.lbl_reg_note</p> <p style="text-align:center;">@Home.lbl_reg_note2</p>
                             <input type="submit" value="" id="btnCreate" name="btnCreate" class="iconhp btnsignlog">
                         </div>
                         <div class="clear"></div>
@@ -76,19 +77,19 @@
                     <div class="topmapnew">
                         <div class="topmapnew_1">
                             <div class="topmapnew2">
-                                <div id="findCarBySearch" class="ptimvtri backcolorms1"> <b class="backmapnew"></b> <span>Tìm xe</span> </div>
-                                <div id="findCarByLocation" class="ptimduong"> <b class="backmapnew"></b> <span>Điểm đến</span> </div>
+                                <div id="findCarBySearch" class="ptimvtri backcolorms1"> <b class="backmapnew"></b> <span>@Home.lbl_FindCar</span> </div>
+                                <div id="findCarByLocation" class="ptimduong"> <b class="backmapnew"></b> <span>@Home.lbl_EndPoint</span> </div>
                                 <p class="clear"></p>
                                 <div id="findCarBySearchPanel" class="divmstr1" style="display:block">
                                     <div class="custom-div">
                                         <p class="pmapnewh"><span class="backmapnew ddmapz1"></span></p>
-                                        <input id="startPoint" onkeypress="return calcdir(event)" type="text" placeholder="Nhập điểm bắt đầu" autocomplete="off" class="inptduongmap" maxlength="100">
+                                        <input id="startPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_StartPoint" autocomplete="off" class="inptduongmap" maxlength="100">
                                         <input type="button" value="" class="backmapnew btndirect" id="searchCar">
                                         <input type="hidden" value="subdri" id="hidsubmap"><p class="clear"></p>
                                     </div>
                                     <div class="custom-div">
                                         <p class="pmapnewh"><span class="backmapnew ddmapz2"></span></p>
-                                        <input id="endPoint" onkeypress="return calcdir(event)" type="text" placeholder="Nhập điểm đến" autocomplete="off" class="inptduongmap" maxlength="100">
+                                        <input id="endPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_EndPoint" autocomplete="off" class="inptduongmap" maxlength="100">
                                         <input type="button" id="switchSearchValue" class="backmapnew btnwapdd">
                                         <input type="hidden" value="subdri" id="hidsubmap"><p class="clear"></p>
                                     </div>
@@ -96,16 +97,16 @@
                                         <p class="pmapnewh"><span class="backmapnew ddmapz3"></span></p>
                                         <input type="button" value="" disabled class="backmapnew btnwapdd2">
                                         <input id="xe7cho" style="text-align:right; vertical-align:middle" type="radio" class="css-checkbox" name="cartype" value="7seat">
-                                        <label for="xe7cho" class="css-label radGroup2">7 Chỗ</label>
+                                        <label for="xe7cho" class="css-label radGroup2">@Home.lbl_CarType7</label>
                                         <input id="xe4cho" checked style="text-align:right; vertical-align:middle" type="radio" class="css-checkbox" name="cartype" value="4seat">
-                                        <label for="xe4cho" class="css-label radGroup2">4 Chỗ</label>
+                                        <label for="xe4cho" class="css-label radGroup2">@Home.lbl_CarType4</label>
                                     </div>
                                 </div>
                                 <div id="findCarByLocationPanel" class="divmstr1" style="display:none">
                                     <div class="custom-div">
                                         <div class="pseldate"><p class="pcentertext"></p></div>
                                         <p class="ptextroute5">
-                                            Có 50 chuyến xe đang sẵn sàng
+                                            @Home.lbl_Find_Car_By_Location
                                         </p>
                                     </div>
                                     <div class="custom-div">
@@ -134,24 +135,24 @@
                                     </div>
                                 </div>
                                 <div class="bottopmap">
-                                    <div class="dbotm1"><a class="botuseguide" id="userguide" href="#"><b class="backmapnew"></b><span>Hướng dẫn sử dụng</span></a></div>
-                                    <div class="dbotm3 btngetdv"><a class="botuseguide" id="locate" href="#"><b class="backmapnew"></b><span>Định vị</span></a></div>
+                                    <div class="dbotm1"><a class="botuseguide" id="userguide" href="#"><b class="backmapnew"></b><span>@Home.lbl_UserGuide</span></a></div>
+                                    <div class="dbotm3 btngetdv"><a class="botuseguide" id="locate" href="#"><b class="backmapnew"></b><span>@Home.lbl_Locate</span></a></div>
                                     <p class="clear"></p>
                                 </div>
                             </div>
                             <div class="backmtkiem"></div>
                             <div class="dboxgtm" id="userGuidePanel" style="max-height: 260px;display:none">
                                 <div class="maphdan2">
-                                    <p class="dboxt1">Hướng dẫn tìm vị trí</p>
+                                    <p class="dboxt1">@Home.lbl_UserGuideHeader</p>
                                     <a href="#" class="botuseguide2" id="closeUserGuidePanel"><p class="dboxt2">X</p></a>
                                     <p class="clear"></p>
-                                    <div class="dboxt4"><h2 style="margin-bottom:6px" class="pdboxms3">Ứng dụng Bản đồ Việt Nam trực tuyến Online, tìm đường đi nhanh và gần nhất, xem bản đồ các tỉnh thành như Hà Nội, Sài Gòn, TP.HCM, Đà Nẵng, Cần Thơ, Hải Phòng, Nha Trang, Bình Dương, Đà Lạt… chỉ đường đi nhanh nhất, ngắn nhất đến các địa điểm, địa chỉ, vị trí,khu vui chơi, khu du lịch, giải trí, khách sạn, nhà hàng trên khắp Việt Nam. Bản đồ vệ tinh, danh bạ địa chỉ số tiện dụng nhất hiện nay.</h2><p class="pdboxms3">Nhập địa chỉ muốn tìm vào khung tìm kiếm trên bản đồ hoặc click vào icon <span class="backmapnew icgetlct"></span> để hệ thống tự lấy vị trí hiện tại của bạn.</p><p class="pdboxms3">Sau đó bấm phím <b>"Enter"</b> hoặc click chuột vào icon <span class="backmapnew icclick"></span> để bắt đầu quá trình tìm kiếm.</p></div>
+                                    <div class="dboxt4">@Home.lbl_UserGuideContent</div>
                                 </div>
                             </div>
                             <div class="dboxgtm" id="directionsPanel">
                                 <div id="routeListPanel" class="maphdan">
                                     <div class="search-fixed">
-                                        <div class="psearch backcolorms1"> <b class="backmapnew"></b> <span class="search-result-header-text">Kết quả tìm kiếm</span></div>
+                                        <div class="psearch backcolorms1"> <b class="backmapnew"></b> <span class="search-result-header-text">@Home.lbl_SearchResult</span></div>
                                         <div id="distanceAndTime" class="psearch-result">
                                             <span style="font-weight:bold" >
                                                 100 km - 1giờ 15 phút<span>
@@ -164,7 +165,7 @@
                                         <p class="clear"></p>
                                         <br />
                                         <p class="clear"></p>
-                                        <div class="dboxt3" id="noSearchResult"><span style="margin:80px;">Không có kết quả nào được tìm thấy</span></div>
+                                        <div class="dboxt3" id="noSearchResult"><span style="margin:80px;">@Home.lbl_SearchResult_Content</span></div>
                                         <div class="dboxt3" id="searchResultContent">
                                             <div class="custom-div2">
                                                 <button href="#" onclick="showRoute('MS01')" class="route-btn"><p class="button-font-size">Lộ trình số 1 - MS01</p></button>
