@@ -29,42 +29,21 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             return Json(schedule, JsonRequestBehavior.AllowGet);
         }
         
+        [ValidateAntiForgeryToken]
         public JsonResult SaveScheduleInfomation(Schedule schedule)
         {
-//            if (!ModelState.IsValid)
-                return Json(new {status = "ERROR", errors = "dsadsa"});
-//                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ModelState.Values.SelectMany(v => v.Errors).ToList().ToString());
-//            var result = _scheduleService.SaveScheduleInformation(schedule);
-//            if (!result.Success)
-//                return new HttpStatusCodeResult(HttpStatusCode.ExpectationFailed, result.Errors.ToString());
-//            return new HttpStatusCodeResult(HttpStatusCode.OK);
+            if (!ModelState.IsValid)
+                return Json(new {status = "ERROR", messenge = ModelState.Errors()}, JsonRequestBehavior.AllowGet);
+            var result = _scheduleService.SaveScheduleInformation(schedule);
+            if (!result.Success)
+                return Json(new {status = "ERROR", messenge = result.Errors}, JsonRequestBehavior.AllowGet);
+            return Json(new {status = "OK"});
         }
 
         // GET: Schedule
         public ActionResult Index()
         {
             return View();
-        }
-
-        public ActionResult CreateSchedule()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateSchedule(ScheduleViewModel scheduleViewModel)
-        {
-            if (ModelState.IsValid)
-            {
-
-            }
-            else
-            {
-                ModelState.AddModelError("", "There was an error creating the schedule");
-            }
-
-            return RedirectToAction("Index");
         }
 
         [ChildActionOnly]
