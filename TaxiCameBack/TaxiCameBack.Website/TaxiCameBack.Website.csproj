@@ -242,6 +242,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Extension\ModelStateHelper.cs" />
     <Compile Include="Application\MobileExtensions.cs" />
     <Compile Include="App_GlobalResources\GlobalResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -289,6 +290,15 @@
     <Content Include="Content\custom\stylevh1.css" />
     <Content Include="Content\dist\css\AdminLTE.css" />
     <Content Include="Content\dist\css\AdminLTE.min.css" />
+    <Content Include="Content\jqsDialog\Images\ajax-loader.gif" />
+    <Content Include="Content\jqsDialog\Images\chosen-sprite%402x.png" />
+    <Content Include="Content\jqsDialog\Images\chosen-sprite.png" />
+    <Content Include="Content\jqsDialog\Images\dialog-icons.png" />
+    <Content Include="Content\jqsDialog\Images\overlay.png" />
+    <Content Include="Content\jqsDialog\Images\question-icon.png" />
+    <Content Include="Content\jqsDialog\Images\spacer.gif" />
+    <Content Include="Content\jqsDialog\jqsDialog.css" />
+    <Content Include="Content\jqsDialog\jqsDialog.js" />
     <Content Include="Content\skins\skin-blue-light.css" />
     <Content Include="Content\skins\skin-blue-light.min.css" />
     <Content Include="Content\skins\skin-blue.css" />
@@ -1856,7 +1866,6 @@
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\MainAdminNav.cshtml" />
     <Content Include="Areas\Admin\Views\Schedule\CreateEdit.cshtml" />
-    <Content Include="Areas\Admin\Views\Schedule\CreateSchedule.cshtml" />
     <Content Include="Areas\Admin\Views\Schedule\GetMainSchedules.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Content\jstree\themes\proton\fonts\titillium\titilliumweb-bold-webfont.eot" />
@@ -1936,6 +1945,7 @@
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Errors\Error404.cshtml" />
     <Content Include="Areas\Admin\Views\Errors\Error500.cshtml" />
+    <Content Include="Areas\Admin\Views\Schedule\_ScheduleNavButtons.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cache\Cache.txt" />
     <Content Include="Scripts\Contact.js" />
