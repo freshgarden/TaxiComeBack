@@ -4,6 +4,7 @@ using System.Net;
 using System.Web.Mvc;
 using TaxiCameBack.Core.DomainModel.Schedule;
 using TaxiCameBack.Services.Schedule;
+using TaxiCameBack.Website.Application.Extension;
 using TaxiCameBack.Website.Areas.Admin.Models;
 
 namespace TaxiCameBack.Website.Areas.Admin.Controllers
@@ -27,6 +28,11 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         {
             var schedule = _scheduleService.FindScheduleById(id);
             return Json(schedule, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult CreateEdit()
+        {
+            return View();
         }
         
         [ValidateAntiForgeryToken]
