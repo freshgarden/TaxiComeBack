@@ -13,6 +13,10 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
     }
     public class ScheduleViewModel
     {
+        public ScheduleViewModel()
+        {
+            ScheduleGeolocations = new List<ScheduleGeolocation>();
+        }
         [HiddenInput]
         public int Id { get; set; }
 
