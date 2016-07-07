@@ -1,16 +1,10 @@
-﻿var urlSchedule = "/schedule";
+﻿var urlSchedule = "/admin/schedule";
 var url = window.location.pathname;
 var scheduleId = url.substring(url.lastIndexOf('/') + 1);
 
 
 $(function () {
-    ko.validation.rules['simpleDate'] = {
-        validator: function (val, validate) {
-            return ko.validation.utils.isEmptyVal(val) || moment(val, 'MM/DD/YYYY').isValid();
-        },
-        message: 'Invalid date'
-    };
-    ko.validation.registerExtenders();
+    var container = $(this);
     var Schedule = function(schedule) {
         var self = this;
         self.ScheduleId = ko.observable(schedule ? schedule.ScheduleId : 0).extend({required: true});
@@ -43,15 +37,23 @@ $(function () {
             });
         }
 
-        self.backToScheduleList = function () { window.location.href = '/schedule'; };
-
-        self.addScheduleGeolocation = function(data) {
+        self.addScheduleGeolocation = function (data) {
             self.scheduleGeolocation.push({ "Latitude": data[0], "Longitude": data[1] });
         }
         
         self.scheduleErrors = ko.validation.group(self.schedule());
 
         self.scheduleGeolocationErrors = ko.validation.group(self.scheduleGeolocation(), { deep: true });
+
+        self.showErrorPopup=function (container, popup, message) {
+            container.jqsDialog("showCommonPopup", {
+                message: message != '' ? message : "Error saving change!",
+                title: "Error",
+                icon: "error",
+                popup: popup,
+            });
+            return;
+        }
 
         self.saveSchedule = function () {
 
@@ -67,16 +69,27 @@ $(function () {
 
             if (isValid) {
                 self.schedule().ScheduleGeolocations = self.scheduleGeolocation;
-                $.ajax({
+                var popup;
+                $.ajaxAntiForgery({
                     type: (self.schedule().ScheduleId > 0 ? 'PUT' : 'POST'),
                     cache: false,
                     dataType: 'json',
                     url: urlSchedule + (self.schedule().ScheduleId > 0 ? '/UpdateScheduleInfomation?id=' + self.schedule().ScheduleId : '/SaveScheduleInfomation'),
-                    data: JSON.stringify(ko.toJS(self.schedule())),
-                    contentType: 'application/json; charset=utf-8',
+                    data: ko.toJS(self.schedule()),
+                    contentType: "application/x-www-form-urlencoded",
                     async: false,
-                    success: function(data) {
-                        window.location.href = '/schedule';
+                    beforeSend: function () {
+                        popup = container.jqsDialog("showProgressBar");
+                        popup.setHeader("no-x");
+                    },
+                    success: function (data) {
+                        console.log(data.status);
+                        if (data.status == 'OK') {
+                            popup.close();
+                            window.location.href = urlSchedule;
+                        }
+                        else
+                            self.showErrorPopup(container, popup, data.messenge);
                     },
                     error: function(err) {
                         var err = JSON.parse(err.responseText);
@@ -95,6 +108,8 @@ $(function () {
                                 }
                             }
                         }).show();
+
+                        self.showErrorPopup(container, popup);
                     },
                     complete: function() {}
                 });
