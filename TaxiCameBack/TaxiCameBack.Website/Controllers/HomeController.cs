@@ -18,11 +18,17 @@ namespace TaxiCameBack.Website.Controllers
 
         public JsonResult Search(string startLocationLat, string startLocationLng, string endLocationLat, string endLocationLng, string carType)
         {
-            //var schedules = _searchSchduleService.Search(
-            //                    new PointLatLng(Convert.ToDouble(startLocationLat), Convert.ToDouble(startLocationLng)),
-            //                    new PointLatLng(Convert.ToDouble(endLocationLat), Convert.ToDouble(endLocationLng)));
-            
-            return Json(new { }, JsonRequestBehavior.AllowGet);
+            var schedules = _searchSchduleService.Search(
+                                new PointLatLng(Convert.ToDouble(startLocationLat), Convert.ToDouble(startLocationLng)),
+                                new PointLatLng(Convert.ToDouble(endLocationLat), Convert.ToDouble(endLocationLng)));
+            if (schedules.Count == 0)
+            {
+                return Json(new { }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(schedules, JsonRequestBehavior.AllowGet);
+            }
         }
 
         public ActionResult Index()

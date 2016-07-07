@@ -18,10 +18,10 @@ namespace TaxiCameBack.Services.Search
         
         public List<Core.DomainModel.Schedule.Schedule> Search(PointLatLng startPoint, PointLatLng endPoint)
         {
-            //if (Util.IsValidatePoint(startPoint))
-            //    throw new ArgumentOutOfRangeException();
-            //if (Util.IsValidatePoint(endPoint)) 
-            //    throw new ArgumentOutOfRangeException();
+            if (!Util.IsValidatePoint(startPoint))
+                throw new ArgumentOutOfRangeException();
+            if (!Util.IsValidatePoint(endPoint))
+                throw new ArgumentOutOfRangeException();
 
             var schedules = new List<Core.DomainModel.Schedule.Schedule>();
             var lstSchedules = _scheduleRepository.GetAll();

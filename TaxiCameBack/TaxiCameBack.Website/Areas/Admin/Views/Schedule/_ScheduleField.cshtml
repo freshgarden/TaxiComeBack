@@ -11,6 +11,6 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.StartDate)
-        @Html.TextBoxFor(model => model.StartDate, new { data_bind = "value: StartDate, valueUpdate: 'afterkeydown'" })
+        @Html.TextBoxFor(model => model.StartDate, new { data_bind = "value: StartDate, valueUpdate: 'afterkeydown'", @class = "form-control" })
     </div>
 </div>
