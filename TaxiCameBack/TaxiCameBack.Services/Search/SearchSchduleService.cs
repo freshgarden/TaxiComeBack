@@ -24,7 +24,7 @@ namespace TaxiCameBack.Services.Search
                 throw new ArgumentOutOfRangeException();
 
             var schedules = new List<Core.DomainModel.Schedule.Schedule>();
-            var lstSchedules = _scheduleRepository.GetAll();
+            var lstSchedules = _scheduleRepository.GetAll().ToList();
             var points = new List<PointLatLng>();
             foreach (var lstSchedule in lstSchedules)
             {
