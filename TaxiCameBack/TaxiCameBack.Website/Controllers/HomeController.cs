@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using TaxiCameBack.DTO.Schedule;
 using TaxiCameBack.MapUtilities;
@@ -21,6 +22,7 @@ namespace TaxiCameBack.Website.Controllers
             var schedules = _searchSchduleService.Search(
                                 new PointLatLng(Convert.ToDouble(startLocationLat), Convert.ToDouble(startLocationLng)),
                                 new PointLatLng(Convert.ToDouble(endLocationLat), Convert.ToDouble(endLocationLng)));
+            
             if (schedules.Count == 0)
             {
                 return Json(new { }, JsonRequestBehavior.AllowGet);

@@ -167,36 +167,7 @@
                                         <p class="clear"></p>
                                         <div class="dboxt3" id="noSearchResult"><span style="margin:80px;">@Home.lbl_SearchResult_Content</span></div>
                                         <div class="dboxt3" id="searchResultContent">
-                                            <div class="custom-div2">
-                                                <button href="#" onclick="showRoute('MS01')" class="route-btn"><p class="button-font-size">Lộ trình số 1 - MS01</p></button>
-                                            </div>
-                                            <div class="custom-div2">
-                                                <button href="#" onclick="showRoute('MS02')" class="route-btn"><p class="button-font-size">Lộ trình số 2 - MS02</p></button>
-                                            </div>
-                                            <div class="custom-div2">
-                                                <button href="#" onclick="showRoute('MS03')" class="route-btn"><p class="button-font-size">Lộ trình số 3 - MS03</p></button>
-                                            </div>
-                                            <div class="custom-div2">
-                                                <button href="#" onclick="showRoute('MS04')" class="route-btn"><p class="button-font-size">Lộ trình số 4 - MS04</p></button>
-                                            </div>
-                                            <div class="custom-div2">
-                                                <button href="#" onclick="showRoute('MS05')" class="route-btn"><p class="button-font-size">Lộ trình số 5 - MS05</p></button>
-                                            </div>
-                                            <div class="custom-div2">
-                                                <button href="#" onclick="showRoute('MS06')" class="route-btn"><p class="button-font-size">Lộ trình số 6 - MS06</p></button>
-                                            </div>
-                                            <div class="custom-div2">
-                                                <button href="#" onclick="showRoute('MS07')" class="route-btn"><p class="button-font-size">Lộ trình số 7 - MS07</p></button>
-                                            </div>
-                                            <div class="custom-div2">
-                                                <button href="#" onclick="showRoute('MS08')" class="route-btn"><p class="button-font-size">Lộ trình số 8 - MS08</p></button>
-                                            </div>
-                                            <div class="custom-div2">
-                                                <button href="#" onclick="showRoute('MS04')" class="route-btn"><p class="button-font-size">Lộ trình số 4 - MS04</p></button>
-                                            </div>
-                                            <div class="custom-div2">
-                                                <button href="#" onclick="showRoute('MS04')" class="route-btn"><p class="button-font-size">Lộ trình số 4 - MS04</p></button>
-                                            </div>
+                                                                                        
                                         </div>
                                     </div>
                                 </div>
@@ -288,9 +259,11 @@
 			                else {
 			                    $('#noSearchResult').css("display", "none");
 			                    $('#searchResultContent').css("display", "block");
-			                }
-			                
-			                console.log(data);
+			                    $('#searchResultContent').empty();
+			                    for (var count in data) {
+			                        $('#searchResultContent').append($("<div class='custom-div2'><button href='#' onclick='showRoute(" + data[count].Id + ")' class='route-btn'><p class='button-font-size'>Lộ trình số " + ++count + "</p></button></div>"))
+			                    }
+			                }			                
 			                getDistanceAndTime();
 			                $('#userGuidePanel').css("display", "none");
 			                $('#routeListPanel').css("display", "block");

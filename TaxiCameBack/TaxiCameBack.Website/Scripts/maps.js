@@ -1,1 +1,3 @@
-﻿
+﻿var Map = {
+    init:func
+}
