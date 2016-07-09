@@ -2177,8 +2177,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <None Include="Areas\Admin\Views\Schedules\CreateEdit.cshtml" />
-    <None Include="Areas\Admin\Views\Schedules\Index.cshtml" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />

@@ -1,17 +1,41 @@
 ﻿var urlSchedule = "/admin/schedule";
 var url = window.location.pathname;
 var scheduleId = url.substring(url.lastIndexOf('/') + 1);
-
+var scheduleGeolocations = [];
 
 $(function () {
+    function getFormattedDate(date, revert)
+    {
+        var year = date.getFullYear();
+        var month = (1 + date.getMonth()).toString();
+        month = month.length > 1 ? month : '0' + month;
+        var day = date.getDate().toString();
+        day = day.length > 1 ? day : '0' + day;
+        return day + '-' + month + '-' + year;
+    }
+    function toJavaScriptDate(value) {
+        var pattern = /Date\(([^)]+)\)/;
+        var results = pattern.exec(value);
+        var dt = new Date(parseFloat(results[1]));
+        return getFormattedDate(dt);
+    }
+    function getScheduleGeolocations(json) {
+        var object = [];
+        scheduleGeolocations = [];
+        scheduleGeolocations = json;
+        for (var i = 0; i < json.length; i++) {
+            object.push(new ScheduleGeolocation(json[i]));
+        }
+        return object;
+    }
     var container = $(this);
     var Schedule = function(schedule) {
         var self = this;
-        self.ScheduleId = ko.observable(schedule ? schedule.ScheduleId : 0).extend({required: true});
+        self.Id = ko.observable(schedule ? schedule.ScheduleId : 0).extend({required: true});
         self.BeginLocation = ko.observable(schedule ? schedule.BeginLocation : '').extend({ required: true });
         self.EndLocation = ko.observable(schedule ? schedule.EndLocation : '').extend({ required: true });
-        self.StartDate = ko.observable(schedule ? schedule.StartDate : '').extend({ required: true });
-        self.ScheduleGeolocations = ko.observableArray(schedule ? schedule.ScheduleGeolocations : []);
+        self.StartDate = ko.observable(schedule ? toJavaScriptDate(schedule.StartDate) : '').extend({ required: true });
+        self.ScheduleGeolocations = ko.observableArray(schedule ? getScheduleGeolocations(schedule.ScheduleGeolocations) : []);
     }
 
     var ScheduleGeolocation = function(scheduleGeolocation) {
@@ -31,26 +55,45 @@ $(function () {
                 url: urlSchedule + '/GetScheduleById/' + scheduleId,
                 async: false,
                 dataType: 'json',
-                success: function(json) {
+                success: function (json) {
                     self.schedule = ko.observable(new Schedule(json));
                 }
             });
         }
 
         self.addScheduleGeolocation = function (data) {
+            if (!self.scheduleGeolocation)
+                self.scheduleGeolocation = ko.observableArray([new ScheduleGeolocation()]);
             self.scheduleGeolocation.push({ "Latitude": data[0], "Longitude": data[1] });
         }
         
+        self.clearScheduleGeolocation = function() {
+            self.scheduleGeolocation = [];
+        }
+
         self.scheduleErrors = ko.validation.group(self.schedule());
 
-        self.scheduleGeolocationErrors = ko.validation.group(self.scheduleGeolocation(), { deep: true });
+//        self.scheduleGeolocationErrors = ko.validation.group(self.scheduleGeolocation, { deep: true });
+
+        self.buttonText = scheduleId == 0 || isNaN(scheduleId) ? ko.observable('Create') : ko.observable('Update');
+
+        self.getScheduleGeolocation = ko.computed(function() {
+            var geo = [];
+            for (var key in scheduleGeolocations) {
+                if (scheduleGeolocations.hasOwnProperty(key)) {
+                    if (scheduleGeolocations[key].Latitude != 0 && scheduleGeolocations[key].Longitude != 0)
+                        geo.push([scheduleGeolocations[key].Latitude, scheduleGeolocations[key].Longitude]);
+                }
+            }
+            return geo;
+        });
 
         self.showErrorPopup=function (container, popup, message) {
             container.jqsDialog("showCommonPopup", {
-                message: message != '' ? message : "Error saving change!",
+                message: message ? message : "Error saving change!",
                 title: "Error",
                 icon: "error",
-                popup: popup,
+                popup: popup
             });
             return;
         }
@@ -63,18 +106,22 @@ $(function () {
                 isValid = false;
             }
 
-            if (self.scheduleGeolocationErrors().length != 0) {
-                isValid = false;
-            }
+//            if (self.scheduleGeolocationErrors().length != 0) {
+//                isValid = false;
+//            }
 
             if (isValid) {
                 self.schedule().ScheduleGeolocations = self.scheduleGeolocation;
+                var stDate = ko.utils.unwrapObservable(self.schedule().StartDate);
+                var monthsName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                var s = stDate.split('-');
+                self.schedule().StartDate = ko.observable(s[0] + "-" + monthsName[s[1] - 1] + "-" + s[2]);
                 var popup;
                 $.ajaxAntiForgery({
-                    type: (self.schedule().ScheduleId > 0 ? 'PUT' : 'POST'),
+                    type: (self.schedule().ScheduleId > 0 ? "PUT" : "POST"),
                     cache: false,
-                    dataType: 'json',
-                    url: urlSchedule + (self.schedule().ScheduleId > 0 ? '/UpdateScheduleInfomation?id=' + self.schedule().ScheduleId : '/SaveScheduleInfomation'),
+                    dataType: "json",
+                    url: urlSchedule + (self.schedule().ScheduleId > 0 ? "/UpdateScheduleInfomation?id=" + self.schedule().ScheduleId : '/SaveScheduleInfomation'),
                     data: ko.toJS(self.schedule()),
                     contentType: "application/x-www-form-urlencoded",
                     async: false,
@@ -83,13 +130,17 @@ $(function () {
                         popup.setHeader("no-x");
                     },
                     success: function (data) {
-                        console.log(data.status);
-                        if (data.status == 'OK') {
+                        if (data.status === 'OK') {
                             popup.close();
                             window.location.href = urlSchedule;
                         }
-                        else
+                        else if (data.status === "ERROR") {
+                            if (data.messenge) {
+                                self.showErrorPopup(container, popup, data.messenge[0].Value[0]);
+                                return;
+                            }
                             self.showErrorPopup(container, popup, data.messenge);
+                        }
                     },
                     error: function(err) {
                         var err = JSON.parse(err.responseText);

@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
-using System.Net;
 using System.Web.Mvc;
 using TaxiCameBack.Core.DomainModel.Schedule;
 using TaxiCameBack.Services.Schedule;
@@ -38,6 +38,9 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public JsonResult SaveScheduleInfomation(Schedule schedule)
         {
+//            schedule.StartDate = DateTime.ParseExact(
+//                schedule.StartDate.ToShortDateString(), "M/d/yyyy",
+//                CultureInfo.InvariantCulture);
             if (!ModelState.IsValid)
                 return Json(new {status = "ERROR", messenge = ModelState.Errors()}, JsonRequestBehavior.AllowGet);
             var result = _scheduleService.SaveScheduleInformation(schedule);

@@ -1,13 +1,14 @@
 ﻿@model TaxiCameBack.Website.Areas.Admin.Models.ScheduleViewModel
 
 @{
-    ViewBag.Title = "Creat Schedule";    Layout = "~/Areas/Admin/Views/shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Creat Schedule";
+    Layout = "~/Areas/Admin/Views/shared/_AdminLayout.cshtml";
 }
 
 @section AdminHeader
 {
-    <link href="@Url.Content("~/Content/jquery-ui-1.9.2.custom.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/jqsDialog/jqsDialog.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/jquery-ui-1.9.2.custom.css")" rel="stylesheet"/>
+    <link href="@Url.Content("~/Content/jqsDialog/jqsDialog.css")" rel="stylesheet"/>
     <script src="@Url.Content("~/Scripts/jquery-ui-1.9.2.custom.min.js")"></script>
     <script src="@Url.Content("~/Scripts/jquery-ui.js")"></script>
     <script src="@Url.Content("~/Scripts/knockout-2.2.0.js")"></script>
@@ -20,11 +21,13 @@
         var source, destination;
         var autoComplete1, autoComplete2;
         var directionsDisplay;
+        var conta = $(this);
+        var wps = [];
         var directionsService = new google.maps.DirectionsService();
         var options = {
             componentRestrictions: { country: "vn" }
         };
-        google.maps.event.addDomListener(window, 'load', function () {
+        google.maps.event.addDomListener(window, 'load', function() {
             autoComplete1 = new google.maps.places.Autocomplete(document.getElementById('BeginLocation'), options);
             autoComplete2 = new google.maps.places.Autocomplete(document.getElementById('EndLocation'), options);
             directionsDisplay = new google.maps.DirectionsRenderer({ 'draggable': true });
@@ -35,32 +38,39 @@
             };
             map = new google.maps.Map(document.getElementById('dvMap'), mapOptions);
             directionsDisplay.setMap(map);
-            google.maps.event.addListener(autoComplete1, 'place_changed', function () {
+            var locations = window.vm.getScheduleGeolocation;
+            
+            for (var i = 0; i < locations.length; i++) {
+                console.log(locations[i][0]);
+                wps.push({ location: new google.maps.LatLng(locations[i][0], locations[i][1]) });
+            }
+
+            GetRoute();
+
+            google.maps.event.addListener(autoComplete1, 'place_changed', function() {
                 if ($("#BeginLocation").val() != '' && $("#EndLocation").val() != '') {
                     GetRoute();
                 }
             });
-            google.maps.event.addListener(autoComplete2, 'place_changed', function () {
+            google.maps.event.addListener(autoComplete2, 'place_changed', function() {
                 if ($("#BeginLocation").val() != '' && $("#EndLocation").val() != '') {
                     GetRoute();
                 }
             });
         });
-        $(function () {
-            var container = $(this);
-            //            $.jqsDialog("showProgressBar");
-            $('#frmCreateSchedule').submit(function (e) {
+        $(function() {
+            $('#frmCreateSchedule').submit(function(e) {
                 if ($("#ScheduleGeolocations").val() === '') {
                     e.preventDefault();
                     return false;
                 }
             });
             $("#StartDate").datepicker({
-                dateFormat: 'dd/mm/yy',
+                dateFormat: 'dd-mm-yy',
                 minDate: 0
             });
             $('input,textarea').attr('autocomplete', 'off');
-            $('input').keydown(function (e) {
+            $('input').keydown(function(e) {
                 if (e.keyCode === 13) {
                     return false;
                 }
@@ -75,13 +85,18 @@
 
             var request = {
                 origin: source,
+                waypoints: wps,
                 destination: destination,
                 travelMode: google.maps.TravelMode.DRIVING
             };
-            directionsService.route(request, function (response, status) {
+            directionsService.route(request, function(response, status) {
                 if (status === google.maps.DirectionsStatus.OK) {
                     directionsDisplay.setDirections(response);
                     SetScheduleGeolocation(response);
+
+                    google.maps.event.addListener(directionsDisplay, 'directions_changed', function () {
+                        SetScheduleGeolocation(directionsDisplay.directions);
+                    });
                 }
             });
         }
@@ -89,6 +104,7 @@
         function SetScheduleGeolocation(response) {
             var rleg = response.routes[0].legs[0];
             var wp = response.routes[0].overview_path;
+            window.vm.clearScheduleGeolocation();
             window.vm.addScheduleGeolocation([rleg.start_location.lat(), rleg.start_location.lng()]);
             for (var i = 0; i < wp.length; i++) {
                 window.vm.addScheduleGeolocation([wp[i].lat(), wp[i].lng()]);
@@ -126,7 +142,7 @@
 
                         @*        }*@
                         <hr />
-                        <input type="button" class="btn btn-primary" data-bind="click: saveSchedule" value="Create" />
+                        <button class="btn btn-primary" data-bind="click: saveSchedule, text: buttonText"></button>
                     </div>
                 </div>
             </div>

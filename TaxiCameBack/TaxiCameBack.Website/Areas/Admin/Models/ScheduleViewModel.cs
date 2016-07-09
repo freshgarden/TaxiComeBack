@@ -20,18 +20,17 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
         [HiddenInput]
         public int Id { get; set; }
 
-        [DisplayName("Begin Location")]
+        [DisplayName(@"Begin Location")]
         [Required]
         [StringLength(600)]
         public string BeginLocation { get; set; }
 
-        [DisplayName("EndLocation")]
+        [DisplayName(@"End Location")]
         [Required]
         [StringLength(600)]
         public string EndLocation { get; set; }
 
-        [DisplayName("Start Date")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayName(@"Start Date")]
         [Required]
         public DateTime StartDate { get; set; }
 

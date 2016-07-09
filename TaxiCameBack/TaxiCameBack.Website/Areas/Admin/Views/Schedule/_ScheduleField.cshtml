@@ -11,6 +11,9 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.StartDate)
-        @Html.TextBoxFor(model => model.StartDate, new { data_bind = "value: StartDate, valueUpdate: 'afterkeydown'", @class = "form-control" })
+        @Html.TextBoxFor(model => model.StartDate, new {data_bind = "value: StartDate, valueUpdate: 'afterkeydown'", @class = "form-control"})
+    </div>
+    <div>
+        @Html.HiddenFor(model => model.ScheduleGeolocations, new {data_bind = "value: ScheduleGeolocations"})
     </div>
 </div>

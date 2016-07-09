@@ -7,7 +7,6 @@ using TaxiCameBack.Data.Contract;
 using System.Web.Http.Controllers;
 using Castle.Facilities.Logging;
 using TaxiCameBack.Core;
-using TaxiCameBack.Services.Contract;
 using TaxiCameBack.Services.Schedule;
 using TaxiCameBack.Services.Search;
 using TaxiCameBack.Services.User;
@@ -31,8 +30,6 @@ namespace TaxiCameBack.Website.Dependency
                 Component.For(typeof (IRepository<>)).ImplementedBy(typeof (EfRepository<>)),
 
                 Component.For<IUserService>().ImplementedBy<UserService>(),
-
-                Component.For<IContactManager>().ImplementedBy<ContactManager>(),
 
                 Component.For<IScheduleService>().ImplementedBy<ScheduleService>(),
 
