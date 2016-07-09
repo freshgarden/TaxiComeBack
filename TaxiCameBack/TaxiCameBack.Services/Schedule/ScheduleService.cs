@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.Globalization;
 using System.Linq;
 using Castle.Core.Internal;
 using TaxiCameBack.Core;
@@ -58,7 +59,7 @@ namespace TaxiCameBack.Services.Schedule
                 return result;
             }
 
-            if (schedule.StartDate < DateTime.Today)
+            if (schedule.StartDate.Date < DateTime.Now.Date)
             {
                 result.AddError("Start date must be equal or above today");
                 return result;

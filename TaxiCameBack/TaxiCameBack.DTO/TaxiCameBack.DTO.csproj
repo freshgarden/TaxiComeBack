@@ -40,12 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProfileModule\AddressDTO.cs" />
-    <Compile Include="ProfileModule\AddressTypeDTO.cs" />
-    <Compile Include="ProfileModule\ContactForm.cs" />
-    <Compile Include="ProfileModule\PhoneDTO.cs" />
-    <Compile Include="ProfileModule\PhoneTypeDTO.cs" />
-    <Compile Include="ProfileModule\ProfileDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schedule\ScheduleDto.cs" />
     <Compile Include="Schedule\ScheduleForm.cs" />

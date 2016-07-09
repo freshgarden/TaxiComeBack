@@ -6,11 +6,6 @@ using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Reflection;
-using TaxiCameBack.Core.DomainModel.AddressAggregate;
-using TaxiCameBack.Core.DomainModel.PhoneAggregate;
-using TaxiCameBack.Core.DomainModel.ProfileAddressAggregate;
-using TaxiCameBack.Core.DomainModel.ProfileAggregate;
-using TaxiCameBack.Core.DomainModel.ProfilePhoneAggregate;
 using TaxiCameBack.Core.DomainModel.User;
 using TaxiCameBack.Data.Contract;
 using TaxiCameBack.Data.Migrations;
@@ -38,89 +33,6 @@ namespace TaxiCameBack.Data
         }
 
         #region IDbSet Members
-        IDbSet<Address> _address;
-        public IDbSet<Address> Address
-        {
-            get
-            {
-                if (_address == null)
-                    _address = base.Set<Address>();
-
-                return _address;
-            }
-        }
-
-        IDbSet<AddressType> _addressType;
-        public IDbSet<AddressType> AddressType
-        {
-            get
-            {
-                if (_addressType == null)
-                    _addressType = base.Set<AddressType>();
-
-                return _addressType;
-            }
-        }
-
-        IDbSet<Phone> _phone;
-        public IDbSet<Phone> Countries
-        {
-            get
-            {
-                if (_phone == null)
-                    _phone = base.Set<Phone>();
-
-                return _phone;
-            }
-        }
-
-        IDbSet<PhoneType> _phoneType;
-        public IDbSet<PhoneType> PhoneType
-        {
-            get
-            {
-                if (_phoneType == null)
-                    _phoneType = base.Set<PhoneType>();
-
-                return _phoneType;
-            }
-        }
-
-        IDbSet<ProfileAddress> _profileAddress;
-        public IDbSet<ProfileAddress> ProfileAddress
-        {
-            get
-            {
-                if (_profileAddress == null)
-                    _profileAddress = base.Set<ProfileAddress>();
-
-                return _profileAddress;
-            }
-        }
-
-        IDbSet<Profile> _profile;
-        public IDbSet<Profile> Profile
-        {
-            get
-            {
-                if (_profile == null)
-                    _profile = base.Set<Profile>();
-
-                return _profile;
-            }
-        }
-
-        IDbSet<ProfilePhone> _profilePhone;
-        public IDbSet<ProfilePhone> ProfilePhone
-        {
-            get
-            {
-                if (_profilePhone == null)
-                    _profilePhone = base.Set<ProfilePhone>();
-
-                return _profilePhone;
-            }
-        }
         public IDbSet<User> Users { get; set; }
         public IDbSet<UserRole> UserRoles { get; set; }
 

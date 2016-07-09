@@ -53,13 +53,6 @@
     <Compile Include="Contract\ISql.cs" />
     <Compile Include="EfRepository.cs" />
     <Compile Include="EfUnitOfWork.cs" />
-    <Compile Include="EntityConfiguration\AddressConfiguration.cs" />
-    <Compile Include="EntityConfiguration\AddressTypeConfiguration.cs" />
-    <Compile Include="EntityConfiguration\PhoneConfiguration.cs" />
-    <Compile Include="EntityConfiguration\PhoneTypeConfiguration.cs" />
-    <Compile Include="EntityConfiguration\ProfileAddressConfiguration.cs" />
-    <Compile Include="EntityConfiguration\ProfileConfiguration.cs" />
-    <Compile Include="EntityConfiguration\ProfilePhoneConfiguration.cs" />
     <Compile Include="Mapping\Schedule\ScheduleGeolocationMapping.cs" />
     <Compile Include="Mapping\Schedule\ScheduleMapping.cs" />
     <Compile Include="Mapping\UserMapping\UserMapping.cs" />

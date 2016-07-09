@@ -43,26 +43,6 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Constants\AppConstants.cs" />
-    <Compile Include="DomainModel\AddressAggregate\Address.cs" />
-    <Compile Include="DomainModel\AddressAggregate\AddressFactory.cs" />
-    <Compile Include="DomainModel\AddressAggregate\AddressType.cs" />
-    <Compile Include="DomainModel\AddressAggregate\IAddressRepository.cs" />
-    <Compile Include="DomainModel\AddressAggregate\IAddressTypeRepository.cs" />
-    <Compile Include="DomainModel\PhoneAggregate\IPhoneRepository.cs" />
-    <Compile Include="DomainModel\PhoneAggregate\IPhoneTypeRepository.cs" />
-    <Compile Include="DomainModel\PhoneAggregate\Phone.cs" />
-    <Compile Include="DomainModel\PhoneAggregate\PhoneFactory.cs" />
-    <Compile Include="DomainModel\PhoneAggregate\PhoneType.cs" />
-    <Compile Include="DomainModel\ProfileAddressAggregate\IProfileAddressRepository.cs" />
-    <Compile Include="DomainModel\ProfileAddressAggregate\ProfileAddress.cs" />
-    <Compile Include="DomainModel\ProfileAddressAggregate\ProfileAddressFactory.cs" />
-    <Compile Include="DomainModel\ProfileAddressAggregate\ProfileSpecification.cs" />
-    <Compile Include="DomainModel\ProfileAggregate\IProfileRepository.cs" />
-    <Compile Include="DomainModel\ProfileAggregate\Profile.cs" />
-    <Compile Include="DomainModel\ProfileAggregate\ProfileFactory.cs" />
-    <Compile Include="DomainModel\ProfilePhoneAggregate\IProfilePhoneRepository.cs" />
-    <Compile Include="DomainModel\ProfilePhoneAggregate\ProfilePhone.cs" />
-    <Compile Include="DomainModel\ProfilePhoneAggregate\ProfilePhoneFactory.cs" />
     <Compile Include="DomainModel\Schedule\Schedule.cs" />
     <Compile Include="DomainModel\Schedule\ScheduleGeolocation.cs" />
     <Compile Include="DomainModel\User\User.cs" />
