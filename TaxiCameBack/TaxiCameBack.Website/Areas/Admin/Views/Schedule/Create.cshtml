@@ -82,6 +82,8 @@
             //*********DIRECTIONS AND ROUTE**********************//
             source = document.getElementById("BeginLocation").value;
             destination = document.getElementById("EndLocation").value;
+            window.vm.schedule().BeginLocation = source;
+            window.vm.schedule().EndLocation = destination;
 
             var request = {
                 origin: source,
