@@ -1,4 +1,6 @@
-.pac-container{height:155px; overflow:hidden}
+.pac-container{height:155px; overflow:hidden;border:0;-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;}
 .pac-container:after{background-image:none !important}
 .adp-legal,#adp-placemark,.adp-placemark{display:none !important}
 #adp-placemark img, .adp-placemark img {display:none;}
