@@ -1,19 +1,19 @@
 ﻿@model TaxiCameBack.Website.Areas.Admin.Models.ScheduleViewModel
-<div data-bind="with: schedule">
+@*<div data-bind="with: schedule">*@
     <div class="form-group">
         @Html.LabelFor(model => model.BeginLocation)
-        @Html.TextBoxFor(model => model.BeginLocation, new { data_bind = "value: BeginLocation, valueUpdate: 'afterkeydown'", @class = "form-control", placeholder = "Nhập điểm đi" })
+        @Html.TextBoxFor(model => model.BeginLocation, new { data_bind = "value: $root.schedule().BeginLocation", @class = "form-control", placeholder = "Nhập điểm đi" })
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.EndLocation)
-        @Html.TextBoxFor(model => model.EndLocation, new { data_bind = "value: EndLocation, valueUpdate: 'afterkeydown'", @class = "form-control", placeholder = "Nhập điểm đến" })
+        @Html.TextBoxFor(model => model.EndLocation, new { data_bind = "value: $root.schedule().EndLocation", @class = "form-control", placeholder = "Nhập điểm đến" })
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.StartDate)
-        @Html.TextBoxFor(model => model.StartDate, new {data_bind = "value: StartDate, valueUpdate: 'afterkeydown'", @class = "form-control"})
+        @Html.TextBoxFor(model => model.StartDate, new {data_bind = "value: $root.schedule().StartDate", @class = "form-control"})
     </div>
-    <div>
-        @Html.HiddenFor(model => model.ScheduleGeolocations, new {data_bind = "value: ScheduleGeolocations"})
-    </div>
-</div>
+@*    <div>*@
+@*        @Html.HiddenFor(model => model.ScheduleGeolocations, new {data_bind = "value: $root.schedule().ScheduleGeolocations" })*@
+@*    </div>*@
+@*</div>*@

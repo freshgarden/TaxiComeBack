@@ -1,5 +1,4 @@
-﻿
-(function ($) {
+﻿(function ($) {
     $.getAntiForgeryToken = function (tokenWindow, appPath) {
         // HtmlHelper.AntiForgeryToken() must be invoked to print the token.
         tokenWindow = tokenWindow && typeof tokenWindow === typeof window ? tokenWindow : window;

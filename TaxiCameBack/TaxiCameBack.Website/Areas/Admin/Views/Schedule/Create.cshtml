@@ -7,10 +7,9 @@
 
 @section AdminHeader
 {
-    <link href="@Url.Content("~/Content/jquery-ui-1.9.2.custom.css")" rel="stylesheet"/>
+    <link href="@Url.Content("~/Content/datetimepicker/jquery.datetimepicker.css")" rel="stylesheet"/>
     <link href="@Url.Content("~/Content/jqsDialog/jqsDialog.css")" rel="stylesheet"/>
-    <script src="@Url.Content("~/Scripts/jquery-ui-1.9.2.custom.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/jquery-ui.js")"></script>
+    <script src="@Url.Content("~/Content/datetimepicker/jquery.datetimepicker.full.min.js")"></script>
     <script src="@Url.Content("~/Scripts/knockout-2.2.0.js")"></script>
     <script src="@Url.Content("~/Scripts/knockout.validation.js")"></script>
     <script src="@Url.Content("~/Content/jqsDialog/jqsDialog.js")"></script>
@@ -48,16 +47,21 @@
             GetRoute();
 
             google.maps.event.addListener(autoComplete1, 'place_changed', function() {
-                if ($("#BeginLocation").val() != '' && $("#EndLocation").val() != '') {
-                    GetRoute();
-                }
+                getSearchChange();
             });
             google.maps.event.addListener(autoComplete2, 'place_changed', function() {
-                if ($("#BeginLocation").val() != '' && $("#EndLocation").val() != '') {
-                    GetRoute();
-                }
+                getSearchChange();
             });
         });
+
+        function getSearchChange() {
+            if ($("#BeginLocation").val() != '' && $("#EndLocation").val() != '') {
+                $("#BeginLocation").change();
+                $("#EndLocation").change();
+
+                GetRoute();
+            }
+        }
         $(function() {
             $('#frmCreateSchedule').submit(function(e) {
                 if ($("#ScheduleGeolocations").val() === '') {
@@ -65,9 +69,14 @@
                     return false;
                 }
             });
-            $("#StartDate").datepicker({
-                dateFormat: 'dd-mm-yy',
-                minDate: 0
+            $.datetimepicker.setLocale('vi');
+            jQuery("#StartDate").datetimepicker({
+                format: 'd-m-Y H:i',
+                minDate: 0,
+                lang: 'vi',
+                onChangeDateTime: function (dp, $input) {
+                    window.vm.setStartDate(dp);
+                }
             });
             $('input,textarea').attr('autocomplete', 'on');
             $('input').keydown(function(e) {
@@ -82,8 +91,6 @@
             //*********DIRECTIONS AND ROUTE**********************//
             source = document.getElementById("BeginLocation").value;
             destination = document.getElementById("EndLocation").value;
-            window.vm.schedule().BeginLocation = source;
-            window.vm.schedule().EndLocation = destination;
 
             var request = {
                 origin: source,
@@ -144,7 +151,7 @@
 
                         @*        }*@
                         <hr />
-                        <button class="btn btn-primary" data-bind="click: saveSchedule, text: buttonText"></button>
+                        <button class="btn btn-primary" data-bind="click: saveSchedule">Create</button>
                     </div>
                 </div>
             </div>

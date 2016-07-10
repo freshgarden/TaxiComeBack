@@ -292,6 +292,9 @@
     <Content Include="Content\custom\hvnlhome.css" />
     <Content Include="Content\custom\maps.css" />
     <Content Include="Content\custom\stylevh1.css" />
+    <Content Include="Content\datetimepicker\jquery.datetimepicker.css" />
+    <Content Include="Content\datetimepicker\jquery.datetimepicker.full.min.js" />
+    <Content Include="Content\datetimepicker\jquery.datetimepicker.min.js" />
     <Content Include="Content\dist\css\AdminLTE.css" />
     <Content Include="Content\dist\css\AdminLTE.min.css" />
     <Content Include="Content\jqsDialog\Images\ajax-loader.gif" />

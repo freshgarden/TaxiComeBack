@@ -2,16 +2,17 @@
 var url = window.location.pathname;
 var scheduleId = url.substring(url.lastIndexOf('/') + 1);
 var scheduleGeolocations = [];
+var startDate;
 
 $(function () {
-    function getFormattedDate(date, revert)
+    function getFormattedDate(date)
     {
         var year = date.getFullYear();
         var month = (1 + date.getMonth()).toString();
         month = month.length > 1 ? month : '0' + month;
         var day = date.getDate().toString();
         day = day.length > 1 ? day : '0' + day;
-        return day + '-' + month + '-' + year;
+        return day + '-' + month + '-' + year + " " + date.getHours() + ":" + date.getMinutes();
     }
     function toJavaScriptDate(value) {
         var pattern = /Date\(([^)]+)\)/;
@@ -75,8 +76,6 @@ $(function () {
 
 //        self.scheduleGeolocationErrors = ko.validation.group(self.scheduleGeolocation, { deep: true });
 
-        self.buttonText = scheduleId == 0 || isNaN(scheduleId) ? ko.observable('Create') : ko.observable('Update');
-
         self.getScheduleGeolocation = ko.computed(function() {
             var geo = [];
             for (var key in scheduleGeolocations) {
@@ -87,6 +86,10 @@ $(function () {
             }
             return geo;
         });
+
+        self.setStartDate = function (date) {
+            startDate = date;
+        }
 
         self.showErrorPopup=function (container, popup, message) {
             container.jqsDialog("showCommonPopup", {
@@ -112,10 +115,8 @@ $(function () {
 
             if (isValid) {
                 self.schedule().ScheduleGeolocations = self.scheduleGeolocation;
-                var stDate = ko.utils.unwrapObservable(self.schedule().StartDate);
                 var monthsName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-                var s = stDate.split('-');
-                self.schedule().StartDate = ko.observable(s[0] + "-" + monthsName[s[1] - 1] + "-" + s[2]);
+                self.schedule().StartDate = ko.observable(startDate.getDate() + "-" + monthsName[startDate.getMonth()] + "-" + startDate.getFullYear() + " " + startDate.getHours() + ":" + startDate.getMinutes());
                 var popup;
                 $.ajaxAntiForgery({
                     type: (self.schedule().ScheduleId > 0 ? "PUT" : "POST"),
