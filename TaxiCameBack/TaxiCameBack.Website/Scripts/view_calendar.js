@@ -3,131 +3,18 @@ $(document).ready(function(){
 
 	//Initialisations
 	initialise_calendar();
-	initialise_datepicker();
-	initialise_color_pickers();
-	initialise_buttons();
 	initialise_event_generation();
 	initialise_update_event();
 	
 });
 
 
-/* Initialise buttons */
-function initialise_buttons(){
-
-	$('.btn').button();
-}
-
-
-/* Binds and initialises event generation functionality */
-function initialise_event_generation(){
-
-	//Bind event
-	$('#btn_gen_event').bind('click', function(){
-
-		//Retrieve template event
-		var template_event = $('#external_event_template').clone();
-		var background_color = $('#txt_background_color').val();
-		var border_color = $('#txt_border_color').val();
-		var text_color = $('#txt_text_color').val();
-		var title = $('#txt_title').val();
-		var description = $('#txt_description').val();
-		var price = $('#txt_price').val(); 
-		var available = $('#txt_available').val();
-
-		//Edit id
-		$(template_event).attr('id', get_uni_id());
-
-		//Add template data attributes
-		$(template_event).attr('data-background', background_color);
-		$(template_event).attr('data-border', border_color);
-		$(template_event).attr('data-text', text_color);
-		$(template_event).attr('data-title', title);
-		$(template_event).attr('data-description', description);
-		$(template_event).attr('data-price', price);
-		$(template_event).attr('data-available', available);
-
-		//Style external event
-		$(template_event).css('background-color', background_color);
-		$(template_event).css('border-color', border_color);
-		$(template_event).css('color', text_color);
-
-		//Set text of external event
-		$(template_event).text(title);
-
-		//Append to external events container
-		$('#external_events').append(template_event);
-
-		//Initialise external event
-		initialise_external_event('#' + $(template_event).attr('id'));
-
-		//Show
-		$(template_event).fadeIn(2000);
-	});
-}
-
-
-/* Initialise external events */
-function initialise_external_event(selector){
-
-	//Initialise booking types
-	$(selector).each(function(){
-
-		//Make draggable
-		$(this).draggable({
-			revert: true,
-			revertDuration: 0,
-			zIndex: 999,
-			cursorAt: {
-				left: 10,
-				top: 1
-			}
-		});
-
-		//Create event object
-		var event_object = {
-			title: $.trim($(this).text())
-		};
-
-		//Store event in dom to be accessed later
-		$(this).data('eventObject', event_object);
-	});
-}
-
-
-/* Initialise color pickers */
-function initialise_color_pickers(){
-
-	//Initialise color pickers
-	$('.color_picker').miniColors({
-		'trigger': 'show',
-		'opacity': 'none'
-	});
-}
-
-function initialise_datepicker(){
-	$( "#datepicker" ).datepicker({
-		inline: true,
-		autoSize: true,
-		changeYear: true,
-		changeMonth: true,
-		onSelect: function(dateText, inst){
-			var d = new Date(dateText);
-			$("#calendar").fullCalendar('gotoDate', d);
-		},
-		onChangeMonthYear: function (dateText, inst, s) {
-			var d = new Date(dateText, s["selectedMonth"], inst);
-			$("#calendar").fullCalendar('gotoDate', d);
-		}
-	});
-}
 
 
 /* Initialises calendar */
 function initialise_calendar(){
 	//Initialise calendar
 	$('#calendar').fullCalendar({
-		theme: true,
 		firstDay: 1,
 		header: {
 			left: 'today prev,next',
@@ -145,64 +32,22 @@ function initialise_calendar(){
 		},
 		eventSources: [
 			{
-				url: 'Schedule/GetScheduleEvents',
-				editable: true
+			    url: '/Admin/Schedule/GetScheduleEvents',
+			    backgroundColor: "#f56954",
+			    borderColor: "#f56954",
+			    editable: true
 			}
 		],
-		droppable: true,
-		drop: function(date, all_day){
-			external_event_dropped(date, all_day, this);
-		},
+		droppable: false,
 		eventClick: function(cal_event, js_event, view){
-			calendar_event_clicked(cal_event, js_event, view);
+		    calendar_event_clicked(cal_event, js_event, view);
+		    UpdateEvent(cal_event);
 		},
-		editable: true,
+		editable: false,
 		selectable: true,
 		select: function(){
-			UpdateEvent();
 		},
-		eventClick: UpdateEvent,
 	});	
-
-	//Initialise external events
-	initialise_external_event('.external-event');
-}
-
-
-/* Handle an external event that has been dropped on the calendar */
-function external_event_dropped(date, all_day, external_event){
-
-	//Create vars
-	var event_object;
-	var copied_event_object;
-	var duration = 60;
-	var cost;
-
-	//Retrive dropped elemetns stored event object
-	event_object = $(external_event).data('eventObject');
-
-	//Copy so that multiple events don't reference same object
-	copied_event_object = $.extend({}, event_object);
-	
-	//Assign reported start and end dates
-	copied_event_object.start = date;
-	copied_event_object.end = new Date(date.getTime() + duration * 60000);
-	copied_event_object.allDay = all_day;
-
-	//Assign colors etc
-	copied_event_object.backgroundColor = $(external_event).data('background');
-	copied_event_object.textColor = $(external_event).data('text');
-	copied_event_object.borderColor = $(external_event).data('border');
-
-	//Assign text, price, etc
-	copied_event_object.id = get_uni_id();
-	copied_event_object.title = $(external_event).data('title');
-	copied_event_object.description = $(external_event).data('description');
-	copied_event_object.price = $(external_event).data('price');
-	copied_event_object.available = $(external_event).data('available');
-
-	//Render event on calendar
-	$('#calendar').fullCalendar('renderEvent', copied_event_object, true);
 }
 
 
@@ -218,9 +63,6 @@ function calendar_event_clicked(cal_event, js_event, view){
 function set_event_generation_values(event_id, bg_color, border_color, text_color, title, description, price, available){
 
 	//Set values
-	$('#txt_background_color').miniColors('value', bg_color);
-	$('#txt_border_color').miniColors('value', border_color);
-	$('#txt_text_color').miniColors('value', text_color);
 	$('#txt_title').val(title);
 	$('#txt_description').val(description);
 	$('#txt_price').val(price);
@@ -276,52 +118,14 @@ function initialise_update_event(){
 
 
 
-function UpdateEvent(){
+function UpdateEvent(cal_event) {
 	
-	$("#eventModal").modal('show');
+    $("#editModal").modal();
 }
 
-$("#eventModal").modal({
-    show: false
-}).on("shown", function()
+$("#editModal").on('shown.bs.modal', function()
 {
-    var map_options = {
-        center: new google.maps.LatLng(-6.21, 106.84),
-        zoom: 11,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-
-    var map = new google.maps.Map(document.getElementById("map_canvas"), map_options);
-
-    var defaultBounds = new google.maps.LatLngBounds(
-        new google.maps.LatLng(-6, 106.6),
-        new google.maps.LatLng(-6.3, 107)
-    );
-
-    var input = document.getElementById("from");
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.bindTo("bounds", map);
-
-    var marker = new google.maps.Marker({map: map});
-
-    google.maps.event.addListener(autocomplete, "place_changed", function()
-    {
-        var place = autocomplete.getPlace();
-
-        if (place.geometry.viewport) {
-            map.fitBounds(place.geometry.viewport);
-        } else {
-            map.setCenter(place.geometry.location);
-            map.setZoom(15);
-        }
-
-        marker.setPosition(place.geometry.location);
-    });
-
-    google.maps.event.addListener(map, "click", function(event)
-    {
-        marker.setPosition(event.latLng);
-    });
+    
 });
 
 function ClearPopupFormValues() {

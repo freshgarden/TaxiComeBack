@@ -1869,7 +1869,7 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\MainAdminNav.cshtml" />
-    <Content Include="Areas\Admin\Views\Schedule\CreateEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\Schedule\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Schedule\GetMainSchedules.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Content\jstree\themes\proton\fonts\titillium\titilliumweb-bold-webfont.eot" />
@@ -1950,6 +1950,7 @@
     <Content Include="Areas\Admin\Views\Errors\Error404.cshtml" />
     <Content Include="Areas\Admin\Views\Errors\Error500.cshtml" />
     <Content Include="Areas\Admin\Views\Schedule\_ScheduleNavButtons.cshtml" />
+    <Content Include="Areas\Admin\Views\Schedule\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cache\Cache.txt" />
     <Content Include="Scripts\Contact.js" />
@@ -1998,6 +1999,7 @@
     <Content Include="Scripts\markdown\node-pagedown.js" />
     <Content Include="Scripts\markdown\wmd-buttons.png" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\pushy\pushy.css" />
     <Content Include="Scripts\pushy\pushy.js" />
     <Content Include="Scripts\respond.js" />

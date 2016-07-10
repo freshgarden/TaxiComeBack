@@ -30,7 +30,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             return Json(schedule, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult CreateEdit()
+        public ActionResult Create()
         {
             return View();
         }
@@ -65,27 +65,26 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             return PartialView(viewModel);
         }
 
-        public JsonResult GetScheduleEvents(double start, double end)
+        public JsonResult GetScheduleEvents(string start, string end)
         {
             var schedulesForDate =
-                _scheduleService.FindSchedules().Where(s => s.StartDate >= ConvertFromUnixTimestamp(start));
+                _scheduleService.FindSchedules().Where(s => s.StartDate >= ConvertFromDateTimeString(start));
             var eventList = from e in schedulesForDate
-                select new
-                {
-                    id = e.Id,
-                    title = e.BeginLocation + " - " + e.EndLocation,
-                    start = e.StartDate.ToString("s"),
-                    allDay = false
-                };
+                            select new
+                            {
+                                id = e.Id,
+                                title = e.BeginLocation + " - " + e.EndLocation,
+                                start = e.StartDate.ToString(""),
+                                allDay = false
+                            };
             var row = eventList.ToArray();
             return Json(row, JsonRequestBehavior.AllowGet);
         }
 
         [NonAction]
-        private static DateTime ConvertFromUnixTimestamp(double timestamp)
+        private static DateTime ConvertFromDateTimeString(string date)
         {
-            var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            return origin.AddSeconds(timestamp);
+            return DateTime.ParseExact("2012-04-05", "yyyy-MM-dd", CultureInfo.InvariantCulture); ;
         }
     }
 }
