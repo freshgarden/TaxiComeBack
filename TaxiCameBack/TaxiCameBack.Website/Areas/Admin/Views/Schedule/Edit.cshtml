@@ -1,6 +1,6 @@
 ﻿
 
-<div class="modal fade bs-example-modal-lg" id="editModal"  role="dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade bs-example-modal-lg" id="editModal"  role="dialog" tabindex="-1" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header modal-header-primary">
@@ -27,7 +27,7 @@
 
                                         <div class="form-group">
                                             <label for="StartDate">Start Date</label>
-                                            <input class="form-control hasDatepicker" data-bind="value: StartDate, valueUpdate: 'afterkeydown'" data-val="true" data-val-date="The field Start Date must be a date." data-val-required="The Start Date field is required." id="StartDate" name="StartDate" type="text" value="" autocomplete="off"><span class="validationMessage" style="display: none;"></span>
+                                            <input class="form-control" data-bind="value: $root.schedule().StartDate" data-val="true" data-val-date="The field Start Date must be a date." data-val-required="The Start Date field is required." id="StartDate" name="StartDate" type="text" value="" autocomplete="off"><span class="validationMessage" style="display: none;"></span>
                                         </div>
                                         <div>
                                             <input data-bind="value: ScheduleGeolocations" data-val="true" data-val-required="The ScheduleGeolocations field is required." id="ScheduleGeolocations" name="ScheduleGeolocations" type="hidden" value="" autocomplete="off"><span class="validationMessage" style="display: none;"></span>

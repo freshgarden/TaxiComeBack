@@ -203,7 +203,6 @@
             var setMainCssClass = function (mainCssClass) {
                 dialogMain.removeClass();
                 dialogMain.addClass(mainCssClass);
-                dialogMain.draggable();
             }
             setMainCssClass(mainCssClass);
             

@@ -265,6 +265,7 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\ErrorsController.cs" />
     <Compile Include="Areas\Admin\Models\LoginViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\RegisterViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ScheduleViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ScheduleController.cs" />
@@ -288,6 +289,7 @@
     <Content Include="Content\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\bootstrap\js\npm.js" />
     <Content Include="Content\cache\Cache.txt" />
+    <Content Include="Content\custom\admin.css" />
     <Content Include="Content\custom\custom-style.css" />
     <Content Include="Content\custom\hvnlhome.css" />
     <Content Include="Content\custom\maps.css" />
@@ -1954,6 +1956,7 @@
     <Content Include="Areas\Admin\Views\Errors\Error500.cshtml" />
     <Content Include="Areas\Admin\Views\Schedule\_ScheduleNavButtons.cshtml" />
     <Content Include="Areas\Admin\Views\Schedule\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Register.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cache\Cache.txt" />
     <Content Include="Scripts\Contact.js" />
@@ -2196,8 +2199,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Areas\Admin\Views\Login\" />
     <Folder Include="Content\Images\error\" />
     <Folder Include="Content\Images\home\" />
     <Folder Include="Content\Images\icons\" />

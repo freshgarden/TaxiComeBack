@@ -3,7 +3,6 @@ $(document).ready(function(){
 
 	//Initialisations
 	initialise_calendar();
-	initialise_event_generation();
 	initialise_update_event();
 	
 });
@@ -120,13 +119,11 @@ function initialise_update_event(){
 
 function UpdateEvent(cal_event) {
 	
-    $("#editModal").modal();
+    $("#editModal").modal('show');
+    var res = cal_event.title.split(" - ")
+    $("#BeginLocation").val(res[0]);
+    $("#EndLocation").val(res[1]);
 }
-
-$("#editModal").on('shown.bs.modal', function()
-{
-    
-});
 
 function ClearPopupFormValues() {
 	$('#eventID').val("");

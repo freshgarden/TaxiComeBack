@@ -63,7 +63,8 @@ namespace TaxiCameBack.Website
                 "~/Content/bootstrap/css/bootstrap.min.css",
                 "~/Content/font-awesome-4.6.3/css/font-awesome.min.css",
                 "~/Content/ionicons-2.0.1/css/ionicons.min.css",
-                "~/Content/dist/css/AdminLTE.min.css"
+                "~/Content/dist/css/AdminLTE.min.css",
+                "~/Content/custom/admin.css"
                 ));
             bundles.Add(new StyleBundle("~/css/skins").Include(
                 "~/Content/skins/_all-skins.min.css"

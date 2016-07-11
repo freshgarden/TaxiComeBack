@@ -111,28 +111,11 @@
         }
         window.vm.addScheduleGeolocation([rleg.end_location.lat(), rleg.end_location.lng()]);
     }
+    $('#editModal').on('shown.bs.modal', function () {
+        google.maps.event.trigger(map, "resize");
+    });
 </script>
-<style>
-    .validationMessage {
-        color: red;
-        font-size: 1em;
-    }
-    .hasDatepicker{z-index:1151 !important;}
-    .pac-container {
-    background-color: #FFF;
-    z-index: 20;
-    position: fixed;
-    display: inline-block;
-    float: left;
-}
-.modal{
-    z-index: 20;   
-}
-.modal-backdrop{
-    z-index: 10;        
-}​
 
-</style>
 }
 
 @Html.Action("GetMainSchedules")

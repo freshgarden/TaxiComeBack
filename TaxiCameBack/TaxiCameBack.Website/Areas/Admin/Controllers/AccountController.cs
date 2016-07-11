@@ -25,5 +25,16 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
 
             return RedirectToAction("Index", "Schedule", new { area = "Admin" });
         }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult Register(RegisterViewModel registerViewModel)
+        {
+            return View();
+        }
     }
 }
