@@ -53,6 +53,8 @@
     <Compile Include="Contract\ISql.cs" />
     <Compile Include="EfRepository.cs" />
     <Compile Include="EfUnitOfWork.cs" />
+    <Compile Include="Mapping\MembershipMapping\MembershipRoleMapping.cs" />
+    <Compile Include="Mapping\MembershipMapping\MembershipUserMapping.cs" />
     <Compile Include="Mapping\Schedule\ScheduleGeolocationMapping.cs" />
     <Compile Include="Mapping\Schedule\ScheduleMapping.cs" />
     <Compile Include="Migrations\Configuration.cs" />
