@@ -6,11 +6,11 @@ namespace TaxiCameBack.Services.Common
 {
     public abstract class EntityService<T> : IEntityService<T> where T : BaseEntity
     {
-        private readonly IRepository<T> _repository;
+        private readonly IRepository<T> _membershipRepository;
 
-        protected EntityService(IRepository<T> repository)
+        protected EntityService(IRepository<T> membershipRepository)
         {
-            _repository = repository;
+            _membershipRepository = membershipRepository;
         }
          
         public void Create(T entity)
@@ -20,34 +20,34 @@ namespace TaxiCameBack.Services.Common
                 throw new ArgumentNullException(nameof(entity));
             }
 
-            _repository.Insert(entity);
-            _repository.UnitOfWork.Commit();
+            _membershipRepository.Insert(entity);
+            _membershipRepository.UnitOfWork.Commit();
         }
 
         public void Delete(T entity)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
-            _repository.Delete(entity);
-            _repository.UnitOfWork.Commit();
+            _membershipRepository.Delete(entity);
+            _membershipRepository.UnitOfWork.Commit();
         }
 
         public IEnumerable<T> GetAll()
         {
-            return _repository.GetAll();
+            return _membershipRepository.GetAll();
         }
 
         public T GetById(int id)
         {
-            return _repository.GetById(id);
+            return _membershipRepository.GetById(id);
         }
 
         public void Update(T entity)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
-            _repository.Update(entity);
-            _repository.UnitOfWork.Commit();
+            _membershipRepository.Update(entity);
+            _membershipRepository.UnitOfWork.Commit();
         }
     }
 }

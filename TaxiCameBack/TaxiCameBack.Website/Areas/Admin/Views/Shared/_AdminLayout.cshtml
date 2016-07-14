@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using TaxiCameBack.Core.Constants
+@using TaxiCameBack.Website.Application
+@{
+    TempData[AppConstants.GlobalClass] = Context.IsMobileDevice() ? "mobile" : "desktop";
+    TempData[AppConstants.CurrentAction] = ViewContext.RouteData.GetRequiredString("action").ToLower();
+    TempData[AppConstants.CurrentController] = ViewContext.RouteData.GetRequiredString("controller").ToLower();
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">

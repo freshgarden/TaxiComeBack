@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
+using TaxiCameBack.Core.Constants;
 using TaxiCameBack.Core.DomainModel.Schedule;
 using TaxiCameBack.Services.Schedule;
 using TaxiCameBack.Website.Application.Extension;
@@ -18,12 +19,14 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             _scheduleService = scheduleService;
         }
 
+        [Authorize(Roles = AppConstants.StandardMembers)]
         public JsonResult GetAllSchedules()
         {
             var schedules = _scheduleService.FindSchedules();
             return Json(schedules, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize(Roles = AppConstants.StandardMembers)]
         public JsonResult GetScheduleById(int id)
         {
             var schedule = _scheduleService.FindScheduleById(id);
@@ -34,7 +37,8 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         {
             return View();
         }
-        
+
+        [Authorize(Roles = AppConstants.StandardMembers)]
         [ValidateAntiForgeryToken]
         public JsonResult SaveScheduleInfomation(Schedule schedule)
         {

@@ -4,6 +4,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
 {
     public class LoginViewModel
     {
+        public string ReturnUrl { get; set; }
         [Required]
         [StringLength(50)]
         public string UserName { get; set; }

@@ -30,7 +30,12 @@
             <a href="@Url.Content("~/")"><i class="fa fa-fw fa-arrow-left"></i> Main Site</a>
         </li>
         <li>
-            <a href="@Url.Action("Index", "Schedule", new { area = "Admin" })" class="@(currentController == "schedule" ? "active" : "")">
+            <a href="@Url.Action("Index", "Account", new { area = "Admin" })" class="@(currentController == "account" ? "active" : "")">
+                <i class="fa fa-fw fa-user"></i> Schedule
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Index", "Schedule", new {area = "Admin"})" class="@(currentController == "schedule" ? "active" : "")">
                 <i class="fa fa-fw fa-dashboard"></i> Schedule
             </a>
         </li>

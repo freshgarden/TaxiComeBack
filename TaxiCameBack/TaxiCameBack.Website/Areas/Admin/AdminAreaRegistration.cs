@@ -15,7 +15,7 @@ namespace TaxiCameBack.Website.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { controller="Schedule", action = "Index", id = UrlParameter.Optional }
+                new { controller="Account", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

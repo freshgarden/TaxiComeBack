@@ -55,8 +55,6 @@
     <Compile Include="EfUnitOfWork.cs" />
     <Compile Include="Mapping\Schedule\ScheduleGeolocationMapping.cs" />
     <Compile Include="Mapping\Schedule\ScheduleMapping.cs" />
-    <Compile Include="Mapping\UserMapping\UserMapping.cs" />
-    <Compile Include="Mapping\UserMapping\UserRoleMapping.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

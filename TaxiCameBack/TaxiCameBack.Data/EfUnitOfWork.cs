@@ -6,13 +6,13 @@ using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Reflection;
-using TaxiCameBack.Core.DomainModel.User;
+using TaxiCameBack.Core.DomainModel.Membership;
 using TaxiCameBack.Data.Contract;
 using TaxiCameBack.Data.Migrations;
 
 namespace TaxiCameBack.Data
 {
-    public class EfUnitOfWork : DbContext, IQueryableUnitOfWork
+    public class EfUnitOfWork : DbContext, IQueryableUnitOfWork, IDisposable
     {
         public EfUnitOfWork()
             : base("TaxiCameBack")
@@ -32,12 +32,9 @@ namespace TaxiCameBack.Data
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<EfUnitOfWork, Configuration>());
         }
 
-        #region IDbSet Members
-        public IDbSet<User> Users { get; set; }
-        public IDbSet<UserRole> UserRoles { get; set; }
+        public DbSet<MembershipRole> MembershipRole { get; set; }
+        public DbSet<MembershipUser> MembershipUser { get; set; }
 
-        #endregion IDbSet Members
-        
         public void Commit()
         {
             SaveChanges();

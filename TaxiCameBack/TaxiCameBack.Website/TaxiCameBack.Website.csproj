@@ -19,8 +19,8 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
@@ -242,6 +242,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Attributes\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Application\Extension\Extensions.cs" />
+    <Compile Include="Application\Extension\HtmlLabelExtensions.cs" />
     <Compile Include="Application\Extension\ModelStateHelper.cs" />
     <Compile Include="Application\MobileExtensions.cs" />
     <Compile Include="App_GlobalResources\GlobalResources.Designer.cs">
@@ -264,6 +267,7 @@
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\ErrorsController.cs" />
+    <Compile Include="Areas\Admin\Models\AccountViewModels.cs" />
     <Compile Include="Areas\Admin\Models\LoginViewModel.cs" />
     <Compile Include="Areas\Admin\Models\RegisterViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ScheduleViewModel.cs" />
@@ -280,6 +284,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\Mapping\ViewModelMapping.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap\css\bootstrap.css" />
@@ -1957,6 +1962,8 @@
     <Content Include="Areas\Admin\Views\Schedule\_ScheduleNavButtons.cshtml" />
     <Content Include="Areas\Admin\Views\Schedule\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Register.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cache\Cache.txt" />
     <Content Include="Scripts\Contact.js" />

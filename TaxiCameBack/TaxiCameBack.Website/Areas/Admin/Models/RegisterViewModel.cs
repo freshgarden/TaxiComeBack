@@ -9,7 +9,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
         public string FullName { get; set; }
 
         [Required]
-        [StringLength(11)]
+//        [StringLength(11)]
         public int Phone { get; set; }
 
         [Required]
@@ -24,6 +24,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
         [Required]
         [StringLength(50)]
         [DataType(DataType.Password)]
+        [Compare("Password")]
         public string RetypePassword { get; set; }
     }
 }

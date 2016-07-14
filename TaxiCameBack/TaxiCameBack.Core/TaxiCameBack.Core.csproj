@@ -30,6 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AntiXssLibrary, Version=4.3.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\AntiXssLibrary.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.4, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9.4\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="HtmlSanitizationLibrary, Version=4.3.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -43,10 +55,10 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Constants\AppConstants.cs" />
+    <Compile Include="DomainModel\PagedList\IPagedList.cs" />
+    <Compile Include="DomainModel\PagedList\PagedList.cs" />
     <Compile Include="DomainModel\Schedule\Schedule.cs" />
     <Compile Include="DomainModel\Schedule\ScheduleGeolocation.cs" />
-    <Compile Include="DomainModel\User\User.cs" />
-    <Compile Include="DomainModel\User\UserRole.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,6 +72,11 @@
     <Compile Include="Specification\NotSpecification.cs" />
     <Compile Include="Specification\OrSpecification.cs" />
     <Compile Include="Specification\TrueSpecification.cs" />
+    <Compile Include="Utilities\NodePositions.cs" />
+    <Compile Include="Utilities\StringUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

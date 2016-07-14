@@ -7,9 +7,9 @@ using TaxiCameBack.Data.Contract;
 using System.Web.Http.Controllers;
 using Castle.Facilities.Logging;
 using TaxiCameBack.Core;
+using TaxiCameBack.Services.Membership;
 using TaxiCameBack.Services.Schedule;
 using TaxiCameBack.Services.Search;
-using TaxiCameBack.Services.User;
 
 namespace TaxiCameBack.Website.Dependency
 {
@@ -27,9 +27,9 @@ namespace TaxiCameBack.Website.Dependency
                     .DependsOn(Castle.MicroKernel.Registration.Dependency.OnValue("nameOfConnection", "TaxiCameBack"))
                     .LifestyleSingleton(),
 
-                Component.For(typeof (IRepository<>)).ImplementedBy(typeof (EfRepository<>)),
+                Component.For(typeof (IRepository<>)).ImplementedBy(typeof (EfRepository<>)).LifestyleSingleton(),
 
-                Component.For<IUserService>().ImplementedBy<UserService>(),
+                Component.For<IMembershipService>().ImplementedBy<MembershipService>(),
 
                 Component.For<IScheduleService>().ImplementedBy<ScheduleService>(),
 
