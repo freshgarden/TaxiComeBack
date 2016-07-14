@@ -95,24 +95,24 @@
 .backmapnew{background:url(../../Content/Images/home/timduongfree_01.png) no-repeat}
 .drelbdo .spandvitk{float:left; height:30px; width:30px; position:absolute; top:80px; right:30px; background-position:0 -48px; cursor:pointer}
 .leftbdonew{width:1200px; margin:0 auto; position:relative}
-.topmapnew{position:absolute; top:25px; left:0; width:400px}
+.topmapnew{position:absolute; top:25px; left:0; width:600px}
 .topmapnew_1{background:#eaeaea; border-top:1px solid #1aa5de; font-size:13px; font-weight:bold; color:#333; height:35px; width:100%}
 .botmapnew{width:100%; position:absolute; bottom:0; left:0; background:#fff; box-shadow:0 0 3px #888; z-index:5} 
-.ptimvtri,.ptimduong{float:left; width:200px; text-align:center; position:relative; cursor:pointer}
-.psearch{float:left; width:200px; position:relative; cursor:pointer;}
-.psearch-result{float:right; width:200px; position:relative; cursor:pointer;display:inline;height:35px;margin-top:10px;}
+.ptimvtri,.ptimduong{float:left; width:300px; text-align:center; position:relative; cursor:pointer}
+.psearch{float:left; width:300px; position:relative; cursor:pointer;}
+.psearch-result{float:right; width:300px; position:relative; cursor:pointer;display:inline;height:35px;margin-top:10px;}
 .rtimvtri{float:left; width:100px; text-align:center; position:relative; cursor:pointer}
-.backcolorms1{background:url(../../Content/Images/home/timduongfree_01.png) no-repeat; background-position:0 0; height:35px; margin-top:0px; color:#fff}
-.backcolorms1 b{background-position:-120px -45px !important; margin-top:5px !important; margin-left:50px !important}
-.ptimvtri b{float:left; width:25px; height:24px; background-position:-242px -45px; margin-top:6px; margin-left:50px}
+.backcolorms1{background-color: #18a5dc; background-position:0 0; height:35px; margin-top:0px; color:#fff}
+.backcolorms1 b{background-position:-120px -45px !important; margin-top:5px !important; margin-left:100px !important}
+.ptimvtri b{float:left; width:25px; height:24px; background-position:-242px -45px; margin-top:6px; margin-left:100px}
 .ptimvtri span{float:left; margin-top:12px; margin-left:6px}
-.backcolorms2{background:url(../../Content/Images/home/timduongfree_01.png) no-repeat; background-position:-223px 0; height:35px; margin-top:0px; color:#fff}
-.backcolorms2 b{background-position:-303px -46px !important; margin-top:5px !important; margin-left:50px !important}
+.backcolorms2{background-color: #18a5dc; background-position:-223px 0; height:35px; margin-top:0px; color:#fff}
+.backcolorms2 b{background-position:-303px -46px !important; margin-top:5px !important; margin-left:100px !important}
 .backcolorms2 span{margin-top:12px !important; margin-left:6px !important}
 .backcolorms3{background:url(../../Content/Images/home/timduongfree_01.png) no-repeat; background-position:0 0;width:150px; height:35px; margin-top:-5px; color:#fff}
 .backcolorms3 b{background-position:-124px -45px !important; margin-top:5px !important; margin-left:50px !important}
 .backcolorms3 span{margin-top:12px !important; margin-left:6px !important}
-.ptimduong b{float:left; width:24px; height:24px; background-position:-95px -46px; margin-top:6px; margin-left:50px}
+.ptimduong b{float:left; width:24px; height:24px; background-position:-95px -46px; margin-top:6px; margin-left:100px}
 .ptimduong span{float:left; margin-top:12px; margin-left:6px}
 .divmstr2{height:40px; background:#fff; width:100%; font-size:12px} .divmstr1{background:#fff; width:100%; font-size:12px; display:none;}
 .divresult{
@@ -150,22 +150,22 @@
 .ddmapz1{float:left; background-position:-209px -44px; width:30px; height:35px; margin:5px 12px 0}
 .ddmapz2{float:left; background-position:-177px -45px; width:30px; height:35px; margin:5px 12px 0}
 .ddmapz3{float:left; background-position:-200px -127px; width:30px; height:35px; margin:5px 12px 0}
-.inptduongmap{float:left; padding:5px; width:295px; line-height:18px; height:30px; border:0; font-size:12px}
+.inptduongmap{float:left; padding:5px; width:495px; line-height:18px; height:30px; border:0; font-size:12px}
 .btnwapdd{float:right; width:40px; cursor:pointer; background-position:-265px -38px; height:40px; background-color:#f3f3f3; margin:0; border:0}
 .btnwapdd2{float:right!important; width:40px;height:40px;background-position:-300px -200px;opacity:100; background-color:#f3f3f3; margin:0; border:0}
 .bgweather b{background-position:-341px -43px !important} 
 .maphdan{background:#fff; color:#222; font-size:12px; font-weight:normal} 
 .maphdan2{background:#fff; padding:10px; color:#222; font-size:12px; font-weight:normal;}
-.dboxgtm{width:400px; overflow: auto; font-size:12px; margin-top:20px; font-weight:normal; box-shadow:0 0 3px #888; background:#fff}
+.dboxgtm{width:600px; overflow: auto; font-size:12px; margin-top:20px; font-weight:normal; box-shadow:0 0 3px #888; background:#fff}
 .dboxgtm2{width:400px; overflow: auto; font-size:12px; margin-top:20px; font-weight:normal; box-shadow:0 0 3px #888; background:#fff}
 .search-fixed{
-	width:400px;
+	width:600px;
 	position:fixed;
 	display:inline-block;
-	background:#eaeaea; border-top:1px solid #1aa5de;height:34px;
+	background:#eaeaea; border-top:1px solid #1aa5de;height:35px;
 }
 .search-result-header-text{
-	font-weight:bold;margin-top:10px;float:left;margin-left:50px;position:relative;
+	font-weight:bold;margin-top:10px;float:left;margin-left:100px;position:relative;
 }
 .search-result-text{
 	font-weight:bold;
@@ -275,7 +275,7 @@
 	text-align: center;
 }
 .route-btn{
-	width: 300px;
+	width: 500px;
 	padding: 10px 15px 11px !important;
 	font-size: 18px !important;
 	background-color: #0796cd;

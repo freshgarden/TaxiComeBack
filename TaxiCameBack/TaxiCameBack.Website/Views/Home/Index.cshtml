@@ -2,7 +2,8 @@
 @{
     Layout = "~/Views/Shared/_Home.cshtml";
 }
-
+<link href="@Url.Content("~/Content/datetimepicker/jquery.datetimepicker.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Content/datetimepicker/jquery.datetimepicker.full.min.js")"></script>
 <!--BODY_START-->
 <body id="body">
     <div id="wrapvh">
@@ -17,20 +18,16 @@
                                 @Home.lbl_DriverName
                             </p>
                             <p class="ptextroute">
-                                @Home.lbl_PlateNumber
+                                @Home.lbl_DriverPhone
                             </p>
                             <p class="ptextroute">
                                 @Home.lbl_CarType
                             </p>
-                            <p class="ptextroute">
-                                @Home.lbl_DriverPhone
-                            </p>
                         </div>
                         <div class="divroute2">
                             <p class="ptextroute2">Nguyễn Xuân Phúc</p>
-                            <p class="ptextroute2">29X2-4672</p>
-                            <p class="ptextroute2">VIC Taxi</p>
-                            <p class="ptextroute2">0984xxxxxx</p>
+                            <p class="ptextroute2">098.4622.793</p>
+                            <p class="ptextroute2">4 Chỗ</p>
                         </div>
                         <div class="divroute2">
                             <div class="divroute2">
@@ -39,6 +36,9 @@
                                 </p>
                                 <p class="ptextroute">
                                     @Home.lbl_CustomerPhone
+                                </p>
+                                <p class="ptextroute">
+                                    @Home.lbl_NearPos
                                 </p>
                             </div>
                             <div class="divroute2">
@@ -49,8 +49,10 @@
                                     <p>
                                         <input id="phoneNumber" class="ptextroute3" type="tel" name="phoneNumber" value="" placeholder="@Home.plh_PhoneNumber" maxlength="14">
                                     </p>
+                                    <p>
+                                        <input id="nearpos" class="ptextroute3" type="text" name="nearpos" value="" placeholder="@Home.plh_NearPos" maxlength="50">
+                                    </p>
                                     <div class="clear"></div>
-
                                 </form>
                             </div>
                             <p class="ptextroute4"><input type="checkbox" class="checkbox-style" class="ptextroute" /> @Home.lbl_reg_note</p> <p style="text-align:center;">@Home.lbl_reg_note2</p>
@@ -63,6 +65,12 @@
             <div class="headerhomeh">
                 <div class="logohead">
                     <a href="#" title="TaxiComeback"><img class="imglogo" src="~/Content/Images/logo/logovnl_03.png" alt="logo" /></a>
+                </div>
+                <div class="loginvh0">
+                    <a class="ppagevnl" href="#"><span>Giới thiệu</span></a>
+                    <a class="phomevnl" href="#">Bảng giá</a>
+                    <a class="phomevnl" href="#">Liên hệ</a>
+                    <p class="clear"></p>
                 </div>
             </div>
         </div>
@@ -95,11 +103,8 @@
                                     </div>
                                     <div class="custom-div">
                                         <p class="pmapnewh"><span class="backmapnew ddmapz3"></span></p>
+                                        <input id="timestart" type="text" placeholder="@Home.plh_TimeStart" class="inptduongmap" maxlength="100">
                                         <input type="button" value="" disabled class="backmapnew btnwapdd2">
-                                        <input id="xe7cho" style="text-align:right; vertical-align:middle" type="radio" class="css-checkbox" name="cartype" value="7seat">
-                                        <label for="xe7cho" class="css-label radGroup2">@Home.lbl_CarType7</label>
-                                        <input id="xe4cho" checked style="text-align:right; vertical-align:middle" type="radio" class="css-checkbox" name="cartype" value="4seat">
-                                        <label for="xe4cho" class="css-label radGroup2">@Home.lbl_CarType4</label>
                                     </div>
                                 </div>
                                 <div id="findCarByLocationPanel" class="divmstr1" style="display:none">
@@ -154,8 +159,8 @@
                                     <div class="search-fixed">
                                         <div class="psearch backcolorms1"> <b class="backmapnew"></b> <span class="search-result-header-text">@Home.lbl_SearchResult</span></div>
                                         <div id="distanceAndTime" class="psearch-result">
-                                            <span style="font-weight:bold" >
-                                                100 km - 1giờ 15 phút<span>
+                                            <span style="font-weight:bold; margin-left: 100px;" >
+                                                100 km - 1giờ 15 phút</span>
                                                     <a href="#" class="botuseguide2" id="closeRouteListPanel"><p class="dboxt2">X</p></a>
                                         </div>
                                     </div>
@@ -179,6 +184,14 @@
         </div>
     </div>    
     <script>
+            $(function () {
+                $.datetimepicker.setLocale('vi');
+                jQuery("#timestart").datetimepicker({
+                    format: 'd-m-Y H:i',
+                    minDate: 0,
+                    lang: 'vi'
+                });
+            });
 			$(document).mouseup(function (e) {
 				var container = $(".divlogvnlnew");
 				if (!container.is(e.target) // if the target of the click isn't the container...
@@ -261,7 +274,7 @@
 			                    $('#searchResultContent').css("display", "block");
 			                    $('#searchResultContent').empty();
 			                    for (var count in data) {
-			                        $('#searchResultContent').append($("<div class='custom-div2'><button href='#' onclick='showRoute(" + data[count].Id + ")' class='route-btn'><p class='button-font-size'>Lộ trình số " + ++count + "</p></button></div>"))
+			                        $('#searchResultContent').append($("<div class='custom-div2'><button href='#' onclick='showRoute(" + data[count].Id + ")' class='route-btn'><b class='backmapnew'><p class='button-font-size'>Chọn xe - Lộ trình số " + ++count + "</p></button></div>"))
 			                    }
 			                }			                
 			                getDistanceAndTime();

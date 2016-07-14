@@ -88,7 +88,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hãng xe.
+        ///   Looks up a localized string similar to Loại xe.
         /// </summary>
         public static string lbl_CarType {
             get {
@@ -183,6 +183,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string lbl_Locate {
             get {
                 return ResourceManager.GetString("lbl_Locate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gần vị trí.
+        /// </summary>
+        public static string lbl_NearPos {
+            get {
+                return ResourceManager.GetString("lbl_NearPos", resourceCulture);
             }
         }
         
@@ -286,6 +295,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gần vị trí.
+        /// </summary>
+        public static string plh_NearPos {
+            get {
+                return ResourceManager.GetString("plh_NearPos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Số điện thoại.
         /// </summary>
         public static string plh_PhoneNumber {
@@ -300,6 +318,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string plh_StartPoint {
             get {
                 return ResourceManager.GetString("plh_StartPoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nhập thời gian đi.
+        /// </summary>
+        public static string plh_TimeStart {
+            get {
+                return ResourceManager.GetString("plh_TimeStart", resourceCulture);
             }
         }
         

@@ -127,7 +127,7 @@
     <value>taxi, taxi trong, dia diem, địa điểm, tim duong, tìm đường, tìm địa chỉ, tìm địa điểm, diadiem,vietnam mapss</value>
   </data>
   <data name="lbl_CarType" xml:space="preserve">
-    <value>Hãng xe</value>
+    <value>Loại xe</value>
   </data>
   <data name="lbl_CarType4" xml:space="preserve">
     <value>4 Chỗ</value>
@@ -203,5 +203,14 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Tìm kiếm taxi giá rẻ. Địa điểm, địa chỉ số,bản đồ vệ tinh Vietnam Maps</value>
+  </data>
+  <data name="plh_TimeStart" xml:space="preserve">
+    <value>Nhập thời gian đi</value>
+  </data>
+  <data name="plh_NearPos" xml:space="preserve">
+    <value>Gần vị trí</value>
+  </data>
+  <data name="lbl_NearPos" xml:space="preserve">
+    <value>Gần vị trí</value>
   </data>
 </root>
