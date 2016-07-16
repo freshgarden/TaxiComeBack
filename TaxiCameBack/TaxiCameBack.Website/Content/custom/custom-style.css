@@ -29,8 +29,8 @@ body {font-family:arial; width:100%}
 .nameleftmn{float:left; margin-top:4px;  margin-left:5px; width:168px}
 .ppagevnl{float:right; font-weight:bold; color:#404040; padding-right:15px;}
 .ppagevnl img{float:left; border:2px solid #ccc; border-radius:50%; -webkit-border-radius:50%; -moz-border-radius:50%}
-.ppagevnl span{display:inline-block; margin-left:5px; margin-top:7px; max-width:150px; height:17px; overflow:hidden; white-space:nowrap}
-.phomevnl{float:right; font-weight:bold; color:#404040; background:url(../../Content/Images/icons/split.png) right no-repeat; padding:1px 15px 1px 10px; margin-top:6px; margin-right:7px; text-decoration:none;}
+.ppagevnl span{display:inline-block; margin-left:5px; margin-top:17px; max-width:150px; height:17px; overflow:hidden; white-space:nowrap}
+.phomevnl{float:right; font-weight:bold; color:#404040; background:url(../../Content/Images/icons/split.png) right no-repeat; padding:1px 15px 1px 10px; margin-top:15px; margin-right:7px; text-decoration:none;}
 .userlog{float:left; background:#fff; width:150px; height:26px; position:relative; border:1px solid #e6e6e6}
 .passlog{float:left; background:#fff; border:1px solid #e6e6e6; width:140px; height:26px; margin-left:5px; position:relative}
 .botusersign{position:absolute; text-decoration: none; top:-20px; left:0; float:left; color:#222}

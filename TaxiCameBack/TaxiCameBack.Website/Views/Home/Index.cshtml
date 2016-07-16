@@ -70,6 +70,7 @@
                     <a class="ppagevnl" href="#"><span>Giới thiệu</span></a>
                     <a class="phomevnl" href="#">Bảng giá</a>
                     <a class="phomevnl" href="#">Liên hệ</a>
+                    <a class="phomevnl" href="#">Tài xế</a>
                     <p class="clear"></p>
                 </div>
             </div>
@@ -159,7 +160,7 @@
                                     <div class="search-fixed">
                                         <div class="psearch backcolorms1"> <b class="backmapnew"></b> <span class="search-result-header-text">@Home.lbl_SearchResult</span></div>
                                         <div id="distanceAndTime" class="psearch-result">
-                                            <span style="font-weight:bold; margin-left: 100px;" >
+                                            <span style="font-weight:bold; margin-left: 50px;" >
                                                 100 km - 1giờ 15 phút</span>
                                                     <a href="#" class="botuseguide2" id="closeRouteListPanel"><p class="dboxt2">X</p></a>
                                         </div>
@@ -234,6 +235,7 @@
 				$("#findCarBySearchPanel").css("display", "none");
 				$("#findCarByLocationPanel").css("display", "block");
 				$("#directionsPanel").css("display", "none");
+				$("#userGuidePanel").css("display", "none");
 			});
 
 			$("#closeRoute").click(function () {
@@ -274,7 +276,7 @@
 			                    $('#searchResultContent').css("display", "block");
 			                    $('#searchResultContent').empty();
 			                    for (var count in data) {
-			                        $('#searchResultContent').append($("<div class='custom-div2'><button href='#' onclick='showRoute(" + data[count].Id + ")' class='route-btn'><b class='backmapnew'><p class='button-font-size'>Chọn xe - Lộ trình số " + ++count + "</p></button></div>"))
+			                        $('#searchResultContent').append($("<div class='custom-div2'><button href='#' onclick='showRoute(" + data[count].Id + ")' class='route-btn'><p class='button-font-size'>Chọn xe - Lộ trình số " + ++count + "</p></button></div>"))
 			                    }
 			                }			                
 			                getDistanceAndTime();
@@ -332,8 +334,7 @@
 				
 				var marker = new google.maps.Marker({
 					position: myCenter,
-					animation: google.maps.Animation.BOUNCE,
-					icon: "/Content/Images/icons/location-icon2.png"
+					animation: google.maps.Animation.BOUNCE
 				});
 
 				marker.setMap(map);
