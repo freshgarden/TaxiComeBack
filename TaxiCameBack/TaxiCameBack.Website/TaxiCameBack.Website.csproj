@@ -281,6 +281,7 @@
     <Compile Include="Areas\Admin\Controllers\ErrorsController.cs" />
     <Compile Include="Areas\Admin\Models\AccountViewModels.cs" />
     <Compile Include="Areas\Admin\Models\LoginViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\NotFoundModel.cs" />
     <Compile Include="Areas\Admin\Models\RegisterViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ScheduleViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1977,6 +1978,7 @@
     <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Errors\AcessDenied.cshtml" />
+    <Content Include="Areas\Admin\Views\Errors\NotFound.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cache\Cache.txt" />
     <Content Include="Scripts\Contact.js" />

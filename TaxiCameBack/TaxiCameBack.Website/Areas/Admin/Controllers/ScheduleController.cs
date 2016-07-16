@@ -33,7 +33,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             var schedule = _scheduleService.FindScheduleById(id);
             return Json(schedule, JsonRequestBehavior.AllowGet);
         }
-
+        [CustomAuthorize(Roles = AppConstants.StandardMembers)]
         public ActionResult Create()
         {
             return View();
@@ -52,6 +52,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         }
 
         // GET: Schedule
+        [CustomAuthorize(Roles = AppConstants.StandardMembers)]
         public ActionResult Index()
         {
             return View();

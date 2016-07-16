@@ -30,15 +30,23 @@ namespace TaxiCameBack.Website
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);
         }
 
-        protected void Application_Error(object sender, EventArgs e)
-        {
-            var lastError = Server.GetLastError();
-            // Don't flag missing pages or changed urls, as just clogs up the log
-            if (!lastError.Message.Contains("was not found or does not implement IController"))
-            {
-                Response.Redirect("Errors/Error404");
-            }
-        }
+//        protected void Application_Error(object sender, EventArgs e)
+//        {
+//            var lastError = Server.GetLastError();
+//            // Don't flag missing pages or changed urls, as just clogs up the log
+//            if (!lastError.Message.Contains("was not found or does not implement IController"))
+//            {
+//                Response.RedirectToRoute(new RouteValueDictionary(
+//                    new RouteValueDictionary(
+//                                new
+//                                {
+//                                    controller = "Errors",
+//                                    action = "Error404",
+//                                    area = "Admin"
+//                                })
+//                                ));
+//            }
+//        }
 
         public override void Dispose()
         {

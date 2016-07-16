@@ -24,7 +24,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             {
                 //Redirect user to error page
                 filterContext.ExceptionHandled = true;
-                filterContext.Result = this.RedirectToAction("Error500", "Errors");
+                filterContext.Result = this.RedirectToAction("Error500", "Errors", new {area = "Admin"});
             }
 
             base.OnException(filterContext);

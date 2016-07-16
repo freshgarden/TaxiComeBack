@@ -24,8 +24,13 @@ namespace TaxiCameBack.Website.Dependency
         {
             if (controllerType == null)
             {
+                var context = new RequestContext(
+                        new HttpContextWrapper(System.Web.HttpContext.Current),
+                        new RouteData());
+                var urlHelper = new UrlHelper(context);
+                var url = urlHelper.Action("NotFound", "Errors", new {area = "Admin", url = requestContext.HttpContext.Request.Path });
+                if (url != null) HttpContext.Current.Response.Redirect(url);
                 return null;
-//                throw new HttpException(404, $"The controller for path '{requestContext.HttpContext.Request.Path}' could not be found.");
             }
             return (IController) _kernel.Resolve(controllerType);
         }

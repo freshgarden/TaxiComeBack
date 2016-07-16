@@ -11,11 +11,23 @@ namespace TaxiCameBack.Website.Areas.Admin
         {
             RouteTable.Routes.LowercaseUrls = true;
             RouteTable.Routes.AppendTrailingSlash = true;
+            
+            context.MapRoute(
+                "Schedule",
+                "Admin/Dang-Ky-Lich-Trinh/{action}/{id}",
+                new { controller = "Schedule", action = "Index", id = UrlParameter.Optional }
+                );
+
+            context.MapRoute(
+                "Account",
+                "Admin/Nguoi-Dung/{action}/{id}",
+                new { controller="Account", action = "Index", id = UrlParameter.Optional }
+            );
 
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { controller="Account", action = "Index", id = UrlParameter.Optional }
+                new { controller = "Account", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
