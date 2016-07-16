@@ -1,0 +1,294 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        User Profile
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Examples</a></li>
+        <li class="active">User profile</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-3">
+            <!-- Profile Image -->
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="~/Content/dist/img/user3-128x128.jpg" alt="User profile picture">
+                    <h3 class="profile-username text-center">Đỗ Anh Tú</h3>
+                    <p class="text-muted text-center">Tài xế</p>
+                    <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                            <b>Giới tính</b> <a class="pull-right">Nam</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Ngày sinh</b> <a class="pull-right">27-08-1993</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Số điện thoại</b> <a class="pull-right">098.462.2793</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Email</b> <a class="pull-right">doanhtu278@gmail.com</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Biển số xe</b> <a class="pull-right">29X2-6789</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Hãng xe</b> <a class="pull-right">Vic-Taxi</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#editprofile" data-toggle="tab">Thông tin cá nhân</a></li>
+                    <li><a href="#changepassword" data-toggle="tab">Thay đổi mật khẩu</a></li>
+                </ul>
+                <div class="tab-content">
+                    <!-- /.tab-pane -->
+                    <div class="active tab-pane" id="editprofile">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-2 control-label">Ảnh đại diện</label>
+                                <div class="col-sm-10">
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                                        <div>
+                                            <span class="btn btn-default btn-file"><span class="fileinput-new">Chọn ảnh</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+                                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-2 control-label">Họ và tên</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputName" placeholder="Họ và tên">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputSex" class="col-sm-2 control-label">Giới tính</label>
+                                <div class="col-sm-10">
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                            Nam
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                            Nữ
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputDOB" class="col-sm-2 control-label">Ngày sinh</label>
+                                <div class="col-sm-10">
+                                    <div class="row">
+                                        <div class="col-xs-2">
+                                            <select class="form-control">
+                                                <option value="-1">Ngày</option>
+                                                <option value="1"> 1 </option>
+                                                <option value="2"> 2 </option>
+                                                <option value="3"> 3 </option>
+                                                <option value="4"> 4 </option>
+                                                <option value="5"> 5 </option>
+                                                <option value="6"> 6 </option>
+                                                <option value="7"> 7 </option>
+                                                <option value="8"> 8 </option>
+                                                <option value="9"> 9 </option>
+                                                <option value="10"> 10 </option>
+                                                <option value="11"> 11 </option>
+                                                <option value="12"> 12 </option>
+                                                <option value="13"> 13 </option>
+                                                <option value="14"> 14 </option>
+                                                <option value="15"> 15 </option>
+                                                <option value="16"> 16 </option>
+                                                <option value="17"> 17 </option>
+                                                <option value="18"> 18 </option>
+                                                <option value="19"> 19 </option>
+                                                <option value="20"> 20 </option>
+                                                <option value="21"> 21 </option>
+                                                <option value="22"> 22 </option>
+                                                <option value="23"> 23 </option>
+                                                <option value="24"> 24 </option>
+                                                <option value="25"> 25 </option>
+                                                <option value="26"> 26 </option>
+                                                <option value="27"> 27 </option>
+                                                <option value="28"> 28 </option>
+                                                <option value="29"> 29 </option>
+                                                <option value="30"> 30 </option>
+                                                <option value="31"> 31 </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <select class="form-control">
+                                                <option value="-1">Tháng</option>
+                                                <option value="1"> 1 </option>
+                                                <option value="2"> 2 </option>
+                                                <option value="3"> 3 </option>
+                                                <option value="4"> 4 </option>
+                                                <option value="5"> 5 </option>
+                                                <option value="6"> 6 </option>
+                                                <option value="7"> 7 </option>
+                                                <option value="8"> 8 </option>
+                                                <option value="9"> 9 </option>
+                                                <option value="10"> 10 </option>
+                                                <option value="11"> 11 </option>
+                                                <option value="12"> 12 </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <select class="form-control">
+                                                <option value="-1">Năm</option>
+                                                <option value="1960"> 1960 </option>
+                                                <option value="1961"> 1961 </option>
+                                                <option value="1962"> 1962 </option>
+                                                <option value="1963"> 1963 </option>
+                                                <option value="1964"> 1964 </option>
+                                                <option value="1965"> 1965 </option>
+                                                <option value="1966"> 1966 </option>
+                                                <option value="1967"> 1967 </option>
+                                                <option value="1968"> 1968 </option>
+                                                <option value="1969"> 1969 </option>
+                                                <option value="1970"> 1970 </option>
+                                                <option value="1971"> 1971 </option>
+                                                <option value="1972"> 1972 </option>
+                                                <option value="1973"> 1973 </option>
+                                                <option value="1974"> 1974 </option>
+                                                <option value="1975"> 1975 </option>
+                                                <option value="1976"> 1976 </option>
+                                                <option value="1977"> 1977 </option>
+                                                <option value="1978"> 1978 </option>
+                                                <option value="1979"> 1979 </option>
+                                                <option value="1980"> 1980 </option>
+                                                <option value="1981"> 1981 </option>
+                                                <option value="1982"> 1982 </option>
+                                                <option value="1983"> 1983 </option>
+                                                <option value="1984"> 1984 </option>
+                                                <option value="1985"> 1985 </option>
+                                                <option value="1986"> 1986 </option>
+                                                <option value="1987"> 1987 </option>
+                                                <option value="1988"> 1988 </option>
+                                                <option value="1989"> 1989 </option>
+                                                <option value="1990"> 1990 </option>
+                                                <option value="1991"> 1991 </option>
+                                                <option value="1992"> 1992 </option>
+                                                <option value="1993"> 1993 </option>
+                                                <option value="1994"> 1994 </option>
+                                                <option value="1995"> 1995 </option>
+                                                <option value="1996"> 1996 </option>
+                                                <option value="1997"> 1997 </option>
+                                                <option value="1998"> 1998 </option>
+                                                <option value="1999"> 1999 </option>
+                                                <option value="2000"> 2000 </option>
+                                                <option value="2001"> 2001 </option>
+                                                <option value="2002"> 2002 </option>
+                                                <option value="2003"> 2003 </option>
+                                                <option value="2004"> 2004 </option>
+                                                <option value="2005"> 2005 </option>
+                                                <option value="2006"> 2006 </option>
+                                                <option value="2007"> 2007 </option>
+                                                <option value="2008"> 2008 </option>
+                                                <option value="2009"> 2009 </option>
+                                                <option value="2010"> 2010 </option>
+                                                <option value="2011"> 2011 </option>
+                                                <option value="2012"> 2012 </option>
+                                                <option value="2013"> 2013 </option>
+                                                <option value="2014"> 2014 </option>
+                                                <option value="2015"> 2015 </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputName" placeholder="Email" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress" class="col-sm-2 control-label">Địa chỉ</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputName" placeholder="Địa chỉ">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPhone" class="col-sm-2 control-label">Số điện thoại</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputName" placeholder="Số điện thoại">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputBSX" class="col-sm-2 control-label">Biển số xe</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputName" placeholder="Biển số xe">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputBSX" class="col-sm-2 control-label">Hãng xe</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputName" placeholder="Hãng xe">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-danger">Thay đổi</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.tab-pane -->
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="changepassword">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-2 control-label">Mật khẩu cũ</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="inputName" placeholder="Mật khẩu cũ">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputNewPassword" class="col-sm-2 control-label">Mật khẩu mới</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="inputEmail" placeholder="Mật khẩu mới">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputRetypePassword" class="col-sm-2 control-label">Xác nhận</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="inputEmail" placeholder="Xác nhận mật khẩu">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <button type="submit" class="btn btn-danger">Thay đổi</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
