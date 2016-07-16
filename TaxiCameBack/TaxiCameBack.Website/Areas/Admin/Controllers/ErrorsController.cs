@@ -7,7 +7,7 @@ using TaxiCameBack.Website.Areas.Admin.Models;
 
 namespace TaxiCameBack.Website.Areas.Admin.Controllers
 {
-    public class ErrorsController : Controller
+    public class ErrorsController : BaseController
     {
         public ActionResult NotFound(string url)
         {
