@@ -1,4 +1,5 @@
 ﻿@model TaxiCameBack.Website.Areas.Admin.Models.LoginViewModel
+@using TaxiCameBack.Website.App_LocalResources
 @{
     Layout = null;
 }
@@ -8,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Log in</title>
+    <title>@Login.login_title</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     @Styles.Render("~/admin/css")
@@ -28,34 +29,34 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html"><b>Admin</b>LTE</a>
+            <a href="#"><b>@Login.login_logo</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg">Sign in to start your session</p>
+            <p class="login-box-msg">@Login.login_form</p>
             @using (Html.BeginForm("Login", "Account", FormMethod.Post))
             {
                 @Html.ValidationSummary(false)
                 @Html.AntiForgeryToken()
                 <div class="form-group has-feedback">
-                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "MembershipUsername" } })
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = Login.plc_username } })
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                     @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+                     @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = Login.plc_password } })
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="row">
                     <div class="col-xs-8">
                         <div class="checkbox icheck">
                             <label>
-                                @Html.EditorFor(model => model.RememberMe, new {htmlAttributes = new {@type = "checkbox"}}) Remember Me
+                                @Html.EditorFor(model => model.RememberMe, new {htmlAttributes = new {@type = "checkbox"}}) @Login.cb_Remember
                             </label>
                         </div>
                     </div>
                     <!-- /.col -->
                     <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">@Login.btn_login</button>
                     </div>
                     <!-- /.col -->
                 </div>
@@ -63,8 +64,8 @@
             }
                      
             <!-- /.social-auth-links -->
-            <a href="#">I forgot my password</a><br>
-            <a href="register.html" class="text-center">Register a new membership</a>
+            <a href="#">@Login.lbl_forget_acc</a><br>
+            <a href="@Url.Action("Register","Account")" class="text-center">@Login.lbl_reg_new_acc</a>
         </div>
         <!-- /.login-box-body -->
     </div>

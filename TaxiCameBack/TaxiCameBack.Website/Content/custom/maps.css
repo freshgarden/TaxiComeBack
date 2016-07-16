@@ -1,4 +1,4 @@
-.pac-container{height:155px; overflow:hidden}
+.pac-container{height:155px; overflow:hidden;box-shadow:none;}
 .pac-container:after{background-image:none !important}
 .adp-legal,#adp-placemark,.adp-placemark{display:none !important}
 #adp-placemark img, .adp-placemark img {display:none;}
@@ -148,6 +148,7 @@
 .ddmapz1{float:left; background-position:-209px -44px; width:30px; height:35px; margin:5px 12px 0}
 .ddmapz2{float:left; background-position:-177px -45px; width:30px; height:35px; margin:5px 12px 0}
 .ddmapz3{float:left; background-position:-200px -127px; width:30px; height:35px; margin:5px 12px 0}
+.ddmapz4{float:left; background-position:-160px -127px; width:30px; height:35px; margin:5px 12px 0}
 .inptduongmap{float:left; padding:5px; width:295px; line-height:18px; height:30px; border:0; font-size:12px}
 .btnwapdd{float:right; width:40px; cursor:pointer; background-position:-265px -38px; height:40px; background-color:#f3f3f3; margin:0; border:0}
 .btnwapdd2{float:right!important; width:40px;height:40px;background-position:-300px -200px;opacity:100; background-color:#f3f3f3; margin:0; border:0}
@@ -238,6 +239,7 @@
 }
 .button-font-size{
 	font-size:12px;
+    padding-top:15px;
 }
 .checkbox-style{
 	padding-left:0px;
@@ -274,7 +276,6 @@
 }
 .route-btn{
 	width: 300px;
-	padding: 10px 15px 11px !important;
 	font-size: 18px !important;
 	background-color: #0796cd;
 	font-weight: bold;

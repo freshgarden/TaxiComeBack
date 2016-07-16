@@ -93,17 +93,17 @@
                                     <div class="custom-div">
                                         <p class="pmapnewh"><span class="backmapnew ddmapz1"></span></p>
                                         <input id="startPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_StartPoint" autocomplete="off" class="inptduongmap" maxlength="100">
-                                        <input type="button" value="" class="backmapnew btndirect" id="searchCar">
+                                        <input type="button" title="@Home.btn_search_title" value="" class="backmapnew btndirect" id="searchCar">
                                         <input type="hidden" value="subdri" id="hidsubmap"><p class="clear"></p>
                                     </div>
                                     <div class="custom-div">
                                         <p class="pmapnewh"><span class="backmapnew ddmapz2"></span></p>
                                         <input id="endPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_EndPoint" autocomplete="off" class="inptduongmap" maxlength="100">
-                                        <input type="button" id="switchSearchValue" class="backmapnew btnwapdd">
+                                        <input type="button" title="@Home.btn_switch_title" id="switchSearchValue" class="backmapnew btnwapdd">
                                         <input type="hidden" value="subdri" id="hidsubmap"><p class="clear"></p>
                                     </div>
                                     <div class="custom-div">
-                                        <p class="pmapnewh"><span class="backmapnew ddmapz3"></span></p>
+                                        <p class="pmapnewh"><span class="backmapnew ddmapz4"></span></p>
                                         <input id="timestart" type="text" placeholder="@Home.plh_TimeStart" class="inptduongmap" maxlength="100">
                                         <input type="button" value="" disabled class="backmapnew btnwapdd2">
                                     </div>
@@ -152,7 +152,7 @@
                                     <p class="dboxt1">@Home.lbl_UserGuideHeader</p>
                                     <a href="#" class="botuseguide2" id="closeUserGuidePanel"><p class="dboxt2">X</p></a>
                                     <p class="clear"></p>
-                                    <div class="dboxt4">@Home.lbl_UserGuideContent</div>
+                                    <div class="dboxt4"><h2 style="margin-bottom:6px" class="pdboxms3">Ứng dụng Bản đồ Việt Nam trực tuyến Online, tìm đường đi nhanh và gần nhất, xem bản đồ các tỉnh thành như Hà Nội, Sài Gòn, TP.HCM, Đà Nẵng, Cần Thơ, Hải Phòng, Nha Trang, Bình Dương, Đà Lạt… chỉ đường đi nhanh nhất, ngắn nhất đến các địa điểm, địa chỉ, vị trí,khu vui chơi, khu du lịch, giải trí, khách sạn, nhà hàng trên khắp Việt Nam. Bản đồ vệ tinh, danh bạ địa chỉ số tiện dụng nhất hiện nay.</h2><p class="pdboxms3">Nhập địa chỉ muốn tìm vào khung tìm kiếm trên bản đồ hoặc click vào icon <span class="backmapnew icgetlct"></span> để hệ thống tự lấy vị trí hiện tại của bạn.</p><p class="pdboxms3">Sau đó bấm phím <b>"Enter"</b> hoặc click chuột vào icon <span class="backmapnew icclick"></span> để bắt đầu quá trình tìm kiếm.</p></div>
                                 </div>
                             </div>
                             <div class="dboxgtm" id="directionsPanel">
@@ -276,7 +276,7 @@
 			                    $('#searchResultContent').css("display", "block");
 			                    $('#searchResultContent').empty();
 			                    for (var count in data) {
-			                        $('#searchResultContent').append($("<div class='custom-div2'><button href='#' onclick='showRoute(" + data[count].Id + ")' class='route-btn'><p class='button-font-size'>Chọn xe - Lộ trình số " + ++count + "</p></button></div>"))
+			                        $('#searchResultContent').append($("<div class='custom-div2'><button href='#' onclick='showRoute(" + data[count].Id + ")' class='route-btn'><span class='backmapnew ddmapz3'></span><p class='button-font-size'>Chọn xe - Lộ trình số " + ++count + "</p></button></div>"))
 			                    }
 			                }			                
 			                getDistanceAndTime();

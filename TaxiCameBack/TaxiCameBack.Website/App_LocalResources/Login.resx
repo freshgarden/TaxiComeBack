@@ -117,106 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Author" xml:space="preserve">
-    <value>© CopyRight FreshGarden Team</value>
+  <data name="btn_login" xml:space="preserve">
+    <value>Đăng nhập</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>Tìm kiếm taxi đường dài giá rẻ... Địa điểm, địa chỉ số,bản đồ vệ tinh Vietnam Maps - Phát triển bởi FreshGarden Team</value>
+  <data name="cb_Remember" xml:space="preserve">
+    <value>Ghi nhớ tài khoản</value>
   </data>
-  <data name="Keywords" xml:space="preserve">
-    <value>taxi, taxi trong, dia diem, địa điểm, tim duong, tìm đường, tìm địa chỉ, tìm địa điểm, diadiem,vietnam mapss</value>
+  <data name="lbl_forget_acc" xml:space="preserve">
+    <value>Quên mật khẩu</value>
   </data>
-  <data name="lbl_CarType" xml:space="preserve">
-    <value>Loại xe</value>
+  <data name="lbl_reg_new_acc" xml:space="preserve">
+    <value>Đăng ký tài khoản tài xế</value>
   </data>
-  <data name="lbl_CarType4" xml:space="preserve">
-    <value>4 Chỗ</value>
+  <data name="login_form" xml:space="preserve">
+    <value>Đăng nhập</value>
   </data>
-  <data name="lbl_CarType7" xml:space="preserve">
-    <value>7 Chỗ</value>
+  <data name="login_logo" xml:space="preserve">
+    <value>TaxiQuayVe</value>
   </data>
-  <data name="lbl_CustomerName" xml:space="preserve">
-    <value>Tên khách hàng</value>
+  <data name="login_title" xml:space="preserve">
+    <value>TaxiQuayVe | Đăng nhập</value>
   </data>
-  <data name="lbl_CustomerPhone" xml:space="preserve">
-    <value>Số điện thoại KH</value>
+  <data name="plc_password" xml:space="preserve">
+    <value>Mật khẩu</value>
   </data>
-  <data name="lbl_DriverName" xml:space="preserve">
-    <value>Tên tài xế</value>
-  </data>
-  <data name="lbl_DriverPhone" xml:space="preserve">
-    <value>Điện thoại liên hệ</value>
-  </data>
-  <data name="lbl_EndPoint" xml:space="preserve">
-    <value>Điểm đến</value>
-  </data>
-  <data name="lbl_FindCar" xml:space="preserve">
-    <value>Tìm xe</value>
-  </data>
-  <data name="lbl_Find_Car_By_Location" xml:space="preserve">
-    <value>Có {0} chuyến xe đang sẵn sàng</value>
-  </data>
-  <data name="lbl_Locate" xml:space="preserve">
-    <value>Định vị</value>
-  </data>
-  <data name="lbl_PlateNumber" xml:space="preserve">
-    <value>Biến số xe</value>
-  </data>
-  <data name="lbl_reg_note" xml:space="preserve">
-    <value>Bạn chỉ phải trả {0} cho chuyến đi này</value>
-  </data>
-  <data name="lbl_reg_note2" xml:space="preserve">
-    <value>(Đơn giá: {0} đ/1km)</value>
-  </data>
-  <data name="lbl_Route" xml:space="preserve">
-    <value>Lộ trình</value>
-  </data>
-  <data name="lbl_SearchResult" xml:space="preserve">
-    <value>Kết quả tìm kiếm</value>
-  </data>
-  <data name="lbl_SearchResult_Content" xml:space="preserve">
-    <value>Không có kết quả nào được tìm thấy</value>
-  </data>
-  <data name="lbl_UserGuide" xml:space="preserve">
-    <value>Hướng dẫn sử dụng</value>
-  </data>
-  <data name="lbl_UserGuideContent" xml:space="preserve">
-    <value>&lt;h2 style="margin-bottom:6px" class="pdboxms3"&gt;Ứng dụng Bản đồ Việt Nam trực tuyến Online, tìm đường đi nhanh và gần nhất, xem bản đồ các tỉnh thành như Hà Nội, Sài Gòn, TP.HCM, Đà Nẵng, Cần Thơ, Hải Phòng, Nha Trang, Bình Dương, Đà Lạt… chỉ đường đi nhanh nhất, ngắn nhất đến các địa điểm, địa chỉ, vị trí,khu vui chơi, khu du lịch, giải trí, khách sạn, nhà hàng trên khắp Việt Nam. Bản đồ vệ tinh, danh bạ địa chỉ số tiện dụng nhất hiện nay.&lt;/h2&gt;&lt;p class="pdboxms3"&gt;Nhập địa chỉ muốn tìm vào khung tìm kiếm trên bản đồ hoặc click vào icon &lt;span class="backmapnew icgetlct"&gt;&lt;/span&gt; để hệ thống tự lấy vị trí hiện tại của bạn.&lt;/p&gt;&lt;p class="pdboxms3"&gt;Sau đó bấm phím &lt;b&gt;"Enter"&lt;/b&gt; hoặc click chuột vào icon &lt;span class="backmapnew icclick"&gt;&lt;/span&gt; để bắt đầu quá trình tìm kiếm.&lt;/p&gt;</value>
-  </data>
-  <data name="lbl_UserGuideHeader" xml:space="preserve">
-    <value>Hướng dẫn tìm vị trí</value>
-  </data>
-  <data name="plh_EndPoint" xml:space="preserve">
-    <value>Nhập điểm đến</value>
-  </data>
-  <data name="plh_FullName" xml:space="preserve">
-    <value>Họ và tên</value>
-  </data>
-  <data name="plh_PhoneNumber" xml:space="preserve">
-    <value>Số điện thoại</value>
-  </data>
-  <data name="plh_StartPoint" xml:space="preserve">
-    <value>Nhập điểm bắt đầu</value>
-  </data>
-  <data name="Site_name" xml:space="preserve">
-    <value>taxiquayve.vn</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Tìm kiếm taxi giá rẻ. Địa điểm, địa chỉ số,bản đồ vệ tinh Vietnam Maps</value>
-  </data>
-  <data name="plh_TimeStart" xml:space="preserve">
-    <value>Nhập thời gian đi</value>
-  </data>
-  <data name="plh_NearPos" xml:space="preserve">
-    <value>Gần vị trí</value>
-  </data>
-  <data name="lbl_NearPos" xml:space="preserve">
-    <value>Gần vị trí</value>
-  </data>
-  <data name="btn_search_title" xml:space="preserve">
-    <value>Tìm kiếm</value>
-  </data>
-  <data name="btn_switch_title" xml:space="preserve">
-    <value>Đổi vị trí</value>
+  <data name="plc_username" xml:space="preserve">
+    <value>Tên tài khoản</value>
   </data>
 </root>

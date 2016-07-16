@@ -70,6 +70,24 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tìm kiếm.
+        /// </summary>
+        public static string btn_search_title {
+            get {
+                return ResourceManager.GetString("btn_search_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đổi vị trí.
+        /// </summary>
+        public static string btn_switch_title {
+            get {
+                return ResourceManager.GetString("btn_switch_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tìm kiếm taxi đường dài giá rẻ... Địa điểm, địa chỉ số,bản đồ vệ tinh Vietnam Maps - Phát triển bởi FreshGarden Team.
         /// </summary>
         public static string Description {
