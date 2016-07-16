@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Collections.Generic;
+using System.Web;
 using TaxiCameBack.Core.DomainModel.Membership;
 using TaxiCameBack.Core.DomainModel.PagedList;
 using TaxiCameBack.Services.Common;
@@ -19,7 +20,7 @@ namespace TaxiCameBack.Services.Membership
     {
         MembershipUser SanitizeUser(MembershipUser membershipUser);
         bool ValidateUser(string userEmail, string password, int maxInvalidPasswordAttempts);
-        string[] GetRolesForUser(string userEmail);
+        List<string> GetRolesForUser(string userEmail);
         MembershipUser GetUser(string userEmail, bool removeTracking = false);
         LoginAttemptStatus LastLoginStatus { get; }
         CrudResult Logon(string userEmail, string password, bool remember, ref HttpCookie cookie);

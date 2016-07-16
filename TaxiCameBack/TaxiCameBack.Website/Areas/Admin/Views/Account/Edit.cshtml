@@ -16,7 +16,7 @@
         @using (Html.BeginForm("Edit", "Account", FormMethod.Post))
         {
             @Html.HiddenFor(x => Model.Id)
-
+            @Html.AntiForgeryToken()
             @Html.ValidationSummary(false)
 
             <div class="form-group">

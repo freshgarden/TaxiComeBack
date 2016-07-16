@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using TaxiCameBack.Core.Constants;
 using TaxiCameBack.Core.DomainModel.Schedule;
 using TaxiCameBack.Services.Schedule;
+using TaxiCameBack.Website.Application.Attributes;
 using TaxiCameBack.Website.Application.Extension;
 using TaxiCameBack.Website.Areas.Admin.Models;
 
@@ -19,14 +20,14 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             _scheduleService = scheduleService;
         }
 
-        [Authorize(Roles = AppConstants.StandardMembers)]
+        [CustomAuthorize(Roles = AppConstants.StandardMembers)]
         public JsonResult GetAllSchedules()
         {
             var schedules = _scheduleService.FindSchedules();
             return Json(schedules, JsonRequestBehavior.AllowGet);
         }
 
-        [Authorize(Roles = AppConstants.StandardMembers)]
+        [CustomAuthorize(Roles = AppConstants.StandardMembers)]
         public JsonResult GetScheduleById(int id)
         {
             var schedule = _scheduleService.FindScheduleById(id);
@@ -38,7 +39,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             return View();
         }
 
-        [Authorize(Roles = AppConstants.StandardMembers)]
+        [CustomAuthorize(Roles = AppConstants.StandardMembers)]
         [ValidateAntiForgeryToken]
         public JsonResult SaveScheduleInfomation(Schedule schedule)
         {
@@ -65,7 +66,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             };
             return PartialView(viewModel);
         }
-
+        [CustomAuthorize(Roles = AppConstants.StandardMembers)]
         public JsonResult GetScheduleEvents(string start, string end)
         {
             var schedulesForDate =

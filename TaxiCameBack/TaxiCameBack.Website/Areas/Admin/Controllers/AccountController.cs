@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -6,6 +8,7 @@ using TaxiCameBack.Core.Constants;
 using TaxiCameBack.Services.Membership;
 using TaxiCameBack.Website.Application.Attributes;
 using TaxiCameBack.Website.Application.Extension;
+using TaxiCameBack.Website.Application.Security;
 using TaxiCameBack.Website.Areas.Admin.Models;
 using TaxiCameBack.Website.ViewModels.Mapping;
 
@@ -36,7 +39,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             var memberListModel = new MemberListViewModel
             {
                 Users = allViewModelUsers,
-                Id = _membershipService.GetUser(User.Identity.Name).UserId,
+                Id = _membershipService.GetUser(SessionPersister.Username).UserId,
                 PageIndex = pageIndex,
                 Search = search,
                 TotalCount = allUsers.Count,
@@ -74,7 +77,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Account", new {area = string.Empty});
+                return RedirectToAction("Index", "Account", new {area = "Admin"});
             }
 
             return View(userModel);
@@ -132,27 +135,30 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                     }
                     if (cookie != null)
                         Response.Cookies.Add(cookie);
+                    SessionPersister.Username = loginViewModel.UserName;
+                    SessionPersister.Roles = _membershipService.GetRolesForUser(loginViewModel.UserName).ToArray();
                     if (Url.IsLocalUrl(loginViewModel.ReturnUrl) && loginViewModel.ReturnUrl.Length > 1 && loginViewModel.ReturnUrl.StartsWith("/")
                                         && !loginViewModel.ReturnUrl.StartsWith("//") && !loginViewModel.ReturnUrl.StartsWith("/\\"))
                     {
                         return Redirect(loginViewModel.ReturnUrl);
                     }
-                    return RedirectToAction("Index", "Home", new {area = string.Empty});
+                    
+                    return _membershipService.GetRolesForUser(SessionPersister.Username).Contains(AppConstants.AdminRoleName) ? RedirectToAction("Index", "Account", new {area = "Admin"}) : RedirectToAction("Index", "Schedule", new {area = "Admin"});
                 }
                 ModelState.AddModelError(string.Empty, reuslt.Errors[0]);
             }
             else
             {
-                ModelState.AddModelError("", "There was an error login");
+                ModelState.AddModelError(string.Empty, "There was an error login");
             }
-
-            return RedirectToAction("Index", "Schedule", new { area = "Admin" });
+            return RedirectToAction("Login", "Account", new { area = "Admin" });
         }
 
         public ActionResult LogOff()
         {
-            FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home", new {area = string.Empty});
+            SessionPersister.Username = string.Empty;
+            Array.Clear(SessionPersister.Roles, 0, SessionPersister.Roles.Length);
+            return RedirectToAction("Login", "Account", new {area = "Admin"});
         }
 
         [AllowAnonymous]
@@ -188,7 +194,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 ModelState.AddModelError(string.Empty, createStatus.Errors[0]);
                 return View(registerViewModel);
             }
-            return RedirectToAction("Index", "Home", new {area = string.Empty});
+            return RedirectToAction("Login", "Account", new {area = "Admin"});
         }
     }
 }

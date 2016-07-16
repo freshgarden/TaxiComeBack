@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using System.Security.Principal;
 using System.Web.Security;
 using TaxiCameBack.Core;
 using TaxiCameBack.Core.Constants;
@@ -62,7 +64,13 @@ namespace TaxiCameBack.Services.Membership
                 newUser.Password = hash;
                 newUser.PasswordSalt = salt;
 
-//                newUser.UserRoles 
+                newUser.Roles = new List<MembershipRole>
+                {
+                    new MembershipRole()
+                    {
+                        RoleName = AppConstants.StandardMembers
+                    }
+                };
                 
                 // set dates
                 newUser.CreatedOnUtc = DateTime.UtcNow;
@@ -262,9 +270,17 @@ namespace TaxiCameBack.Services.Membership
             return LastLoginStatus == LoginAttemptStatus.LoginSuccessful;
         }
 
-        public string[] GetRolesForUser(string username)
+        public List<string> GetRolesForUser(string userEmail)
         {
-            throw new NotImplementedException();
+            userEmail = StringUtils.SafePlainText(userEmail);
+            var roles = new List<string>();
+            var user = GetUser(userEmail);
+
+            if (user != null)
+            {
+                roles.AddRange(user.Roles.Select(role => role.RoleName));
+            }
+            return roles;
         }
 
         /// <summary>
@@ -275,19 +291,20 @@ namespace TaxiCameBack.Services.Membership
         /// <returns></returns>
         public MembershipUser GetUser(string userEmail, bool removeTracking = false)
         {
-            MembershipUser member;
+//            if (removeTracking)
+//            {
+//                member = ((EfUnitOfWork)_unitOfWork).MembershipUser.Include(x => x.Roles)
+//                    .AsNoTracking().FirstOrDefault(u => u.Email.Equals(userEmail, StringComparison.CurrentCultureIgnoreCase));
+//            }
+//            else
+//            {
+//                member =
+//                    ((EfUnitOfWork)_unitOfWork).MembershipUser.Include(x => x.Roles)
+//                    .FirstOrDefault(name => name.Email.Equals(userEmail, StringComparison.CurrentCultureIgnoreCase));
+//            }
 
-            if (removeTracking)
-            {
-                member = ((EfUnitOfWork)_unitOfWork).MembershipUser.Include(x => x.Roles)
-                    .AsNoTracking().FirstOrDefault(u => u.Email.Equals(userEmail, StringComparison.CurrentCultureIgnoreCase));
-            }
-            else
-            {
-                member =
-                    ((EfUnitOfWork)_unitOfWork).MembershipUser.Include(x => x.Roles)
-                    .FirstOrDefault(name => name.Email.Equals(userEmail, StringComparison.CurrentCultureIgnoreCase));
-            }
+            userEmail = StringUtils.SafePlainText(userEmail);
+            var member = _membershipRepository.FindBy(x => x.Email == userEmail).FirstOrDefault();
             
             // Do a check to log out the user if they are logged in and have been deleted
             if (member == null && HttpContext.Current.User.Identity.Name == userEmail)
@@ -313,36 +330,7 @@ namespace TaxiCameBack.Services.Membership
             {
                 var user = GetUser(userEmail);
                 if (user.Active && !user.IsLockedOut)
-                {
-                    //                    FormsAuthentication.SetAuthCookie(user.Email, remember);
-                    var roles = user.Roles.Aggregate(string.Empty,
-                        (current, membershipRole) => current + membershipRole.RoleName + ",");
-
-                    var now = DateTime.UtcNow.ToLocalTime();
-
-                    var ticket = new FormsAuthenticationTicket(
-                        1 /*version*/,
-                        user.Email,
-                        now,
-                        now.Add(FormsAuthentication.Timeout),
-                        remember,
-                        roles,
-                        FormsAuthentication.FormsCookiePath);
-
-                    var encryptedTicket = FormsAuthentication.Encrypt(ticket);
-
-                    cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket) {HttpOnly = true};
-                    if (ticket.IsPersistent)
-                    {
-                        cookie.Expires = ticket.Expiration;
-                    }
-                    cookie.Secure = FormsAuthentication.RequireSSL;
-                    cookie.Path = FormsAuthentication.FormsCookiePath;
-                    if (FormsAuthentication.CookieDomain != null)
-                    {
-                        cookie.Domain = FormsAuthentication.CookieDomain;
-                    }
-
+                {   
                     user.LastLoginDateUtc = DateTime.Now;
 
                     try

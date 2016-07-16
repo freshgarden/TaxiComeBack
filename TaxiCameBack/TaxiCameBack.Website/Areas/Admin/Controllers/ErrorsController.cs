@@ -18,5 +18,10 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public ActionResult AcessDenied()
+        {
+            return View();
+        }
     }
 }
