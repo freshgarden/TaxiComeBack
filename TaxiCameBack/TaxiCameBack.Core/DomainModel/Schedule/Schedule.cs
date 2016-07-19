@@ -9,8 +9,8 @@ namespace TaxiCameBack.Core.DomainModel.Schedule
     {
         [Key]
         public int Id { get; set; }
-//        [Required]
-//        public int UserId { get; set; }
+        [Required]
+        public int UserId { get; set; }
         [Required]
         [MaxLength(300)]
         public string BeginLocation { get; set; }

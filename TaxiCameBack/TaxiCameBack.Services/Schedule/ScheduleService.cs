@@ -7,6 +7,7 @@ using System.Linq;
 using Castle.Core.Internal;
 using TaxiCameBack.Core;
 using TaxiCameBack.Core.DomainModel.Schedule;
+using TaxiCameBack.Core.Utilities;
 
 namespace TaxiCameBack.Services.Schedule
 {
@@ -39,31 +40,11 @@ namespace TaxiCameBack.Services.Schedule
 
         public ScheduleCreateResult SaveScheduleInformation(Core.DomainModel.Schedule.Schedule schedule)
         {
-            if (schedule == null)
-                throw new ArgumentNullException(nameof(schedule));
-
-            if (schedule.ScheduleGeolocations == null) 
-                throw new ArgumentNullException("Can't load current schedule");
-
             var result = new ScheduleCreateResult();
-
-            if (string.IsNullOrEmpty(schedule.BeginLocation))
-            {
-                result.AddError("Null begin location");
+            
+            Validate(result, schedule);
+            if (result.Errors.Count > 0)
                 return result;
-            }
-
-            if (string.IsNullOrEmpty(schedule.EndLocation))
-            {
-                result.AddError("Null end location");
-                return result;
-            }
-
-            if (schedule.StartDate.Date < DateTime.Now.Date)
-            {
-                result.AddError("Start date must be equal or above today");
-                return result;
-            }
 
             try
             {
@@ -79,9 +60,86 @@ namespace TaxiCameBack.Services.Schedule
             return result;
         }
 
-        public void UpdateScheduleInformation(int id, Core.DomainModel.Schedule.Schedule schedule)
+        public ScheduleCreateResult UpdateScheduleInformation(Core.DomainModel.Schedule.Schedule schedule)
         {
-            throw new NotImplementedException();
+            var result = new ScheduleCreateResult();
+
+            Validate(result, schedule);
+            if (result.Errors.Count > 0)
+                return result;
+
+            var newScheduleGeolocations = new List<ScheduleGeolocation>();
+            try
+            {
+                // Delete all old schedules geolocation
+                var oldScheduleGeolocations = _scheduleGeolocationRepository.GetAll().Where(x => x.ScheduleId == schedule.Id).ToList();
+                foreach (var oldScheduleGeolocation in oldScheduleGeolocations)
+                {
+                    _scheduleGeolocationRepository.Delete(oldScheduleGeolocation);
+                }
+
+                // Insert all new schedules geolocation
+                foreach (var scheduleGeolocation in schedule.ScheduleGeolocations)
+                {
+                    scheduleGeolocation.ScheduleId = schedule.Id;
+                    _scheduleGeolocationRepository.Insert(scheduleGeolocation);
+                }
+
+                _scheduleGeolocationRepository.UnitOfWork.Commit();
+
+                // Add all new schedules geolocation to schedule
+                schedule.ScheduleGeolocations.Clear();
+                foreach (var newScheduleGeolocation in newScheduleGeolocations)
+                {
+                    schedule.ScheduleGeolocations.Add(newScheduleGeolocation);
+                }
+                
+                var oldSchedules = _scheduleRepository.GetById(schedule.Id);
+                _scheduleRepository.Merge(oldSchedules, schedule);
+                _scheduleRepository.UnitOfWork.Commit();
+            }
+            catch (Exception exception)
+            {
+                _scheduleRepository.UnitOfWork.Rollback();
+                result.AddError(exception.Message);
+            }
+
+            return result;
+        }
+
+        private void Validate(ScheduleCreateResult result, Core.DomainModel.Schedule.Schedule schedule)
+        {
+            schedule.BeginLocation = StringUtils.SafePlainText(schedule.BeginLocation);
+            schedule.EndLocation = StringUtils.SafePlainText(schedule.EndLocation);
+
+            if (schedule == null)
+                throw new ArgumentNullException(nameof(schedule));
+
+            if (schedule.ScheduleGeolocations == null)
+                throw new ArgumentNullException("Can't load current schedule");
+
+            if (string.IsNullOrEmpty(schedule.BeginLocation))
+            {
+                result.AddError("Null begin location");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(schedule.EndLocation))
+            {
+                result.AddError("Null end location");
+                return;
+            }
+
+            if (schedule.StartDate.Date < DateTime.Now.Date)
+            {
+                result.AddError("Start date must be equal or above today");
+            }
+        }
+
+        private void UpdateScheduleGeolocation(ScheduleGeolocation scheduleGeolocation)
+        {
+            if (scheduleGeolocation == null)
+                return;
         }
     }
 }

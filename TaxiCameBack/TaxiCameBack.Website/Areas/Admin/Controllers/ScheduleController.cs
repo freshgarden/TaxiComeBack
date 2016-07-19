@@ -7,6 +7,7 @@ using TaxiCameBack.Core.DomainModel.Schedule;
 using TaxiCameBack.Services.Schedule;
 using TaxiCameBack.Website.Application.Attributes;
 using TaxiCameBack.Website.Application.Extension;
+using TaxiCameBack.Website.Application.Security;
 using TaxiCameBack.Website.Areas.Admin.Models;
 
 namespace TaxiCameBack.Website.Areas.Admin.Controllers
@@ -40,12 +41,30 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         }
 
         [CustomAuthorize(Roles = AppConstants.StandardMembers)]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public JsonResult SaveScheduleInfomation(Schedule schedule)
         {
             if (!ModelState.IsValid)
                 return Json(new {status = "ERROR", messenge = ModelState.Errors()}, JsonRequestBehavior.AllowGet);
+            schedule.UserId = SessionPersister.UserId;
             var result = _scheduleService.SaveScheduleInformation(schedule);
+            if (!result.Success)
+                return Json(new {status = "ERROR", messenge = result.Errors}, JsonRequestBehavior.AllowGet);
+            return Json(new {status = "OK"});
+        }
+
+        [CustomAuthorize(Roles = AppConstants.StandardMembers)]
+        [HttpPut]
+        [ValidateAntiForgeryToken]
+        public JsonResult UpdateScheduleInfomation(int id, Schedule schedule)
+        {
+            if (!ModelState.IsValid)
+                return Json(new {status = "ERROR", messenge = ModelState.Errors()}, JsonRequestBehavior.AllowGet);
+            if (_scheduleService.FindScheduleById(id).UserId != SessionPersister.UserId)
+                return Json(new {status = "ERROR", messenge = "Wrong id!"});
+            schedule.UserId = SessionPersister.UserId;
+            var result = _scheduleService.UpdateScheduleInformation(schedule);
             if (!result.Success)
                 return Json(new {status = "ERROR", messenge = result.Errors}, JsonRequestBehavior.AllowGet);
             return Json(new {status = "OK"});
@@ -71,13 +90,14 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         public JsonResult GetScheduleEvents(string start, string end)
         {
             var schedulesForDate =
-                _scheduleService.FindSchedules().Where(s => s.StartDate >= ConvertFromDateTimeString(start));
+                _scheduleService.FindSchedules()
+                    .Where(s => s.StartDate >= ConvertFromDateTimeString(start) && s.UserId == SessionPersister.UserId);
             var eventList = from e in schedulesForDate
                             select new
                             {
                                 id = e.Id,
                                 title = e.BeginLocation + " - " + e.EndLocation,
-                                start = e.StartDate.ToString(""),
+                                start = e.StartDate.ToString("o"),
                                 allDay = false
                             };
             var row = eventList.ToArray();

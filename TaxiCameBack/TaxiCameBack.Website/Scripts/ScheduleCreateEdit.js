@@ -8,11 +8,13 @@ $(function () {
     function getFormattedDate(date)
     {
         var year = date.getFullYear();
-        var month = (1 + date.getMonth()).toString();
+        var month = date.getMonth().toString();
         month = month.length > 1 ? month : '0' + month;
         var day = date.getDate().toString();
         day = day.length > 1 ? day : '0' + day;
-        return day + '-' + month + '-' + year + " " + date.getHours() + ":" + date.getMinutes();
+        var formDate = day + '-' + month + '-' + year + " " + date.getHours() + ":" + date.getMinutes()
+        startDate = new Date(year, month, day, date.getHours(), date.getMinutes());
+        return formDate;
     }
     function toJavaScriptDate(value) {
         var pattern = /Date\(([^)]+)\)/;
@@ -32,7 +34,7 @@ $(function () {
     var container = $(this);
     var Schedule = function(schedule) {
         var self = this;
-        self.Id = ko.observable(schedule ? schedule.ScheduleId : 0).extend({required: true});
+        self.Id = ko.observable(schedule ? schedule.Id : 0).extend({required: true});
         self.BeginLocation = ko.observable(schedule ? schedule.BeginLocation : '').extend({ required: true });
         self.EndLocation = ko.observable(schedule ? schedule.EndLocation : '').extend({ required: true });
         self.StartDate = ko.observable(schedule ? toJavaScriptDate(schedule.StartDate) : '').extend({ required: true });
@@ -82,6 +84,7 @@ $(function () {
                 if (scheduleGeolocations.hasOwnProperty(key)) {
                     if (scheduleGeolocations[key].Latitude != 0 && scheduleGeolocations[key].Longitude != 0)
                         geo.push([scheduleGeolocations[key].Latitude, scheduleGeolocations[key].Longitude]);
+
                 }
             }
             return geo;
@@ -102,7 +105,7 @@ $(function () {
         }
 
         self.saveSchedule = function () {
-
+            
             var isValid = true;
             if (self.scheduleErrors().length != 0) {
                 self.scheduleErrors.showAllMessages();
@@ -119,10 +122,10 @@ $(function () {
                 self.schedule().StartDate = ko.observable(startDate.getDate() + "-" + monthsName[startDate.getMonth()] + "-" + startDate.getFullYear() + " " + startDate.getHours() + ":" + startDate.getMinutes());
                 var popup;
                 $.ajaxAntiForgery({
-                    type: (self.schedule().ScheduleId > 0 ? "PUT" : "POST"),
+                    type: (ko.toJS(self.schedule().Id) > 0 ? "PUT" : "POST"),
                     cache: false,
                     dataType: "json",
-                    url: urlSchedule + (self.schedule().ScheduleId > 0 ? "/UpdateScheduleInfomation?id=" + self.schedule().ScheduleId : '/SaveScheduleInfomation'),
+                    url: urlSchedule + (ko.toJS(self.schedule().Id) > 0 ? "/UpdateScheduleInfomation?id=" + ko.toJS(self.schedule().Id) : '/SaveScheduleInfomation'),
                     data: ko.toJS(self.schedule()),
                     contentType: "application/x-www-form-urlencoded",
                     async: false,
@@ -136,6 +139,7 @@ $(function () {
                             window.location.href = urlSchedule;
                         }
                         else if (data.status === "ERROR") {
+                            console.lgo(data.messenge);
                             if (data.messenge) {
                                 self.showErrorPopup(container, popup, data.messenge[0].Value[0]);
                                 return;

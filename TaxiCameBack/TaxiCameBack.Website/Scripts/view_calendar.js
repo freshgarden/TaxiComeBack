@@ -38,9 +38,13 @@ function initialise_calendar(){
 			}
 		],
 		droppable: false,
-		eventClick: function(cal_event, js_event, view){
+		eventClick: function (cal_event, js_event, view) {
+		    window.location.href = "/Admin/Schedule/Create/" + cal_event.id;
 		    calendar_event_clicked(cal_event, js_event, view);
-		    UpdateEvent(cal_event);
+//		    UpdateEvent(cal_event);
+		},
+		dayClick: function (date, allDay, jsEvent, view) {
+		    window.location.href = "/Admin/Schedule/Create";
 		},
 		editable: false,
 		selectable: true,

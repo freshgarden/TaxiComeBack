@@ -20,6 +20,8 @@ namespace TaxiCameBack.Website.Application.Security
             set { HttpContext.Current.Session[UsernamePersister] = value; }
         }
 
+        public static int UserId { get; set; }
+
         public static string[] Roles { get; set; }
     }
 }

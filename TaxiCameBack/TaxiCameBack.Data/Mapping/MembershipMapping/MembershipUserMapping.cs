@@ -20,6 +20,10 @@ namespace TaxiCameBack.Data.Mapping.MembershipMapping
                         m.MapRightKey("RoleId");
                     }
                 );
+
+            HasMany(c => c.Schedules)
+                .WithRequired()
+                .HasForeignKey(s => s.UserId);
         }
     }
 }

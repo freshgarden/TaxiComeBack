@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using TaxiCameBack.DTO.Schedule;
-using TaxiCameBack.Services.Common;
 
 namespace TaxiCameBack.Services.Schedule
 {
@@ -9,8 +7,6 @@ namespace TaxiCameBack.Services.Schedule
         /// <summary>
         /// Get all Schedules
         /// </summary>
-        /// <param name="pageIndex"></param>
-        /// <param name="pageCount"></param>
         /// <returns></returns>
         List<Core.DomainModel.Schedule.Schedule> FindSchedules();
 
@@ -37,8 +33,7 @@ namespace TaxiCameBack.Services.Schedule
         /// <summary>
         /// Update existing schedule
         /// </summary>
-        /// <param name="id"></param>
         /// <param name="schedule"></param>
-        void UpdateScheduleInformation(int id, Core.DomainModel.Schedule.Schedule schedule);
+        ScheduleCreateResult UpdateScheduleInformation(Core.DomainModel.Schedule.Schedule schedule);
     }
 }
