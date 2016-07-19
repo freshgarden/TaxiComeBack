@@ -2019,6 +2019,7 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\knockout.validation.js" />
+    <Content Include="Scripts\lang-all.js" />
     <Content Include="Scripts\maps.js" />
     <Content Include="Scripts\markdown\Markdown.Converter.js" />
     <Content Include="Scripts\markdown\markdown.css" />
