@@ -33,6 +33,7 @@ namespace TaxiCameBack.Services.Membership
         {
             membershipUser.Email = StringUtils.SafePlainText(membershipUser.Email);
             membershipUser.Password = StringUtils.SafePlainText(membershipUser.Password);
+            membershipUser.FullName = StringUtils.SafePlainText(membershipUser.FullName);
             return membershipUser;
         }
 
@@ -158,9 +159,28 @@ namespace TaxiCameBack.Services.Membership
             throw new NotImplementedException();
         }
 
-        public bool UpdatePasswordResetToken(MembershipUser user)
+        public CrudResult UpdatePasswordResetToken(MembershipUser user)
         {
-            throw new NotImplementedException();
+            var result = new CrudResult();
+            var existingUser = GetUser(user.Email);
+            if (existingUser == null)
+            {
+                result.AddError("Cannot find user.");
+                return result;
+            }
+            existingUser.PasswordResetToken = CreatePasswordResetToken();
+            existingUser.PasswordResetTokenCreatedAt = DateTime.UtcNow;
+
+            try
+            {
+                _membershipRepository.UnitOfWork.Commit();
+            }
+            catch (Exception exception)
+            {
+                _membershipRepository.UnitOfWork.Rollback();
+                result.AddError(exception.Message);
+            }
+            return result;
         }
 
         public bool ClearPasswordResetToken(MembershipUser user)
@@ -347,12 +367,36 @@ namespace TaxiCameBack.Services.Membership
             return crudReuslt;
         }
 
-        public bool ChangePassword(MembershipUser user, string oldPassword, string newPassword)
+        /// <summary>
+        /// Reset a user password
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="newPassword"></param>
+        /// <returns></returns>
+        public bool ResetPassword(MembershipUser user, string newPassword)
         {
-            throw new NotImplementedException();
+            var existingUser = GetUser(user.Email);
+            if (existingUser == null)
+                return false;
+
+            var salt = StringUtils.CreateSalt(AppConstants.SaltSize);
+            var newHash = StringUtils.GenerateSaltedHash(newPassword, salt);
+
+            existingUser.Password = newHash;
+            existingUser.PasswordSalt = salt;
+
+            try
+            {
+                _membershipRepository.UnitOfWork.Commit();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
-        public bool ResetPassword(MembershipUser user, string newPassword)
+        public bool ChangePassword(MembershipUser user, string oldPassword, string newPassword)
         {
             throw new NotImplementedException();
         }

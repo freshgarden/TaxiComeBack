@@ -32,7 +32,7 @@ namespace TaxiCameBack.Services.Membership
         string ErrorCodeToString(MembershipCreateStatus createStatus);
         void ProfileUpdated(MembershipUser user);
         int MemberCount();
-        bool UpdatePasswordResetToken(MembershipUser user);
+        CrudResult UpdatePasswordResetToken(MembershipUser user);
         bool ClearPasswordResetToken(MembershipUser user);
         string CreatePasswordResetToken();
         bool IsPasswordResetTokenValid(MembershipUser user, string token);

@@ -38,6 +38,11 @@ namespace TaxiCameBack.Core.DomainModel.Membership
         public string PasswordSalt { get; set; }
 
         /// <summary>
+        /// Gets or sets user full name
+        /// </summary>
+        public string FullName { get; set; }
+
+        /// <summary>
         /// Gets or sets the admin comment
         /// </summary>
         public string AdminComment { get; set; }

@@ -7,6 +7,7 @@ using TaxiCameBack.Data.Contract;
 using System.Web.Http.Controllers;
 using Castle.Facilities.Logging;
 using TaxiCameBack.Core;
+using TaxiCameBack.Services.Email;
 using TaxiCameBack.Services.Membership;
 using TaxiCameBack.Services.Schedule;
 using TaxiCameBack.Services.Search;
@@ -34,6 +35,8 @@ namespace TaxiCameBack.Website.Dependency
                 Component.For<IScheduleService>().ImplementedBy<ScheduleService>(),
 
                 Component.For<ISearchSchduleService>().ImplementedBy<SearchSchduleService>(),
+
+                Component.For<IEmailService>().ImplementedBy<EmailService>(),
 
                 Classes.FromThisAssembly().BasedOn<IHttpController>().LifestyleTransient()
 

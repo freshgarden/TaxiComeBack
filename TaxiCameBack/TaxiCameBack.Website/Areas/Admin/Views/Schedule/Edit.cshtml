@@ -1,59 +1,8 @@
-﻿
+﻿@model TaxiCameBack.Website.Areas.Admin.Models.ScheduleViewModel
 
-<div class="modal fade bs-example-modal-lg" id="editModal"  role="dialog" tabindex="-1" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header modal-header-primary">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title">Default Modal</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-4">
-                            <div class="box box-primary">
-                                <div class="box-body">
-                                    <div data-bind="with: schedule">
-                                        <div class="form-group">
-                                            <label for="BeginLocation">Begin Location</label>
-                                            <input class="form-control" data-bind="value: BeginLocation, valueUpdate: 'afterkeydown'" data-val="true" data-val-length="The field Begin Location must be a string with a maximum length of 600." data-val-length-max="600" data-val-required="The Begin Location field is required." id="BeginLocation" name="BeginLocation" placeholder="Nhập điểm đi" type="text" value="" autocomplete="off"><span class="validationMessage" style="display: none;"></span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="EndLocation">End Location</label>
-                                            <input class="form-control" data-bind="value: EndLocation, valueUpdate: 'afterkeydown'" data-val="true" data-val-length="The field End Location must be a string with a maximum length of 600." data-val-length-max="600" data-val-required="The End Location field is required." id="EndLocation" name="EndLocation" placeholder="Nhập điểm đến" type="text" value="" autocomplete="off"><span class="validationMessage" style="display: none;"></span>
-                                        </div>
+@{
+    ViewBag.Title = "Update Schedule";
+    Layout = "~/Areas/Admin/Views/shared/_AdminLayout.cshtml";
+}
 
-                                        <div class="form-group">
-                                            <label for="StartDate">Start Date</label>
-                                            <input class="form-control" data-bind="value: $root.schedule().StartDate" data-val="true" data-val-date="The field Start Date must be a date." data-val-required="The Start Date field is required." id="StartDate" name="StartDate" type="text" value="" autocomplete="off"><span class="validationMessage" style="display: none;"></span>
-                                        </div>
-                                        <div>
-                                            <input data-bind="value: ScheduleGeolocations" data-val="true" data-val-required="The ScheduleGeolocations field is required." id="ScheduleGeolocations" name="ScheduleGeolocations" type="hidden" value="" autocomplete="off"><span class="validationMessage" style="display: none;"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="box box-primary">
-                                <div class="box-body">
-                                    <div id="dvMap" style="height: 450px;"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button>
-                
-                <input type="button" class="btn btn-danger pull-right" value="Delete"/>
-                <button type="button" class="btn btn-primary pull-right">Save changes</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
+@Html.Partial("_CreateEdit")

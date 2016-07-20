@@ -55,6 +55,12 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         }
 
         [CustomAuthorize(Roles = AppConstants.StandardMembers)]
+        public ActionResult Edit()
+        {
+            return View();
+        }
+
+        [CustomAuthorize(Roles = AppConstants.StandardMembers)]
         [HttpPut]
         [ValidateAntiForgeryToken]
         public JsonResult UpdateScheduleInfomation(int id, Schedule schedule)
@@ -107,7 +113,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         [NonAction]
         private static DateTime ConvertFromDateTimeString(string date)
         {
-            return DateTime.ParseExact("2012-04-05", "yyyy-MM-dd", CultureInfo.InvariantCulture); ;
+            return DateTime.ParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture); ;
         }
     }
 }

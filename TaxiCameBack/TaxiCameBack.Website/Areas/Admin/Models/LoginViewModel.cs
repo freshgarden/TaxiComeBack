@@ -15,5 +15,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
         public string Password { get; set; }
 
         public bool RememberMe { get; set; }
+
+        public string Message { get; set; }
     }
 }

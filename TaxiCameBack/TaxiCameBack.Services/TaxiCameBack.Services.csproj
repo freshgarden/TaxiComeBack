@@ -70,6 +70,8 @@
     <Compile Include="Common\IEntityService.cs" />
     <Compile Include="Common\IService.cs" />
     <Compile Include="CrudResult.cs" />
+    <Compile Include="Email\EmailService.cs" />
+    <Compile Include="Email\IEmailService.cs" />
     <Compile Include="Membership\IMembershipService.cs" />
     <Compile Include="Membership\MembershipService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

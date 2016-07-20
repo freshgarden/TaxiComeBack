@@ -281,6 +281,7 @@
     <Compile Include="Areas\Admin\Controllers\ErrorsController.cs" />
     <Compile Include="Areas\Admin\Models\AccountViewModels.cs" />
     <Compile Include="Areas\Admin\Models\LoginViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\MemberViewModels.cs" />
     <Compile Include="Areas\Admin\Models\NotFoundModel.cs" />
     <Compile Include="Areas\Admin\Models\RegisterViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ScheduleViewModel.cs" />
@@ -292,7 +293,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Filters\ValidateJsonAntiForgeryTokenAttribute.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -317,6 +317,7 @@
     <Content Include="Content\datetimepicker\jquery.datetimepicker.min.js" />
     <Content Include="Content\dist\css\AdminLTE.css" />
     <Content Include="Content\dist\css\AdminLTE.min.css" />
+    <Content Include="Content\Emails\EmailNotification.htm" />
     <Content Include="Content\jqsDialog\Images\ajax-loader.gif" />
     <Content Include="Content\jqsDialog\Images\chosen-sprite%402x.png" />
     <Content Include="Content\jqsDialog\Images\chosen-sprite.png" />
@@ -1979,6 +1980,11 @@
     <Content Include="Areas\Admin\Views\Account\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Errors\AcessDenied.cshtml" />
     <Content Include="Areas\Admin\Views\Errors\NotFound.cshtml" />
+    <Content Include="Areas\Admin\Views\Schedule\_CreateEdit.cshtml" />
+    <None Include="Areas\Admin\Views\Account\ForgotPassword.cshtml" />
+    <None Include="Areas\Admin\Views\Account\PasswordChanged.cshtml" />
+    <None Include="Areas\Admin\Views\Account\PasswordResetSent.cshtml" />
+    <None Include="Areas\Admin\Views\Account\ResetPassword.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cache\Cache.txt" />
     <Content Include="Scripts\Contact.js" />

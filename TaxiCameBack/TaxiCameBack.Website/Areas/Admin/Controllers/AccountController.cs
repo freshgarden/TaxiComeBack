@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Linq;
-using System.Security.Principal;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 using TaxiCameBack.Core.Constants;
+using TaxiCameBack.Core.DomainModel.Email;
+using TaxiCameBack.Services.Email;
 using TaxiCameBack.Services.Membership;
 using TaxiCameBack.Website.Application.Attributes;
 using TaxiCameBack.Website.Application.Extension;
@@ -17,9 +18,11 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
     public class AccountController : BaseController
     {
         private readonly IMembershipService _membershipService;
-        public AccountController(IMembershipService membershipService)
+        private readonly IEmailService _emailService;
+        public AccountController(IMembershipService membershipService, IEmailService emailService)
         {
             _membershipService = membershipService;
+            _emailService = emailService;
         }
 
         [CustomAuthorize(Roles = AppConstants.AdminRoleName)]
@@ -93,6 +96,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             {
                 viewModel.ReturnUrl = returnUrl;
             }
+            viewModel.Message = (string) TempData["Message"];
             return View(viewModel);
         }
 
@@ -186,6 +190,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             {
                 Email = registerViewModel.Email,
                 Password = registerViewModel.Password,
+                FullName = registerViewModel.FullName
             };
 
             var createStatus = _membershipService.CreateUser(userToSave);
@@ -195,7 +200,126 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 ModelState.AddModelError(string.Empty, createStatus.Errors[0]);
                 return View(registerViewModel);
             }
+            TempData["Message"] = "Create new account was successful! Please wait while administrator approved.";
             return RedirectToAction("Login", "Account", new {area = "Admin"});
+        }
+
+        [HttpGet]
+        public ViewResult PasswordResetSent()
+        {
+            return View();
+        }
+
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ForgotPassword(MemberViewModels.ForgotPasswordViewModel forgotPasswordViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(forgotPasswordViewModel);
+            }
+
+            var user = _membershipService.GetUser(forgotPasswordViewModel.EmailAddress);
+
+            // If the email address is not registered then display the 'email sent' confirmation the same as if 
+            // the email address was registered. There is no harm in doing this and it avoids exposing registered 
+            // email addresses which could be a privacy issue if the forum is of a sensitive nature. */
+            if (user == null)
+            {
+                return RedirectToAction("PasswordResetSent", "Account");
+            }
+            
+            // If the user is registered then create a security token and a timestamp that will allow a change of password
+            if (!_membershipService.UpdatePasswordResetToken(user).Success)
+            {
+                return View(forgotPasswordViewModel);
+            }
+            
+            // At this point the email address is registered and a security token has been created
+            // so send an email with instructions on how to change the password
+            try
+            {
+                var url = new Uri(string.Concat(AppConstants.SiteUrl.TrimEnd('/'), Url.Action("ResetPassword", "Account", new { user.Email, token = user.PasswordResetToken })));
+
+                var sb = new StringBuilder();
+                sb.AppendFormat("<p>{0}</p>", string.Format(AppConstants.ResetPasswordEmailText, AppConstants.SiteName));
+                sb.AppendFormat("<p><a href=\"{0}\">{0}</a></p>", url);
+
+                var email = new Email
+                {
+                    EmailTo = user.Email,
+                    NameTo = user.FullName,
+                    Subject = AppConstants.ForgotPasswordSubject
+                };
+                email.Body = _emailService.EmailTemplate(email.NameTo, sb.ToString());
+                _emailService.SendMail(email);
+            }
+            catch (Exception exception)
+            {
+                ModelState.AddModelError(string.Empty, "Reset password was error: " + exception.Message);
+                return View(forgotPasswordViewModel);
+            }
+
+            return RedirectToAction("PasswordResetSent", "Account");
+        }
+
+        [HttpGet]
+        public ActionResult ResetPassword(string email, string token)
+        {
+            var model = new MemberViewModels.ResetPasswordViewModel
+            {
+                Email = email,
+                Token = token
+            };
+
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(token))
+            {
+                ModelState.AddModelError(string.Empty, AppConstants.ResetPasswordInvalidToken);
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(MemberViewModels.ResetPasswordViewModel postedViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(postedViewModel);
+            }
+
+            if (!string.IsNullOrEmpty(postedViewModel.Email))
+            {
+                var user = _membershipService.GetUser(postedViewModel.Email);
+
+                // if the user id wasn't found then we can't proceed
+                // if the token submitted is not valid then do not proceed
+                if (user == null || user.PasswordResetToken == null || !_membershipService.IsPasswordResetTokenValid(user, postedViewModel.Token))
+                {
+                    ModelState.AddModelError(string.Empty, AppConstants.ResetPasswordInvalidToken);
+                    return View(postedViewModel);
+                }
+
+                if (!_membershipService.ResetPassword(user, postedViewModel.NewPassword))
+                {
+                    ModelState.AddModelError(string.Empty, AppConstants.ResetPasswordInvalidToken);
+                    return View(postedViewModel);
+                }
+            }
+
+            return RedirectToAction("PasswordChanged", "Account");
+        }
+
+        [HttpGet]
+        public ViewResult PasswordChanged()
+        {
+            return View();
         }
     }
 }
