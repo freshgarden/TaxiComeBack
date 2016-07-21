@@ -12,6 +12,7 @@ using TaxiCameBack.Website.Application.Extension;
 using TaxiCameBack.Website.Application.Security;
 using TaxiCameBack.Website.Areas.Admin.Models;
 using TaxiCameBack.Website.ViewModels.Mapping;
+using TaxiCameBack.Website.App_LocalResources;
 
 namespace TaxiCameBack.Website.Areas.Admin.Controllers
 {
@@ -204,15 +205,12 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             return RedirectToAction("Login", "Account", new {area = "Admin"});
         }
 
-        [HttpGet]
-        public ViewResult PasswordResetSent()
-        {
-            return View();
-        }
-
         public ActionResult ForgotPassword()
         {
-            return View();
+            // Create the empty view forgot password model
+            var viewForgotPasswordModel = new MemberViewModels.ForgotPasswordViewModel();
+            viewForgotPasswordModel.Message = (string)TempData["Message"];
+            return View(viewForgotPasswordModel);
         }
 
         [HttpPost]
@@ -231,7 +229,8 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             // email addresses which could be a privacy issue if the forum is of a sensitive nature. */
             if (user == null)
             {
-                return RedirectToAction("PasswordResetSent", "Account");
+                TempData["Message"] = App_LocalResources.ForgotPassword.ERR_MESSAGE_NO_EXIST;
+                return RedirectToAction("ForgotPassword", "Account", new { area = "Admin" });
             }
             
             // If the user is registered then create a security token and a timestamp that will allow a change of password
@@ -265,7 +264,8 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 return View(forgotPasswordViewModel);
             }
 
-            return RedirectToAction("PasswordResetSent", "Account");
+            TempData["Message"] = App_LocalResources.ForgotPassword.SUC_MESSAGE_SEND_EMAIL;
+            return RedirectToAction("Login", "Account", new { area = "Admin" });
         }
 
         [HttpGet]
@@ -313,13 +313,8 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 }
             }
 
-            return RedirectToAction("PasswordChanged", "Account");
-        }
-
-        [HttpGet]
-        public ViewResult PasswordChanged()
-        {
-            return View();
+            TempData["Message"] = App_LocalResources.ResetPassword.SUC_MESSAGE_RESET_PASSWORD;
+            return RedirectToAction("Login", "Account", new { area = "Admin" });
         }
     }
 }

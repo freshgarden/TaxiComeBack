@@ -24,11 +24,11 @@
 
         // Email config
         public const string Smtp = "smtp.gmail.com";
-        public const string SmtpUsername = "admin@gmail.com";
-        public const string SmtpPassword = "password";
+        public const string SmtpUsername = "taxiquayve@gmail.com";
+        public const string SmtpPassword = "taxiquayve2016";
         public const int SmtpPort = 587;
         public const bool SmtpEnableSsl = true;
-        public const string SmtpFromEmail = "admin@local.com";
+        public const string SmtpFromEmail = "taxiquayve@local.com";
 
         // Messages constant
         public const string ForgotPasswordSubject = "Forgot password.";

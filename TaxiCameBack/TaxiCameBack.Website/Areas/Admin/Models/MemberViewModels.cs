@@ -9,6 +9,8 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
             [EmailAddress]
             [Required]
             public string EmailAddress { get; set; }
+
+            public string Message { get; set; }
         }
 
         public class ResetPasswordViewModel

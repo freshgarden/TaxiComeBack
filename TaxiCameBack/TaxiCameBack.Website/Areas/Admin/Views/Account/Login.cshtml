@@ -17,8 +17,6 @@
 
     @Scripts.Render("~/admin/js")
     @Scripts.Render("~/js/icheck")
-    <!-- iCheck -->
-    <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -44,14 +42,14 @@
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                     @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = Login.plc_password } })
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = Login.plc_password } })
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="row">
                     <div class="col-xs-8">
                         <div class="checkbox icheck">
                             <label>
-                                @Html.EditorFor(model => model.RememberMe, new {htmlAttributes = new {@type = "checkbox"}}) @Login.cb_Remember
+                                @Html.EditorFor(model => model.RememberMe, new { htmlAttributes = new { @type = "checkbox" } }) @Login.cb_Remember
                             </label>
                         </div>
                     </div>
@@ -63,7 +61,7 @@
                 </div>
                 @Html.HiddenFor(model => model.ReturnUrl)
             }
-                     
+
             <!-- /.social-auth-links -->
             <a href="@Url.Action("ForgotPassword", "Account")">@Login.lbl_forget_acc</a><br>
             <a href="@Url.Action("Register","Account")" class="text-center">@Login.lbl_reg_new_acc</a>
@@ -82,4 +80,3 @@
     </script>
 </body>
 </html>
-
