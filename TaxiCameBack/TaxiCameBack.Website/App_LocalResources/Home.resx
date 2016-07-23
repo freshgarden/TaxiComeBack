@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Author" xml:space="preserve">
+    <value>© CopyRight FreshGarden Team</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Tìm kiếm taxi đường dài giá rẻ... Địa điểm, địa chỉ số,bản đồ vệ tinh Vietnam Maps - Phát triển bởi FreshGarden Team</value>
+  </data>
+  <data name="Keywords" xml:space="preserve">
+    <value>taxi, taxi trong, dia diem, địa điểm, tim duong, tìm đường, tìm địa chỉ, tìm địa điểm, diadiem,vietnam mapss</value>
+  </data>
+  <data name="lbl_CarType" xml:space="preserve">
+    <value>Loại xe</value>
+  </data>
+  <data name="lbl_CarType4" xml:space="preserve">
+    <value>4 Chỗ</value>
+  </data>
+  <data name="lbl_CarType7" xml:space="preserve">
+    <value>7 Chỗ</value>
+  </data>
+  <data name="lbl_CustomerName" xml:space="preserve">
+    <value>Tên khách hàng</value>
+  </data>
+  <data name="lbl_CustomerPhone" xml:space="preserve">
+    <value>Số điện thoại KH</value>
+  </data>
+  <data name="lbl_DriverName" xml:space="preserve">
+    <value>Tên tài xế</value>
+  </data>
+  <data name="lbl_DriverPhone" xml:space="preserve">
+    <value>Điện thoại liên hệ</value>
+  </data>
+  <data name="lbl_EndPoint" xml:space="preserve">
+    <value>Điểm đến</value>
+  </data>
+  <data name="lbl_FindCar" xml:space="preserve">
+    <value>Tìm xe</value>
+  </data>
+  <data name="lbl_Find_Car_By_Location" xml:space="preserve">
+    <value>Có {0} chuyến xe đang sẵn sàng</value>
+  </data>
+  <data name="lbl_Locate" xml:space="preserve">
+    <value>Định vị</value>
+  </data>
+  <data name="lbl_PlateNumber" xml:space="preserve">
+    <value>Biến số xe</value>
+  </data>
+  <data name="lbl_reg_note" xml:space="preserve">
+    <value>Bạn chỉ phải trả {0} cho chuyến đi này</value>
+  </data>
+  <data name="lbl_reg_note2" xml:space="preserve">
+    <value>(Đơn giá: {0} đ/1km)</value>
+  </data>
+  <data name="lbl_Route" xml:space="preserve">
+    <value>Lộ trình</value>
+  </data>
+  <data name="lbl_SearchResult" xml:space="preserve">
+    <value>Kết quả tìm kiếm</value>
+  </data>
+  <data name="lbl_SearchResult_Content" xml:space="preserve">
+    <value>Không có kết quả nào được tìm thấy</value>
+  </data>
+  <data name="lbl_UserGuide" xml:space="preserve">
+    <value>Hướng dẫn sử dụng</value>
+  </data>
+  <data name="lbl_UserGuideContent" xml:space="preserve">
+    <value>&lt;h2 style="margin-bottom:6px" class="pdboxms3"&gt;Ứng dụng Bản đồ Việt Nam trực tuyến Online, tìm đường đi nhanh và gần nhất, xem bản đồ các tỉnh thành như Hà Nội, Sài Gòn, TP.HCM, Đà Nẵng, Cần Thơ, Hải Phòng, Nha Trang, Bình Dương, Đà Lạt… chỉ đường đi nhanh nhất, ngắn nhất đến các địa điểm, địa chỉ, vị trí,khu vui chơi, khu du lịch, giải trí, khách sạn, nhà hàng trên khắp Việt Nam. Bản đồ vệ tinh, danh bạ địa chỉ số tiện dụng nhất hiện nay.&lt;/h2&gt;&lt;p class="pdboxms3"&gt;Nhập địa chỉ muốn tìm vào khung tìm kiếm trên bản đồ hoặc click vào icon &lt;span class="backmapnew icgetlct"&gt;&lt;/span&gt; để hệ thống tự lấy vị trí hiện tại của bạn.&lt;/p&gt;&lt;p class="pdboxms3"&gt;Sau đó bấm phím &lt;b&gt;"Enter"&lt;/b&gt; hoặc click chuột vào icon &lt;span class="backmapnew icclick"&gt;&lt;/span&gt; để bắt đầu quá trình tìm kiếm.&lt;/p&gt;</value>
+  </data>
+  <data name="lbl_UserGuideHeader" xml:space="preserve">
+    <value>Hướng dẫn tìm vị trí</value>
+  </data>
+  <data name="plh_EndPoint" xml:space="preserve">
+    <value>Nhập điểm đến</value>
+  </data>
+  <data name="plh_FullName" xml:space="preserve">
+    <value>Họ và tên</value>
+  </data>
+  <data name="plh_PhoneNumber" xml:space="preserve">
+    <value>Số điện thoại</value>
+  </data>
+  <data name="plh_StartPoint" xml:space="preserve">
+    <value>Nhập điểm bắt đầu</value>
+  </data>
+  <data name="Site_name" xml:space="preserve">
+    <value>taxiquayve.vn</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Tìm kiếm taxi giá rẻ. Địa điểm, địa chỉ số,bản đồ vệ tinh Vietnam Maps</value>
+  </data>
+  <data name="plh_TimeStart" xml:space="preserve">
+    <value>Nhập thời gian đi</value>
+  </data>
+  <data name="plh_NearPos" xml:space="preserve">
+    <value>Gần vị trí</value>
+  </data>
+  <data name="lbl_NearPos" xml:space="preserve">
+    <value>Gần vị trí</value>
+  </data>
+  <data name="btn_search_title" xml:space="preserve">
+    <value>Tìm kiếm</value>
+  </data>
+  <data name="btn_switch_title" xml:space="preserve">
+    <value>Đổi vị trí</value>
+  </data>
+</root>

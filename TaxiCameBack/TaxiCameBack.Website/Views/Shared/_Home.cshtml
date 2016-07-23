@@ -1,0 +1,31 @@
+﻿@using TaxiCameBack.Website.App_LocalResources
+<!DOCTYPE html>
+<html lang="vi" xmlns="https://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="INDEX,FOLLOW" />
+    <title>@Home.Title </title>
+    <meta name="description" content="@Home.Description" />
+    <meta name="keywords" content="@Home.Keywords" />
+    <meta http-equiv="author" charset="utf-8" content="@Home.Author" />
+    <meta property="og:site_name" content="@Home.Site_name" />
+    <meta property="og:title" itemprop="headline" content="@Home.Title" />
+    <meta property="og:description" itemprop="description" content="@Home.Description" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="address=no" />
+    <link rel="shortcut icon" type="image/x-icon" href="#" />
+    <!--css-->
+    @Styles.Render("~/custom/css")
+    @Styles.Render("~/custom/map")
+    @Styles.Render("~/jquery-ui/css")
+    <!--javascript-->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jquery-migrate")
+    <script type="text/javascript">if(top.location!= self.location){top.location = 'https://vinalo.com';}; $(document).ready(function(){b=$(window).width();  if(b<1200){ $('#headervh').attr('style','position:relative'); $('#bodyvh').attr('style','padding-top:20px'); $('#bodymap').attr('style','padding-top:0'); } })</script>
+
+</head>
+
+@RenderBody()
+</html>
+
