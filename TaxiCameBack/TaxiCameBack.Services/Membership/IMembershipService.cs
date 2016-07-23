@@ -30,7 +30,7 @@ namespace TaxiCameBack.Services.Membership
         CrudResult UpdateUser(MembershipUser user);
         PagedList<MembershipUser> GetAll(int pageIndex, int pageSize);
         string ErrorCodeToString(MembershipCreateStatus createStatus);
-        void ProfileUpdated(MembershipUser user);
+        CrudResult ProfileUpdated(MembershipUser user);
         int MemberCount();
         CrudResult UpdatePasswordResetToken(MembershipUser user);
         bool ClearPasswordResetToken(MembershipUser user);

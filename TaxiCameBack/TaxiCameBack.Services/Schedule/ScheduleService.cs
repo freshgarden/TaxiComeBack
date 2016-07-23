@@ -1,24 +1,26 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
-using System.Globalization;
 using System.Linq;
-using Castle.Core.Internal;
 using TaxiCameBack.Core;
 using TaxiCameBack.Core.DomainModel.Schedule;
 using TaxiCameBack.Core.Utilities;
+using TaxiCameBack.Services.Logging;
 
 namespace TaxiCameBack.Services.Schedule
 {
     public class ScheduleService : IScheduleService
     {
         private IRepository<Core.DomainModel.Schedule.Schedule> _scheduleRepository;
-        private IRepository<ScheduleGeolocation> _scheduleGeolocationRepository; 
-        public ScheduleService(IRepository<Core.DomainModel.Schedule.Schedule> repository, IRepository<ScheduleGeolocation>  scheduleGeolocationRepository)
+        private IRepository<ScheduleGeolocation> _scheduleGeolocationRepository;
+        private ILoggingService _loggingService;
+        public ScheduleService(IRepository<Core.DomainModel.Schedule.Schedule> repository,
+            IRepository<ScheduleGeolocation> scheduleGeolocationRepository,
+            ILoggingService loggingService)
         {
             _scheduleRepository = repository;
             _scheduleGeolocationRepository = scheduleGeolocationRepository;
+            _loggingService = loggingService;
         }
 
         public List<Core.DomainModel.Schedule.Schedule> FindSchedules()
@@ -41,7 +43,7 @@ namespace TaxiCameBack.Services.Schedule
         public ScheduleCreateResult SaveScheduleInformation(Core.DomainModel.Schedule.Schedule schedule)
         {
             var result = new ScheduleCreateResult();
-            
+
             Validate(result, schedule);
             if (result.Errors.Count > 0)
                 return result;
@@ -55,6 +57,7 @@ namespace TaxiCameBack.Services.Schedule
             {
                 _scheduleRepository.UnitOfWork.Rollback();
                 result.AddError(exception.Message);
+                _loggingService.Error(exception);
             }
 
             return result;
@@ -93,7 +96,7 @@ namespace TaxiCameBack.Services.Schedule
                 {
                     schedule.ScheduleGeolocations.Add(newScheduleGeolocation);
                 }
-                
+
                 var oldSchedules = _scheduleRepository.GetById(schedule.Id);
                 _scheduleRepository.Merge(oldSchedules, schedule);
                 _scheduleRepository.UnitOfWork.Commit();
@@ -102,6 +105,7 @@ namespace TaxiCameBack.Services.Schedule
             {
                 _scheduleRepository.UnitOfWork.Rollback();
                 result.AddError(exception.Message);
+                _loggingService.Error(exception);
             }
 
             return result;
@@ -134,12 +138,6 @@ namespace TaxiCameBack.Services.Schedule
             {
                 result.AddError("Start date must be equal or above today");
             }
-        }
-
-        private void UpdateScheduleGeolocation(ScheduleGeolocation scheduleGeolocation)
-        {
-            if (scheduleGeolocation == null)
-                return;
         }
     }
 }

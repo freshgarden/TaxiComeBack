@@ -72,6 +72,8 @@
     <Compile Include="CrudResult.cs" />
     <Compile Include="Email\EmailService.cs" />
     <Compile Include="Email\IEmailService.cs" />
+    <Compile Include="Logging\ILoggingService.cs" />
+    <Compile Include="Logging\LoggingService.cs" />
     <Compile Include="Membership\IMembershipService.cs" />
     <Compile Include="Membership\MembershipService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +82,8 @@
     <Compile Include="Schedule\ScheduleCreateResult.cs" />
     <Compile Include="Schedule\ScheduleService.cs" />
     <Compile Include="Search\SearchSchduleService.cs" />
+    <Compile Include="Settings\ISettingsService.cs" />
+    <Compile Include="Settings\SettingsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TaxiCameBack.Core\TaxiCameBack.Core.csproj">
@@ -89,10 +93,6 @@
     <ProjectReference Include="..\TaxiCameBack.Data\TaxiCameBack.Data.csproj">
       <Project>{E7B3723B-9218-415A-B315-5C345027AD2F}</Project>
       <Name>TaxiCameBack.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TaxiCameBack.DTO\TaxiCameBack.DTO.csproj">
-      <Project>{1584246A-0775-47B6-80E4-BA27E5C9A04F}</Project>
-      <Name>TaxiCameBack.DTO</Name>
     </ProjectReference>
     <ProjectReference Include="..\TaxiCameBack.MapUtilities\TaxiCameBack.MapUtilities.csproj">
       <Project>{ED14E70F-9C96-4EC1-A71B-2F0F2F4E6AC3}</Project>

@@ -6,12 +6,22 @@ using System.Net;
 using System.Net.Mail;
 using System.Web.Hosting;
 using TaxiCameBack.Core.Constants;
+using TaxiCameBack.Services.Logging;
+using TaxiCameBack.Services.Settings;
 
 namespace TaxiCameBack.Services.Email
 {
     public class EmailService : IEmailService
     {
         public List<Core.DomainModel.Email.Email> Emails { get; private set; }
+        private readonly ILoggingService _loggingService;
+        private readonly ISettingsService _settingsService;
+
+        public EmailService(ISettingsService settingsService, ILoggingService loggingService)
+        {
+            _settingsService = settingsService;
+            _loggingService = loggingService;
+        }
 
         public EmailService()
         {
@@ -34,11 +44,12 @@ namespace TaxiCameBack.Services.Email
         {
             using (var sr = File.OpenText(HostingEnvironment.MapPath(@"~/Content/Emails/EmailNotification.htm")))
             {
+                var settings = _settingsService.GetSettings();
                 var sb = sr.ReadToEnd();
                 sr.Close();
                 sb = sb.Replace("#CONTENT#", content);
-                sb = sb.Replace("#SITENAME#", AppConstants.SiteName);
-                sb = sb.Replace("#SITEURL#", AppConstants.SiteUrl);
+                sb = sb.Replace("#SITENAME#", settings.SiteName);
+                sb = sb.Replace("#SITEURL#", settings.SiteUrl);
                 if (!string.IsNullOrEmpty(to))
                 {
                     to = $"<p>{to},</p>";
@@ -49,18 +60,20 @@ namespace TaxiCameBack.Services.Email
             }
         }
 
-        private void ProcessMail()
+        private async void ProcessMail()
         {
             try
             {
                 if (Emails != null && Emails.Any())
                 {
-                    var smtp = AppConstants.Smtp;
-                    var smtpUsername = AppConstants.SmtpUsername;
-                    var smtpPassword = AppConstants.SmtpPassword;
-                    var smtpPort = AppConstants.SmtpPort;
-                    var smtpEnableSsl = AppConstants.SmtpEnableSsl;
-                    var fromEmail = AppConstants.SmtpFromEmail;
+                    // Get the mails settings
+                    var settings = _settingsService.GetSettings();
+                    var smtp = settings.SMTP;
+                    var smtpUsername = settings.SMTPUsername;
+                    var smtpPassword = settings.SMTPPassword;
+                    var smtpPort = settings.SMTPPort;
+                    var smtpEnableSsl = settings.SMTPEnableSSL;
+                    var fromEmail = settings.NotificationReplyEmail;
 
                     // If no SMTP settings then log it
                     if (string.IsNullOrEmpty(smtp))
@@ -77,8 +90,15 @@ namespace TaxiCameBack.Services.Email
                         mySmtpClient.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
                     }
 
-                    mySmtpClient.EnableSsl = smtpEnableSsl;
-                    mySmtpClient.Port = smtpPort;
+                    if (smtpEnableSsl != null)
+                    {
+                        mySmtpClient.EnableSsl = (bool)smtpEnableSsl;
+                    }
+
+                    if (!string.IsNullOrEmpty(smtpPort))
+                    {
+                        mySmtpClient.Port = Convert.ToInt32(smtpPort);
+                    }
 
                     // List to store the emails to delete after they are sent
                     var emailsToDelete = new List<Core.DomainModel.Email.Email>();
@@ -94,7 +114,7 @@ namespace TaxiCameBack.Services.Email
                             Subject = message.Subject
                         };
                         msg.To.Add(message.EmailTo);
-                        mySmtpClient.Send(msg);
+                        await mySmtpClient.SendMailAsync(msg);
 
                         emailsToDelete.Add(message);
                     }
@@ -102,7 +122,7 @@ namespace TaxiCameBack.Services.Email
             }
             catch (Exception exception)
             {
-                throw new AccessViolationException();
+                _loggingService.Error(exception);
             }
         }
     }

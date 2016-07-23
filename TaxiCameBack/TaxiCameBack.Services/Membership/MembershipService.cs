@@ -13,6 +13,7 @@ using TaxiCameBack.Core.Utilities;
 using TaxiCameBack.Data;
 using TaxiCameBack.Data.Contract;
 using TaxiCameBack.Services.Common;
+using TaxiCameBack.Services.Logging;
 
 namespace TaxiCameBack.Services.Membership
 {
@@ -20,13 +21,16 @@ namespace TaxiCameBack.Services.Membership
     {
         private IRepository<MembershipUser> _membershipRepository;
         private IQueryableUnitOfWork _unitOfWork;
+        private ILoggingService _loggingService;
         public MembershipService(
             IRepository<MembershipUser> membershipRepository,
-            IQueryableUnitOfWork unitOfWork) 
+            IQueryableUnitOfWork unitOfWork,
+            ILoggingService loggingService)
             : base(membershipRepository)
         {
             _membershipRepository = membershipRepository;
             _unitOfWork = unitOfWork;
+            _loggingService = loggingService;
         }
 
         public MembershipUser SanitizeUser(MembershipUser membershipUser)
@@ -72,10 +76,10 @@ namespace TaxiCameBack.Services.Membership
                         RoleName = AppConstants.StandardMembers
                     }
                 };
-                
+
                 // set dates
                 newUser.CreatedOnUtc = DateTime.UtcNow;
-//                newUser.LastLockoutDate = (DateTime) SqlDateTime.MinValue;
+                //                newUser.LastLockoutDate = (DateTime) SqlDateTime.MinValue;
                 newUser.LastLoginDateUtc = DateTime.UtcNow;
                 newUser.IsLockedOut = false;
                 newUser.Active = false;
@@ -89,6 +93,7 @@ namespace TaxiCameBack.Services.Membership
                 {
                     _membershipRepository.UnitOfWork.Rollback();
                     crudResult.AddError(ex.Message);
+                    _loggingService.Error(ex);
                 }
             }
             if (status != MembershipCreateStatus.Success)
@@ -112,6 +117,7 @@ namespace TaxiCameBack.Services.Membership
             {
                 _membershipRepository.UnitOfWork.Rollback();
                 crudResult.AddError(ex.Message);
+                _loggingService.Error(ex);
             }
             return crudResult;
         }
@@ -140,7 +146,7 @@ namespace TaxiCameBack.Services.Membership
 
                 case MembershipCreateStatus.InvalidEmail:
                     return "Invalid Email";
-                    
+
                 case MembershipCreateStatus.UserRejected:
                     return "User Rejected";
 
@@ -149,9 +155,22 @@ namespace TaxiCameBack.Services.Membership
             }
         }
 
-        public void ProfileUpdated(MembershipUser user)
+        public CrudResult ProfileUpdated(MembershipUser user)
         {
-            throw new NotImplementedException();
+            var result = new CrudResult();
+            var oldUser = _membershipRepository.GetById(user.UserId);
+            try
+            {
+                _membershipRepository.Merge(oldUser, user);
+                _membershipRepository.UnitOfWork.Commit();
+            }
+            catch (Exception exception)
+            {
+                _membershipRepository.UnitOfWork.Rollback();
+                result.AddError(exception.Message);
+                _loggingService.Error(exception);
+            }
+            return result;
         }
 
         public int MemberCount()
@@ -179,6 +198,7 @@ namespace TaxiCameBack.Services.Membership
             {
                 _membershipRepository.UnitOfWork.Rollback();
                 result.AddError(exception.Message);
+                _loggingService.Error(exception);
             }
             return result;
         }
@@ -311,21 +331,21 @@ namespace TaxiCameBack.Services.Membership
         /// <returns></returns>
         public MembershipUser GetUser(string userEmail, bool removeTracking = false)
         {
-//            if (removeTracking)
-//            {
-//                member = ((EfUnitOfWork)_unitOfWork).MembershipUser.Include(x => x.Roles)
-//                    .AsNoTracking().FirstOrDefault(u => u.Email.Equals(userEmail, StringComparison.CurrentCultureIgnoreCase));
-//            }
-//            else
-//            {
-//                member =
-//                    ((EfUnitOfWork)_unitOfWork).MembershipUser.Include(x => x.Roles)
-//                    .FirstOrDefault(name => name.Email.Equals(userEmail, StringComparison.CurrentCultureIgnoreCase));
-//            }
+            //            if (removeTracking)
+            //            {
+            //                member = ((EfUnitOfWork)_unitOfWork).MembershipUser.Include(x => x.Roles)
+            //                    .AsNoTracking().FirstOrDefault(u => u.Email.Equals(userEmail, StringComparison.CurrentCultureIgnoreCase));
+            //            }
+            //            else
+            //            {
+            //                member =
+            //                    ((EfUnitOfWork)_unitOfWork).MembershipUser.Include(x => x.Roles)
+            //                    .FirstOrDefault(name => name.Email.Equals(userEmail, StringComparison.CurrentCultureIgnoreCase));
+            //            }
 
             userEmail = StringUtils.SafePlainText(userEmail);
             var member = _membershipRepository.FindBy(x => x.Email == userEmail).FirstOrDefault();
-            
+
             // Do a check to log out the user if they are logged in and have been deleted
             if (member == null && HttpContext.Current.User.Identity.Name == userEmail)
             {
@@ -350,7 +370,7 @@ namespace TaxiCameBack.Services.Membership
             {
                 var user = GetUser(userEmail);
                 if (user.Active && !user.IsLockedOut)
-                {   
+                {
                     user.LastLoginDateUtc = DateTime.Now;
 
                     try
@@ -361,6 +381,7 @@ namespace TaxiCameBack.Services.Membership
                     {
                         _membershipRepository.UnitOfWork.Rollback();
                         crudReuslt.AddError(ex.Message);
+                        _loggingService.Error(ex);
                     }
                 }
             }
@@ -390,15 +411,46 @@ namespace TaxiCameBack.Services.Membership
                 _membershipRepository.UnitOfWork.Commit();
                 return true;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                _loggingService.Error(exception);
                 return false;
             }
         }
 
         public bool ChangePassword(MembershipUser user, string oldPassword, string newPassword)
         {
-            throw new NotImplementedException();
+            oldPassword = StringUtils.SafePlainText(oldPassword);
+            newPassword = StringUtils.SafePlainText(newPassword);
+
+            var existingUser = GetById(user.UserId);
+            var salt = existingUser.PasswordSalt;
+            var oldHash = StringUtils.GenerateSaltedHash(oldPassword, salt);
+
+            if (oldHash != existingUser.Password)
+            {
+                // Old password is wrong - do not allow update
+                return false;
+            }
+
+            // Cleared to go ahead with new password
+            salt = StringUtils.CreateSalt(AppConstants.SaltSize);
+            var newHash = StringUtils.GenerateSaltedHash(newPassword, salt);
+
+            existingUser.Password = newHash;
+            existingUser.PasswordSalt = salt;
+
+            try
+            {
+                _membershipRepository.UnitOfWork.Commit();
+                return true;
+            }
+            catch (Exception exception)
+            {
+                _membershipRepository.UnitOfWork.Rollback();
+                _loggingService.Error(exception);
+                return false;
+            }
         }
     }
 }
