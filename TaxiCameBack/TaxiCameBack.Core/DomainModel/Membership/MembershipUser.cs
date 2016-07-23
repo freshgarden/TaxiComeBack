@@ -22,7 +22,7 @@ namespace TaxiCameBack.Core.DomainModel.Membership
         /// </summary>
         [Key]
         public int UserId { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the email
         /// </summary>
@@ -31,7 +31,7 @@ namespace TaxiCameBack.Core.DomainModel.Membership
         /// Gets or sets the password
         /// </summary>
         public string Password { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the password salt
         /// </summary>
@@ -53,14 +53,26 @@ namespace TaxiCameBack.Core.DomainModel.Membership
         public bool Active { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        public string Avatar { get; set; }
+
+        public DateTime DateOfBirth { get; set; }
+
+        public string Gender { get; set; }
+
+        public string Address { get; set; }
+
+        public string PhoneNumber { get; set; }
+
+        public string CarNumber { get; set; }
+
+        public string Carmakers { get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether the customer has been deleted
         /// </summary>
         public bool Deleted { get; set; }
-
-        /// <summary>
-        /// Gets or sets the last IP address
-        /// </summary>
-        public string LastIpAddress { get; set; }
 
         /// <summary>
         /// Gets or sets the date and time of entity creation

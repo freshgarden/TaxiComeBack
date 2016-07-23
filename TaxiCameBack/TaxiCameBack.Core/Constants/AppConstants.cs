@@ -18,17 +18,12 @@
 
         public const int PagingGroupSize = 10;
 
-        public const string SiteUrl = "http://localhost";
-
-        public const string SiteName = "Taxi Came Back";
-
-        // Email config
-        public const string Smtp = "smtp.gmail.com";
-        public const string SmtpUsername = "taxiquayve@gmail.com";
-        public const string SmtpPassword = "taxiquayve2016";
-        public const int SmtpPort = 587;
-        public const bool SmtpEnableSsl = true;
-        public const string SmtpFromEmail = "taxiquayve@local.com";
+        public const string MessageViewBagName = "Message";
+        
+        public const int FileUploadMaximumFileSizeInBytes = 5242880;
+        public const string FileUploadAllowedExtensions = "jpg,jpeg,png,gif,pdf";
+        public const string UploadFolderPath = "~/content/uploads/";
+        public const int AvatarProfileSize = 85;
 
         // Messages constant
         public const string ForgotPasswordSubject = "Forgot password.";

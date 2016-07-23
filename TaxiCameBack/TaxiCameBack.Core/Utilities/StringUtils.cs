@@ -12,6 +12,77 @@ namespace TaxiCameBack.Core.Utilities
     public static class StringUtils
     {
         /// <summary>
+        /// Checks whether the string is Null Or Empty
+        /// </summary>
+        /// <param name="theInput"></param>
+        /// <returns></returns>
+        public static bool IsNullEmpty(this string theInput)
+        {
+            return string.IsNullOrEmpty(theInput);
+        }
+
+        /// <summary>
+        /// Converts the string to Int32
+        /// </summary>
+        /// <param name="theInput"></param>
+        /// <returns></returns>
+        public static int ToInt32(this string theInput)
+        {
+            return !string.IsNullOrEmpty(theInput) ? Convert.ToInt32(theInput) : 0;
+        }
+
+        #region Social Helpers
+        public static string GetGravatarImage(string email, int size)
+        {
+            return IsValidEmail(email) ? string.Format("//www.gravatar.com/avatar/{0}?s={1}&d=identicon&r=PG", md5HashString(email), size) : "";
+        }
+        #endregion
+
+        #region Validation
+
+        public static string md5HashString(string toHash)
+        {
+            // Create a new instance of the MD5CryptoServiceProvider object.
+            var md5Hasher = MD5.Create();
+
+            // Convert the input string to a byte array and compute the hash.
+            byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(toHash));
+
+            // Create a new Stringbuilder to collect the bytes
+            // and create a string.
+            var sBuilder = new StringBuilder();
+
+            // Loop through each byte of the hashed data 
+            // and format each one as a hexadecimal string.
+            for (var i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+
+            return sBuilder.ToString();  // Return the hexadecimal string.
+        }
+
+        /// <summary>
+        /// Checks to see if the string passed in is a valid email address
+        /// </summary>
+        /// <param name="strIn"></param>
+        /// <returns></returns>
+        public static bool IsValidEmail(string strIn)
+        {
+            if (strIn.IsNullEmpty())
+            {
+                return false;
+            }
+
+            // Return true if strIn is in valid e-mail format.
+            return Regex.IsMatch(strIn,
+                   @"^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))" +
+                   @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$");
+        }
+
+        #endregion
+
+        /// <summary>
         /// Returns safe plain text using XSS library
         /// </summary>
         /// <param name="input"></param>
