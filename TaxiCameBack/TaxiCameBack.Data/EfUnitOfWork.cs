@@ -7,6 +7,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Reflection;
 using TaxiCameBack.Core.DomainModel.Membership;
+using TaxiCameBack.Core.DomainModel.Settings;
 using TaxiCameBack.Data.Contract;
 using TaxiCameBack.Data.Migrations;
 
@@ -34,6 +35,7 @@ namespace TaxiCameBack.Data
 
         public DbSet<MembershipRole> MembershipRole { get; set; }
         public DbSet<MembershipUser> MembershipUser { get; set; }
+        public DbSet<Settings> Settings { get; set; }
 
         public void Commit()
         {

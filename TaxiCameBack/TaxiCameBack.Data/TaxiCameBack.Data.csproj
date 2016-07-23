@@ -57,6 +57,7 @@
     <Compile Include="Mapping\MembershipMapping\MembershipUserMapping.cs" />
     <Compile Include="Mapping\Schedule\ScheduleGeolocationMapping.cs" />
     <Compile Include="Mapping\Schedule\ScheduleMapping.cs" />
+    <Compile Include="Mapping\Settings\SettingsMapping.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -4,6 +4,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using TaxiCameBack.Core.Constants;
 using TaxiCameBack.Core.DomainModel.Membership;
+using TaxiCameBack.Core.DomainModel.Settings;
 using TaxiCameBack.Core.Utilities;
 
 namespace TaxiCameBack.Data.Migrations
@@ -23,7 +24,7 @@ namespace TaxiCameBack.Data.Migrations
             var adminRole = context.CreateSet<MembershipRole>().FirstOrDefault(x => x.RoleName == AppConstants.AdminRoleName);
             if (adminRole == null)
             {
-                adminRole = new MembershipRole{ RoleName = AppConstants.AdminRoleName };
+                adminRole = new MembershipRole { RoleName = AppConstants.AdminRoleName };
                 context.MembershipRole.Add(adminRole);
                 saveRoles = true;
             }
@@ -51,7 +52,13 @@ namespace TaxiCameBack.Data.Migrations
                 {
                     Email = adminUserEmail,
                     Active = true,
+                    FullName = "Administrator",
+                    Address = "Example",
                     Password = "password",
+                    CarNumber = "88A-8888",
+                    DateOfBirth = DateTime.Now.AddYears(-25),
+                    PhoneNumber = "0932142817",
+                    Carmakers = "Vic",
                     CreatedOnUtc = DateTime.UtcNow,
                     LastLoginDateUtc = DateTime.UtcNow,
                     IsLockedOut = false,
@@ -68,6 +75,24 @@ namespace TaxiCameBack.Data.Migrations
 
                 context.MembershipUser.Add(admin);
                 context.SaveChanges();
+            }
+
+            // if the settings already exist then do nothing
+            // If not then add default settings
+            var currentSettings = context.Settings.FirstOrDefault();
+            if (currentSettings == null)
+            {
+                var settings = new Settings
+                {
+                    SiteName = "Taxi Came Back",
+                    SiteUrl = "http://www.domain.com",
+                    AdminEmailAddress = "my@email.com",
+                    NotificationReplyEmail = "noreply@myemail.com",
+                    SMTPEnableSSL = false,
+                };
+
+                context.Settings.Add(settings);
+                context.Commit();
             }
         }
     }
