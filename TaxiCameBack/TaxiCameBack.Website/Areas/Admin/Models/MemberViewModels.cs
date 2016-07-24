@@ -38,43 +38,32 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
             public string Avatar { get; set; }
 
             [DisplayName("Date Of Birth")]
-            public DateTime DateOfBirth { get; set; }
+            public DateTime? DateOfBirth { get; set; }
 
             [DisplayName("Day")]
-            [Required]
             public int Day { get; set; }
 
             [DisplayName("Month")]
-            [Required]
             public int Month { get; set; }
 
             [DisplayName("Year")]
-            [Required]
             public int Year { get; set; }
 
             [DisplayName("Address")]
-            [Required]
             public string Address { get; set; }
 
             [DisplayName("Gender")]
-            [Required]
             public string Gender { get; set; }
 
             [DisplayName("Phone Number")]
             [Required]
             [RegularExpression(@"^(0\d{9,10})$", ErrorMessage = "Invalid phone.")]
             public string PhoneNumber { get; set; }
-
-            [DisplayName("Car Sit Type")]
-            [Required]
-            public string CarSitType { get; set; }
-
+            
             [DisplayName("Car Number")]
-            [Required]
             public string CarNumber { get; set; }
 
             [DisplayName("Carmakers")]
-            [Required]
             public string Carmakers { get; set; }
 
         }

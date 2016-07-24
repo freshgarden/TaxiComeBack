@@ -244,6 +244,7 @@
   <ItemGroup>
     <Compile Include="Application\AppHelpers.cs" />
     <Compile Include="Application\Attributes\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Application\Attributes\ModelAttribute.cs" />
     <Compile Include="Application\Extension\Extensions.cs" />
     <Compile Include="Application\Extension\HtmlLabelExtensions.cs" />
     <Compile Include="Application\Extension\ModelStateHelper.cs" />
@@ -2327,10 +2328,6 @@
     <ProjectReference Include="..\TaxiCameBack.Data\TaxiCameBack.Data.csproj">
       <Project>{E7B3723B-9218-415A-B315-5C345027AD2F}</Project>
       <Name>TaxiCameBack.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TaxiCameBack.DTO\TaxiCameBack.DTO.csproj">
-      <Project>{1584246a-0775-47b6-80e4-ba27e5c9a04f}</Project>
-      <Name>TaxiCameBack.DTO</Name>
     </ProjectReference>
     <ProjectReference Include="..\TaxiCameBack.MapUtilities\TaxiCameBack.MapUtilities.csproj">
       <Project>{ED14E70F-9C96-4EC1-A71B-2F0F2F4E6AC3}</Project>

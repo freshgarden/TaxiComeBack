@@ -38,7 +38,6 @@ namespace TaxiCameBack.Services.Membership
             membershipUser.Email = StringUtils.SafePlainText(membershipUser.Email);
             membershipUser.Password = StringUtils.SafePlainText(membershipUser.Password);
             membershipUser.FullName = StringUtils.SafePlainText(membershipUser.FullName);
-            membershipUser.CarSitType = StringUtils.SafePlainText(membershipUser.CarSitType);
             membershipUser.Address = StringUtils.SafePlainText(membershipUser.Address);
             membershipUser.Carmakers = StringUtils.SafePlainText(membershipUser.Carmakers);
             membershipUser.CarNumber = StringUtils.SafePlainText(membershipUser.CarNumber);

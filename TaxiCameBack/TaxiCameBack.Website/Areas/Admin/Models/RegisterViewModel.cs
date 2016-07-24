@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using TaxiCameBack.Website.App_LocalResources;
 using System.Web;
+using TaxiCameBack.Website.Application.Attributes;
 
 namespace TaxiCameBack.Website.Areas.Admin.Models
 {
@@ -31,47 +32,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
         [Compare("Password", ErrorMessageResourceType = typeof(Register), ErrorMessageResourceName = "re_password_match")]
         public string RetypePassword { get; set; }
 
-        [Range(typeof(bool), "true", "true", ErrorMessageResourceType = typeof(Register), ErrorMessageResourceName = "rqr_agree_term")]
+        [MustBeTrue(ErrorMessageResourceType = typeof(Register), ErrorMessageResourceName = "rqr_agree_term")]
         public bool AgreeTerm { get; set; }
-
-        [DisplayName("Upload New Avatar")]
-        public HttpPostedFileBase File { get; set; }
-
-        public string Avatar { get; set; }
-
-        [DisplayName("Date Of Birth")]
-        public DateTime DateOfBirth { get; set; }
-
-        [DisplayName("Day")]
-        [Required]
-        public int Day { get; set; }
-
-        [DisplayName("Month")]
-        [Required]
-        public int Month { get; set; }
-
-        [DisplayName("Year")]
-        [Required]
-        public int Year { get; set; }
-
-        [DisplayName("Address")]
-        [Required]
-        public string Address { get; set; }
-
-        [DisplayName("Gender")]
-        [Required]
-        public string Gender { get; set; }
-        
-        [DisplayName("Car Sit Type")]
-        [Required]
-        public string CarSitType { get; set; }
-
-        [DisplayName("Car Number")]
-        [Required]
-        public string CarNumber { get; set; }
-
-        [DisplayName("Carmakers")]
-        [Required]
-        public string Carmakers { get; set; }
     }
 }

@@ -193,50 +193,13 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 return View(registerViewModel);
             }
 
-            var userToSave = new Core.DomainModel.Membership.MembershipUser();
-
-            // Sort image out first
-            if (registerViewModel.File != null)
+            var userToSave = new Core.DomainModel.Membership.MembershipUser
             {
-                var lastUser = _membershipService.GetAll().LastOrDefault();
-                // Before we save anything, check the user already has an upload folder and if not create one
-                var uploadFolderPath = HostingEnvironment.MapPath(string.Concat(AppConstants.UploadFolderPath, lastUser.UserId + 1));
-                if (uploadFolderPath != null && Directory.Exists(uploadFolderPath))
-                {
-                    Directory.Delete(uploadFolderPath);
-                }
-
-                if (uploadFolderPath != null && !Directory.Exists(uploadFolderPath))
-                {
-                    Directory.CreateDirectory(uploadFolderPath);
-                }
-
-                var uploadResult = AppHelpers.UploadFile(registerViewModel.File, uploadFolderPath, true);
-                if (!uploadResult.UploadSuccessful)
-                {
-                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
-                    {
-                        Message = uploadResult.ErrorMessage,
-                        MessageType = GenericMessages.danger
-                    };
-                    return View(registerViewModel);
-                }
-
-                // Save avatar to user
-                userToSave.Avatar = uploadResult.UploadedFileName;
-            }
-
-            registerViewModel.Avatar = userToSave.Avatar;
-            userToSave.Email = registerViewModel.Email;
-            userToSave.Password = registerViewModel.Password;
-            userToSave.Address = registerViewModel.Address;
-            userToSave.Gender = registerViewModel.Gender;
-            userToSave.CarSitType = registerViewModel.CarSitType;
-            userToSave.CarNumber = registerViewModel.CarNumber;
-            userToSave.Carmakers = registerViewModel.Carmakers;
-            userToSave.PhoneNumber = registerViewModel.Phone;
-            userToSave.FullName = registerViewModel.FullName;
-            userToSave.DateOfBirth = new DateTime(registerViewModel.Year, registerViewModel.Month, registerViewModel.Day);
+                Email = registerViewModel.Email,
+                Password = registerViewModel.Password,
+                FullName = registerViewModel.FullName,
+                PhoneNumber = registerViewModel.Phone
+            };
 
             var createStatus = _membershipService.CreateUser(userToSave);
 
@@ -260,11 +223,10 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 Gender = user.Gender,
                 PhoneNumber = user.PhoneNumber,
                 Carmakers = user.Carmakers,
-                CarSitType = user.CarSitType,
                 DateOfBirth = user.DateOfBirth,
-                Day = user.DateOfBirth.Day,
-                Month = user.DateOfBirth.Month,
-                Year = user.DateOfBirth.Year,
+                Day = user.DateOfBirth?.Day ?? 0,
+                Month = user.DateOfBirth?.Month ?? 0,
+                Year = user.DateOfBirth?.Year ?? 0,
                 CarNumber = user.CarNumber,
                 Address = user.Address
             };
@@ -309,7 +271,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                     var uploadFolderPath = HostingEnvironment.MapPath(string.Concat(AppConstants.UploadFolderPath, editViewModel.Id));
                     if (uploadFolderPath != null && Directory.Exists(uploadFolderPath))
                     {
-                        Directory.Delete(uploadFolderPath);
+                        Directory.Delete(uploadFolderPath, true);
                     }
 
                     if (uploadFolderPath != null && !Directory.Exists(uploadFolderPath))
@@ -333,15 +295,17 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 }
 
                 editViewModel.Avatar = loggedOnUser.Avatar;
-                loggedOnUser.Address = editViewModel.Address;
-                loggedOnUser.Gender = editViewModel.Gender;
-                loggedOnUser.CarSitType = editViewModel.CarSitType;
-                loggedOnUser.CarNumber = editViewModel.CarNumber;
-                loggedOnUser.Carmakers = editViewModel.Carmakers;
+                loggedOnUser.Address = !string.IsNullOrEmpty(editViewModel.Address) ? editViewModel.Address : loggedOnUser.Address;
+                loggedOnUser.Gender = !string.IsNullOrEmpty(editViewModel.Gender) ? editViewModel.Gender : loggedOnUser.Gender;
+                loggedOnUser.CarNumber = !string.IsNullOrEmpty(editViewModel.CarNumber) ? editViewModel.CarNumber : loggedOnUser.CarNumber;
+                loggedOnUser.Carmakers = !string.IsNullOrEmpty(editViewModel.Carmakers) ? editViewModel.Carmakers : loggedOnUser.Carmakers;
                 loggedOnUser.PhoneNumber = editViewModel.PhoneNumber;
                 loggedOnUser.FullName = editViewModel.FullName;
-                loggedOnUser.DateOfBirth = new DateTime(editViewModel.Year, editViewModel.Month, editViewModel.Day);
-                
+                if (editViewModel.Day > 0 && editViewModel.Month > 0 && editViewModel.Year > 0)
+                {
+                    loggedOnUser.DateOfBirth = new DateTime(editViewModel.Year, editViewModel.Month, editViewModel.Day);
+                }
+
                 var result = _membershipService.ProfileUpdated(loggedOnUser);
                 if (result.Success)
                 {

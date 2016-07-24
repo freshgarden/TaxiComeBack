@@ -34,7 +34,6 @@ namespace TaxiCameBack.Website.Controllers
                 UserGender = schedule.User.PhoneNumber,
                 UserPhoneNumber = schedule.User.PhoneNumber,
                 UserAvatar = schedule.User.Avatar,
-                UserCarSitType = schedule.User.CarSitType,
                 UserCarNumber = schedule.User.CarNumber,
                 UserCarmakers = schedule.User.Carmakers
             }).ToList();
