@@ -116,8 +116,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                HttpCookie cookie = null;
-                var reuslt = _membershipService.Logon(loginViewModel.UserName, loginViewModel.Password, loginViewModel.RememberMe, ref cookie);
+                var reuslt = _membershipService.Logon(loginViewModel.UserName, loginViewModel.Password, loginViewModel.RememberMe);
                 if (reuslt.Errors.Count <= 0)
                 {
                     // get here Login failed, check the login status
@@ -146,8 +145,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                     {
                         return View(loginViewModel);
                     }
-                    if (cookie != null)
-                        Response.Cookies.Add(cookie);
+                    
                     SessionPersister.Username = loginViewModel.UserName;
                     SessionPersister.UserId = _membershipService.GetUser(loginViewModel.UserName).UserId;
                     SessionPersister.Roles = _membershipService.GetRolesForUser(loginViewModel.UserName).ToArray();
@@ -188,15 +186,57 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
+//                var error = string.Join("; ", ModelState.Values
+//                                        .SelectMany(x => x.Errors)
+//                                        .Select(x => x.ErrorMessage));
+//                ModelState.AddModelError(string.Empty, error);
                 return View(registerViewModel);
             }
 
-            var userToSave = new Core.DomainModel.Membership.MembershipUser
+            var userToSave = new Core.DomainModel.Membership.MembershipUser();
+
+            // Sort image out first
+            if (registerViewModel.File != null)
             {
-                Email = registerViewModel.Email,
-                Password = registerViewModel.Password,
-                FullName = registerViewModel.FullName
-            };
+                var lastUser = _membershipService.GetAll().LastOrDefault();
+                // Before we save anything, check the user already has an upload folder and if not create one
+                var uploadFolderPath = HostingEnvironment.MapPath(string.Concat(AppConstants.UploadFolderPath, lastUser.UserId + 1));
+                if (uploadFolderPath != null && Directory.Exists(uploadFolderPath))
+                {
+                    Directory.Delete(uploadFolderPath);
+                }
+
+                if (uploadFolderPath != null && !Directory.Exists(uploadFolderPath))
+                {
+                    Directory.CreateDirectory(uploadFolderPath);
+                }
+
+                var uploadResult = AppHelpers.UploadFile(registerViewModel.File, uploadFolderPath, true);
+                if (!uploadResult.UploadSuccessful)
+                {
+                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                    {
+                        Message = uploadResult.ErrorMessage,
+                        MessageType = GenericMessages.danger
+                    };
+                    return View(registerViewModel);
+                }
+
+                // Save avatar to user
+                userToSave.Avatar = uploadResult.UploadedFileName;
+            }
+
+            registerViewModel.Avatar = userToSave.Avatar;
+            userToSave.Email = registerViewModel.Email;
+            userToSave.Password = registerViewModel.Password;
+            userToSave.Address = registerViewModel.Address;
+            userToSave.Gender = registerViewModel.Gender;
+            userToSave.CarSitType = registerViewModel.CarSitType;
+            userToSave.CarNumber = registerViewModel.CarNumber;
+            userToSave.Carmakers = registerViewModel.Carmakers;
+            userToSave.PhoneNumber = registerViewModel.Phone;
+            userToSave.FullName = registerViewModel.FullName;
+            userToSave.DateOfBirth = new DateTime(registerViewModel.Year, registerViewModel.Month, registerViewModel.Day);
 
             var createStatus = _membershipService.CreateUser(userToSave);
 
@@ -220,6 +260,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 Gender = user.Gender,
                 PhoneNumber = user.PhoneNumber,
                 Carmakers = user.Carmakers,
+                CarSitType = user.CarSitType,
                 DateOfBirth = user.DateOfBirth,
                 Day = user.DateOfBirth.Day,
                 Month = user.DateOfBirth.Month,
@@ -294,6 +335,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 editViewModel.Avatar = loggedOnUser.Avatar;
                 loggedOnUser.Address = editViewModel.Address;
                 loggedOnUser.Gender = editViewModel.Gender;
+                loggedOnUser.CarSitType = editViewModel.CarSitType;
                 loggedOnUser.CarNumber = editViewModel.CarNumber;
                 loggedOnUser.Carmakers = editViewModel.Carmakers;
                 loggedOnUser.PhoneNumber = editViewModel.PhoneNumber;

@@ -32,6 +32,7 @@ namespace TaxiCameBack.Data.Mapping.MembershipMapping
             Property(x => x.Address).IsRequired();
             Property(x => x.Gender).IsOptional();
             Property(x => x.PhoneNumber).IsRequired();
+            Property(x => x.CarSitType).IsOptional();
             Property(x => x.CreatedOnUtc).IsRequired();
             Property(x => x.LastLoginDateUtc).IsRequired();
             Property(x => x.CarNumber).IsRequired();

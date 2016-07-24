@@ -38,6 +38,11 @@ namespace TaxiCameBack.Services.Membership
             membershipUser.Email = StringUtils.SafePlainText(membershipUser.Email);
             membershipUser.Password = StringUtils.SafePlainText(membershipUser.Password);
             membershipUser.FullName = StringUtils.SafePlainText(membershipUser.FullName);
+            membershipUser.CarSitType = StringUtils.SafePlainText(membershipUser.CarSitType);
+            membershipUser.Address = StringUtils.SafePlainText(membershipUser.Address);
+            membershipUser.Carmakers = StringUtils.SafePlainText(membershipUser.Carmakers);
+            membershipUser.CarNumber = StringUtils.SafePlainText(membershipUser.CarNumber);
+            membershipUser.Gender = StringUtils.SafePlainText(membershipUser.Gender);
             return membershipUser;
         }
 
@@ -106,7 +111,7 @@ namespace TaxiCameBack.Services.Membership
             if (user == null)
                 throw new ArgumentNullException(nameof(user));
             var crudResult = new CrudResult();
-
+            user = SanitizeUser(user);
             _membershipRepository.Update(user);
 
             try
@@ -159,6 +164,7 @@ namespace TaxiCameBack.Services.Membership
         {
             var result = new CrudResult();
             var oldUser = _membershipRepository.GetById(user.UserId);
+            user = SanitizeUser(user);
             try
             {
                 _membershipRepository.Merge(oldUser, user);
@@ -180,6 +186,7 @@ namespace TaxiCameBack.Services.Membership
 
         public CrudResult UpdatePasswordResetToken(MembershipUser user)
         {
+            user = SanitizeUser(user);
             var result = new CrudResult();
             var existingUser = GetUser(user.Email);
             if (existingUser == null)
@@ -205,6 +212,7 @@ namespace TaxiCameBack.Services.Membership
 
         public bool ClearPasswordResetToken(MembershipUser user)
         {
+            user = SanitizeUser(user);
             var existingUser = _membershipRepository.GetById(user.UserId);
             if (existingUser == null)
             {
@@ -231,6 +239,7 @@ namespace TaxiCameBack.Services.Membership
         /// </summary>
         public bool IsPasswordResetTokenValid(MembershipUser user, string token)
         {
+            user = SanitizeUser(user);
             var existingUser = _membershipRepository.GetById(user.UserId);
             if (string.IsNullOrEmpty(existingUser?.PasswordResetToken))
             {
@@ -363,7 +372,7 @@ namespace TaxiCameBack.Services.Membership
                     e => e.Email.Equals(email, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
         }
 
-        public CrudResult Logon(string userEmail, string password, bool remember, ref HttpCookie cookie)
+        public CrudResult Logon(string userEmail, string password, bool remember)
         {
             var crudReuslt = new CrudResult();
             if (ValidateUser(userEmail, password, 48))
@@ -396,6 +405,7 @@ namespace TaxiCameBack.Services.Membership
         /// <returns></returns>
         public bool ResetPassword(MembershipUser user, string newPassword)
         {
+            user = SanitizeUser(user);
             var existingUser = GetUser(user.Email);
             if (existingUser == null)
                 return false;

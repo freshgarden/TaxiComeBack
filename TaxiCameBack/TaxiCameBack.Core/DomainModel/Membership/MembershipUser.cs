@@ -65,6 +65,8 @@ namespace TaxiCameBack.Core.DomainModel.Membership
 
         public string PhoneNumber { get; set; }
 
+        public string CarSitType { get; set; }
+
         public string CarNumber { get; set; }
 
         public string Carmakers { get; set; }

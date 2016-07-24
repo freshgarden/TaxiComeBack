@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
-using TaxiCameBack.DTO.Schedule;
 using TaxiCameBack.MapUtilities;
 using TaxiCameBack.Services.Search;
+using TaxiCameBack.Website.Models;
 
 namespace TaxiCameBack.Website.Controllers
 {
@@ -17,20 +15,33 @@ namespace TaxiCameBack.Website.Controllers
             _searchSchduleService = searchSchduleService;
         }
 
-        public JsonResult Search(string startLocationLat, string startLocationLng, string endLocationLat, string endLocationLng, string carType)
+        [HttpPost]
+        public JsonResult Search(SearchModel searchModel)
         {
             var schedules = _searchSchduleService.Search(
-                                new PointLatLng(Convert.ToDouble(startLocationLat), Convert.ToDouble(startLocationLng)),
-                                new PointLatLng(Convert.ToDouble(endLocationLat), Convert.ToDouble(endLocationLng)));
-            
-            if (schedules.Count == 0)
+                new PointLatLng(searchModel.StartLocationLat, searchModel.StartLocationLng),
+                new PointLatLng(searchModel.EndLocationLat, searchModel.EndLocationLng),
+                searchModel.CarType,
+                searchModel.StartDate);
+
+            var results = schedules.Select(schedule => new ResultSearchModel
             {
-                return Json(new { }, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                return Json(schedules, JsonRequestBehavior.AllowGet);
-            }
+                BeginLocation = schedule.BeginLocation,
+                EndLocation = schedule.EndLocation,
+                StartDate = schedule.StartDate,
+                ScheduleGeolocations = schedule.ScheduleGeolocations,
+                UserFullName = schedule.User.FullName,
+                UserGender = schedule.User.PhoneNumber,
+                UserPhoneNumber = schedule.User.PhoneNumber,
+                UserAvatar = schedule.User.Avatar,
+                UserCarSitType = schedule.User.CarSitType,
+                UserCarNumber = schedule.User.CarNumber,
+                UserCarmakers = schedule.User.Carmakers
+            }).ToList();
+
+            return schedules.Count == 0
+                ? Json(new { }, JsonRequestBehavior.AllowGet)
+                : Json(results, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Index()

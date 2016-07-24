@@ -59,6 +59,9 @@
                         <li class="list-group-item">
                             <b>Hãng xe</b> <a class="pull-right">@Model.Carmakers</a>
                         </li>
+                        <li class="list-group-item">
+                            <b>Sit Type</b> <a class="pull-right">@Model.CarSitType</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.box-body -->
@@ -154,8 +157,12 @@
                                 </div>
                                 <div class="form-group">
                                     @Html.LabelFor(x => x.PhoneNumber)
-                                    @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control", type = "number" })
+                                    @Html.TextBoxFor(x => x.PhoneNumber, new {@class = "form-control", type = "number"})
                                     @Html.ValidationMessageFor(x => x.PhoneNumber)
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.CarSitType)
+                                    @Html.DropDownListFor(x => x.CarSitType, new SelectList(new [] {"4 Sits", "6 Sits"}))
                                 </div>
                                 <div class="form-group">
                                     @Html.LabelFor(x => x.CarNumber)

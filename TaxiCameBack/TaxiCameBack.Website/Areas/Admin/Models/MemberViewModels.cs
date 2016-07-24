@@ -65,6 +65,10 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
             [RegularExpression(@"^(0\d{9,10})$", ErrorMessage = "Invalid phone.")]
             public string PhoneNumber { get; set; }
 
+            [DisplayName("Car Sit Type")]
+            [Required]
+            public string CarSitType { get; set; }
+
             [DisplayName("Car Number")]
             [Required]
             public string CarNumber { get; set; }

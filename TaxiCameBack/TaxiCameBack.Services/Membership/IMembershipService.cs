@@ -23,7 +23,7 @@ namespace TaxiCameBack.Services.Membership
         List<string> GetRolesForUser(string userEmail);
         MembershipUser GetUser(string userEmail, bool removeTracking = false);
         LoginAttemptStatus LastLoginStatus { get; }
-        CrudResult Logon(string userEmail, string password, bool remember, ref HttpCookie cookie);
+        CrudResult Logon(string userEmail, string password, bool remember);
         bool ChangePassword(MembershipUser user, string oldPassword, string newPassword);
         bool ResetPassword(MembershipUser user, string newPassword);
         CrudResult CreateUser(MembershipUser newUser);

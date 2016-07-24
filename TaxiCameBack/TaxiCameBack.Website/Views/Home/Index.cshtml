@@ -160,9 +160,10 @@
                                     <div class="search-fixed">
                                         <div class="psearch backcolorms1"> <b class="backmapnew"></b> <span class="search-result-header-text">@Home.lbl_SearchResult</span></div>
                                         <div id="distanceAndTime" class="psearch-result">
-                                            <span style="font-weight:bold; margin-left: 50px;" >
-                                                100 km - 1giờ 15 phút</span>
-                                                    <a href="#" class="botuseguide2" id="closeRouteListPanel"><p class="dboxt2">X</p></a>
+                                            <span style="font-weight:bold; margin-left: 50px;">
+                                                100 km - 1giờ 15 phút
+                                            </span>
+                                            <a href="#" class="botuseguide2" id="closeRouteListPanel"><p class="dboxt2">X</p></a>
                                         </div>
                                     </div>
                                     <p class="clear"></p>
@@ -173,7 +174,7 @@
                                         <p class="clear"></p>
                                         <div class="dboxt3" id="noSearchResult"><span style="margin:80px;">@Home.lbl_SearchResult_Content</span></div>
                                         <div class="dboxt3" id="searchResultContent">
-                                                                                        
+
                                         </div>
                                     </div>
                                 </div>
@@ -183,328 +184,345 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
     <script>
-            $(function () {
-                $.datetimepicker.setLocale('vi');
-                jQuery("#timestart").datetimepicker({
-                    format: 'd-m-Y H:i',
-                    minDate: 0,
-                    lang: 'vi'
-                });
+        $(function () {
+            $.datetimepicker.setLocale('vi');
+            jQuery("#timestart").datetimepicker({
+                format: 'd-m-Y H:i',
+                minDate: 0,
+                lang: 'vi',
+                onChangeDateTime: function (dp, $input) {
+                    SearchModel.setStartDate(dp);
+                }
             });
-			$(document).mouseup(function (e) {
-				var container = $(".divlogvnlnew");
-				if (!container.is(e.target) // if the target of the click isn't the container...
-					&& container.has(e.target).length === 0) // ... nor a descendant of the container
-				{
-					if ($('#signupvnl').css("display") == 'block') {
-						$('#signupvnl').css("display", "none");
-					}
-				}
-				var container2 = $(".divlogtcbnew");
-				if (!container2.is(e.target) // if the target of the click isn't the container...
-					&& container2.has(e.target).length === 0) // ... nor a descendant of the container
-				{
-					if ($("#routetcb").css("display") == 'block') {
-						$("#routetcb").css("display", "none");
-					}
-				}
-			});
+        });
+        $(document).mouseup(function (e) {
+            var container = $(".divlogvnlnew");
+            if (!container.is(e.target) // if the target of the click isn't the container...
+                && container.has(e.target).length === 0) // ... nor a descendant of the container
+            {
+                if ($('#signupvnl').css("display") == 'block') {
+                    $('#signupvnl').css("display", "none");
+                }
+            }
+            var container2 = $(".divlogtcbnew");
+            if (!container2.is(e.target) // if the target of the click isn't the container...
+                && container2.has(e.target).length === 0) // ... nor a descendant of the container
+            {
+                if ($("#routetcb").css("display") == 'block') {
+                    $("#routetcb").css("display", "none");
+                }
+            }
+        });
 
-			function showRoute(param) {
-				$("#routetcb").css("display", "block");
-			}
+        function showRoute(param) {
+            $("#routetcb").css("display", "block");
+        }
 
-			function positionFooter() {
-				var window_height = $(window).height(); var dif = window_height - 69; var dif1 = window_height - 350;
-				$("#mapdirdd").css({ height: dif + "px" }); $('#directionsPanel').css({ 'max-height': dif1 + "px" });
-			}
+        function positionFooter() {
+            var window_height = $(window).height(); var dif = window_height - 69; var dif1 = window_height - 350;
+            $("#mapdirdd").css({ height: dif + "px" }); $('#directionsPanel').css({ 'max-height': dif1 + "px" });
+        }
 
-			$("#findCarBySearch").click(function () {
-				$("#findCarByLocation").removeClass("backcolorms2");
-				$("#findCarBySearch").addClass("backcolorms1");
-				$("#findCarByLocationPanel").css("display", "none");
-				$("#findCarBySearchPanel").css("display", "block");
-				$("#directionsPanel").css("display", "block");
-			});
+        $("#findCarBySearch").click(function () {
+            $("#findCarByLocation").removeClass("backcolorms2");
+            $("#findCarBySearch").addClass("backcolorms1");
+            $("#findCarByLocationPanel").css("display", "none");
+            $("#findCarBySearchPanel").css("display", "block");
+            $("#directionsPanel").css("display", "block");
+        });
 
-			$("#findCarByLocation").click(function () {
-				$("#findCarBySearch").removeClass("backcolorms1");
-				$("#findCarByLocation").addClass("backcolorms2");
-				$("#findCarBySearchPanel").css("display", "none");
-				$("#findCarByLocationPanel").css("display", "block");
-				$("#directionsPanel").css("display", "none");
-				$("#userGuidePanel").css("display", "none");
-			});
+        $("#findCarByLocation").click(function () {
+            $("#findCarBySearch").removeClass("backcolorms1");
+            $("#findCarByLocation").addClass("backcolorms2");
+            $("#findCarBySearchPanel").css("display", "none");
+            $("#findCarByLocationPanel").css("display", "block");
+            $("#directionsPanel").css("display", "none");
+            $("#userGuidePanel").css("display", "none");
+        });
 
-			$("#closeRoute").click(function () {
-				$("#routetcb").css("display", "none");
-			});
+        $("#closeRoute").click(function () {
+            $("#routetcb").css("display", "none");
+        });
 
-			$('#closeUserGuidePanel').click(function (e) {
-				$('#userGuidePanel').css("display", "none");
-			});
-			$('#userguide').click(function (e) {
-				$('#routeListPanel').css("display", "none");
-				$('#userGuidePanel').css("display", "block");
-			})
+        $('#closeUserGuidePanel').click(function (e) {
+            $('#userGuidePanel').css("display", "none");
+        });
+        $('#userguide').click(function (e) {
+            $('#routeListPanel').css("display", "none");
+            $('#userGuidePanel').css("display", "block");
+        });
+        
+        var SearchModel = {
+            StartLocationLat : "",
+            StartLocationLng : "",
+            EndLocationLat : "",
+            EndLocationLng : "",
+            CarType : "",
+            StartDate : "",
+            setStartDate : function (date) {
+                var monthsName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                this.StartDate = date.getDate() + "-" + monthsName[date.getMonth()] + "-" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes();
+            }
+        }
 
-			$('#searchCar').click(function () {
-			    if (startPointPlace != null && endPointPlace != null) {
-			        route(origin_place_id, destination_place_id, travel_mode,
-                          directionsService, directionsDisplay);
-			        $.ajax({
-			            url: "/Home/Search",
-			            type: 'GET',
-			            data: {
-			                'StartLocationLat': startPointPlace.geometry.location.lat,
-			                'StartLocationLng': startPointPlace.geometry.location.lng,
-			                'EndLocationLat': endPointPlace.geometry.location.lat,
-			                'EndLocationLng': endPointPlace.geometry.location.lng,
-			                'CarType': $('input[name=cartype]:checked').val()
-			            },
-			            dataType: 'json',
-			            success: function (data) {
-			                if (data.length === undefined) {
-			                    $('#searchResultContent').css("display", "none");
-			                    $('#noSearchResult').css("display", "block");		                    
-			                    
-			                }
-			                else {
-			                    $('#noSearchResult').css("display", "none");
-			                    $('#searchResultContent').css("display", "block");
-			                    $('#searchResultContent').empty();
-			                    for (var count in data) {
-			                        $('#searchResultContent').append($("<div class='custom-div2'><button href='#' onclick='showRoute(" + data[count].Id + ")' class='route-btn'><span class='backmapnew ddmapz3'></span><p class='button-font-size'>Chọn xe - Lộ trình số " + ++count + "</p></button></div>"))
-			                    }
-			                }			                
-			                getDistanceAndTime();
-			                $('#userGuidePanel').css("display", "none");
-			                $('#routeListPanel').css("display", "block");
-			            }
-			        });
-			    }
-			})
-			$("#closeRouteListPanel").on("click", function () {
-				$('#routeListPanel').css("display", "none");
-			});
+        $('#searchCar').click(function () {
+            if (startPointPlace != null && endPointPlace != null) {
+                route(origin_place_id, destination_place_id, travel_mode,
+                      directionsService, directionsDisplay);
+                SearchModel.StartLocationLat = startPointPlace.geometry.location.lat();
+                SearchModel.StartLocationLng = startPointPlace.geometry.location.lng();
+                SearchModel.EndLocationLat = endPointPlace.geometry.location.lat();
+                SearchModel.EndLocationLng = endPointPlace.geometry.location.lng();
+                SearchModel.CarType = '';//$('input[name=cartype]:checked').val();
+                console.log(JSON.stringify(SearchModel));
+                $.ajax({
+                    url: "/Home/Search",
+                    type: 'POST',
+                    data: JSON.stringify(SearchModel),
+                    dataType: 'json',
+                    contentType: "application/jsonrequest; charset=utf-8",
+                    success: function (data) {
+                        if (data.length === undefined) {
+                            $('#searchResultContent').css("display", "none");
+                            $('#noSearchResult').css("display", "block");
 
-			var map = null;
-			var zoomValue = 12;
-			var latValue = 21.022736;
-			var lngValue = 105.8019441;
-			var startPointPlace = null;
-			var endPointPlace = null;
-			var origin_place_id = null;
-			var destination_place_id = null;
-			var directionsService = null;
-			var directionsDisplay = null;
-			var travel_mode = null;
-			
-			function loadScript(src, callback) {
-				var script = document.createElement("script");
-				script.type = "text/javascript";
-				if (callback) script.onload = callback;
-				document.getElementsByTagName("head")[0].appendChild(script);
-				script.src = src;
-			}
+                        }
+                        else {
+                            $('#noSearchResult').css("display", "none");
+                            $('#searchResultContent').css("display", "block");
+                            $('#searchResultContent').empty();
+                            for (var count in data) {
+                                $('#searchResultContent').append($("<div class='custom-div2'><button href='#' onclick='showRoute(" + data[count].Id + ")' class='route-btn'><span class='backmapnew ddmapz3'></span><p class='button-font-size'>Chọn xe - Lộ trình số " + ++count + "</p></button></div>"))
+                            }
+                        }
+                        getDistanceAndTime();
+                        $('#userGuidePanel').css("display", "none");
+                        $('#routeListPanel').css("display", "block");
+                    }
+                });
+            }
+        })
+        $("#closeRouteListPanel").on("click", function () {
+            $('#routeListPanel').css("display", "none");
+        });
 
-			loadScript('http://maps.googleapis.com/maps/api/js?key=AIzaSyA1naPg1USZOsy3uiEJv0A71GwcGeaOTS8&v=3&libraries=places&sensor=false&callback=initialize', function () { positionFooter(); });
-			function initialize() {
+        var map = null;
+        var zoomValue = 12;
+        var latValue = 21.022736;
+        var lngValue = 105.8019441;
+        var startPointPlace = null;
+        var endPointPlace = null;
+        var origin_place_id = null;
+        var destination_place_id = null;
+        var directionsService = null;
+        var directionsDisplay = null;
+        var travel_mode = null;
 
-				$(window).resize(positionFooter());
-				
-				var mapOptions = {
-					zoom: zoomValue,
-					center: new google.maps.LatLng(latValue, lngValue),
-					mapTypeControl: true,
-					mapTypeControlOptions: {
-						position: google.maps.ControlPosition.TOP_RIGHT
-					},
-					mapTypeId: google.maps.MapTypeId.ROADMAP
-				};
-				map = new google.maps.Map(document.getElementById('mapdirdd'),
-						mapOptions);
-				directionsDisplay = new google.maps.DirectionsRenderer;
-				directionsService = new google.maps.DirectionsService;
-				travel_mode = google.maps.TravelMode.DRIVING
-				directionsDisplay.setMap(map);
-				var myCenter = new google.maps.LatLng(latValue, lngValue);
-				
-				var marker = new google.maps.Marker({
-					position: myCenter,
-					animation: google.maps.Animation.BOUNCE
-				});
+        function loadScript(src, callback) {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            if (callback) script.onload = callback;
+            document.getElementsByTagName("head")[0].appendChild(script);
+            script.src = src;
+        }
 
-				marker.setMap(map);
-				var geocoder = new google.maps.Geocoder;
-				var infowindow = new google.maps.InfoWindow();
+        loadScript('http://maps.googleapis.com/maps/api/js?key=AIzaSyA1naPg1USZOsy3uiEJv0A71GwcGeaOTS8&v=3&libraries=places&sensor=false&callback=initialize', function () { positionFooter(); });
+        function initialize() {
 
-				var latlng = { lat: latValue, lng: lngValue };
-				geocoder.geocode({ 'location': latlng }, function (results, status) {
-					if (status === google.maps.GeocoderStatus.OK) {
-						if (results[1]) {
-							infowindow.setContent(results[1].formatted_address);
-						}
-					}
-				});
+            $(window).resize(positionFooter());
 
-				google.maps.event.addListener(marker, 'click', function () {
-					infowindow.open(map, marker);
-				});
+            var mapOptions = {
+                zoom: zoomValue,
+                center: new google.maps.LatLng(latValue, lngValue),
+                mapTypeControl: true,
+                mapTypeControlOptions: {
+                    position: google.maps.ControlPosition.TOP_RIGHT
+                },
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById('mapdirdd'),
+                    mapOptions);
+            directionsDisplay = new google.maps.DirectionsRenderer;
+            directionsService = new google.maps.DirectionsService;
+            travel_mode = google.maps.TravelMode.DRIVING
+            directionsDisplay.setMap(map);
+            var myCenter = new google.maps.LatLng(latValue, lngValue);
 
-				google.maps.event.addDomListener(window, 'load', initialize);
+            var marker = new google.maps.Marker({
+                position: myCenter,
+                animation: google.maps.Animation.BOUNCE
+            });
 
-			}
-			$("#locate,#locate2").click(function () {
-			    zoomValue = 16;
-			    // Try HTML5 geolocation.
-			    if (navigator.geolocation) {
-			        navigator.geolocation.getCurrentPosition(locate, showError);
-			    }
-			});
+            marker.setMap(map);
+            var geocoder = new google.maps.Geocoder;
+            var infowindow = new google.maps.InfoWindow();
 
-			function showError(error) {
-				switch (error.code) {
-					case error.PERMISSION_DENIED:
-						console.log("User denied the request for Geolocation.")
-						break;
-					case error.POSITION_UNAVAILABLE:
-						console.log("Location information is unavailable.")
-						break;
-					case error.TIMEOUT:
-						console.log("The request to get user location timed out.")
-						break;
-					case error.UNKNOWN_ERROR:
-						console.log("An unknown error occurred.")
-						break;
-				}
-			}
+            var latlng = { lat: latValue, lng: lngValue };
+            geocoder.geocode({ 'location': latlng }, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    if (results[1]) {
+                        infowindow.setContent(results[1].formatted_address);
+                    }
+                }
+            });
 
-			function locate(position) {
-				latValue = position.coords.latitude;
-				lngValue = position.coords.longitude;
-				initialize();
-				var latlng = { lat: latValue, lng: lngValue };
-				var geocoder = new google.maps.Geocoder;
-				geocoder.geocode({ 'location': latlng }, function (results, status) {
-				    if (status === google.maps.GeocoderStatus.OK) {
-				        if (results[1]) {
-				            origin_place_id = results[1].place_id;
-				            startPointPlace = results[1];
-				            document.getElementById('startPoint').value = results[1].formatted_address;
-				        }
-				    }
-				});
-			}
+            google.maps.event.addListener(marker, 'click', function () {
+                infowindow.open(map, marker);
+            });
 
-			function calcdir(event) {			   			    
+            google.maps.event.addDomListener(window, 'load', initialize);
 
-			    function expandViewportToFitPlace(map, place) {
-			        if (place.geometry.viewport) {
-			            map.fitBounds(place.geometry.viewport);
-			        } else {
-			            map.setCenter(place.geometry.location);
-			            map.setZoom(17);
-			        }
-			    }
-			    // Create the search box and link it to the UI element.
-			    var startPoint = document.getElementById('startPoint');
-			    var options = {
-			        componentRestrictions: { country: 'vn' }//Vietnam only
-			    };
-			    var startPointSearchBox = new google.maps.places.Autocomplete(startPoint,options);
-			    startPointSearchBox.addListener('place_changed', function () {
-			        startPointPlace = startPointSearchBox.getPlace();
-			        if (!startPointPlace.geometry) {
-			            window.alert("Autocomplete's returned place contains no geometry");
-			            return;
-			        }
-			        expandViewportToFitPlace(map, startPointPlace);
+        }
+        $("#locate,#locate2").click(function () {
+            zoomValue = 16;
+            // Try HTML5 geolocation.
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(locate, showError);
+            }
+        });
 
-			        // If the place has a geometry, store its place ID and route if we have
-			        // the other place ID
-			        origin_place_id = startPointPlace.place_id;
-			        route(origin_place_id, destination_place_id, travel_mode,
-                          directionsService, directionsDisplay);
-			    });
-			    var endPoint = document.getElementById('endPoint');
-			    var endPointSearchBox = new google.maps.places.Autocomplete(endPoint,options);
-			    endPointSearchBox.addListener('place_changed', function () {
-			        endPointPlace = endPointSearchBox.getPlace();
-			        if (!endPointPlace.geometry) {
-			            window.alert("Autocomplete's returned place contains no geometry");
-			            return;
-			        }
-			        expandViewportToFitPlace(map, endPointPlace);
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    console.log("User denied the request for Geolocation.")
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    console.log("Location information is unavailable.")
+                    break;
+                case error.TIMEOUT:
+                    console.log("The request to get user location timed out.")
+                    break;
+                case error.UNKNOWN_ERROR:
+                    console.log("An unknown error occurred.")
+                    break;
+            }
+        }
 
-			        // If the place has a geometry, store its place ID and route if we have
-			        // the other place ID
-			        destination_place_id = endPointPlace.place_id;
-			        route(origin_place_id, destination_place_id, travel_mode,
-                          directionsService, directionsDisplay);
-			    });
+        function locate(position) {
+            latValue = position.coords.latitude;
+            lngValue = position.coords.longitude;
+            initialize();
+            var latlng = { lat: latValue, lng: lngValue };
+            var geocoder = new google.maps.Geocoder;
+            geocoder.geocode({ 'location': latlng }, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    if (results[1]) {
+                        origin_place_id = results[1].place_id;
+                        startPointPlace = results[1];
+                        document.getElementById('startPoint').value = results[1].formatted_address;
+                    }
+                }
+            });
+        }
 
-			}
-			
+        function calcdir(event) {
 
-			function route(origin_place_id, destination_place_id, travel_mode,
-                           directionsService, directionsDisplay) {
-			    if (!origin_place_id || !destination_place_id) {
-			        return;
-			    }
-			    directionsService.route({
-			        origin: { 'placeId': origin_place_id },
-			        destination: { 'placeId': destination_place_id },
-			        travelMode: travel_mode
-			    }, function (response, status) {
-			        if (status === google.maps.DirectionsStatus.OK) {
-			            directionsDisplay.setDirections(response);
-			        } else {
-			            window.alert('Không thể tìm đường!');
-			        }
-			    });
-			}
-			function getDistanceAndTime() {
-			    var service = new google.maps.DistanceMatrixService();
-			    service.getDistanceMatrix({
-			        origins: [document.getElementById('startPoint').value],
-			        destinations: [document.getElementById('endPoint').value],
-			        travelMode: google.maps.TravelMode.DRIVING,
-			        unitSystem: google.maps.UnitSystem.METRIC,
-			        avoidHighways: false,
-			        avoidTolls: false
-			    }, function (response, status) {
-			        if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
-			            var distance = response.rows[0].elements[0].distance.text;
-			            var duration = response.rows[0].elements[0].duration.text;
-			            $('#distanceAndTime span').text(distance + ' - ' + duration);
+            function expandViewportToFitPlace(map, place) {
+                if (place.geometry.viewport) {
+                    map.fitBounds(place.geometry.viewport);
+                } else {
+                    map.setCenter(place.geometry.location);
+                    map.setZoom(17);
+                }
+            }
+            // Create the search box and link it to the UI element.
+            var startPoint = document.getElementById('startPoint');
+            var options = {
+                componentRestrictions: { country: 'vn' }//Vietnam only
+            };
+            var startPointSearchBox = new google.maps.places.Autocomplete(startPoint, options);
+            startPointSearchBox.addListener('place_changed', function () {
+                startPointPlace = startPointSearchBox.getPlace();
+                if (!startPointPlace.geometry) {
+                    window.alert("Autocomplete's returned place contains no geometry");
+                    return;
+                }
+                expandViewportToFitPlace(map, startPointPlace);
 
-			            console.log(distance);
-			            console.log(duration);
+                // If the place has a geometry, store its place ID and route if we have
+                // the other place ID
+                origin_place_id = startPointPlace.place_id;
+                route(origin_place_id, destination_place_id, travel_mode,
+                      directionsService, directionsDisplay);
+            });
+            var endPoint = document.getElementById('endPoint');
+            var endPointSearchBox = new google.maps.places.Autocomplete(endPoint, options);
+            endPointSearchBox.addListener('place_changed', function () {
+                endPointPlace = endPointSearchBox.getPlace();
+                if (!endPointPlace.geometry) {
+                    window.alert("Autocomplete's returned place contains no geometry");
+                    return;
+                }
+                expandViewportToFitPlace(map, endPointPlace);
 
-			        } else {
-			            alert("Unable to find the distance via road.");
-			        }
-			    });
-			}
+                // If the place has a geometry, store its place ID and route if we have
+                // the other place ID
+                destination_place_id = endPointPlace.place_id;
+                route(origin_place_id, destination_place_id, travel_mode,
+                      directionsService, directionsDisplay);
+            });
 
-			$("#switchSearchValue").click(function () {
-			    var startPoint = document.getElementById('startPoint');
-			    var endPoint = document.getElementById('endPoint');
-			    var flag = startPoint.value;
-			    startPoint.value = endPoint.value;
-			    endPoint.value = flag;
-			    var placeFlag = startPointPlace;
-			    startPointPlace = endPointPlace;
-			    endPointPlace = placeFlag;
-			    var flagDirection = origin_place_id;
-			    origin_place_id = destination_place_id;
-			    destination_place_id = flagDirection;
-			    route(origin_place_id, destination_place_id, travel_mode,
-                          directionsService, directionsDisplay);
-			});
+        }
+
+
+        function route(origin_place_id, destination_place_id, travel_mode,
+                       directionsService, directionsDisplay) {
+            if (!origin_place_id || !destination_place_id) {
+                return;
+            }
+            directionsService.route({
+                origin: { 'placeId': origin_place_id },
+                destination: { 'placeId': destination_place_id },
+                travelMode: travel_mode
+            }, function (response, status) {
+                if (status === google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                } else {
+                    window.alert('Không thể tìm đường!');
+                }
+            });
+        }
+        function getDistanceAndTime() {
+            var service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix({
+                origins: [document.getElementById('startPoint').value],
+                destinations: [document.getElementById('endPoint').value],
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.METRIC,
+                avoidHighways: false,
+                avoidTolls: false
+            }, function (response, status) {
+                if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
+                    var distance = response.rows[0].elements[0].distance.text;
+                    var duration = response.rows[0].elements[0].duration.text;
+                    $('#distanceAndTime span').text(distance + ' - ' + duration);
+
+                    console.log(distance);
+                    console.log(duration);
+
+                } else {
+                    alert("Unable to find the distance via road.");
+                }
+            });
+        }
+
+        $("#switchSearchValue").click(function () {
+            var startPoint = document.getElementById('startPoint');
+            var endPoint = document.getElementById('endPoint');
+            var flag = startPoint.value;
+            startPoint.value = endPoint.value;
+            endPoint.value = flag;
+            var placeFlag = startPointPlace;
+            startPointPlace = endPointPlace;
+            endPointPlace = placeFlag;
+            var flagDirection = origin_place_id;
+            origin_place_id = destination_place_id;
+            destination_place_id = flagDirection;
+            route(origin_place_id, destination_place_id, travel_mode,
+                      directionsService, directionsDisplay);
+        });
     </script>
 </body>
 <!--BODY_END-->

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using TaxiCameBack.Core.DomainModel.Membership;
 
 namespace TaxiCameBack.Core.DomainModel.Schedule
 {
@@ -19,7 +20,7 @@ namespace TaxiCameBack.Core.DomainModel.Schedule
         public string EndLocation { get; set; }
         [Required]
         public System.DateTime StartDate { get; set; }
-//        public ScheduleGeolocation ScheduleGeolocation { get; set; }
+        public MembershipUser User { get; set; }
         public virtual ICollection<ScheduleGeolocation> ScheduleGeolocations { get; set; }
 
     }
