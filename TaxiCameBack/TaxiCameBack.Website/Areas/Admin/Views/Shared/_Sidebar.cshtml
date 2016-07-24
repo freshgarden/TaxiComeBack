@@ -1,5 +1,6 @@
 ﻿@using TaxiCameBack.Core.Constants
 @using TaxiCameBack.Website.Application.Security
+@using TaxiCameBack.Website.App_LocalResources
 @{
     var currentController = TempData[AppConstants.CurrentController].ToString();
     var currentAction = TempData[AppConstants.CurrentAction].ToString();
@@ -15,7 +16,7 @@
             {
                 <li class="@(currentController == "account" ? "active" : "")  treeview">
                     <a href="@Url.Action("Index", "Account")">
-                        <i class="fa fa-dashboard"></i> <span>Account</span>
+                        <i class="fa fa-users"></i> <span>@SideBar.account</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -27,7 +28,7 @@
             {
                 <li class="@(currentController == "settings" ? "active" : "")  treeview">
                     <a href="@Url.Action("Index", "Settings")">
-                        <i class="fa fa-dashboard"></i> <span>Settings</span>
+                        <i class="fa fa-cogs"></i> <span>@SideBar.setting</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -39,7 +40,7 @@
             {
                 <li class="@(currentController == "log" ? "active" : "")  treeview">
                     <a href="@Url.Action("Index", "Log")">
-                        <i class="fa fa-dashboard"></i> <span>Log</span>
+                        <i class="fa fa-edit"></i> <span>@SideBar.log</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -51,7 +52,7 @@
             {
                 <li class="@(currentController == "schedule" ? "active" : "")  treeview">
                     <a href="@Url.Action("Index", "Schedule")">
-                        <i class="fa fa-dashboard"></i> <span>Schedules</span>
+                        <i class="fa fa-calendar"></i> <span>@SideBar.schedule</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>

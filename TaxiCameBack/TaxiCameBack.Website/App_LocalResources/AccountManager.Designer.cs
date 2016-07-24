@@ -22,14 +22,14 @@ namespace TaxiCameBack.Website.App_LocalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ForgotPassword {
+    public class AccountManager {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ForgotPassword() {
+        internal AccountManager() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaxiCameBack.Website.App_LocalResources.ForgotPassword", typeof(ForgotPassword).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaxiCameBack.Website.App_LocalResources.AccountManager", typeof(AccountManager).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,83 +61,65 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gửi.
+        ///   Looks up a localized string similar to Duyệt tài khoản.
         /// </summary>
-        public static string btn_send {
+        public static string approve_column_header {
             get {
-                return ResourceManager.GetString("btn_send", resourceCulture);
+                return ResourceManager.GetString("approve_column_header", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Địa chỉ email không hợp lệ.
+        ///   Looks up a localized string similar to Tìm kiếm.
         /// </summary>
-        public static string email_type {
+        public static string btn_search {
             get {
-                return ResourceManager.GetString("email_type", resourceCulture);
+                return ResourceManager.GetString("btn_search", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email không tồn tại trong hệ thống. Xin nhập lại..
+        ///   Looks up a localized string similar to Xóa tài khoản.
         /// </summary>
-        public static string ERR_MESSAGE_NO_EXIST {
+        public static string delete_acc_column_header {
             get {
-                return ResourceManager.GetString("ERR_MESSAGE_NO_EXIST", resourceCulture);
+                return ResourceManager.GetString("delete_acc_column_header", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quên mật khẩu.
+        ///   Looks up a localized string similar to Chỉnh sửa.
         /// </summary>
-        public static string forgot_form {
+        public static string edit_column_header {
             get {
-                return ResourceManager.GetString("forgot_form", resourceCulture);
+                return ResourceManager.GetString("edit_column_header", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quên mật khẩu.
+        ///   Looks up a localized string similar to Khóa tài khoản.
         /// </summary>
-        public static string forgot_title {
+        public static string locked_acc_column_header {
             get {
-                return ResourceManager.GetString("forgot_title", resourceCulture);
+                return ResourceManager.GetString("locked_acc_column_header", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email.
+        ///   Looks up a localized string similar to Quản lý tài khoản.
         /// </summary>
-        public static string plc_email {
+        public static string title {
             get {
-                return ResourceManager.GetString("plc_email", resourceCulture);
+                return ResourceManager.GetString("title", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reset mật khẩu bị lỗi : {0}.
+        ///   Looks up a localized string similar to Tài khoản.
         /// </summary>
-        public static string reset_password_error {
+        public static string user_column_header {
             get {
-                return ResourceManager.GetString("reset_password_error", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Email không được để trống.
-        /// </summary>
-        public static string rqr_email {
-            get {
-                return ResourceManager.GetString("rqr_email", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hệ thống đã gửi đến email của bạn thông tin thay đổi mật khẩu..
-        /// </summary>
-        public static string SUC_MESSAGE_SEND_EMAIL {
-            get {
-                return ResourceManager.GetString("SUC_MESSAGE_SEND_EMAIL", resourceCulture);
+                return ResourceManager.GetString("user_column_header", resourceCulture);
             }
         }
     }

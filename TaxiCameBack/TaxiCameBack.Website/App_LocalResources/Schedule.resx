@@ -117,31 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btn_send" xml:space="preserve">
-    <value>Gửi</value>
+  <data name="lbl_create_schedule" xml:space="preserve">
+    <value>Đăng ký lộ trình</value>
   </data>
-  <data name="ERR_MESSAGE_NO_EXIST" xml:space="preserve">
-    <value>Email không tồn tại trong hệ thống. Xin nhập lại.</value>
+  <data name="lbl_manage_schedule" xml:space="preserve">
+    <value>Quản lý lộ trình</value>
   </data>
-  <data name="forgot_form" xml:space="preserve">
-    <value>Quên mật khẩu</value>
+  <data name="schedule_breadcrumb" xml:space="preserve">
+    <value>Lịch trình</value>
   </data>
-  <data name="forgot_title" xml:space="preserve">
-    <value>Quên mật khẩu</value>
-  </data>
-  <data name="plc_email" xml:space="preserve">
-    <value>Email</value>
-  </data>
-  <data name="SUC_MESSAGE_SEND_EMAIL" xml:space="preserve">
-    <value>Hệ thống đã gửi đến email của bạn thông tin thay đổi mật khẩu.</value>
-  </data>
-  <data name="email_type" xml:space="preserve">
-    <value>Địa chỉ email không hợp lệ</value>
-  </data>
-  <data name="reset_password_error" xml:space="preserve">
-    <value>Reset mật khẩu bị lỗi : {0}</value>
-  </data>
-  <data name="rqr_email" xml:space="preserve">
-    <value>Email không được để trống</value>
+  <data name="title" xml:space="preserve">
+    <value>Lịch trình</value>
   </data>
 </root>

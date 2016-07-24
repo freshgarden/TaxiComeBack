@@ -1,4 +1,5 @@
-﻿@{
+﻿@using TaxiCameBack.Website.App_LocalResources;
+@{
     ViewBag.Title = "Error404";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
@@ -6,25 +7,24 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            404 Error Page
+            @Error404.title_header
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">404 error</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> @HomeBackEnd.home_breadcrumb</a></li>
+            <li class="active">@Error404.error404_breadcrumb</li>
         </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
         <div class="error-page">
-            <h2 class="headline text-yellow"> 404</h2>
+            <h2 class="headline text-yellow">@Error404.content_title</h2>
 
             <div class="error-content">
-                <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
+                <h3><i class="fa fa-warning text-yellow"></i> @Error404.content_header</h3>
 
                 <p>
-                    We could not find the page you were looking for.
-                    Meanwhile, you may <a href="../../index.html">return to dashboard</a> or try using the search form.
+                    @Error404.content_message
                 </p>
             </div>
             <!-- /.error-content -->

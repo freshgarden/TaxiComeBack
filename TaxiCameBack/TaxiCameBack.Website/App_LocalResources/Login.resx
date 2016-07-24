@@ -138,10 +138,34 @@
   <data name="login_title" xml:space="preserve">
     <value>TaxiQuayVe | Đăng nhập</value>
   </data>
+  <data name="password_attemp" xml:space="preserve">
+    <value>Mật khẩu vượt quá giới hạn</value>
+  </data>
+  <data name="password_incorect" xml:space="preserve">
+    <value>Tên tài khoản hoặc mật khẩu không đúng</value>
+  </data>
+  <data name="password_length" xml:space="preserve">
+    <value>Mật khẩu có độ dài tối đa 50 ký tự</value>
+  </data>
   <data name="plc_password" xml:space="preserve">
     <value>Mật khẩu</value>
   </data>
   <data name="plc_username" xml:space="preserve">
     <value>Tên tài khoản</value>
+  </data>
+  <data name="rqr_password" xml:space="preserve">
+    <value>Mật khẩu không được để trống</value>
+  </data>
+  <data name="rqr_username" xml:space="preserve">
+    <value>Tên tài khoản không được để trống</value>
+  </data>
+  <data name="username_length" xml:space="preserve">
+    <value>Tên tài khoản có độ dài tối đa 50 ký tự</value>
+  </data>
+  <data name="user_locked" xml:space="preserve">
+    <value>Tài khoản đang bị tạm khóa !</value>
+  </data>
+  <data name="user_not_approve" xml:space="preserve">
+    <value>Tài khoản chưa được duyệt !</value>
   </data>
 </root>

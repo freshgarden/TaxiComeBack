@@ -22,14 +22,14 @@ namespace TaxiCameBack.Website.App_LocalResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ForgotPassword {
+    public class CreateSchedule {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ForgotPassword() {
+        internal CreateSchedule() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaxiCameBack.Website.App_LocalResources.ForgotPassword", typeof(ForgotPassword).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaxiCameBack.Website.App_LocalResources.CreateSchedule", typeof(CreateSchedule).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,83 +61,74 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gửi.
+        ///   Looks up a localized string similar to Đăng ký.
         /// </summary>
-        public static string btn_send {
+        public static string btnCreate {
             get {
-                return ResourceManager.GetString("btn_send", resourceCulture);
+                return ResourceManager.GetString("btnCreate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Địa chỉ email không hợp lệ.
+        ///   Looks up a localized string similar to Cập nhật.
         /// </summary>
-        public static string email_type {
+        public static string btnUpdate {
             get {
-                return ResourceManager.GetString("email_type", resourceCulture);
+                return ResourceManager.GetString("btnUpdate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email không tồn tại trong hệ thống. Xin nhập lại..
+        ///   Looks up a localized string similar to Điểm đi.
         /// </summary>
-        public static string ERR_MESSAGE_NO_EXIST {
+        public static string lbl_begin_location {
             get {
-                return ResourceManager.GetString("ERR_MESSAGE_NO_EXIST", resourceCulture);
+                return ResourceManager.GetString("lbl_begin_location", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quên mật khẩu.
+        ///   Looks up a localized string similar to Điểm đến.
         /// </summary>
-        public static string forgot_form {
+        public static string lbl_end_location {
             get {
-                return ResourceManager.GetString("forgot_form", resourceCulture);
+                return ResourceManager.GetString("lbl_end_location", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quên mật khẩu.
+        ///   Looks up a localized string similar to Thời gian xuất hành.
         /// </summary>
-        public static string forgot_title {
+        public static string lbl_start_date {
             get {
-                return ResourceManager.GetString("forgot_title", resourceCulture);
+                return ResourceManager.GetString("lbl_start_date", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email.
+        ///   Looks up a localized string similar to Nhập điểm đến.
         /// </summary>
-        public static string plc_email {
+        public static string plc_EndPoint {
             get {
-                return ResourceManager.GetString("plc_email", resourceCulture);
+                return ResourceManager.GetString("plc_EndPoint", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reset mật khẩu bị lỗi : {0}.
+        ///   Looks up a localized string similar to Nhập điểm đi.
         /// </summary>
-        public static string reset_password_error {
+        public static string plc_StartPoint {
             get {
-                return ResourceManager.GetString("reset_password_error", resourceCulture);
+                return ResourceManager.GetString("plc_StartPoint", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email không được để trống.
+        ///   Looks up a localized string similar to Tạo lộ trình.
         /// </summary>
-        public static string rqr_email {
+        public static string title {
             get {
-                return ResourceManager.GetString("rqr_email", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hệ thống đã gửi đến email của bạn thông tin thay đổi mật khẩu..
-        /// </summary>
-        public static string SUC_MESSAGE_SEND_EMAIL {
-            get {
-                return ResourceManager.GetString("SUC_MESSAGE_SEND_EMAIL", resourceCulture);
+                return ResourceManager.GetString("title", resourceCulture);
             }
         }
     }

@@ -117,31 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btn_send" xml:space="preserve">
-    <value>Gửi</value>
+  <data name="btn_save" xml:space="preserve">
+    <value>Lưu cài đặt</value>
   </data>
-  <data name="ERR_MESSAGE_NO_EXIST" xml:space="preserve">
-    <value>Email không tồn tại trong hệ thống. Xin nhập lại.</value>
+  <data name="email_setting" xml:space="preserve">
+    <value>Cài đặt email</value>
   </data>
-  <data name="forgot_form" xml:space="preserve">
-    <value>Quên mật khẩu</value>
+  <data name="email_setting_des" xml:space="preserve">
+    <value>Hoàn thành các cài đặt dưới đây và lưu lại ! Sau đó gửi email kiểm tra bằng cách click Kiểm tra email cài đặt</value>
   </data>
-  <data name="forgot_title" xml:space="preserve">
-    <value>Quên mật khẩu</value>
+  <data name="general" xml:space="preserve">
+    <value>Cài đặt chung</value>
   </data>
-  <data name="plc_email" xml:space="preserve">
-    <value>Email</value>
+  <data name="test_email_setting" xml:space="preserve">
+    <value>Kiểm tra email cài đặt</value>
   </data>
-  <data name="SUC_MESSAGE_SEND_EMAIL" xml:space="preserve">
-    <value>Hệ thống đã gửi đến email của bạn thông tin thay đổi mật khẩu.</value>
-  </data>
-  <data name="email_type" xml:space="preserve">
-    <value>Địa chỉ email không hợp lệ</value>
-  </data>
-  <data name="reset_password_error" xml:space="preserve">
-    <value>Reset mật khẩu bị lỗi : {0}</value>
-  </data>
-  <data name="rqr_email" xml:space="preserve">
-    <value>Email không được để trống</value>
+  <data name="title" xml:space="preserve">
+    <value>Cài đặt</value>
   </data>
 </root>

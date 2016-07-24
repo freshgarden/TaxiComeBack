@@ -1,4 +1,5 @@
-﻿@model TaxiCameBack.Website.Areas.Admin.Models.ScheduleViewModel
+﻿@using TaxiCameBack.Website.App_LocalResources
+@model TaxiCameBack.Website.Areas.Admin.Models.ScheduleViewModel
 
 <link href="@Url.Content("~/Content/datetimepicker/jquery.datetimepicker.css")" rel="stylesheet" />
 <link href="@Url.Content("~/Content/jqsDialog/jqsDialog.css")" rel="stylesheet" />
@@ -26,35 +27,31 @@
     <!-- Info boxes -->
     <div class="row">
         <div class="col-md-4">
-            <div class="box">
-                <div class="box box-default">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">@ViewBag.Title</h3>
-                    </div>
-                    <div class="box-body">
-                        @Html.AntiForgeryToken()
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">@ViewBag.Title</h3>
+                </div>
+                <div class="box-body">
+                    @Html.AntiForgeryToken()
 
-                        @Html.Partial("_ScheduleField")
-                        <hr/>
-                        @{
-                            if (ViewBag.Type == 0)
-                            {
-                                <button class="btn btn-primary" data-bind="click: saveSchedule">Create</button>
-                            }
-                            else
-                            {
-                                <button class="btn btn-primary" data-bind="click: saveSchedule">Update</button>
-                            }
+                    @Html.Partial("_ScheduleField")
+                    <hr/>
+                    @{
+                        if (ViewBag.Type == 0)
+                        {
+                            <button class="btn btn-primary" data-bind="click: saveSchedule">@CreateSchedule.btnCreate</button>
                         }
-                    </div>
+                        else
+                        {
+                            <button class="btn btn-primary" data-bind="click: saveSchedule">@CreateSchedule.btnUpdate</button>
+                        }
+                    }   
                 </div>
             </div>
         </div>
         <div class="col-md-8">
-            <div class="box">
-                <div class="box box-default">
-                    <div id="dvMap" style="height: 450px;"></div>
-                </div>
+            <div class="box box-default">
+                <div id="dvMap" style="height: 450px;"></div>
             </div>
         </div>
     </div>

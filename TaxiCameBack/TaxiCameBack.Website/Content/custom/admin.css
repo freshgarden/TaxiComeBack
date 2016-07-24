@@ -1,4 +1,5 @@
-﻿.modal-header-success {
+﻿@charset "utf-8";
+.modal-header-success {
     color:#fff;
     padding:9px 15px;
     border-bottom:1px solid #eee;
@@ -67,9 +68,27 @@
     color: red;
     font-size: 1em;
 }
-.modal{
-    z-index: 20;   
+.validation-summary-errors {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      color: #a94442;
+      background-color: #f2dede;
+      border-color: #ebccd1;
 }
-.modal-backdrop{
-    z-index: 10;        
+.validation-summary-errors > ul {
+  margin-bottom: 0;
+   padding-left: 0;
+  list-style-type: none;
+}
+.validation-summary-errors > ul >li {
+  padding-left: 0;
+}
+.modal {
+    z-index: 20
+}
+.modal-backdrop {  
+      z-index: 10     
 }​
+

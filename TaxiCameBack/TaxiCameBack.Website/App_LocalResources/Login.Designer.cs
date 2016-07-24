@@ -124,6 +124,33 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu vượt quá giới hạn.
+        /// </summary>
+        public static string password_attemp {
+            get {
+                return ResourceManager.GetString("password_attemp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tên tài khoản hoặc mật khẩu không đúng.
+        /// </summary>
+        public static string password_incorect {
+            get {
+                return ResourceManager.GetString("password_incorect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu có độ dài tối đa 50 ký tự.
+        /// </summary>
+        public static string password_length {
+            get {
+                return ResourceManager.GetString("password_length", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mật khẩu.
         /// </summary>
         public static string plc_password {
@@ -138,6 +165,51 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string plc_username {
             get {
                 return ResourceManager.GetString("plc_username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu không được để trống.
+        /// </summary>
+        public static string rqr_password {
+            get {
+                return ResourceManager.GetString("rqr_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tên tài khoản không được để trống.
+        /// </summary>
+        public static string rqr_username {
+            get {
+                return ResourceManager.GetString("rqr_username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tài khoản đang bị tạm khóa !.
+        /// </summary>
+        public static string user_locked {
+            get {
+                return ResourceManager.GetString("user_locked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tài khoản chưa được duyệt !.
+        /// </summary>
+        public static string user_not_approve {
+            get {
+                return ResourceManager.GetString("user_not_approve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tên tài khoản có độ dài tối đa 50 ký tự.
+        /// </summary>
+        public static string username_length {
+            get {
+                return ResourceManager.GetString("username_length", resourceCulture);
             }
         }
     }

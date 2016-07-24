@@ -1,4 +1,6 @@
-﻿<div class="btn-group" role="group">
-    <a href="@Url.Action("Index")" role="button" class="btn-mvc-green">Manage Schedules</a>
-    <a href="@Url.Action("Create")" role="button" class="btn-mvc-green">Create New</a>
+﻿@using TaxiCameBack.Website.App_LocalResources
+
+<div class="btn-group" role="group">
+    <a href="@Url.Action("Index")" role="button" class="btn-mvc-green">@Schedule.lbl_manage_schedule</a>
+    <a href="@Url.Action("Create")" role="button" class="btn-mvc-green">@Schedule.lbl_create_schedule</a>
 </div>

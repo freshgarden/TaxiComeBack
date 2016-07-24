@@ -120,8 +120,17 @@
   <data name="btn_register" xml:space="preserve">
     <value>Đăng ký</value>
   </data>
+  <data name="email_length" xml:space="preserve">
+    <value>Email có độ dài tối đa 50 ký tự</value>
+  </data>
+  <data name="fullname_length" xml:space="preserve">
+    <value>Họ và tên có độ dài tối đa 50 ký tự</value>
+  </data>
   <data name="lbl_agree_term" xml:space="preserve">
     <value>Tôi đồng ý với các điều khoản</value>
+  </data>
+  <data name="password_length" xml:space="preserve">
+    <value>Mật khẩu có độ dài tối đa 50 ký tự</value>
   </data>
   <data name="plc_email" xml:space="preserve">
     <value>Email</value>
@@ -144,7 +153,31 @@
   <data name="register_logo" xml:space="preserve">
     <value>TaxiQuayVe</value>
   </data>
+  <data name="register_success" xml:space="preserve">
+    <value>Đăng ký tài khoản thành công ! Vui lòng chờ để chúng tôi duyệt tài khoản của bạn.</value>
+  </data>
   <data name="register_title" xml:space="preserve">
     <value>TaxiQuayVe | Đăng ký tài khoản</value>
+  </data>
+  <data name="re_password_match" xml:space="preserve">
+    <value>Mật khẩu nhập lại không khớp</value>
+  </data>
+  <data name="rqr_agree_term" xml:space="preserve">
+    <value>Bạn chưa đồng ý với các điều khoản</value>
+  </data>
+  <data name="rqr_email" xml:space="preserve">
+    <value>Email không được để trống</value>
+  </data>
+  <data name="rqr_fullname" xml:space="preserve">
+    <value>Họ và tên không được để trống</value>
+  </data>
+  <data name="rqr_password" xml:space="preserve">
+    <value>Mật khẩu không được để trống</value>
+  </data>
+  <data name="rqr_phone" xml:space="preserve">
+    <value>Số điện thoại không được để trống</value>
+  </data>
+  <data name="rqr_re_password" xml:space="preserve">
+    <value>Nhập lại mật khẩu không được để trống</value>
   </data>
 </root>

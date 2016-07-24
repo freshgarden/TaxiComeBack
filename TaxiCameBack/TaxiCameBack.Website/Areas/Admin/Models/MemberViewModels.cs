@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
 using System.Web.Mvc;
+using TaxiCameBack.Website.App_LocalResources;
 
 namespace TaxiCameBack.Website.Areas.Admin.Models
 {
@@ -10,8 +11,8 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
     {
         public class ForgotPasswordViewModel
         {
-            [EmailAddress]
-            [Required]
+            [EmailAddress(ErrorMessageResourceType = typeof(ForgotPassword),ErrorMessageResourceName = "email_type")]
+            [Required(ErrorMessageResourceType = typeof(ForgotPassword),ErrorMessageResourceName = "rqr_email")]
             public string EmailAddress { get; set; }
 
             public string Message { get; set; }

@@ -127,19 +127,19 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                     {
                         case LoginAttemptStatus.UserNotFound:
                         case LoginAttemptStatus.PasswordIncorrect:
-                            ModelState.AddModelError(string.Empty, "Password Incorrect");
+                            ModelState.AddModelError("ErrorMessage", App_LocalResources.Login.password_incorect);
                             break;
 
                         case LoginAttemptStatus.PasswordAttemptsExceeded:
-                            ModelState.AddModelError(string.Empty, "Password Attempts Exceeded");
+                            ModelState.AddModelError("ErrorMessage", App_LocalResources.Login.password_attemp);
                             break;
 
                         case LoginAttemptStatus.UserLockedOut:
-                            ModelState.AddModelError(string.Empty, "User Locked Out");
+                            ModelState.AddModelError("ErrorMessage", App_LocalResources.Login.user_locked);
                             break;
                             
                         case LoginAttemptStatus.UserNotApproved:
-                            ModelState.AddModelError(string.Empty, "User Not Approved");
+                            ModelState.AddModelError("ErrorMessage", App_LocalResources.Login.user_not_approve);
                             break;
                     }
                     if (ModelState.Errors() != null)
@@ -163,7 +163,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "There was an error login");
+                return View(loginViewModel);
             }
             return RedirectToAction("Login", "Account", new { area = "Admin" });
         }
@@ -188,10 +188,6 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var error = string.Join("; ", ModelState.Values
-                                        .SelectMany(x => x.Errors)
-                                        .Select(x => x.ErrorMessage));
-                ModelState.AddModelError(string.Empty, error);
                 return View(registerViewModel);
             }
 
@@ -206,10 +202,10 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
 
             if (createStatus.Errors.Count != 0)
             {
-                ModelState.AddModelError(string.Empty, createStatus.Errors[0]);
+                ModelState.AddModelError("ErrorMessage", createStatus.Errors[0]);
                 return View(registerViewModel);
             }
-            TempData["Message"] = "Create new account was successful! Please wait while administrator approved.";
+            TempData["Message"] = App_LocalResources.Register.register_success;
             return RedirectToAction("Login", "Account", new {area = "Admin"});
         }
         
@@ -419,7 +415,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             }
             catch (Exception exception)
             {
-                ModelState.AddModelError(string.Empty, "Reset password was error: " + exception.Message);
+                ModelState.AddModelError("ErrorMessage", string.Format(App_LocalResources.ForgotPassword.reset_password_error, exception.Message));
                 return View(forgotPasswordViewModel);
             }
 

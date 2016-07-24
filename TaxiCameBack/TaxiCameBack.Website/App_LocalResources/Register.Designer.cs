@@ -70,11 +70,38 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email có độ dài tối đa 50 ký tự.
+        /// </summary>
+        public static string email_length {
+            get {
+                return ResourceManager.GetString("email_length", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Họ và tên có độ dài tối đa 50 ký tự.
+        /// </summary>
+        public static string fullname_length {
+            get {
+                return ResourceManager.GetString("fullname_length", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tôi đồng ý với các điều khoản.
         /// </summary>
         public static string lbl_agree_term {
             get {
                 return ResourceManager.GetString("lbl_agree_term", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu có độ dài tối đa 50 ký tự.
+        /// </summary>
+        public static string password_length {
+            get {
+                return ResourceManager.GetString("password_length", resourceCulture);
             }
         }
         
@@ -124,6 +151,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu nhập lại không khớp.
+        /// </summary>
+        public static string re_password_match {
+            get {
+                return ResourceManager.GetString("re_password_match", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đăng ký mới tài khoản tài xế.
         /// </summary>
         public static string register_form {
@@ -142,11 +178,74 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Đăng ký tài khoản thành công ! Vui lòng chờ để chúng tôi duyệt tài khoản của bạn..
+        /// </summary>
+        public static string register_success {
+            get {
+                return ResourceManager.GetString("register_success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TaxiQuayVe | Đăng ký tài khoản.
         /// </summary>
         public static string register_title {
             get {
                 return ResourceManager.GetString("register_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bạn chưa đồng ý với các điều khoản.
+        /// </summary>
+        public static string rqr_agree_term {
+            get {
+                return ResourceManager.GetString("rqr_agree_term", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email không được để trống.
+        /// </summary>
+        public static string rqr_email {
+            get {
+                return ResourceManager.GetString("rqr_email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Họ và tên không được để trống.
+        /// </summary>
+        public static string rqr_fullname {
+            get {
+                return ResourceManager.GetString("rqr_fullname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu không được để trống.
+        /// </summary>
+        public static string rqr_password {
+            get {
+                return ResourceManager.GetString("rqr_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số điện thoại không được để trống.
+        /// </summary>
+        public static string rqr_phone {
+            get {
+                return ResourceManager.GetString("rqr_phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nhập lại mật khẩu không được để trống.
+        /// </summary>
+        public static string rqr_re_password {
+            get {
+                return ResourceManager.GetString("rqr_re_password", resourceCulture);
             }
         }
     }

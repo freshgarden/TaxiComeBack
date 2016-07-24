@@ -34,16 +34,31 @@
             <p class="login-box-msg">@Login.login_form</p>
             @using (Html.BeginForm("Login", "Account", FormMethod.Post))
             {
-                @Model.Message
-                @Html.ValidationSummary(false);
+                if(ViewData.ModelState["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        @Html.ValidationMessage("ErrorMessage") 
+                    </div>
+                }
                 @Html.AntiForgeryToken()
+                if (!string.IsNullOrEmpty(Model.Message))
+                {
+                <div class="alert alert-success" role="alert">
+                    @Model.Message
+                </div>
+                }
                 <div class="form-group has-feedback">
                     @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = Login.plc_username } })
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group has-feedback">
                     @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = Login.plc_password } })
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+
                 </div>
                 <div class="row">
                     <div class="col-xs-8">
@@ -60,12 +75,12 @@
                     <!-- /.col -->
                 </div>
                 @Html.HiddenFor(model => model.ReturnUrl)
-            }
+                }
 
-            <!-- /.social-auth-links -->
-            <a href="@Url.Action("ForgotPassword", "Account")">@Login.lbl_forget_acc</a><br>
-            <a href="@Url.Action("Register","Account")" class="text-center">@Login.lbl_reg_new_acc</a>
-        </div>
+                <!-- /.social-auth-links -->
+                <a href="@Url.Action("ForgotPassword", "Account")">@Login.lbl_forget_acc</a><br>
+                <a href="@Url.Action("Register","Account")" class="text-center">@Login.lbl_reg_new_acc</a>
+            </div>
         <!-- /.login-box-body -->
     </div>
     <!-- /.login-box -->

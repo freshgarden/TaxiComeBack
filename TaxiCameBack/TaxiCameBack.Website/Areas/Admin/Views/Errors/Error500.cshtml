@@ -1,4 +1,4 @@
-﻿
+﻿@using TaxiCameBack.Website.App_LocalResources
 @{
     ViewBag.Title = "Error500";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
@@ -7,10 +7,10 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            500 Error Page
+            @Error500.title_header
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li><a href="#"><i class="fa fa-dashboard"></i>@HomeBackEnd.home_breadcrumb</a></li>
             <li class="active">500 error</li>
         </ol>
     </section>
