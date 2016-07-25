@@ -25,7 +25,6 @@ namespace TaxiCameBack.Website.Models
         public string UserAvatar { get; set; }
         public string UserGender { get; set; }
         public string UserPhoneNumber { get; set; }
-        public string UserCarSitType { get; set; }
         public string UserCarNumber { get; set; }
         public string UserCarmakers { get; set; }
         public virtual ICollection<ScheduleGeolocation> ScheduleGeolocations { get; set; }
