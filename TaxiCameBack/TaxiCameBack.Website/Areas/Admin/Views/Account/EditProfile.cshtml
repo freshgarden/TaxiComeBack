@@ -30,7 +30,7 @@
             <!-- Profile Image -->
             <div class="box box-primary">
                 <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive img-circle" src="@AppHelpers.MemberImage(Model.Id, Model.Avatar, Model.Email, AppConstants.AvatarProfileSize)" alt="User profile picture">
+                    <img id="imgProfile" class="profile-user-img img-responsive img-circle" src="@AppHelpers.MemberImage(Model.Id, Model.Avatar, Model.Email, AppConstants.AvatarProfileSize)" alt="User profile picture">
                     <h3 class="profile-username text-center">@Model.FullName</h3>
                     <p class="text-muted text-center">Tài xế</p>
                     <ul class="list-group list-group-unbordered">
@@ -80,34 +80,28 @@
                             @Html.HiddenFor(x => Model.Id)
                             @Html.AntiForgeryToken()
                             @Html.ValidationSummary(true)
-
-                            <fieldset>
-                                <legend>@ViewBag.Title</legend>
+                                
                                 <div class="form-group">
-                                    @Html.LabelFor(x => x.FullName)
-                                    @Html.TextBoxFor(x => x.FullName, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(x => x.FullName)
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(x => x.Email)
-                                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control", type = "email", disabled = "disabled" })
-                                    @Html.ValidationMessageFor(x => x.Email)
-                                </div>
-                                <div class="row membereditavatar">
-                                    <div class="col-md-2">
-                                        <img id="imgProfile" src="@AppHelpers.MemberImage(Model.Id, Model.Avatar, Model.Email, AppConstants.AvatarProfileSize)" alt="@Model.FullName" height="@AppConstants.AvatarProfileSize" width="@AppConstants.AvatarProfileSize">
+                                    @Html.LabelFor(x => x.FullName, new { @class = "col-sm-2 control-label" })
+                                    <div class="col-sm-10">
+                                        @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", @placeholder = "Họ và tên" })
+                                        @Html.ValidationMessageFor(x => x.FullName,"", new { @class = "text-danger" })
                                     </div>
-                                    <div class="col-md-10">
-                                        @Html.LabelFor(x => x.File)
-                                        <div class="input-group">
-                                            <span class="input-group-btn">
-                                                <span class="btn btn-default btn-file">
-                                                    Browse <input type="file" name="file" id="file" value="" onchange="loadFile(event)">
-                                                </span>
-                                            </span>
-                                            <input type="text" class="form-control" readonly="">
-                                        </div>
-                                        @Html.ValidationMessageFor(x => x.File)
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.Email, new { @class = "col-sm-2 control-label" })
+                                    <div class="col-sm-10">
+                                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", type = "email", disabled = "disabled" })
+                                        @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.File, new { @class = "col-sm-2 control-label" })
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="file" name="file" id="file" value="" onchange="loadFile(event)">
+                                        @Html.ValidationMessageFor(x => x.File,"", new { @class = "text-danger" })
                                     </div>
                                 </div>
 
@@ -121,56 +115,80 @@
                                         reader.readAsDataURL(event.target.files[0]);
                                     };
                                 </script>
+
                                 <div class="form-group">
-                                    @Html.LabelFor(x => x.Gender)
-                                    Male
-                                    @Html.RadioButtonFor(x => x.Gender, "Male")
-                                    Female
-                                    @Html.RadioButtonFor(x => x.Gender, "Female")
-                                </div>
-                                <div class="form-group">
+                                    @Html.LabelFor(x => x.Gender, new { @class = "col-sm-2 control-label" })
                                     <div class="col-sm-10">
-                                        @Html.LabelFor(x => x.DateOfBirth)
+                                        <div class="radio">
+                                            <label>
+                                                @Html.RadioButtonFor(x => x.Gender, "Male")
+                                                Nam
+                                            </label>
+                                            <label>
+                                                @Html.RadioButtonFor(x => x.Gender, "Female")
+                                                Nữ
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.DateOfBirth, new { @class = "col-sm-2 control-label" })
+                                    <div class="col-sm-10">
                                         <div class="row">
                                             <div class="col-xs-2">
                                                 @Html.DropDownListFor(x => x.Day, Enumerable.Range(1, 31)
-                                                    .Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Day")
+                                                    .Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Ngày", new { @class = "form-control" })
                                             </div>
                                             <div class="col-xs-2">
                                                 @Html.DropDownListFor(x => x.Month, Enumerable.Range(1, 12)
-                                                    .Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Month")
+                                                    .Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Tháng", new { @class = "form-control" })
                                             </div>
                                             <div class="col-xs-2">
                                                 @Html.DropDownListFor(x => x.Year, Enumerable.Range(DateTime.Now.Year - 60, 40)
-                                                    .Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Year")
+                                                    .Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Năm", new { @class = "form-control" })
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="form-group">
-                                    @Html.LabelFor(x => x.Address)
-                                    @Html.TextBoxFor(x => x.Address, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(x => x.Address)
+                                    @Html.LabelFor(x => x.Address, new { @class = "col-sm-2 control-label" })
+                                    <div class="col-sm-10">
+                                        @Html.TextBoxFor(x => x.Address, new { @class = "form-control", @placeholder = "Địa chỉ" })
+                                        @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
+
                                 <div class="form-group">
-                                    @Html.LabelFor(x => x.PhoneNumber)
-                                    @Html.TextBoxFor(x => x.PhoneNumber, new {@class = "form-control", type = "number"})
-                                    @Html.ValidationMessageFor(x => x.PhoneNumber)
+                                    @Html.LabelFor(x => x.PhoneNumber, new { @class = "col-sm-2 control-label" })
+                                    <div class="col-sm-10">
+                                        @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control", type = "number", @placeholder = "Số điện thoại liên hệ" })
+                                        @Html.ValidationMessageFor(x => x.PhoneNumber, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
+
                                 <div class="form-group">
-                                    @Html.LabelFor(x => x.CarNumber)
-                                    @Html.TextBoxFor(x => x.CarNumber, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(x => x.CarNumber)
+                                    @Html.LabelFor(x => x.CarNumber, new { @class = "col-sm-2 control-label" })
+                                    <div class="col-sm-10">
+                                        @Html.TextBoxFor(x => x.CarNumber, new { @class = "form-control", @placeholder = "Biển số xe" })
+                                        @Html.ValidationMessageFor(x => x.CarNumber, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
+
                                 <div class="form-group">
-                                    @Html.LabelFor(x => x.Carmakers)
-                                    @Html.TextBoxFor(x => x.Carmakers, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(x => x.Carmakers)
+                                    @Html.LabelFor(x => x.Carmakers, new { @class = "col-sm-2 control-label" })
+                                    <div class="col-sm-10">
+                                        @Html.TextBoxFor(x => x.Carmakers, new { @class = "form-control", @placeholder = "Hãng xe" })
+                                        @Html.ValidationMessageFor(x => x.Carmakers, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
-                                <div class="submit-holder">
-                                    <button type="submit" class="btn-mvc-green btn-mvc-large">Save</button>
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-danger">Thay đổi</button>
+                                    </div>
                                 </div>
-                            </fieldset>
                         }
                     </div>
                     <!-- /.tab-pane -->

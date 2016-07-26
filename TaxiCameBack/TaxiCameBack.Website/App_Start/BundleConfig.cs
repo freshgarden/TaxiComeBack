@@ -41,8 +41,8 @@ namespace TaxiCameBack.Website
             bundles.Add(new ScriptBundle("~/js/calendar").Include(
                 "~/Scripts/moment.min.js",
                  "~/Scripts/plugins/fullcalendar/fullcalendar.min.js",
-                 "~/Scripts/view_calendar.js"
-                 
+                 "~/Scripts/view_calendar.js",
+                 "~/Scripts/plugins/fullcalendar/lang/vi.js"
                  ));
 
             //Register Css
