@@ -32,7 +32,14 @@
                 <div class="box-body box-profile">
                     <img id="imgProfile" class="profile-user-img img-responsive img-circle" src="@AppHelpers.MemberImage(Model.Id, Model.Avatar, Model.Email, AppConstants.AvatarProfileSize)" alt="User profile picture">
                     <h3 class="profile-username text-center">@Model.FullName</h3>
-                    <p class="text-muted text-center">Tài xế</p>
+                    @if (Model.Id == 1)
+                    {
+                        <p class="text-muted text-center">Quản trị viên</p>
+                    }
+                    else
+                    {
+                        <p class="text-muted text-center">Tài xế</p>
+                    }
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
                             <b>Giới tính</b> <a class="pull-right">@Model.Gender</a>
@@ -80,14 +87,14 @@
                             @Html.HiddenFor(x => Model.Id)
                             @Html.AntiForgeryToken()
                             @Html.ValidationSummary(true)
-                                
-                                <div class="form-group">
-                                    @Html.LabelFor(x => x.FullName, new { @class = "col-sm-2 control-label" })
-                                    <div class="col-sm-10">
-                                        @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", @placeholder = "Họ và tên" })
-                                        @Html.ValidationMessageFor(x => x.FullName,"", new { @class = "text-danger" })
-                                    </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.FullName, new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", @placeholder = "Họ và tên" })
+                                    @Html.ValidationMessageFor(x => x.FullName, "", new { @class = "text-danger" })
                                 </div>
+                            </div>
 
                                 <div class="form-group">
                                     @Html.LabelFor(x => x.Email, new { @class = "col-sm-2 control-label" })
@@ -101,7 +108,7 @@
                                     @Html.LabelFor(x => x.File, new { @class = "col-sm-2 control-label" })
                                     <div class="col-sm-10">
                                         <input class="form-control" type="file" name="file" id="file" value="" onchange="loadFile(event)">
-                                        @Html.ValidationMessageFor(x => x.File,"", new { @class = "text-danger" })
+                                        @Html.ValidationMessageFor(x => x.File, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
 

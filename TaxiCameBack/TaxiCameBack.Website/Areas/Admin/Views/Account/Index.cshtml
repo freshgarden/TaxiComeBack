@@ -5,6 +5,9 @@
 @{
     ViewBag.Title = AccountManager.title;
 }
+<link href="@Url.Content("~/Scripts/plugins/datatables/dataTables.bootstrap.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/plugins/datatables/jquery.dataTables.min.js")"></script>
+<script src="@Url.Content("~/Scripts/plugins/datatables/dataTables.bootstrap.min.js")"></script>
 <section class="content-header">
     <h1>
         @ViewBag.Title
@@ -18,21 +21,14 @@
 <section class="content">
     <!-- Info boxes -->
     <div class="row">
-        <div class="col-md-12">
-            <div class="box box-default">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">@ViewBag.Title</h3>
+                </div>
+                <!-- /.box-header -->
                 <div class="box-body">
-                    @using (Html.BeginForm("Index", "Account", FormMethod.Post))
-                    {
-                        <div class="input-group membersadminsearch">
-                            @Html.TextBoxFor(x => Model.Search, new { @class = "form-control" })
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="submit">@AccountManager.btn_search</button>
-                            </span>
-                        </div>
-                        @Html.HiddenFor(x => x.PageIndex)
-                    }
-
-                    <table class="table table-bordered table-striped">
+                    <table id="example2" class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>@AccountManager.edit_column_header</th>
@@ -88,15 +84,34 @@
                             }
                         </tbody>
                     </table>
-
-
-                    @if (Model.TotalPages > 1)
-                    {
-                        @Html.Pager(Convert.ToInt32(Model.PageIndex), AppConstants.AdminListPageSize, Convert.ToInt32(Model.TotalCount), new { search = Model.Search })
-                    }
-
                 </div>
             </div>
         </div>
     </div>
 </section>
+<script>
+    $(function () {
+        $('#example2').DataTable({
+            "paging": true,
+            "searching": true,
+            "ordering": true,
+            "language": {
+                "sProcessing": "Đang xử lý...",
+                "sLengthMenu": "Xem _MENU_ mục",
+                "sZeroRecords": "Không tìm thấy dòng nào phù hợp",
+                "sInfo": "Đang xem _START_ đến _END_ trong tổng số _TOTAL_ mục",
+                "sInfoEmpty": "Đang xem 0 đến 0 trong tổng số 0 mục",
+                "sInfoFiltered": "(được lọc từ _MAX_ mục)",
+                "sInfoPostFix": "",
+                "sSearch": "Tìm:",
+                "sUrl": "",
+                "oPaginate": {
+                    "sFirst": "Đầu",
+                    "sPrevious": "Trước",
+                    "sNext": "Tiếp",
+                    "sLast": "Cuối"
+                }
+            }
+        });
+    });
+</script>

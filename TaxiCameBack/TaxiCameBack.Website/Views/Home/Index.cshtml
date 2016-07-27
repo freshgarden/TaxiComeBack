@@ -152,7 +152,7 @@
                                     <p class="dboxt1">@Home.lbl_UserGuideHeader</p>
                                     <a href="#" class="botuseguide2" id="closeUserGuidePanel"><p class="dboxt2">X</p></a>
                                     <p class="clear"></p>
-                                    <div class="dboxt4"><h2 style="margin-bottom:6px" class="pdboxms3">Ứng dụng Bản đồ Việt Nam trực tuyến Online, tìm đường đi nhanh và gần nhất, xem bản đồ các tỉnh thành như Hà Nội, Sài Gòn, TP.HCM, Đà Nẵng, Cần Thơ, Hải Phòng, Nha Trang, Bình Dương, Đà Lạt… chỉ đường đi nhanh nhất, ngắn nhất đến các địa điểm, địa chỉ, vị trí,khu vui chơi, khu du lịch, giải trí, khách sạn, nhà hàng trên khắp Việt Nam. Bản đồ vệ tinh, danh bạ địa chỉ số tiện dụng nhất hiện nay.</h2><p class="pdboxms3">Nhập địa chỉ muốn tìm vào khung tìm kiếm trên bản đồ hoặc click vào icon <span class="backmapnew icgetlct"></span> để hệ thống tự lấy vị trí hiện tại của bạn.</p><p class="pdboxms3">Sau đó bấm phím <b>"Enter"</b> hoặc click chuột vào icon <span class="backmapnew icclick"></span> để bắt đầu quá trình tìm kiếm.</p></div>
+                                    <div class="dboxt4"><h2 style="margin-bottom:6px" class="pdboxms3">Ứng dụng tìm kiếm taxi đường dài, giá rẻ với chi phí chỉ khoảng 5 đến 6 ngàn đồng/km, rẻ bằng một nửa so với taxi truyền thống. Chúng tôi sẽ đem lại cho Quí khách hàng những chọn lựa tốt với mức chi phí thấp nhất</h2><p class="pdboxms3">Nhập địa chỉ đến và đi, thời gian xuất hành vào khung tìm kiếm trên bản đồ hoặc click vào icon <span class="backmapnew icgetlct"></span> để hệ thống tự lấy vị trí hiện tại của bạn.</p><p class="pdboxms3">Sau đó click chuột vào icon <span class="backmapnew icclick"></span> để bắt đầu quá trình tìm kiếm taxi phù hợp. Hệ thống sẽ hiển thị danh sách các chuyến xe phù hợp với lộ trình của bạn, hãy đăng kí và liên hệ với tài xế để có được thông tin cần thiết.</p></div>
                                 </div>
                             </div>
                             <div class="dboxgtm" id="directionsPanel">
@@ -160,7 +160,7 @@
                                     <div class="search-fixed">
                                         <div class="psearch backcolorms1"> <b class="backmapnew"></b> <span class="search-result-header-text">@Home.lbl_SearchResult</span></div>
                                         <div id="distanceAndTime" class="psearch-result">
-                                            <span style="font-weight:bold; margin-left: 50px;">
+                                            <span style="font-weight:bold; margin-left: 40px;">
                                                 100 km - 1giờ 15 phút
                                             </span>
                                             <a href="#" class="botuseguide2" id="closeRouteListPanel"><p class="dboxt2">X</p></a>
@@ -352,7 +352,8 @@
 
             var marker = new google.maps.Marker({
                 position: myCenter,
-                animation: google.maps.Animation.BOUNCE
+                animation: google.maps.Animation.BOUNCE,
+                icon: "/Content/Images/icons/location-icon.png"
             });
 
             marker.setMap(map);
