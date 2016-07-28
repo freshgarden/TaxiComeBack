@@ -266,6 +266,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AccountManager.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\ApproveUser.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApproveUser.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\ChangePassword.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -295,6 +300,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ForgotPassword.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\Header.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Header.resx</DependentUpon>
     </Compile>
     <Compile Include="App_LocalResources\Home.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -335,6 +345,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SideBar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\UserProfile.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserProfile.resx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -391,6 +406,7 @@
     <Content Include="Content\dist\css\AdminLTE.css" />
     <Content Include="Content\dist\css\AdminLTE.min.css" />
     <Content Include="Content\Emails\EmailNotification.htm" />
+    <Content Include="Content\Images\default-user-image.png" />
     <Content Include="Content\jqsDialog\Images\ajax-loader.gif" />
     <Content Include="Content\jqsDialog\Images\chosen-sprite%402x.png" />
     <Content Include="Content\jqsDialog\Images\chosen-sprite.png" />
@@ -2343,6 +2359,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountManager.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\ApproveUser.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ApproveUser.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\ChangePassword.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ChangePassword.Designer.cs</LastGenOutput>
@@ -2370,6 +2390,10 @@
     <EmbeddedResource Include="App_LocalResources\ForgotPassword.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ForgotPassword.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\Header.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Header.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\Home.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -2403,6 +2427,10 @@
     <EmbeddedResource Include="App_LocalResources\SideBar.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SideBar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\UserProfile.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserProfile.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

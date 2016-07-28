@@ -85,7 +85,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
 
             if (result.Errors.Count > 0)
             {
-                ModelState.AddModelError(string.Empty, result.Errors[0]);
+                ModelState.AddModelError("ErrorMessage", result.Errors[0]);
             }
             else
             {
@@ -311,7 +311,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 {
                     TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
                     {
-                        Message = "Profile Updated",
+                        Message = UserProfile.profile_updated,
                         MessageType = GenericMessages.success
                     };
                     return RedirectToAction("EditProfile");

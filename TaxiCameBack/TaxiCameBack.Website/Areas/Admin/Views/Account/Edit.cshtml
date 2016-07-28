@@ -1,56 +1,73 @@
 ﻿@using TaxiCameBack.Website.Application.Extension
 @model TaxiCameBack.Website.Areas.Admin.Models.MemberEditViewModel
+@using TaxiCameBack.Website.App_LocalResources
 @{
-    ViewBag.Title = (string.IsNullOrEmpty(Model.Id.ToString())) ? "Add User" : "Edit User";
-    var buttonText = (string.IsNullOrEmpty(Model.Id.ToString())) ? "Create" : "Save";
+    ViewBag.Title = (string.IsNullOrEmpty(Model.Id.ToString())) ? ApproveUser.add_user : ApproveUser.edit_user;
+    var buttonText = (string.IsNullOrEmpty(Model.Id.ToString())) ? ApproveUser.btn_create : ApproveUser.btn_save;
 }
-<div class="backbutton">
-    <a href="@Url.Action("Index")" class="btn-mvc-green">&lt;&lt; Back</a>
-</div>
+<section class="content-header">
+    <h1>
+        @ApproveUser.user_profile
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> @HomeBackEnd.home_breadcrumb</a></li>
+        <li><a href="#">@AccountManager.approve_column_header</a></li>
+        <li class="active">@ApproveUser.user_profile</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Profile Image -->
+            <div class="box box-primary">
+                <div class="box-body box-profile">
+                    @using (Html.BeginForm("Edit", "Account", FormMethod.Post))
+                    {
+                        @Html.HiddenFor(x => Model.Id)
+                        @Html.AntiForgeryToken()
+                        if (ViewData.ModelState["ErrorMessage"] != null)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                @Html.ValidationMessage("ErrorMessage")
+                            </div>
+                        }
 
-<div class="panel">
-    <div class="panel-heading">
-        <h5>@ViewBag.Title</h5>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.Email)
+                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", type = "email" })
+                            @Html.ValidationMessageFor(x => x.Email,"", new { @class = "text-danger" })
+                        </div>
+
+                                <h2>@ApproveUser.admin_specific</h2>
+
+                                <div class="checkbox">
+                                    @using (Html.BeginLabelFor(m => m.IsApproved, new { @class = "checkbox" }))
+                {
+                                        @Html.CheckBoxFor(m => m.IsApproved)
+                                    }
+                                    @Html.ValidationMessageFor(m => m.IsApproved, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="checkbox">
+                                    @using (Html.BeginLabelFor(m => m.IsLockedOut, new { @class = "checkbox" }))
+                                    {
+                                        @Html.CheckBoxFor(m => m.IsLockedOut)
+                                    }
+                                    @Html.ValidationMessageFor(m => m.IsLockedOut, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="submit-holder">
+                                    <input type="submit" class="btn btn-primary" value="@(buttonText)" />
+                                    @if (!string.IsNullOrWhiteSpace(Model.Id.ToString()))
+                                    {
+                                        <a href="@Url.Action("Delete", new{Model.Id})" onclick="return confirm('Are you sure you want to delete @Model.Email?')" class="btn btn-danger" role="button">Delete</a>
+                                    }
+                                </div>
+                    }
+
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="panel-content">
-        @using (Html.BeginForm("Edit", "Account", FormMethod.Post))
-        {
-            @Html.HiddenFor(x => Model.Id)
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(false)
-
-            <div class="form-group">
-                @Html.LabelFor(x => x.Email)
-                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", type = "email" })
-                @Html.ValidationMessageFor(x => x.Email)
-            </div>
-
-            <h2>Admin Specific</h2>
-            
-            <div class="checkbox">
-                @using (Html.BeginLabelFor(m => m.IsApproved, new { @class = "checkbox" }))
-                {
-                    @Html.CheckBoxFor(m => m.IsApproved)
-                }
-                @Html.ValidationMessageFor(m => m.IsApproved)
-            </div>
-
-            <div class="checkbox">
-                @using (Html.BeginLabelFor(m => m.IsLockedOut, new { @class = "checkbox" }))
-                {
-                    @Html.CheckBoxFor(m => m.IsLockedOut)
-                }
-                @Html.ValidationMessageFor(m => m.IsLockedOut)
-            </div>
-
-            <div class="submit-holder">
-                <input type="submit" class="btn-mvc-green" value="@(buttonText)" />
-                @if (!string.IsNullOrWhiteSpace(Model.Id.ToString()))
-                {
-                    <a href="@Url.Action("Delete", new{Model.Id})" onclick="return confirm('Are you sure you want to delete @Model.Email?')" class="btn-mvc-red" role="button">Delete</a>
-                }
-            </div>
-        }
-
-    </div>
-</div>
+</section>

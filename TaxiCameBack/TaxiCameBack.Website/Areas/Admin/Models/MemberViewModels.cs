@@ -23,47 +23,47 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
             [Required]
             public int Id { get; set; }
           
-            [DisplayName("Email Address")]
+            [Display(ResourceType = typeof(UserProfile),Name = "email_address")]
             [EmailAddress]
             [Required]
             public string Email { get; set; }
             
-            [DisplayName("Upload New Avatar")]
+            [Display(ResourceType = typeof(UserProfile), Name = "upload_avatar")]
             public HttpPostedFileBase File { get; set; }
 
-            [DisplayName("Full name")]
+            [Display(ResourceType = typeof(UserProfile), Name = "full_name")]
             [Required]
             public string FullName { get; set; }
 
             public string Avatar { get; set; }
 
-            [DisplayName("Date Of Birth")]
+            [Display(ResourceType = typeof(UserProfile), Name = "date_of_birth")]
             public DateTime? DateOfBirth { get; set; }
 
-            [DisplayName("Day")]
+            [Display(ResourceType = typeof(UserProfile), Name = "day")]
             public int Day { get; set; }
 
-            [DisplayName("Month")]
+            [Display(ResourceType = typeof(UserProfile), Name = "month")]
             public int Month { get; set; }
 
-            [DisplayName("Year")]
+            [Display(ResourceType = typeof(UserProfile), Name = "year")]
             public int Year { get; set; }
 
-            [DisplayName("Address")]
+            [Display(ResourceType = typeof(UserProfile), Name = "address")]
             public string Address { get; set; }
 
-            [DisplayName("Gender")]
+            [Display(ResourceType = typeof(UserProfile), Name = "gender")]
             public string Gender { get; set; }
 
-            [DisplayName("Phone Number")]
+            [Display(ResourceType = typeof(UserProfile), Name = "phone")]
             [Required]
-            [RegularExpression(@"^(0\d{9,10})$", ErrorMessage = "Invalid phone.")]
+            [RegularExpression(@"^(0\d{9,10})$", ErrorMessageResourceType = typeof(UserProfile),ErrorMessageResourceName = "invalid_phone_number")]
             public string PhoneNumber { get; set; }
             
-            [DisplayName("Car Number")]
+            [Display(ResourceType = typeof(UserProfile), Name = "plate_number")]
             public string CarNumber { get; set; }
 
-            [DisplayName("Carmakers")]
+            [Display(ResourceType = typeof(UserProfile), Name = "car_branch")]
             public string Carmakers { get; set; }
 
         }

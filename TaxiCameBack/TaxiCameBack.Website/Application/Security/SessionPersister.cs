@@ -23,5 +23,9 @@ namespace TaxiCameBack.Website.Application.Security
         public static int UserId { get; set; }
 
         public static string[] Roles { get; set; }
+
+        public static string FullName { get; set; }
+
+        public static string UserImageUrl { get; set; }
     }
 }

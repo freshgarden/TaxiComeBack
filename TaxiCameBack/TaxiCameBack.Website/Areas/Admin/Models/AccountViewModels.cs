@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using TaxiCameBack.Core.DomainModel.Membership;
+using TaxiCameBack.Website.App_LocalResources;
 
 namespace TaxiCameBack.Website.Areas.Admin.Models
 {
@@ -48,17 +49,17 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
         [Required]
         public int Id { get; set; }
 
-        [Display(Name = "Email Address")]
+        [Display(ResourceType = typeof(ApproveUser),Name = "email_address")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Display(Name = "User is Approved")]
+        [Display(Name = "user_approved",ResourceType = typeof(ApproveUser))]
         public bool IsApproved { get; set; }
         
-        [Display(Name = "User is Locked Out")]
+        [Display(Name = "user_locked",ResourceType = typeof(ApproveUser))]
         public bool IsLockedOut { get; set; }
 
-        [Display(Name = "Roles")]
+        [Display(Name = "roles",ResourceType = typeof (ApproveUser))]
         public string[] Roles { get; set; }
 
         public IList<MembershipRole> AllRoles { get; set; }

@@ -1,11 +1,12 @@
 ﻿@using TaxiCameBack.Core.Constants
 @using TaxiCameBack.Website.Application
 @using TaxiCameBack.Website.Models
+@using TaxiCameBack.Website.App_LocalResources
 @model TaxiCameBack.Website.Areas.Admin.Models.MemberViewModels.SelfMemberEditViewModel
 
 @{
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    ViewBag.Title = "Edit Profile";
+    ViewBag.Title = UserProfile.user_profile_title;
 }
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
@@ -15,12 +16,11 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        User Profile
+        @ViewBag.Title
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">User profile</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>@HomeBackEnd.home_breadcrumb</a></li>
+        <li class="active">@ViewBag.Title</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -34,21 +34,21 @@
                     <h3 class="profile-username text-center">@Model.FullName</h3>
                     @if (Model.Id == 1)
                     {
-                        <p class="text-muted text-center">Quản trị viên</p>
+                        <p class="text-muted text-center">@UserProfile.manager</p>
                     }
                     else
                     {
-                        <p class="text-muted text-center">Tài xế</p>
+                        <p class="text-muted text-center">@UserProfile.drive</p>
                     }
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
-                            <b>Giới tính</b> <a class="pull-right">@Model.Gender</a>
+                            <b>@UserProfile.gender</b> <a class="pull-right">@Model.Gender</a>
                         </li>
                         <li class="list-group-item">
-                            <b>Ngày sinh</b> <a class="pull-right">@Model.Day - @Model.Month - @Model.Year</a>
+                            <b>@UserProfile.date_of_birth</b> <a class="pull-right">@Model.Day - @Model.Month - @Model.Year</a>
                         </li>
                         <li class="list-group-item">
-                            <b>Số điện thoại</b> <a class="pull-right">
+                            <b>@UserProfile.phone</b> <a class="pull-right">
                                 @{
                                     var phone = Model.PhoneNumber.Length == 10
                                         ? $"{Model.PhoneNumber.Substring(0, 3)}.{Model.PhoneNumber.Substring(3, 3)}.{Model.PhoneNumber.Substring(6, 4)}"
@@ -58,13 +58,13 @@
                             </a>
                         </li>
                         <li class="list-group-item">
-                            <b>Email</b> <a class="pull-right">@Model.Email</a>
+                            <b>@UserProfile.email</b> <a class="pull-right">@Model.Email</a>
                         </li>
                         <li class="list-group-item">
-                            <b>Biển số xe</b> <a class="pull-right">@Model.CarNumber</a>
+                            <b>@UserProfile.plate_number</b> <a class="pull-right">@Model.CarNumber</a>
                         </li>
                         <li class="list-group-item">
-                            <b>Hãng xe</b> <a class="pull-right">@Model.Carmakers</a>
+                            <b>@UserProfile.car_branch</b> <a class="pull-right">@Model.Carmakers</a>
                         </li>
                     </ul>
                 </div>
@@ -74,10 +74,10 @@
         </div>
         <!-- /.col -->
         <div class="col-md-9">
-            <div class="nav-tabs-custom">
+            <div class="nav-tabs-custom box box-default">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#editprofile" data-toggle="tab">Thông tin cá nhân</a></li>
-                    <li><a href="#changepassword" data-toggle="tab">Thay đổi mật khẩu</a></li>
+                    <li class="active"><a href="#editprofile" data-toggle="tab">@UserProfile.personal_info</a></li>
+                    <li><a href="#changepassword" data-toggle="tab">@UserProfile.change_password</a></li>
                 </ul>
                 <div class="tab-content">
                     <!-- /.tab-pane -->
@@ -86,13 +86,18 @@
                         {
                             @Html.HiddenFor(x => Model.Id)
                             @Html.AntiForgeryToken()
-                            @Html.ValidationSummary(true)
-
+                            if (ViewData.ModelState["ErrorMessage"] != null)
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                    @Html.ValidationMessage("ErrorMessage")
+                                </div>
+                            }
                             <div class="form-group">
                                 @Html.LabelFor(x => x.FullName, new { @class = "col-sm-2 control-label" })
                                 <div class="col-sm-10">
-                                    @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", @placeholder = "Họ và tên" })
-                                    @Html.ValidationMessageFor(x => x.FullName, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(x => x.FullName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(x => x.FullName, "", new { @class = "text-danger", @placeholder = UserProfile.full_name })
                                 </div>
                             </div>
 
@@ -145,15 +150,15 @@
                                         <div class="row">
                                             <div class="col-xs-2">
                                                 @Html.DropDownListFor(x => x.Day, Enumerable.Range(1, 31)
-                                                    .Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Ngày", new { @class = "form-control" })
+                                                    .Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), UserProfile.day, new { @class = "form-control" })
                                             </div>
                                             <div class="col-xs-2">
                                                 @Html.DropDownListFor(x => x.Month, Enumerable.Range(1, 12)
-                                                    .Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Tháng", new { @class = "form-control" })
+                                                    .Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), UserProfile.month, new { @class = "form-control" })
                                             </div>
                                             <div class="col-xs-2">
                                                 @Html.DropDownListFor(x => x.Year, Enumerable.Range(DateTime.Now.Year - 60, 40)
-                                                    .Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Năm", new { @class = "form-control" })
+                                                    .Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), UserProfile.year, new { @class = "form-control" })
                                             </div>
                                         </div>
                                     </div>
@@ -162,7 +167,7 @@
                                 <div class="form-group">
                                     @Html.LabelFor(x => x.Address, new { @class = "col-sm-2 control-label" })
                                     <div class="col-sm-10">
-                                        @Html.TextBoxFor(x => x.Address, new { @class = "form-control", @placeholder = "Địa chỉ" })
+                                        @Html.TextBoxFor(x => x.Address, new { @class = "form-control", @placeholder = UserProfile.address })
                                         @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -170,7 +175,7 @@
                                 <div class="form-group">
                                     @Html.LabelFor(x => x.PhoneNumber, new { @class = "col-sm-2 control-label" })
                                     <div class="col-sm-10">
-                                        @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control", type = "number", @placeholder = "Số điện thoại liên hệ" })
+                                        @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control", type = "number", @placeholder = UserProfile.phone })
                                         @Html.ValidationMessageFor(x => x.PhoneNumber, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -178,7 +183,7 @@
                                 <div class="form-group">
                                     @Html.LabelFor(x => x.CarNumber, new { @class = "col-sm-2 control-label" })
                                     <div class="col-sm-10">
-                                        @Html.TextBoxFor(x => x.CarNumber, new { @class = "form-control", @placeholder = "Biển số xe" })
+                                        @Html.TextBoxFor(x => x.CarNumber, new { @class = "form-control", @placeholder = UserProfile.plate_number })
                                         @Html.ValidationMessageFor(x => x.CarNumber, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -186,14 +191,14 @@
                                 <div class="form-group">
                                     @Html.LabelFor(x => x.Carmakers, new { @class = "col-sm-2 control-label" })
                                     <div class="col-sm-10">
-                                        @Html.TextBoxFor(x => x.Carmakers, new { @class = "form-control", @placeholder = "Hãng xe" })
+                                        @Html.TextBoxFor(x => x.Carmakers, new { @class = "form-control", @placeholder = UserProfile.car_branch })
                                         @Html.ValidationMessageFor(x => x.Carmakers, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-danger">Thay đổi</button>
+                                        <button type="submit" class="btn btn-danger">@UserProfile.btn_update</button>
                                     </div>
                                 </div>
                         }
