@@ -149,12 +149,14 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                     SessionPersister.Username = loginViewModel.UserName;
                     SessionPersister.UserId = _membershipService.GetUser(loginViewModel.UserName).UserId;
                     SessionPersister.Roles = _membershipService.GetRolesForUser(loginViewModel.UserName).ToArray();
-//                    if (Url.IsLocalUrl(loginViewModel.ReturnUrl) && loginViewModel.ReturnUrl.Length > 1 && loginViewModel.ReturnUrl.StartsWith("/")
-//                                        && !loginViewModel.ReturnUrl.StartsWith("//") && !loginViewModel.ReturnUrl.StartsWith("/\\"))
-//                    {
-//                        return Redirect(loginViewModel.ReturnUrl);
-//                    }
-                    
+                    SessionPersister.FullName = _membershipService.GetUser(loginViewModel.UserName).FullName;
+                    SessionPersister.UserImageUrl = _membershipService.GetUser(loginViewModel.UserName).Avatar;
+                    //                    if (Url.IsLocalUrl(loginViewModel.ReturnUrl) && loginViewModel.ReturnUrl.Length > 1 && loginViewModel.ReturnUrl.StartsWith("/")
+                    //                                        && !loginViewModel.ReturnUrl.StartsWith("//") && !loginViewModel.ReturnUrl.StartsWith("/\\"))
+                    //                    {
+                    //                        return Redirect(loginViewModel.ReturnUrl);
+                    //                    }
+
                     return _membershipService.GetRolesForUser(SessionPersister.Username).Contains(AppConstants.AdminRoleName) ? RedirectToAction("Index", "Account", new {area = "Admin"}) : RedirectToAction("Index", "Schedule", new {area = "Admin"});
                 }
                 ModelState.AddModelError(string.Empty, reuslt.Errors[0]);

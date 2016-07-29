@@ -70,6 +70,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tài khoản được duyệt.
+        /// </summary>
+        public static string approve_title {
+            get {
+                return ResourceManager.GetString("approve_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tìm kiếm.
         /// </summary>
         public static string btn_search {
@@ -79,20 +88,29 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Xóa tài khoản.
-        /// </summary>
-        public static string delete_acc_column_header {
-            get {
-                return ResourceManager.GetString("delete_acc_column_header", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Chỉnh sửa.
+        ///   Looks up a localized string similar to Sửa.
         /// </summary>
         public static string edit_column_header {
             get {
                 return ResourceManager.GetString("edit_column_header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Họ và tên.
+        /// </summary>
+        public static string fullname_column_header {
+            get {
+                return ResourceManager.GetString("fullname_column_header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tài khoản bị khóa.
+        /// </summary>
+        public static string lock_title {
+            get {
+                return ResourceManager.GetString("lock_title", resourceCulture);
             }
         }
         
@@ -102,6 +120,33 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string locked_acc_column_header {
             get {
                 return ResourceManager.GetString("locked_acc_column_header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tài khoản chờ duyệt.
+        /// </summary>
+        public static string pending_title {
+            get {
+                return ResourceManager.GetString("pending_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số điện thoại.
+        /// </summary>
+        public static string phone_column_header {
+            get {
+                return ResourceManager.GetString("phone_column_header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #.
+        /// </summary>
+        public static string stt_column_header {
+            get {
+                return ResourceManager.GetString("stt_column_header", resourceCulture);
             }
         }
         

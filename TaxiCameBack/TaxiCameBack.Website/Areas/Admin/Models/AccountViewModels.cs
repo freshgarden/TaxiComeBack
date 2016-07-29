@@ -15,6 +15,10 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
         [Display(Name = "User Email")]
         public string UserEmail { get; set; }
 
+        public string FullName { get; set; }
+
+        public string Phone { get; set; }
+
         [Display(Name = "Locked Out")]
         public bool IsLockedOut { get; set; }
 

@@ -15,7 +15,9 @@ namespace TaxiCameBack.Website.Areas.Admin.Models.Mapping
                 Id = user.UserId,
                 IsLockedOut = user.IsLockedOut,
                 Roles = user.Roles.Select(x => x.RoleName).ToArray(),
-                UserEmail = user.Email
+                UserEmail = user.Email,
+                FullName = user.FullName,
+                Phone = user.PhoneNumber
             };
             return viewModel;
         }

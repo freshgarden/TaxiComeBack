@@ -1,6 +1,9 @@
 ﻿@using Microsoft.AspNet.Identity
 @using TaxiCameBack.Website.Application.Security
 @using TaxiCameBack.Website.App_LocalResources
+@using TaxiCameBack.Core.Constants
+@using TaxiCameBack.Website.Application
+@using TaxiCameBack.Website.Models
 <header class="main-header">
     <!-- Logo -->
     <a href="#" class="logo">
@@ -70,7 +73,7 @@
                        }
                        else
                        {
-                        <img src="@SessionPersister.UserImageUrl" class="user-image" alt="User Image">
+                        <img src="@AppHelpers.MemberImage(SessionPersister.UserId, SessionPersister.UserImageUrl, SessionPersister.Username, AppConstants.AvatarProfileSize)" class="user-image" alt="User Image">
                        }
                         <span class="hidden-xs">@SessionPersister.Username</span>
                     </a>
@@ -83,7 +86,7 @@
                             }
                             else
                             {
-                                <img src="@SessionPersister.UserImageUrl" class="img-circle" alt="User Image">
+                                <img src="@AppHelpers.MemberImage(SessionPersister.UserId, SessionPersister.UserImageUrl, SessionPersister.Username, AppConstants.AvatarProfileSize)" class="img-circle" alt="User Image">
                             }
                             <p>
                                 @if (string.IsNullOrEmpty(SessionPersister.FullName))
@@ -91,9 +94,15 @@
                                     @Header.default_full_name
                                 }else
                                 {
-                                    @SessionPersister.FullName
+                                    if(SessionPersister.UserId == 1)
+                                    {
+                                        @(SessionPersister.FullName + " - " + @UserProfile.manager)
+                                    }
+                                    else
+                                    {
+                                        @(SessionPersister.FullName + " - " + @UserProfile.drive)
+                                    }
                                 }
-
                             </p>
                         </li>
                        

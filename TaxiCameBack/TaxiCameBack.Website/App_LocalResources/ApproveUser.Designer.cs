@@ -88,6 +88,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Xóa.
+        /// </summary>
+        public static string btn_delete {
+            get {
+                return ResourceManager.GetString("btn_delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lưu.
         /// </summary>
         public static string btn_save {

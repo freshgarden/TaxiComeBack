@@ -9,8 +9,6 @@
     ViewBag.Title = UserProfile.user_profile_title;
 }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
 <!-- Content Header (Page header) -->
@@ -74,7 +72,7 @@
         </div>
         <!-- /.col -->
         <div class="col-md-9">
-            <div class="nav-tabs-custom box box-default">
+            <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#editprofile" data-toggle="tab">@UserProfile.personal_info</a></li>
                     <li><a href="#changepassword" data-toggle="tab">@UserProfile.change_password</a></li>

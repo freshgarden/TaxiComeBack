@@ -35,7 +35,7 @@
 
                         <div class="form-group">
                             @Html.LabelFor(x => x.Email)
-                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", type = "email" })
+                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", type = "email", @readonly = "readonly" })
                             @Html.ValidationMessageFor(x => x.Email,"", new { @class = "text-danger" })
                         </div>
 
@@ -59,9 +59,9 @@
 
                                 <div class="submit-holder">
                                     <input type="submit" class="btn btn-primary" value="@(buttonText)" />
-                                    @if (!string.IsNullOrWhiteSpace(Model.Id.ToString()))
+                                    @if (Html.ValueFor(x => x.Id).ToString() != "1")
                                     {
-                                        <a href="@Url.Action("Delete", new{Model.Id})" onclick="return confirm('Are you sure you want to delete @Model.Email?')" class="btn btn-danger" role="button">Delete</a>
+                                        <a href="@Url.Action("Delete", new{Model.Id})" onclick="return confirm('Are you sure you want to delete @Model.Email?')" class="btn btn-danger" role="button">@ApproveUser.btn_delete</a>
                                     }
                                 </div>
                     }

@@ -14,7 +14,7 @@
         // Standard Members role
         public const string StandardMembers = "Standard Members";
 
-        public const int AdminListPageSize = 10;
+        public const int AdminListPageSize = 500;
 
         public const int PagingGroupSize = 10;
 

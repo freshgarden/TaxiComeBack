@@ -126,6 +126,9 @@
   <data name="btn_create" xml:space="preserve">
     <value>Tạo</value>
   </data>
+  <data name="btn_delete" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
   <data name="btn_save" xml:space="preserve">
     <value>Lưu</value>
   </data>
