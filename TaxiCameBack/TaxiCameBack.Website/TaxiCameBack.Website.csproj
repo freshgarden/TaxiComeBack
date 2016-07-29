@@ -381,6 +381,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Filters\ValidateJsonAntiForgeryTokenAttribute.cs" />
+    <Compile Include="Models\CustomerRegisterCar.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SearchModel.cs" />

@@ -117,11 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="begin_location_required" xml:space="preserve">
+    <value>Điểm đi không được để trống</value>
+  </data>
+  <data name="begin_location_stringlength" xml:space="preserve">
+    <value>Điểm đi không được vượt quá 600 ký tự</value>
+  </data>
   <data name="btnCreate" xml:space="preserve">
     <value>Đăng ký</value>
   </data>
   <data name="btnUpdate" xml:space="preserve">
     <value>Cập nhật</value>
+  </data>
+  <data name="end_location_required" xml:space="preserve">
+    <value>Điểm đến không được để trống</value>
+  </data>
+  <data name="end_location_stringlength" xml:space="preserve">
+    <value>Điểm đến không được vượt quá 600 ký tự</value>
   </data>
   <data name="lbl_begin_location" xml:space="preserve">
     <value>Điểm đi</value>
@@ -137,6 +149,9 @@
   </data>
   <data name="plc_StartPoint" xml:space="preserve">
     <value>Nhập điểm đi</value>
+  </data>
+  <data name="start_date_required" xml:space="preserve">
+    <value>Thời gian xuất hành không được để trống</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Tạo lộ trình</value>

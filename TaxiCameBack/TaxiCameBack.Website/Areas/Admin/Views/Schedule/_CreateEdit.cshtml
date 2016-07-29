@@ -1,6 +1,8 @@
 ﻿@using TaxiCameBack.Website.App_LocalResources
 @model TaxiCameBack.Website.Areas.Admin.Models.ScheduleViewModel
-
+@{ 
+    ViewBag.Title = CreateSchedule.title;
+}
 <link href="@Url.Content("~/Content/datetimepicker/jquery.datetimepicker.css")" rel="stylesheet" />
 <link href="@Url.Content("~/Content/jqsDialog/jqsDialog.css")" rel="stylesheet" />
 <script src="@Url.Content("~/Content/datetimepicker/jquery.datetimepicker.full.min.js")"></script>
@@ -28,9 +30,6 @@
     <div class="row">
         <div class="col-md-4">
             <div class="box box-default">
-                <div class="box-header with-border">
-                    <h3 class="box-title">@ViewBag.Title</h3>
-                </div>
                 <div class="box-body">
                     @Html.AntiForgeryToken()
 

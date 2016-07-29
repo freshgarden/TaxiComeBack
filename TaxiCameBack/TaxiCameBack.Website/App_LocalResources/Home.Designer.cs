@@ -88,6 +88,33 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bạn phải đồng ý với điều khoản của chúng tôi.
+        /// </summary>
+        public static string customer_agree {
+            get {
+                return ResourceManager.GetString("customer_agree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tên khách hàng không được để trống.
+        /// </summary>
+        public static string customer_fullname_rqr {
+            get {
+                return ResourceManager.GetString("customer_fullname_rqr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số điện thoại khách hàng không được để trống.
+        /// </summary>
+        public static string customer_phone_rqr {
+            get {
+                return ResourceManager.GetString("customer_phone_rqr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tìm kiếm taxi đường dài giá rẻ... Địa điểm, địa chỉ số,bản đồ vệ tinh Vietnam Maps - Phát triển bởi FreshGarden Team.
         /// </summary>
         public static string Description {

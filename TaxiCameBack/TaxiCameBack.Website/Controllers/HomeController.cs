@@ -35,14 +35,18 @@ namespace TaxiCameBack.Website.Controllers
                 UserPhoneNumber = schedule.User.PhoneNumber,
                 UserAvatar = schedule.User.Avatar,
                 UserCarNumber = schedule.User.CarNumber,
-                UserCarmakers = schedule.User.Carmakers
+                UserCarmakers = schedule.User.Carmakers,
+                DriveId = schedule.UserId
             }).ToList();
 
             return schedules.Count == 0
                 ? Json(new { }, JsonRequestBehavior.AllowGet)
                 : Json(results, JsonRequestBehavior.AllowGet);
         }
-
+        public JsonResult CustomerRegisterCar(CustomerRegisterCar customerRegisterCar)
+        {
+            return Json(new { },JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Index()
         {
             return View();

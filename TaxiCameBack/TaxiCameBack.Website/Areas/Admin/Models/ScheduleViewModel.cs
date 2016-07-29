@@ -22,17 +22,17 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
         public int Id { get; set; }
 
         [Display(ResourceType = typeof(CreateSchedule), Name = "lbl_begin_location")]
-        [Required]
-        [StringLength(600)]
+        [Required(ErrorMessageResourceType = typeof(CreateSchedule),ErrorMessageResourceName = "begin_location_required")]
+        [StringLength(600, ErrorMessageResourceType = typeof(CreateSchedule), ErrorMessageResourceName = "begin_location_stringlength")]
         public string BeginLocation { get; set; }
 
         [Display(ResourceType = typeof(CreateSchedule), Name = "lbl_end_location")]
-        [Required]
-        [StringLength(600)]
+        [Required(ErrorMessageResourceType = typeof(CreateSchedule), ErrorMessageResourceName = "end_location_required")]
+        [StringLength(600, ErrorMessageResourceType = typeof(CreateSchedule), ErrorMessageResourceName = "end_location_stringlength")]
         public string EndLocation { get; set; }
 
         [Display(ResourceType = typeof(CreateSchedule), Name = "lbl_start_date")]
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(CreateSchedule), ErrorMessageResourceName = "start_date_required")]
         public DateTime StartDate { get; set; }
 
         [HiddenInput]

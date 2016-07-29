@@ -61,6 +61,24 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Điểm đi không được để trống.
+        /// </summary>
+        public static string begin_location_required {
+            get {
+                return ResourceManager.GetString("begin_location_required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Điểm đi không được vượt quá 600 ký tự.
+        /// </summary>
+        public static string begin_location_stringlength {
+            get {
+                return ResourceManager.GetString("begin_location_stringlength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đăng ký.
         /// </summary>
         public static string btnCreate {
@@ -75,6 +93,24 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string btnUpdate {
             get {
                 return ResourceManager.GetString("btnUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Điểm đến không được để trống.
+        /// </summary>
+        public static string end_location_required {
+            get {
+                return ResourceManager.GetString("end_location_required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Điểm đến không được vượt quá 600 ký tự.
+        /// </summary>
+        public static string end_location_stringlength {
+            get {
+                return ResourceManager.GetString("end_location_stringlength", resourceCulture);
             }
         }
         
@@ -120,6 +156,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string plc_StartPoint {
             get {
                 return ResourceManager.GetString("plc_StartPoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thời gian xuất hành không được để trống.
+        /// </summary>
+        public static string start_date_required {
+            get {
+                return ResourceManager.GetString("start_date_required", resourceCulture);
             }
         }
         

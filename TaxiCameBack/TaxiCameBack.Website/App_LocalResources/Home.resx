@@ -219,4 +219,13 @@
   <data name="btn_switch_title" xml:space="preserve">
     <value>Đổi vị trí</value>
   </data>
+  <data name="customer_agree" xml:space="preserve">
+    <value>Bạn phải đồng ý với điều khoản của chúng tôi</value>
+  </data>
+  <data name="customer_fullname_rqr" xml:space="preserve">
+    <value>Tên khách hàng không được để trống</value>
+  </data>
+  <data name="customer_phone_rqr" xml:space="preserve">
+    <value>Số điện thoại khách hàng không được để trống</value>
+  </data>
 </root>

@@ -12,6 +12,12 @@
                 <div class="divchesn"></div>
                 <div class="divlogtcbnew">
                     <p class="titsignew">@Home.lbl_Route</p> <a href="#" id="closeRoute"><p class="iconhp closedpopdknew closedsign"></p></a>
+                    <div id="errorMessageDiv" class="alert alert-danger" role="alert" style="display:none">
+                        <label id="errorMessage" class="text-danger"/>
+                    </div>
+                    <div id="successMessageDiv" class="alert alert-success" role="alert" style="display:none">
+                        <label id="successMessage" class="text-success" />
+                    </div>
                     <div class="divpopsignk">
                         <div class="divroute">
                             <p class="ptextroute">
@@ -22,8 +28,8 @@
                             </p>
                         </div>
                         <div class="divroute2">
-                            <p class="ptextroute2">Nguyễn Xuân Phúc</p>
-                            <p class="ptextroute2">098.4622.793</p>
+                            <p id="driveName" class="ptextroute2"></p>
+                            <p id="drivePhone" class="ptextroute2"></p>
                         </div>
                         <div class="divroute2">
                             <div class="divroute2">
@@ -38,20 +44,19 @@
                                 </p>
                             </div>
                             <div class="divroute2">
-                                <form name="regcar" action="" method="post">
-                                    <p>
-                                        <input id="fullname" class="ptextroute3" type="text" name="fullname" value="" placeholder="@Home.plh_FullName" maxlength="50">
-                                    </p>
-                                    <p>
-                                        <input id="phoneNumber" class="ptextroute3" type="tel" name="phoneNumber" value="" placeholder="@Home.plh_PhoneNumber" maxlength="14">
-                                    </p>
-                                    <p>
-                                        <input id="nearpos" class="ptextroute3" type="text" name="nearpos" value="" placeholder="@Home.plh_NearPos" maxlength="50">
-                                    </p>
-                                    <div class="clear"></div>
-                                </form>
+                                <p>
+                                    <input id="customerFullName" class="ptextroute3" type="text" name="fullname" value="" placeholder="@Home.plh_FullName" maxlength="50">
+                                </p>
+                                <p>
+                                    <input id="customerPhoneNumber" class="ptextroute3" type="tel" name="phoneNumber" value="" placeholder="@Home.plh_PhoneNumber" maxlength="14">
+                                </p>
+                                <p>
+                                    <input id="customerNearpos" class="ptextroute3" type="text" name="nearpos" value="" placeholder="@Home.plh_NearPos" maxlength="50">
+                                </p>
+                                <div class="clear"></div>
                             </div>
-                            <p class="ptextroute4"><input type="checkbox" class="checkbox-style" class="ptextroute" /> @Home.lbl_reg_note</p> <p style="text-align:center;">@Home.lbl_reg_note2</p>
+                            <hidden id="DriveId"></hidden>
+                            <p class="ptextroute4"><input id="customerAgreeTerm" type="checkbox" class="checkbox-style" /> @Home.lbl_reg_note</p> <p style="text-align:center;">@Home.lbl_reg_note2</p>
                             <input type="submit" value="" id="btnCreate" name="btnCreate" class="iconhp btnsignlog">
                         </div>
                         <div class="clear"></div>
@@ -208,12 +213,19 @@
             {
                 if ($("#routetcb").css("display") == 'block') {
                     $("#routetcb").css("display", "none");
+                    $('#errorMessageDiv').css("display", "none");
+                    $('#successMessageDiv').css("display", "none");
                 }
             }
         });
 
-        function showRoute(param) {
+        function showRoute(data) {
             $("#routetcb").css("display", "block");
+            $("#driveName").text(data.UserFullName);
+            $("#drivePhone").text(data.UserPhoneNumber);
+            document.getElementById("DriveId").value = data.DriveId;
+            //var myobj = JSON.parse(data);
+
         }
 
         function positionFooter() {
@@ -240,6 +252,8 @@
 
         $("#closeRoute").click(function () {
             $("#routetcb").css("display", "none");
+            $('#errorMessageDiv').css("display", "none");
+            $('#successMessageDiv').css("display", "none");
         });
 
         $('#closeUserGuidePanel').click(function (e) {
@@ -249,7 +263,53 @@
             $('#routeListPanel').css("display", "none");
             $('#userGuidePanel').css("display", "block");
         });
-        
+
+        function SetCustomerRegCarSuccessMessage(message) {
+            $('#errorMessageDiv').css("display", "none");
+            $('#successMessageDiv').css("display", "block");
+            $('#successMessage').text(message)
+        }
+        function SetCustomerRegCarErrorMessage(message) {
+            $('#errorMessageDiv').css("display", "block");
+            $('#successMessageDiv').css("display", "none");
+            $('#errorMessage').text(message)
+        }
+        var CustomerRegisterCar = {
+            DriveId: "",
+            CustomerFullName: "",
+            CustomerPhoneNumber:"",
+            NearLocation:"",
+        }
+        $('#btnCreate').click(function () {
+            if ($("#customerAgreeTerm").is(':checked')) {
+                CustomerRegisterCar.DriveId = $('#DriveId').val();
+                CustomerRegisterCar.CustomerFullName = $('#customerFullName').val();
+                CustomerRegisterCar.CustomerPhoneNumber = $('#customerPhoneNumber').val();
+                CustomerRegisterCar.NearLocation = $('#customerNearpos').val();
+
+                $.ajax({
+                    url: "/Home/CustomerRegisterCar",
+                    type: 'POST',
+                    data: JSON.stringify(CustomerRegisterCar),
+                    dataType: 'json',
+                    contentType: "application/jsonrequest; charset=utf-8",
+                    success: function (data) {
+                        if (data.length === undefined) {
+                            //test success message
+                            SetCustomerRegCarSuccessMessage("Đăng ký thành công");
+                        }
+                        else {
+                            SetCustomerRegCarSuccessMessage("Đăng ký thành công");
+                        }
+                    }
+                });
+            }
+            else {
+                SetCustomerRegCarErrorMessage("@Home.customer_agree");
+            }
+
+        })
+
         var SearchModel = {
             StartLocationLat : "",
             StartLocationLng : "",
@@ -272,7 +332,6 @@
                 SearchModel.EndLocationLat = endPointPlace.geometry.location.lat();
                 SearchModel.EndLocationLng = endPointPlace.geometry.location.lng();
                 SearchModel.CarType = '';//$('input[name=cartype]:checked').val();
-                console.log(JSON.stringify(SearchModel));
                 $.ajax({
                     url: "/Home/Search",
                     type: 'POST',
@@ -290,7 +349,7 @@
                             $('#searchResultContent').css("display", "block");
                             $('#searchResultContent').empty();
                             for (var count in data) {
-                                $('#searchResultContent').append($("<div class='custom-div2'><button href='#' onclick='showRoute(" + data[count].Id + ")' class='route-btn'><span class='backmapnew ddmapz3'></span><p class='button-font-size'>Chọn xe - Lộ trình số " + ++count + "</p></button></div>"))
+                                $('#searchResultContent').append($("<div class='custom-div2'><button href='#' onclick='showRoute(" + JSON.stringify(data[count]) + ")' class='route-btn'><span class='backmapnew ddmapz3'></span><p class='button-font-size'>Chọn xe - Lộ trình số " + ++count + "</p></button></div>"))
                             }
                         }
                         getDistanceAndTime();
@@ -495,9 +554,6 @@
                     var distance = response.rows[0].elements[0].distance.text;
                     var duration = response.rows[0].elements[0].duration.text;
                     $('#distanceAndTime span').text(distance + ' - ' + duration);
-
-                    console.log(distance);
-                    console.log(duration);
 
                 } else {
                     alert("Unable to find the distance via road.");
