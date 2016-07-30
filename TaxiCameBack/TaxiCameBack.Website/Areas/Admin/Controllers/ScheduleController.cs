@@ -24,7 +24,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         [CustomAuthorize(Roles = AppConstants.StandardMembers)]
         public JsonResult GetAllSchedules()
         {
-            var schedules = _scheduleService.FindSchedules();
+            var schedules = _scheduleService.FindSchedulesByUser(SessionPersister.UserId);
             return Json(schedules, JsonRequestBehavior.AllowGet);
         }
 
@@ -88,7 +88,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         {
             var viewModel = new ListScheduleViewModel
             {
-                Schedules = _scheduleService.FindSchedules()
+                Schedules = _scheduleService.FindSchedulesByUser(SessionPersister.UserId)
             };
             return PartialView(viewModel);
         }
@@ -96,7 +96,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         public JsonResult GetScheduleEvents(string start, string end)
         {
             var schedulesForDate =
-                _scheduleService.FindSchedules()
+                _scheduleService.FindSchedulesByUser(SessionPersister.UserId)
                     .Where(s => s.StartDate >= ConvertFromDateTimeString(start) && s.UserId == SessionPersister.UserId);
             var eventList = from e in schedulesForDate
                             select new

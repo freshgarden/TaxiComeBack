@@ -2,7 +2,6 @@
 var autoComplete1, autoComplete2;
 var directionsDisplay;
 var conta = $(this);
-var wps = [];
 var directionsService = new google.maps.DirectionsService();
 var options = {
     componentRestrictions: { country: "vn" }
@@ -22,39 +21,39 @@ google.maps.event.addDomListener(window, 'load', function () {
     map = new google.maps.Map(document.getElementById('dvMap'), mapOptions);
     directionsDisplay.setMap(map);
 
-    var locations = window.vm.getScheduleGeolocation();
+//    var locations = window.vm.getScheduleGeolocation();
     //            for (var i = 0; i < locations.length; i++) {
     //                if (i > 7) break;
     //                wps.push({ location: new google.maps.LatLng(locations[i][0], locations[i][1]), stopover: false });
     //            }
 
-    var batches = [];
-    var itemsPerBatch = 10; // google API max - 1 start, 1 stop, and 8 waypoints
-    var itemsCounter = 0;
-    var wayptsExist = locations.length > 0;
-
-    while (wayptsExist) {
-        var subBatch = [];
-        var subitemsCounter = 0;
-
-        for (var j = itemsCounter; j < locations.length; j++) {
-            subitemsCounter++;
-            subBatch.push({
-                location: new google.maps.LatLng(locations[j][0], locations[j][1]),
-                stopover: false
-            });
-            if (subitemsCounter == itemsPerBatch)
-                break;
-        }
-
-        itemsCounter += subitemsCounter;
-        batches.push(subBatch);
-        wayptsExist = itemsCounter < locations.length;
-        // If it runs again there are still points. Minus 1 before continuing to 
-        // start up with end of previous tour leg
-        itemsCounter--;
-    }
-    calcRoute(batches, directionsService, directionsDisplay);
+//    var batches = [];
+//    var itemsPerBatch = 10; // google API max - 1 start, 1 stop, and 8 waypoints
+//    var itemsCounter = 0;
+//    var wayptsExist = locations.length > 0;
+//
+//    while (wayptsExist) {
+//        var subBatch = [];
+//        var subitemsCounter = 0;
+//
+//        for (var j = itemsCounter; j < locations.length; j++) {
+//            subitemsCounter++;
+//            subBatch.push({
+//                location: new google.maps.LatLng(locations[j][0], locations[j][1]),
+//                stopover: false
+//            });
+//            if (subitemsCounter == itemsPerBatch)
+//                break;
+//        }
+//
+//        itemsCounter += subitemsCounter;
+//        batches.push(subBatch);
+//        wayptsExist = itemsCounter < locations.length;
+//        // If it runs again there are still points. Minus 1 before continuing to 
+//        // start up with end of previous tour leg
+//        itemsCounter--;
+//    }
+//    calcRoute(batches, directionsService, directionsDisplay);
 
     //            GetRoute();
 
@@ -180,24 +179,27 @@ $(function () {
 
 function GetRoute() {
     //*********DIRECTIONS AND ROUTE**********************//
-    source = document.getElementById("BeginLocation").value;
-    destination = document.getElementById("EndLocation").value;
-
+    var sourcePlaceId = autoComplete1.getPlace().place_id;
+    var destinationPlaceId = autoComplete2.getPlace().place_id;
+    if (!sourcePlaceId && !destinationPlaceId)
+        return;
     var request = {
-        origin: source,
-        waypoints: wps,
-        destination: destination,
+        origin: { 'placeId': sourcePlaceId },
+        destination: { 'placeId': destinationPlaceId },
         travelMode: google.maps.TravelMode.DRIVING
     };
 
     directionsService.route(request, function (response, status) {
+        console.log(status)
         if (status === google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
             SetScheduleGeolocation(response);
 
-            google.maps.event.addListener(directionsDisplay, 'directions_changed', function () {
+            google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
                 SetScheduleGeolocation(directionsDisplay.directions);
             });
+        } else {
+            alert("Could not be found the direction.");
         }
     });
 }

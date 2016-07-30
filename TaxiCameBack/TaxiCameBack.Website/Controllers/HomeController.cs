@@ -26,12 +26,13 @@ namespace TaxiCameBack.Website.Controllers
 
             var results = schedules.Select(schedule => new ResultSearchModel
             {
+                ScheduleId = schedule.Id,
                 BeginLocation = schedule.BeginLocation,
                 EndLocation = schedule.EndLocation,
                 StartDate = schedule.StartDate,
                 ScheduleGeolocations = schedule.ScheduleGeolocations,
                 UserFullName = schedule.User.FullName,
-                UserGender = schedule.User.PhoneNumber,
+                UserGender = schedule.User.Gender,
                 UserPhoneNumber = schedule.User.PhoneNumber,
                 UserAvatar = schedule.User.Avatar,
                 UserCarNumber = schedule.User.CarNumber,

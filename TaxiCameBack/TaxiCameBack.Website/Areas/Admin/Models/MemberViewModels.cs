@@ -1,8 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
-using System.Web.Mvc;
 using TaxiCameBack.Website.App_LocalResources;
 
 namespace TaxiCameBack.Website.Areas.Admin.Models

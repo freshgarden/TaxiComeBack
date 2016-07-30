@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using TaxiCameBack.Core.DomainModel.Membership;
 using TaxiCameBack.Core.DomainModel.Schedule;
 
 namespace TaxiCameBack.Website.Models
@@ -18,6 +16,7 @@ namespace TaxiCameBack.Website.Models
 
     public class ResultSearchModel
     {
+        public int ScheduleId { get; set; }
         public string BeginLocation { get; set; }
         public string EndLocation { get; set; }
         public System.DateTime StartDate { get; set; }

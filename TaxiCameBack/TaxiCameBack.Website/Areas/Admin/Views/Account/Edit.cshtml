@@ -1,6 +1,5 @@
 ﻿@using TaxiCameBack.Website.Application.Extension
 @model TaxiCameBack.Website.Areas.Admin.Models.MemberEditViewModel
-@using TaxiCameBack.Website.App_LocalResources
 @{
     ViewBag.Title = (string.IsNullOrEmpty(Model.Id.ToString())) ? ApproveUser.add_user : ApproveUser.edit_user;
     var buttonText = (string.IsNullOrEmpty(Model.Id.ToString())) ? ApproveUser.btn_create : ApproveUser.btn_save;

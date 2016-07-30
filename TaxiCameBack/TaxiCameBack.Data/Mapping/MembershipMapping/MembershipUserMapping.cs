@@ -20,10 +20,15 @@ namespace TaxiCameBack.Data.Mapping.MembershipMapping
                         m.MapRightKey("RoleId");
                     }
                 );
-
+            
             HasMany(c => c.Schedules)
                 .WithRequired()
                 .HasForeignKey(s => s.UserId);
+
+            HasMany(c => c.Notifications)
+                .WithRequired()
+                .HasForeignKey(s => s.UserId);
+
             Property(x => x.Password).IsRequired().HasMaxLength(128);
             Property(x => x.PasswordSalt).IsOptional().HasMaxLength(128);
             Property(x => x.Active).IsRequired();

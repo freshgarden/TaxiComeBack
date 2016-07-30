@@ -94,5 +94,6 @@ namespace TaxiCameBack.Core.DomainModel.Membership
         /// </summary>
         public virtual IList<MembershipRole> Roles { get; set; }
         public virtual ICollection<Schedule.Schedule> Schedules { get; set; }
+        public virtual ICollection<Notification.Notification> Notifications { get; set; }
     }
 }

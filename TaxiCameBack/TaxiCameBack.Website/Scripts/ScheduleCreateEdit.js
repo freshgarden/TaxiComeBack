@@ -139,9 +139,8 @@ $(function () {
                             window.location.href = urlSchedule;
                         }
                         else if (data.status === "ERROR") {
-                            console.lgo(data.messenge);
                             if (data.messenge) {
-                                self.showErrorPopup(container, popup, data.messenge[0].Value[0]);
+                                self.showErrorPopup(container, popup, data.messenge[0]);
                                 return;
                             }
                             self.showErrorPopup(container, popup, data.messenge);

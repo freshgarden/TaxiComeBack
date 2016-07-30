@@ -6,13 +6,16 @@ using TaxiCameBack.Data;
 using TaxiCameBack.Data.Contract;
 using System.Web.Http.Controllers;
 using Castle.Facilities.Logging;
+using Microsoft.AspNet.SignalR.Hubs;
 using TaxiCameBack.Core;
 using TaxiCameBack.Services.Email;
 using TaxiCameBack.Services.Logging;
 using TaxiCameBack.Services.Membership;
+using TaxiCameBack.Services.Notification;
 using TaxiCameBack.Services.Schedule;
 using TaxiCameBack.Services.Search;
 using TaxiCameBack.Services.Settings;
+using TaxiCameBack.Website.Application.Signalr;
 
 namespace TaxiCameBack.Website.Dependency
 {
@@ -23,6 +26,10 @@ namespace TaxiCameBack.Website.Dependency
             container.Register(Classes.FromThisAssembly()
                                 .BasedOn<IController>()
                                 .LifestyleTransient());
+
+            container.Register(Classes.FromThisAssembly()
+                            .BasedOn<IHub>()
+                            .LifestyleTransient());
 
             container.Register(
                 Component.For<IQueryableUnitOfWork>()
@@ -36,6 +43,8 @@ namespace TaxiCameBack.Website.Dependency
 
                 Component.For<ISettingsService>().ImplementedBy<SettingsService>(),
 
+                Component.For<CustomUserIdProvider>(),
+
                 Component.For<IMembershipService>().ImplementedBy<MembershipService>(),
 
                 Component.For<IScheduleService>().ImplementedBy<ScheduleService>(),
@@ -43,6 +52,8 @@ namespace TaxiCameBack.Website.Dependency
                 Component.For<ISearchSchduleService>().ImplementedBy<SearchSchduleService>(),
 
                 Component.For<IEmailService>().ImplementedBy<EmailService>(),
+
+                Component.For<INotificationService>().ImplementedBy<NotificationService>(),
 
                 Classes.FromThisAssembly().BasedOn<IHttpController>().LifestyleTransient()
 

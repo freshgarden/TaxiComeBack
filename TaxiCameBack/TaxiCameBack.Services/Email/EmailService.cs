@@ -5,7 +5,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Web.Hosting;
-using TaxiCameBack.Core.Constants;
 using TaxiCameBack.Services.Logging;
 using TaxiCameBack.Services.Settings;
 

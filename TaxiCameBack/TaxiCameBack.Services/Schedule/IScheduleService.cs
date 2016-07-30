@@ -8,7 +8,7 @@ namespace TaxiCameBack.Services.Schedule
         /// Get all Schedules
         /// </summary>
         /// <returns></returns>
-        List<Core.DomainModel.Schedule.Schedule> FindSchedules();
+        List<Core.DomainModel.Schedule.Schedule> FindSchedulesByUser(int userId);
 
         /// <summary>
         /// Find Schedule by ID

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using TaxiCameBack.Core.DomainModel.Membership;
 using TaxiCameBack.Website.App_LocalResources;

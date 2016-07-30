@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Linq;
-using System.Security.Principal;
 using System.Web.Mvc;
 using System.Web.Routing;
-using System.Web.Security;
 using TaxiCameBack.Website.Application.Security;
 
 namespace TaxiCameBack.Website.Application.Attributes

@@ -2,6 +2,8 @@
 using System.Web.Optimization;
 using System.Web.Routing;
 using Castle.Windsor;
+using Castle.Windsor.Installer;
+using Microsoft.AspNet.SignalR;
 using TaxiCameBack.Core.Utilities;
 using TaxiCameBack.Services.Logging;
 using TaxiCameBack.Services.Settings;
@@ -19,7 +21,7 @@ namespace TaxiCameBack.Website
 
         public MvcApplication()
         {
-            _container = new WindsorContainer().Install(new DependencyConventions());
+            _container = new WindsorContainer().Install(FromAssembly.This());
         }
 
         protected void Application_Start()
@@ -29,6 +31,7 @@ namespace TaxiCameBack.Website
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            GlobalHost.DependencyResolver = new CastleWindsorDependencyResolver(_container);
             var controllerFactory = new WindsorControllerFactory(_container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);
 
@@ -63,3 +66,4 @@ namespace TaxiCameBack.Website
         }
     }
 }
+
