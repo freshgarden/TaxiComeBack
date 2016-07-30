@@ -215,8 +215,6 @@ $(function () {
 
 function GetRoute() {
     //*********DIRECTIONS AND ROUTE**********************//
-    console.log(sourcePlaceId);
-    console.log(destinationPlaceId);
 
     if (!sourcePlaceId || !destinationPlaceId)
         return;
@@ -227,7 +225,6 @@ function GetRoute() {
     };
 
     directionsService.route(request, function (response, status) {
-        console.log(status)
         if (status === google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
             SetScheduleGeolocation(response);
