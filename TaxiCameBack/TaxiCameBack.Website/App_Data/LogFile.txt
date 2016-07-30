@@ -10,3 +10,24 @@
 29/07/2016 15:34:27 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 38 | START APP
 29/07/2016 15:42:54 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 38 | START APP
 29/07/2016 15:47:44 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 38 | START APP
+29/07/2016 16:37:25 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 38 | START APP
+29/07/2016 17:51:47 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 38 | START APP
+29/07/2016 17:56:53 | TaxiCameBack.Services.dll | UpdateScheduleInformation | TaxiCameBack.Services.Schedule.ScheduleService | 108 | Object reference not set to an instance of an object.
+29/07/2016 17:57:31 | TaxiCameBack.Services.dll | UpdateScheduleInformation | TaxiCameBack.Services.Schedule.ScheduleService | 108 | Object reference not set to an instance of an object.
+29/07/2016 17:57:50 | TaxiCameBack.Services.dll | UpdateScheduleInformation | TaxiCameBack.Services.Schedule.ScheduleService | 108 | Object reference not set to an instance of an object.
+29/07/2016 18:06:38 | TaxiCameBack.Services.dll | UpdateScheduleInformation | TaxiCameBack.Services.Schedule.ScheduleService | 108 | Object reference not set to an instance of an object.
+29/07/2016 18:20:23 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 38 | START APP
+29/07/2016 18:29:44 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 38 | START APP
+29/07/2016 18:34:52 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 38 | START APP
+29/07/2016 18:42:52 | TaxiCameBack.Services.dll | UpdateScheduleInformation | TaxiCameBack.Services.Schedule.ScheduleService | 108 | Object reference not set to an instance of an object.
+29/07/2016 18:54:26 | TaxiCameBack.Services.dll | UpdateScheduleInformation | TaxiCameBack.Services.Schedule.ScheduleService | 108 | Object reference not set to an instance of an object.
+29/07/2016 19:07:24 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 38 | START APP
+29/07/2016 19:10:07 | TaxiCameBack.Services.dll | UpdateScheduleInformation | TaxiCameBack.Services.Schedule.ScheduleService | 108 | Object reference not set to an instance of an object.
+29/07/2016 19:12:46 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 38 | START APP
+29/07/2016 19:19:10 | TaxiCameBack.Services.dll | UpdateScheduleInformation | TaxiCameBack.Services.Schedule.ScheduleService | 108 | Object reference not set to an instance of an object.
+30/07/2016 01:01:46 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 38 | START APP
+30/07/2016 02:03:18 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 38 | START APP
+30/07/2016 02:23:48 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 38 | START APP
+30/07/2016 02:24:41 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 38 | START APP
+30/07/2016 02:31:41 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 38 | START APP
+30/07/2016 02:35:04 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 38 | START APP
