@@ -28,7 +28,8 @@ google.maps.event.addDomListener(window, 'load', function () {
     //                if (i > 7) break;
     //                wps.push({ location: new google.maps.LatLng(locations[i][0], locations[i][1]), stopover: false });
     //            }
-    initialize(locations[0][0], locations[0][1], locations[locations.length - 1][0], locations[locations.length - 1][1]);
+    if(locations.length > 0)
+        initialize(locations[0][0], locations[0][1], locations[locations.length - 1][0], locations[locations.length - 1][1]);
     
 //    var batches = [];
 //    var itemsPerBatch = 10; // google API max - 1 start, 1 stop, and 8 waypoints
