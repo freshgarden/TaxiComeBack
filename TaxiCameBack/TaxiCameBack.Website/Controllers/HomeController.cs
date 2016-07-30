@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using TaxiCameBack.MapUtilities;
+using TaxiCameBack.Services.Membership;
 using TaxiCameBack.Services.Search;
 using TaxiCameBack.Website.Models;
 
@@ -9,10 +11,12 @@ namespace TaxiCameBack.Website.Controllers
     public class HomeController : Controller
     {
         private readonly ISearchSchduleService _searchSchduleService;
+        private readonly IMembershipService _membershipService;
 
-        public HomeController(ISearchSchduleService searchSchduleService)
+        public HomeController(ISearchSchduleService searchSchduleService, IMembershipService membershipService)
         {
             _searchSchduleService = searchSchduleService;
+            _membershipService = membershipService;
         }
 
         [HttpPost]
@@ -23,22 +27,24 @@ namespace TaxiCameBack.Website.Controllers
                 new PointLatLng(searchModel.EndLocationLat, searchModel.EndLocationLng),
                 searchModel.CarType,
                 searchModel.StartDate);
-
-            var results = schedules.Select(schedule => new ResultSearchModel
-            {
-                ScheduleId = schedule.Id,
-                BeginLocation = schedule.BeginLocation,
-                EndLocation = schedule.EndLocation,
-                StartDate = schedule.StartDate,
-                ScheduleGeolocations = schedule.ScheduleGeolocations,
-                UserFullName = schedule.User.FullName,
-                UserGender = schedule.User.Gender,
-                UserPhoneNumber = schedule.User.PhoneNumber,
-                UserAvatar = schedule.User.Avatar,
-                UserCarNumber = schedule.User.CarNumber,
-                UserCarmakers = schedule.User.Carmakers,
-                DriveId = schedule.UserId
-            }).ToList();
+            
+            var results = (from schedule in schedules
+                let user = _membershipService.GetById(schedule.UserId)
+                select new ResultSearchModel
+                {
+                    ScheduleId = schedule.Id,
+                    BeginLocation = schedule.BeginLocation,
+                    EndLocation = schedule.EndLocation,
+                    StartDate = schedule.StartDate,
+                    ScheduleGeolocations = schedule.ScheduleGeolocations,
+                    UserFullName = user.FullName,
+                    UserGender = user.Gender,
+                    UserPhoneNumber = user.PhoneNumber,
+                    UserAvatar = user.Avatar,
+                    UserCarNumber = user.CarNumber,
+                    UserCarmakers = user.Carmakers,
+                    DriveId = schedule.UserId
+                }).ToList();
 
             return schedules.Count == 0
                 ? Json(new { }, JsonRequestBehavior.AllowGet)

@@ -2,6 +2,8 @@
 var autoComplete1, autoComplete2;
 var directionsDisplay;
 var conta = $(this);
+var sourcePlaceId;
+var destinationPlaceId;
 var directionsService = new google.maps.DirectionsService();
 var options = {
     componentRestrictions: { country: "vn" }
@@ -21,12 +23,13 @@ google.maps.event.addDomListener(window, 'load', function () {
     map = new google.maps.Map(document.getElementById('dvMap'), mapOptions);
     directionsDisplay.setMap(map);
 
-//    var locations = window.vm.getScheduleGeolocation();
+    var locations = window.vm.getScheduleGeolocation();
     //            for (var i = 0; i < locations.length; i++) {
     //                if (i > 7) break;
     //                wps.push({ location: new google.maps.LatLng(locations[i][0], locations[i][1]), stopover: false });
     //            }
-
+    initialize(locations[0][0], locations[0][1], locations[locations.length - 1][0], locations[locations.length - 1][1]);
+    
 //    var batches = [];
 //    var itemsPerBatch = 10; // google API max - 1 start, 1 stop, and 8 waypoints
 //    var itemsCounter = 0;
@@ -54,15 +57,15 @@ google.maps.event.addDomListener(window, 'load', function () {
 //        itemsCounter--;
 //    }
 //    calcRoute(batches, directionsService, directionsDisplay);
-
-    //            GetRoute();
-
+    
     google.maps.event.addListener(autoComplete1, 'place_changed', function () {
         getSearchChange();
     });
     google.maps.event.addListener(autoComplete2, 'place_changed', function () {
         getSearchChange();
     });
+
+
 });
 
 function calcRoute(batches, directionsService, directionsDisplay) {
@@ -147,9 +150,41 @@ function getSearchChange() {
     if ($("#BeginLocation").val() != '' && $("#EndLocation").val() != '') {
         $("#BeginLocation").change();
         $("#EndLocation").change();
-
+        sourcePlaceId = autoComplete1.getPlace().place_id;
+        destinationPlaceId = autoComplete2.getPlace().place_id;
         GetRoute();
     }
+}
+
+function initialize(sourceLat, sourceLng, desLat, desLng) {
+    //Geocode Address to obtin Lat and Long coordinates for the starting point of our map
+    var geocoder = new google.maps.Geocoder();
+    geocode(geocoder, sourceLat, sourceLng, function (results) {
+        sourcePlaceId = results;
+        GetRoute();
+    });
+    geocode(geocoder, desLat, desLng, function (results) {
+        destinationPlaceId = results;
+        GetRoute();
+    });
+}
+
+function geocode(geocoder, latitude, longitude, callback) {
+    var latlng = { lat: parseFloat(latitude), lng: parseFloat(longitude) };
+    
+    geocoder.geocode({ 'location': latlng }, function (results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+            if (results[1]) {
+                // Call the callback function instead of returning
+                callback(results[1].place_id);
+            } else {
+                window.alert('No results found');
+            }
+        } else {
+            window.alert('Geocoder failed due to: ' + status);
+        }
+    });
+
 }
 
 $(function () {
@@ -179,9 +214,10 @@ $(function () {
 
 function GetRoute() {
     //*********DIRECTIONS AND ROUTE**********************//
-    var sourcePlaceId = autoComplete1.getPlace().place_id;
-    var destinationPlaceId = autoComplete2.getPlace().place_id;
-    if (!sourcePlaceId && !destinationPlaceId)
+    console.log(sourcePlaceId);
+    console.log(destinationPlaceId);
+
+    if (!sourcePlaceId || !destinationPlaceId)
         return;
     var request = {
         origin: { 'placeId': sourcePlaceId },

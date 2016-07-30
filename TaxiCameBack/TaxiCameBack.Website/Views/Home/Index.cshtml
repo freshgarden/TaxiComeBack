@@ -29,7 +29,6 @@
                     CustomerRegisterCar.ScheduleId = $('#ScheduleId').val();
                     CustomerRegisterCar.NearLocation = $('#customerNearpos').val();
                     // Call the Send method on the hub.
-                    console.log(CustomerRegisterCar)
                     notification.server.registerTaxi(CustomerRegisterCar);
                 });
             });

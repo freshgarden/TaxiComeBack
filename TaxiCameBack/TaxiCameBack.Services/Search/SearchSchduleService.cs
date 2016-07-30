@@ -41,7 +41,7 @@ namespace TaxiCameBack.Services.Search
                 var distanceMeters = Util.GeoDistanceToPolyMtrs(points, startPoint);
                 if (distanceMeters <= 5000)
                 {
-                    lstSchedule.User = _useRepository.GetById(lstSchedule.UserId);
+                    //lstSchedule.User = _useRepository.GetById(lstSchedule.UserId);
                     schedules.Add(lstSchedule);
                     points.Clear();
                 }
