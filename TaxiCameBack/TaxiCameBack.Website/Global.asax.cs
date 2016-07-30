@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Castle.Windsor;
@@ -8,7 +9,6 @@ using TaxiCameBack.Core.Utilities;
 using TaxiCameBack.Services.Logging;
 using TaxiCameBack.Services.Settings;
 using TaxiCameBack.Website.Application;
-using TaxiCameBack.Website.Application.Signalr;
 using TaxiCameBack.Website.Dependency;
 
 namespace TaxiCameBack.Website
@@ -42,23 +42,17 @@ namespace TaxiCameBack.Website
             logging.Error("START APP");
         }
 
-        //        protected void Application_Error(object sender, EventArgs e)
-        //        {
-        //            var lastError = Server.GetLastError();
-        //            // Don't flag missing pages or changed urls, as just clogs up the log
-        //            if (!lastError.Message.Contains("was not found or does not implement IController"))
-        //            {
-        //                Response.RedirectToRoute(new RouteValueDictionary(
-        //                    new RouteValueDictionary(
-        //                                new
-        //                                {
-        //                                    controller = "Errors",
-        //                                    action = "Error404",
-        //                                    area = "Admin"
-        //                                })
-        //                                ));
-        //            }
-        //        }
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            var lastError = Server.GetLastError();
+            // Don't flag missing pages or changed urls, as just clogs up the log
+            if (!lastError.Message.Contains("was not found or does not implement IController"))
+            {
+                var logging = _container.Resolve<ILoggingService>();
+                logging.Initialise(ConfigUtils.GetAppSettingInt32("LogFileMaxSizeBytes", 10000));
+                logging.Error(lastError);
+            }
+        }
 
         public override void Dispose()
         {

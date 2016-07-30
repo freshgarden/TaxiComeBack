@@ -15,11 +15,9 @@ namespace TaxiCameBack.Website.Application.Signalr
         {
             lock (_connections)
             {
-                string connections;
-                if (!_connections.TryGetValue(key, out connections))
+                if (!string.IsNullOrEmpty(connectionId))
                 {
-                    connections = String.Empty;
-                    _connections.Add(key, connections);
+                    _connections.Add(key, connectionId);
                 }
             }
         }
@@ -50,8 +48,9 @@ namespace TaxiCameBack.Website.Application.Signalr
         {
             lock (_connections)
             {
-                var item = _connections.First(kvp => kvp.Value == value);
-                _connections.Remove(item.Key);
+                var item = _connections.FirstOrDefault(kvp => kvp.Value == value);
+                if (!Equals(item.Key, default(T)))
+                    _connections.Remove(item.Key);
             }
         }
     }

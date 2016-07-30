@@ -1,10 +1,8 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR;
 using TaxiCameBack.Core.Utilities;
 using TaxiCameBack.Services.Membership;
 using TaxiCameBack.Services.Notification;
-using TaxiCameBack.Website.Application.Security;
 using TaxiCameBack.Website.Models;
 
 namespace TaxiCameBack.Website.Application.Signalr
@@ -50,7 +48,8 @@ namespace TaxiCameBack.Website.Application.Signalr
 
         public override Task OnDisconnected(bool stopCalled)
         {
-            _connections.RemoveByValue(Context.ConnectionId);
+            if(_connections.Count > 0)
+                _connections.RemoveByValue(Context.ConnectionId);
             return base.OnDisconnected(stopCalled);
         }
     }
