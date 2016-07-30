@@ -8,6 +8,7 @@ using TaxiCameBack.Core.Utilities;
 using TaxiCameBack.Services.Logging;
 using TaxiCameBack.Services.Settings;
 using TaxiCameBack.Website.Application;
+using TaxiCameBack.Website.Application.Signalr;
 using TaxiCameBack.Website.Dependency;
 
 namespace TaxiCameBack.Website

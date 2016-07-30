@@ -36,3 +36,9 @@
 30/07/2016 09:21:28 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 41 | START APP
 30/07/2016 09:44:53 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 41 | START APP
 30/07/2016 09:59:54 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 41 | START APP
+30/07/2016 10:14:51 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 41 | START APP
+30/07/2016 10:22:54 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+30/07/2016 10:40:02 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+30/07/2016 10:41:48 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+30/07/2016 10:42:33 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+30/07/2016 10:51:04 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP

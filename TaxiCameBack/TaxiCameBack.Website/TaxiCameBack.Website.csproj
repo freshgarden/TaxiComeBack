@@ -267,6 +267,7 @@
     <Compile Include="Application\Security\CustomPricipal.cs" />
     <Compile Include="Application\Security\SessionPersister.cs" />
     <Compile Include="Application\ServiceFactory.cs" />
+    <Compile Include="Application\Signalr\ConnectionMapping.cs" />
     <Compile Include="Application\Signalr\CustomUserIdProvider.cs" />
     <Compile Include="Application\Signalr\NotificationHub.cs" />
     <Compile Include="Application\StorageProviders\DiskStorageProvider.cs" />

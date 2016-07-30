@@ -14,6 +14,10 @@ namespace TaxiCameBack.Website.Application.Security
                 {
                     return string.Empty;
                 }
+                if (HttpContext.Current.Session == null)
+                {
+                    return string.Empty;
+                }
                 var sessionVar = HttpContext.Current.Session[UsernamePersister];
                 return sessionVar as string;
             }
