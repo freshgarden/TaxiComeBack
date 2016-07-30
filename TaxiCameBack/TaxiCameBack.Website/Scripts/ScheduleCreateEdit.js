@@ -12,7 +12,11 @@ $(function () {
         month = month.length > 1 ? month : '0' + month;
         var day = date.getDate().toString();
         day = day.length > 1 ? day : '0' + day;
-        var formDate = day + '-' + month + '-' + year + " " + date.getHours() + ":" + date.getMinutes()
+        var hours = date.getHours().toString();
+        hours = hours.length > 1 ? hours : '0' + hours;
+        var minutes = date.getMinutes().toString();
+        minutes = minutes.length > 1 ? minutes : '0' + minutes;
+        var formDate = day + '-' + month + '-' + year + " " + hours + ":" + minutes;
         startDate = new Date(year, month, day, date.getHours(), date.getMinutes());
         return formDate;
     }
