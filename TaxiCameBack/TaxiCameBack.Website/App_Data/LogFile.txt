@@ -42,3 +42,31 @@
 30/07/2016 10:41:48 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
 30/07/2016 10:42:33 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
 30/07/2016 10:51:04 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+30/07/2016 16:36:43 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+30/07/2016 16:38:29 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+30/07/2016 16:40:16 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+30/07/2016 16:41:29 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+30/07/2016 16:42:09 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+30/07/2016 16:43:27 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+30/07/2016 16:44:50 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+30/07/2016 16:45:44 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+30/07/2016 16:49:21 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+30/07/2016 16:54:29 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+30/07/2016 16:56:11 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+31/07/2016 01:35:15 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+31/07/2016 01:37:02 | TaxiCameBack.Website.dll | Application_Error | TaxiCameBack.Website.MvcApplication | 53 | The IControllerFactory 'TaxiCameBack.Website.Dependency.WindsorControllerFactory' did not return a controller for the name 'ad,om'.
+31/07/2016 07:08:12 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+31/07/2016 07:15:16 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+31/07/2016 07:26:59 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+31/07/2016 07:30:13 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+31/07/2016 07:36:04 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+31/07/2016 07:51:43 | TaxiCameBack.Website.dll | Application_Error | TaxiCameBack.Website.MvcApplication | 53 | The parameters dictionary contains a null entry for parameter 'id' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.JsonResult UpdateScheduleInfomation(Int32, TaxiCameBack.Core.DomainModel.Schedule.Schedule)' in 'TaxiCameBack.Website.Areas.Admin.Controllers.ScheduleController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+31/07/2016 08:03:03 | TaxiCameBack.Website.dll | Application_Error | TaxiCameBack.Website.MvcApplication | 53 | The parameters dictionary contains a null entry for parameter 'id' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.JsonResult GetScheduleById(Int32)' in 'TaxiCameBack.Website.Areas.Admin.Controllers.ScheduleController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+31/07/2016 08:03:42 | TaxiCameBack.Website.dll | Application_Error | TaxiCameBack.Website.MvcApplication | 53 | The parameters dictionary contains a null entry for parameter 'id' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.JsonResult GetScheduleById(Int32)' in 'TaxiCameBack.Website.Areas.Admin.Controllers.ScheduleController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+31/07/2016 08:05:37 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+31/07/2016 09:21:19 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+31/07/2016 09:24:56 | TaxiCameBack.Website.dll | Application_Error | TaxiCameBack.Website.MvcApplication | 53 | The parameters dictionary contains a null entry for parameter 'id' of non-nullable type 'System.Guid' for method 'System.Web.Mvc.JsonResult UpdateScheduleInfomation(System.Guid, TaxiCameBack.Core.DomainModel.Schedule.Schedule)' in 'TaxiCameBack.Website.Areas.Admin.Controllers.ScheduleController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters

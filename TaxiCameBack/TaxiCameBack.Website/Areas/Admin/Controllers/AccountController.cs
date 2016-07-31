@@ -61,7 +61,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         }
 
         [CustomAuthorize(Roles = AppConstants.AdminRoleName)]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(Guid id)
         {
             var user = _membershipService.GetById(id);
             var viewModel = ViewModelMapping.UserToMemberEditViewModel(user);

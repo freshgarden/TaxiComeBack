@@ -37,7 +37,7 @@ namespace TaxiCameBack.Services.Common
             return _membershipRepository.GetAll();
         }
 
-        public T GetById(int id)
+        public T GetById(Guid id)
         {
             return _membershipRepository.GetById(id);
         }

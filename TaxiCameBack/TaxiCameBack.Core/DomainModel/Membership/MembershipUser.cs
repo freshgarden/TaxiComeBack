@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using TaxiCameBack.Core.Utilities;
 
 namespace TaxiCameBack.Core.DomainModel.Membership
 {
@@ -17,11 +18,15 @@ namespace TaxiCameBack.Core.DomainModel.Membership
     }
     public class MembershipUser : BaseEntity
     {
+        public MembershipUser()
+        {
+            UserId = GuidComb.GenerateComb();
+        }
         /// <summary>
         /// Gets or sets the customer Guid
         /// </summary>
         [Key]
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
 
         /// <summary>
         /// Gets or sets the email

@@ -113,7 +113,7 @@
                                     @Header.default_full_name
                                 }else
                                 {
-                                    if(SessionPersister.UserId == 1)
+                                    if(SessionPersister.Roles.Contains(AppConstants.AdminRoleName))
                                     {
                                         @(SessionPersister.FullName + " - " + @UserProfile.manager)
                                     }

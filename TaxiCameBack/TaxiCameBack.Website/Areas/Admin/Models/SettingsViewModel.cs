@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -7,7 +8,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
     public class EditSettingsViewModel
     {
         [HiddenInput]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [DisplayName("Site Name")]
         [Required]

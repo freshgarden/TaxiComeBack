@@ -85,6 +85,7 @@ namespace TaxiCameBack.Data.Migrations
                     AdminEmailAddress = "my@email.com",
                     NotificationReplyEmail = "noreply@myemail.com",
                     SMTPEnableSSL = false,
+                    NewMemberStartingRole = standardRole
                 };
 
                 context.Settings.Add(settings);

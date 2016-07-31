@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 
 namespace TaxiCameBack.Website.Application.Security
 {
@@ -24,7 +25,7 @@ namespace TaxiCameBack.Website.Application.Security
             set { HttpContext.Current.Session[UsernamePersister] = value; }
         }
 
-        public static int UserId { get; set; }
+        public static Guid UserId { get; set; }
 
         public static string[] Roles { get; set; }
 

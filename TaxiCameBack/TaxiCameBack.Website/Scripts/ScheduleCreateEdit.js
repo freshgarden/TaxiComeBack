@@ -3,6 +3,7 @@ var url = window.location.pathname;
 var scheduleId = url.substring(url.lastIndexOf('/') + 1);
 var scheduleGeolocations = [];
 var startDate;
+var scheduleGuid;
 
 $(function () {
     function getFormattedDate(date)
@@ -17,7 +18,7 @@ $(function () {
         var minutes = date.getMinutes().toString();
         minutes = minutes.length > 1 ? minutes : '0' + minutes;
         var formDate = day + '-' + month + '-' + year + " " + hours + ":" + minutes;
-        startDate = new Date(year, month, day, date.getHours(), date.getMinutes());
+        startDate = date;//new Date(year, month, day, date.getHours(), date.getMinutes());
         return formDate;
     }
     function toJavaScriptDate(value) {
@@ -35,10 +36,29 @@ $(function () {
         }
         return object;
     }
+    function generateUUID() {
+        var d = new Date().getTime();
+        if (window.performance && typeof window.performance.now === "function") {
+            d += performance.now();; //use high-precision timer if available
+        }
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
+            return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        });
+        return uuid;
+    };
+    function isGuid(stringToTest) {
+        if (stringToTest[0] === "{") {
+            stringToTest = stringToTest.substring(1, stringToTest.length - 1);
+        }
+        var regexGuid = /^(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}(\}){0,1}$/gi;
+        return regexGuid.test(stringToTest);
+    }
     var container = $(this);
     var Schedule = function(schedule) {
         var self = this;
-        self.Id = ko.observable(schedule ? schedule.Id : 0).extend({required: true});
+        self.Id = ko.observable(schedule ? schedule.Id : scheduleGuid).extend({required: true});
         self.BeginLocation = ko.observable(schedule ? schedule.BeginLocation : '').extend({ required: true });
         self.EndLocation = ko.observable(schedule ? schedule.EndLocation : '').extend({ required: true });
         self.StartDate = ko.observable(schedule ? toJavaScriptDate(schedule.StartDate) : '').extend({ required: true });
@@ -54,7 +74,8 @@ $(function () {
     var ScheduleCollection = function() {
         var self = this;
 
-        if (scheduleId == 0 || isNaN(scheduleId)) {
+        if (!isGuid(scheduleId)) {
+            scheduleGuid = generateUUID();
             self.schedule = ko.observable(new Schedule());
             self.scheduleGeolocation = ko.observableArray([new ScheduleGeolocation()]);
         } else {
@@ -124,12 +145,13 @@ $(function () {
                 self.schedule().ScheduleGeolocations = self.scheduleGeolocation;
                 var monthsName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
                 self.schedule().StartDate = ko.observable(startDate.getDate() + "-" + monthsName[startDate.getMonth()] + "-" + startDate.getFullYear() + " " + startDate.getHours() + ":" + startDate.getMinutes());
+                console.log(self.schedule());
                 var popup;
                 $.ajaxAntiForgery({
-                    type: (ko.toJS(self.schedule().Id) > 0 ? "PUT" : "POST"),
+                    type: (ko.toJS(self.schedule().Id) !== scheduleGuid ? "PUT" : "POST"),
                     cache: false,
                     dataType: "json",
-                    url: urlSchedule + (ko.toJS(self.schedule().Id) > 0 ? "/UpdateScheduleInfomation?id=" + ko.toJS(self.schedule().Id) : '/SaveScheduleInfomation'),
+                    url: urlSchedule + (ko.toJS(self.schedule().Id) !== scheduleGuid ? "/UpdateScheduleInfomation?id=" + ko.toJS(self.schedule().Id) : '/SaveScheduleInfomation'),
                     data: ko.toJS(self.schedule()),
                     contentType: "application/x-www-form-urlencoded",
                     async: false,
@@ -144,6 +166,10 @@ $(function () {
                         }
                         else if (data.status === "ERROR") {
                             if (data.messenge) {
+                                if (data.messenge[0].Value[0]) {
+                                    self.showErrorPopup(container, popup, data.messenge[0].Value[0]);
+                                    return;
+                                }
                                 self.showErrorPopup(container, popup, data.messenge[0]);
                                 return;
                             }

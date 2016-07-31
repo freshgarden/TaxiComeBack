@@ -12,6 +12,7 @@ using TaxiCameBack.Data;
 using TaxiCameBack.Data.Contract;
 using TaxiCameBack.Services.Common;
 using TaxiCameBack.Services.Logging;
+using TaxiCameBack.Services.Settings;
 
 namespace TaxiCameBack.Services.Membership
 {
@@ -20,15 +21,18 @@ namespace TaxiCameBack.Services.Membership
         private IRepository<MembershipUser> _membershipRepository;
         private IQueryableUnitOfWork _unitOfWork;
         private ILoggingService _loggingService;
+        private ISettingsService _settingsService;
         public MembershipService(
             IRepository<MembershipUser> membershipRepository,
             IQueryableUnitOfWork unitOfWork,
-            ILoggingService loggingService)
+            ILoggingService loggingService,
+            ISettingsService settingsService)
             : base(membershipRepository)
         {
             _membershipRepository = membershipRepository;
             _unitOfWork = unitOfWork;
             _loggingService = loggingService;
+            _settingsService = settingsService;
         }
 
         public MembershipUser SanitizeUser(MembershipUser membershipUser)
@@ -45,6 +49,7 @@ namespace TaxiCameBack.Services.Membership
 
         public CrudResult CreateUser(MembershipUser newUser)
         {
+            var settings = _settingsService.GetSettings();
             newUser = SanitizeUser(newUser);
             var crudResult = new CrudResult();
             var status = MembershipCreateStatus.Success;
@@ -73,10 +78,7 @@ namespace TaxiCameBack.Services.Membership
 
                 newUser.Roles = new List<MembershipRole>
                 {
-                    new MembershipRole()
-                    {
-                        RoleName = AppConstants.StandardMembers
-                    }
+                    settings.NewMemberStartingRole
                 };
 
                 // set dates

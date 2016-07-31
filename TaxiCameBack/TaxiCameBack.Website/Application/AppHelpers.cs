@@ -93,7 +93,7 @@ namespace TaxiCameBack.Website.Application
             return null;
         }
 
-        public static string MemberImage(int userId, string avatar, string email, int size)
+        public static string MemberImage(Guid userId, string avatar, string email, int size)
         {
             if (!string.IsNullOrEmpty(avatar))
             {

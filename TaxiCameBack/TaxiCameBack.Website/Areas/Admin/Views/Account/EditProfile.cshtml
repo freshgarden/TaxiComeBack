@@ -1,5 +1,6 @@
 ﻿@using TaxiCameBack.Core.Constants
 @using TaxiCameBack.Website.Application
+@using TaxiCameBack.Website.Application.Security
 @using TaxiCameBack.Website.Models
 @model TaxiCameBack.Website.Areas.Admin.Models.MemberViewModels.SelfMemberEditViewModel
 
@@ -29,7 +30,7 @@
                 <div class="box-body box-profile">
                     <img id="imgProfile" class="profile-user-img img-responsive img-circle" src="@AppHelpers.MemberImage(Model.Id, Model.Avatar, Model.Email, AppConstants.AvatarProfileSize)" alt="User profile picture">
                     <h3 class="profile-username text-center">@Model.FullName</h3>
-                    @if (Model.Id == 1)
+                    @if (SessionPersister.Roles.Contains(AppConstants.AdminRoleName))
                     {
                         <p class="text-muted text-center">@UserProfile.manager</p>
                     }

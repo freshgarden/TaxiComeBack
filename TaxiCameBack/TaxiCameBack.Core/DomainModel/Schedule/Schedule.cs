@@ -1,14 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using TaxiCameBack.Core.Utilities;
 
 namespace TaxiCameBack.Core.DomainModel.Schedule
 {
     public class Schedule : BaseEntity
     {
+        public Schedule()
+        {
+            Id = GuidComb.GenerateComb();
+        }
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         [Required]
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         [Required]
         [MaxLength(300)]
         public string BeginLocation { get; set; }

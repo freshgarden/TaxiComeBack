@@ -16,7 +16,7 @@ namespace TaxiCameBack.Website.Models
 
     public class ResultSearchModel
     {
-        public int ScheduleId { get; set; }
+        public Guid ScheduleId { get; set; }
         public string BeginLocation { get; set; }
         public string EndLocation { get; set; }
         public System.DateTime StartDate { get; set; }
@@ -26,7 +26,7 @@ namespace TaxiCameBack.Website.Models
         public string UserPhoneNumber { get; set; }
         public string UserCarNumber { get; set; }
         public string UserCarmakers { get; set; }
-        public int DriveId { get; set; }
+        public Guid DriveId { get; set; }
         public virtual ICollection<ScheduleGeolocation> ScheduleGeolocations { get; set; }
     }
 }

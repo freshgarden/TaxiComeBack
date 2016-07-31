@@ -29,7 +29,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         }
 
         [CustomAuthorize(Roles = AppConstants.StandardMembers)]
-        public JsonResult GetScheduleById(int id)
+        public JsonResult GetScheduleById(Guid id)
         {
             var schedule = _scheduleService.FindScheduleById(id);
             return Json(schedule, JsonRequestBehavior.AllowGet);
@@ -63,7 +63,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         [CustomAuthorize(Roles = AppConstants.StandardMembers)]
         [HttpPut]
         [ValidateAntiForgeryToken]
-        public JsonResult UpdateScheduleInfomation(int id, Schedule schedule)
+        public JsonResult UpdateScheduleInfomation(Guid id, Schedule schedule)
         {
             if (!ModelState.IsValid)
                 return Json(new {status = "ERROR", messenge = ModelState.Errors()}, JsonRequestBehavior.AllowGet);

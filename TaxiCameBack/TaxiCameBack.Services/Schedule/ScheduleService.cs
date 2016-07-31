@@ -23,14 +23,14 @@ namespace TaxiCameBack.Services.Schedule
             _loggingService = loggingService;
         }
 
-        public List<Core.DomainModel.Schedule.Schedule> FindSchedulesByUser(int userId)
+        public List<Core.DomainModel.Schedule.Schedule> FindSchedulesByUser(Guid userId)
         {
             var schedules = _scheduleRepository.GetAll().Where(x => x.UserId == userId);
             var lstSchedules = schedules.ToList();
             return lstSchedules;
         }
 
-        public Core.DomainModel.Schedule.Schedule FindScheduleById(int id)
+        public Core.DomainModel.Schedule.Schedule FindScheduleById(Guid id)
         {
             return _scheduleRepository.GetById(id);
         }

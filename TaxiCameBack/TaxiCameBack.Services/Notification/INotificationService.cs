@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TaxiCameBack.Services.Notification
 {
@@ -6,6 +7,6 @@ namespace TaxiCameBack.Services.Notification
     {
         CrudResult Create(Core.DomainModel.Notification.Notification notification);
 
-        List<Core.DomainModel.Notification.Notification> GetAllByUserId(int userId);
+        List<Core.DomainModel.Notification.Notification> GetAllByUserId(Guid userId);
     }
 }

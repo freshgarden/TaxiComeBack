@@ -19,7 +19,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
         public class SelfMemberEditViewModel
         {
             [Required]
-            public int Id { get; set; }
+            public Guid Id { get; set; }
           
             [Display(ResourceType = typeof(UserProfile),Name = "email_address")]
             [EmailAddress]

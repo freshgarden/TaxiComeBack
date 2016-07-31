@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TaxiCameBack.Core;
 
 namespace TaxiCameBack.Services.Common
@@ -8,7 +9,7 @@ namespace TaxiCameBack.Services.Common
         void Create(T entity);
         void Delete(T entity);
         IEnumerable<T> GetAll();
-        T GetById(int id);
+        T GetById(Guid id);
         void Update(T entity);
     }
 }

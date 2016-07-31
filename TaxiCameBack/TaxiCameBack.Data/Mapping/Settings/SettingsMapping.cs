@@ -17,6 +17,9 @@ namespace TaxiCameBack.Data.Mapping.Settings
             Property(x => x.SMTPPort).IsOptional().HasMaxLength(10);
             Property(x => x.SMTPEnableSSL).IsOptional();
             Property(x => x.SMTPPassword).IsOptional().HasMaxLength(100);
+
+            HasRequired(t => t.NewMemberStartingRole)
+                .WithOptional(x => x.Settings).Map(m => m.MapKey("NewMemberStartingRole"));
         }
     }
 }

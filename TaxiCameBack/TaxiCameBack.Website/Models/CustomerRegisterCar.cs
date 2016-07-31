@@ -1,8 +1,10 @@
-﻿namespace TaxiCameBack.Website.Models
+﻿using System;
+
+namespace TaxiCameBack.Website.Models
 {
     public class CustomerRegisterCar
     {
-        public int DriveId { get; set; }
+        public Guid DriveId { get; set; }
         
         public string CustomerFullName { get; set; }
         

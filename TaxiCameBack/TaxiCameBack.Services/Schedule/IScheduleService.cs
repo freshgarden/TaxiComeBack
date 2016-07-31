@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TaxiCameBack.Services.Schedule
 {
@@ -8,14 +9,14 @@ namespace TaxiCameBack.Services.Schedule
         /// Get all Schedules
         /// </summary>
         /// <returns></returns>
-        List<Core.DomainModel.Schedule.Schedule> FindSchedulesByUser(int userId);
+        List<Core.DomainModel.Schedule.Schedule> FindSchedulesByUser(Guid userId);
 
         /// <summary>
         /// Find Schedule by ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Core.DomainModel.Schedule.Schedule FindScheduleById(int id);
+        Core.DomainModel.Schedule.Schedule FindScheduleById(Guid id);
 
         /// <summary>
         /// To Delete a schedule

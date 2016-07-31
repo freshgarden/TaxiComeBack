@@ -20,6 +20,7 @@ function initialise_calendar(){
 		//minTime: '6:00am',
 		//maxTime: '6:00pm',
 		allDaySlot: false,
+		eventLimit: true,
 		columnFormat: {
 			month: "ddd",
 			week: "ddd dd/MM",
