@@ -83,7 +83,6 @@ namespace TaxiCameBack.Services.Membership
 
                 // set dates
                 newUser.CreatedOnUtc = DateTime.UtcNow;
-                //                newUser.LastLockoutDate = (DateTime) SqlDateTime.MinValue;
                 newUser.LastLoginDateUtc = DateTime.UtcNow;
                 newUser.IsLockedOut = false;
                 newUser.Active = false;
@@ -110,7 +109,6 @@ namespace TaxiCameBack.Services.Membership
             if (user == null)
                 throw new ArgumentNullException(nameof(user));
             var crudResult = new CrudResult();
-            user = SanitizeUser(user);
             _membershipRepository.Update(user);
 
             try
