@@ -19,8 +19,7 @@ namespace TaxiCameBack.Website
                         "~/Scripts/jquery-ui/jquery-ui.min.js"));
 
             bundles.Add(new ScriptBundle("~/js/jquery-ui-1.9.2").Include(
-                        "~/Scripts/jquery-ui-1.9.2.custom.min.js"
-                        ));
+                        "~/Scripts/jquery-ui-1.9.2.custom.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery-migrate").Include("~/Scripts/jquery-migrate.min"));
 
@@ -48,19 +47,16 @@ namespace TaxiCameBack.Website
             bundles.Add(new StyleBundle("~/custom/css").Include("~/Content/custom/custom-style.css"));
             bundles.Add(new StyleBundle("~/custom/map").Include("~/Content/custom/maps.css"));
             bundles.Add(new StyleBundle("~/jquery-ui/css").Include(
-                "~/Scripts/jquery-ui/jquery-ui.min.css",
-                "~/Scripts/jquery-ui/jquery-ui.theme.min.css"
-                ));
-            bundles.Add(new StyleBundle("~/css/jquery-ui-1.9.2").Include(
-                "~/Content/jquery-ui-1.9.2.custom.css"
-            ));
+                "~/Scripts/jquery-ui/jquery-ui.min.css", new CssRewriteUrlTransform()
+                ).Include("~/Scripts/jquery-ui/jquery-ui.theme.min.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/bootstrap.css", "~/Content/Site.css"));
 
             //backend css
-            bundles.Add(new StyleBundle("~/admin/css").Include(
-                "~/Content/bootstrap/css/bootstrap.min.css",
-                "~/Content/font-awesome-4.6.3/css/font-awesome.min.css",
+            bundles.Add(new StyleBundle("~/admin/css")
+                .Include("~/Content/bootstrap/css/bootstrap.min.css", new CssRewriteUrlTransform())
+                .Include("~/Content/font-awesome-4.6.3/css/font-awesome.min.css", new CssRewriteUrlTransform())
+                .Include(
                 "~/Content/ionicons-2.0.1/css/ionicons.min.css",
                 "~/Content/dist/css/AdminLTE.min.css",
                 "~/Content/custom/admin.css"
@@ -69,12 +65,22 @@ namespace TaxiCameBack.Website
                 "~/Content/skins/_all-skins.min.css"
                 ));
             bundles.Add(new StyleBundle("~/css/icheck").Include(
-                "~/Scripts/plugins/iCheck/square/blue.css"
+                "~/Scripts/plugins/iCheck/square/blue.css", new CssRewriteUrlTransform()
                 ));
             bundles.Add(new StyleBundle("~/css/calendar").Include(
                 "~/Scripts/plugins/fullcalendar/fullcalendar.min.css",
                 "~/Content/view_calendar.css"
                 ));
+
+            bundles.Add(new ScriptBundle("~/schedule/createedit").Include(
+                "~/Scripts/ScheduleCreateEdit.js",
+                "~/Scripts/aftp.js",
+                "~/Scripts/Schedule.js"));
+
+            bundles.Add(new ScriptBundle("~/js/signalr").Include(
+                "~/Scripts/jquery.signalR-2.2.1.min.js"));
+
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

@@ -25,5 +25,6 @@ namespace TaxiCameBack.Core.DomainModel.Schedule
         public System.DateTime StartDate { get; set; }
         public virtual ICollection<ScheduleGeolocation> ScheduleGeolocations { get; set; }
 
+        public virtual Notification.Notification Notification { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace TaxiCameBack.Website.Models
         
         public string CustomerPhoneNumber { get; set; }
 
-        public int ScheduleId { get; set; }
+        public Guid ScheduleId { get; set; }
 
         public string NearLocation { get; set; }    }
 }

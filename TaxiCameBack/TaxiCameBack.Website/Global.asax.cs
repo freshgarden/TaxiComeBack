@@ -56,7 +56,7 @@ namespace TaxiCameBack.Website
 
         public override void Dispose()
         {
-            _container.Dispose();
+            _container?.Dispose();
             base.Dispose();
         }
     }

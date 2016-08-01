@@ -18,6 +18,8 @@ namespace TaxiCameBack.Core.DomainModel.Notification
         [Required]
         public DateTime CreateDate { get; set; }
         [Required]
-        public bool Viewed { get; set; }
+        public bool Received { get; set; }
+
+        public virtual Schedule.Schedule Schedule { get; set; }
     }
 }

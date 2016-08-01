@@ -40,7 +40,7 @@ namespace TaxiCameBack.Services.Notification
         public List<Core.DomainModel.Notification.Notification> GetAllByUserId(Guid userId)
         {
             var notifications =
-                _notificationRepository.FindBy(x => x.UserId == userId && x.Viewed == false)
+                _notificationRepository.FindBy(x => x.UserId == userId && x.Received == false)
                     .OrderByDescending(x => x.CreateDate)
                     .ToList();
             return notifications;

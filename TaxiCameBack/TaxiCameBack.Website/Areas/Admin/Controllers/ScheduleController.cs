@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using TaxiCameBack.Core.Constants;
 using TaxiCameBack.Core.DomainModel.Schedule;
+using TaxiCameBack.Services.Notification;
 using TaxiCameBack.Services.Schedule;
 using TaxiCameBack.Website.Application.Attributes;
 using TaxiCameBack.Website.Application.Extension;
@@ -15,10 +16,12 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
     public partial class ScheduleController : BaseController
     {
         private readonly IScheduleService _scheduleService;
+        private readonly INotificationService _notificationService;
 
-        public ScheduleController(IScheduleService scheduleService)
+        public ScheduleController(IScheduleService scheduleService, INotificationService notificationService)
         {
             _scheduleService = scheduleService;
+            _notificationService = notificationService;
         }
 
         [CustomAuthorize(Roles = AppConstants.StandardMembers)]
@@ -113,7 +116,35 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         [NonAction]
         private static DateTime ConvertFromDateTimeString(string date)
         {
-            return DateTime.ParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture); ;
+            return DateTime.ParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+        }
+
+        [CustomAuthorize(Roles = AppConstants.StandardMembers)]
+        [HttpGet]
+        public int GetCountNotifications()
+        {
+            var notifications =
+                _notificationService.GetAllByUserId(SessionPersister.UserId).Where(x => x.Received == false).ToList();
+            return notifications.Count;
+        }
+
+        [CustomAuthorize(Roles = AppConstants.StandardMembers)]
+        [HttpGet]
+        public JsonResult GetNotifications()
+        {
+            var notifications =
+                _notificationService.GetAllByUserId(SessionPersister.UserId).Where(x => x.Received == false).ToList();
+
+            var results = notifications.Select(x => new
+            {
+                x.Id,
+                x.Message,
+                x.CreateDate,
+                Viewed = x.Received,
+                ScheduleId = x.Schedule.Id
+            }).OrderByDescending(x => x.CreateDate);
+
+            return new JsonResult {Data = results, JsonRequestBehavior = JsonRequestBehavior.AllowGet};
         }
     }
 }

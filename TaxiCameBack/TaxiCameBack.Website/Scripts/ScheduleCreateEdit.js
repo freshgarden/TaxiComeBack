@@ -145,7 +145,6 @@ $(function () {
                 self.schedule().ScheduleGeolocations = self.scheduleGeolocation;
                 var monthsName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
                 self.schedule().StartDate = ko.observable(startDate.getDate() + "-" + monthsName[startDate.getMonth()] + "-" + startDate.getFullYear() + " " + startDate.getHours() + ":" + startDate.getMinutes());
-                console.log(self.schedule());
                 var popup;
                 $.ajaxAntiForgery({
                     type: (ko.toJS(self.schedule().Id) !== scheduleGuid ? "PUT" : "POST"),
