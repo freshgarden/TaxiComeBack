@@ -138,10 +138,12 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             var results = notifications.Select(x => new
             {
                 x.Id,
-                x.Message,
+                x.CustomerFullname,
+                x.CustomerPhoneNumber,
                 x.CreateDate,
-                Viewed = x.Received,
-                ScheduleId = x.Schedule.Id
+                x.Received,
+                ScheduleId = x.Schedule.Id,
+                ScheduleUserId = x.UserId
             }).OrderByDescending(x => x.CreateDate);
 
             return new JsonResult {Data = results, JsonRequestBehavior = JsonRequestBehavior.AllowGet};

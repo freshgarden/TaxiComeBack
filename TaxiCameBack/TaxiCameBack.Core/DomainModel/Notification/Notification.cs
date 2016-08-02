@@ -13,13 +13,15 @@ namespace TaxiCameBack.Core.DomainModel.Notification
         [Key]
         public Guid Id { get; set; }
         [Required]
-        public string Message { get; set; }
+        public string CustomerFullname { get; set; }
+        [Required]
+        public string CustomerPhoneNumber { get; set; }
         public Guid UserId { get; set; }
         [Required]
         public DateTime CreateDate { get; set; }
         [Required]
         public bool Received { get; set; }
-
+        public DateTime? ReceivedDate { get; set; }
         public virtual Schedule.Schedule Schedule { get; set; }
     }
 }

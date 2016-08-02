@@ -58,6 +58,18 @@
                     </a>
                 </li>
             }
+            if (!string.IsNullOrEmpty(SessionPersister.Username)
+                && SessionPersister.Roles.Contains(AppConstants.StandardMembers))
+            {
+                <li class="@(currentController == "notification" ? "active" : "")  treeview">
+                    <a href="@Url.Action("Index", "Notification")">
+                        <i class="fa fa-calendar"></i> <span>Notification</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                </li>
+            }
         }
             
     </ul>

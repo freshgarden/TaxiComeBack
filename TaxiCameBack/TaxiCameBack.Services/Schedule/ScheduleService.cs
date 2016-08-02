@@ -134,7 +134,7 @@ namespace TaxiCameBack.Services.Schedule
                 return;
             }
 
-            if (schedule.StartDate.Date < DateTime.Now.Date)
+            if (schedule.StartDate.Date < DateTime.UtcNow.Date)
             {
                 result.AddError("Start date must be equal or above today");
             }

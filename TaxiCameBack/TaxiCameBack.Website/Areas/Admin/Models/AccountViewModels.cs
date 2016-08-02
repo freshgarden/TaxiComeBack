@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using TaxiCameBack.Core.DomainModel.Membership;
+using TaxiCameBack.Core.DomainModel.Notification;
 using TaxiCameBack.Website.App_LocalResources;
 
 namespace TaxiCameBack.Website.Areas.Admin.Models
@@ -67,6 +68,18 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
         public string[] Roles { get; set; }
 
         public IList<MembershipRole> AllRoles { get; set; }
+
+    }
+
+    public class NotificationListViewModel
+    {
+        public IList<Notification> Notifications { get; set; }
+        public Guid Id { get; set; }
+
+        public int? PageIndex { get; set; }
+        public int? TotalCount { get; set; }
+        public int TotalPages { get; set; }
+        public string Search { get; set; }
 
     }
 }

@@ -13,10 +13,8 @@
             // Reference the auto-generated proxy for the hub.
             var notification = $.connection.notificationHub;
             // Create a function that the hub can call back to display messages.
-            notification.client.addNewMessageToPage = function (name, message) {
-                // Add the message to the page.
-                $('#discussion').append('<li><strong>' + htmlEncode(name)
-                    + '</strong>: ' + htmlEncode(message) + '</li>');
+            notification.client.addNewMessageToPage = function (message) {
+                window.alert(message);
             };
             // Start the connection.
             $.connection.hub.start().done(function () {
@@ -31,11 +29,6 @@
                 });
             });
         });
-        // This optional function html-encodes messages for display in the page.
-        function htmlEncode(value) {
-            var encodedValue = $('<div />').text(value).html();
-            return encodedValue;
-        }
 </script>
 <!--BODY_START-->
 <body id="body">
@@ -343,33 +336,33 @@
         NearLocation: "",
         ScheduleId: ""
     }
-    $('#btnCreate').click(function() {
-        if ($("#customerAgreeTerm").is(':checked')) {
-            CustomerRegisterCar.DriveId = $('#DriveId').val();
-            CustomerRegisterCar.CustomerFullName = $('#customerFullName').val();
-            CustomerRegisterCar.CustomerPhoneNumber = $('#customerPhoneNumber').val();
-            CustomerRegisterCar.NearLocation = $('#customerNearpos').val();
-
-            $.ajax({
-                url: "/Home/CustomerRegisterCar",
-                type: 'POST',
-                data: JSON.stringify(CustomerRegisterCar),
-                dataType: 'json',
-                contentType: "application/jsonrequest; charset=utf-8",
-                success: function(data) {
-                    if (data.length === undefined) {
-                        //test success message
-                        SetCustomerRegCarSuccessMessage("Đăng ký thành công");
-                    } else {
-                        SetCustomerRegCarSuccessMessage("Đăng ký thành công");
-                    }
-                }
-            });
-        } else {
-            SetCustomerRegCarErrorMessage("@Home.customer_agree");
-        }
-
-    })
+//    $('#btnCreate').click(function() {
+//        if ($("#customerAgreeTerm").is(':checked')) {
+//            CustomerRegisterCar.DriveId = $('#DriveId').val();
+//            CustomerRegisterCar.CustomerFullName = $('#customerFullName').val();
+//            CustomerRegisterCar.CustomerPhoneNumber = $('#customerPhoneNumber').val();
+//            CustomerRegisterCar.NearLocation = $('#customerNearpos').val();
+//
+//            $.ajax({
+//                url: "/Home/CustomerRegisterCar",
+//                type: 'POST',
+//                data: JSON.stringify(CustomerRegisterCar),
+//                dataType: 'json',
+//                contentType: "application/jsonrequest; charset=utf-8",
+//                success: function(data) {
+//                    if (data.length === undefined) {
+//                        //test success message
+//                        SetCustomerRegCarSuccessMessage("Đăng ký thành công");
+//                    } else {
+//                        SetCustomerRegCarSuccessMessage("Đăng ký thành công");
+//                    }
+//                }
+//            });
+//        } else {
+//            SetCustomerRegCarErrorMessage("@Home.customer_agree");
+//        }
+//
+//    })
 
     var SearchModel = {
         StartLocationLat: "",

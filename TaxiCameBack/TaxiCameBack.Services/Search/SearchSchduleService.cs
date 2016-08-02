@@ -38,7 +38,8 @@ namespace TaxiCameBack.Services.Search
                 points.AddRange(
                     lstSchedule.ScheduleGeolocations.Select(
                         schedule => new PointLatLng(schedule.Latitude, schedule.Longitude)));
-                if (Util.GeoDistanceToPolyMtrs(points, startPoint) <= 5000 && Util.GeoDistanceToPolyMtrs(points, endPoint) <= 5000)
+                if (Util.GeoDistanceToPolyMtrs(points, startPoint) <= 5000 
+                    && Util.GeoDistanceToPolyMtrs(points, endPoint) <= 5000 && !lstSchedule.Notification.Received)
                 {
                     schedules.Add(lstSchedule);
                     points.Clear();

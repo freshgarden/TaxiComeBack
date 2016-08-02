@@ -377,7 +377,7 @@ namespace TaxiCameBack.Services.Membership
                 var user = GetUser(userEmail);
                 if (user.Active && !user.IsLockedOut)
                 {
-                    user.LastLoginDateUtc = DateTime.Now;
+                    user.LastLoginDateUtc = DateTime.UtcNow;
 
                     try
                     {
