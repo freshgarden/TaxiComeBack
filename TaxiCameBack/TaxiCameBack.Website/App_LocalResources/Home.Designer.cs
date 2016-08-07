@@ -376,6 +376,21 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;article class=&quot;featured_post clearfix&quot;&gt;
+        ///                            &lt;h4&gt;Dịch vụ tìm kiếm taxi đường dài - Lựa chọn số {0}&lt;/h4&gt;
+        ///                            &lt;span class=&quot;post_date&quot;&gt;{1}&lt;/span&gt;
+        ///                            &lt;p&gt;
+        ///                                Ứng dụng tìm kiếm taxi đường dài, giá rẻ với chi phí chỉ khoảng 5 đến 6 ngàn đồng/km, rẻ bằng một nửa so với taxi truyền thống. Chúng tôi sẽ đem lại cho Quí khách hàng những chọn lựa tốt với mức chi phí thấp nhất.
+        ///                            &lt;/p&gt;
+        ///     [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string search_result_html {
+            get {
+                return ResourceManager.GetString("search_result_html", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to taxiquayve.vn.
         /// </summary>
         public static string Site_name {

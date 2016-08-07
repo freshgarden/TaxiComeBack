@@ -1,0 +1,19 @@
+07/08/2016 01:04:33 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+07/08/2016 02:31:57 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+07/08/2016 03:01:04 | TaxiCameBack.Website.dll | Application_Error | TaxiCameBack.Website.MvcApplication | 53 | Identity column 'RoleId' must be of data type int, bigint, smallint, tinyint, or decimal or numeric with a scale of 0, and constrained to be nonnullable.
+07/08/2016 03:17:15 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+07/08/2016 03:54:10 | TaxiCameBack.Website.dll | Application_Error | TaxiCameBack.Website.MvcApplication | 53 | Identity column 'RoleId' must be of data type int, bigint, smallint, tinyint, or decimal or numeric with a scale of 0, and constrained to be nonnullable.
+07/08/2016 04:07:23 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+07/08/2016 04:21:41 | TaxiCameBack.Website.dll | Application_Error | TaxiCameBack.Website.MvcApplication | 53 | Object reference not set to an instance of an object.
+07/08/2016 04:22:05 | TaxiCameBack.Website.dll | Application_Error | TaxiCameBack.Website.MvcApplication | 53 | Object reference not set to an instance of an object.
+07/08/2016 04:24:24 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+07/08/2016 05:51:37 | TaxiCameBack.Website.dll | Application_Error | TaxiCameBack.Website.MvcApplication | 53 | Collection was of a fixed size.
+07/08/2016 05:51:47 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+07/08/2016 06:48:09 | TaxiCameBack.Website.dll | Application_Error | TaxiCameBack.Website.MvcApplication | 53 | Collection was of a fixed size.
+07/08/2016 06:48:16 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+07/08/2016 06:51:37 | TaxiCameBack.Website.dll | Application_Error | TaxiCameBack.Website.MvcApplication | 53 | The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+07/08/2016 07:31:31 | TaxiCameBack.Website.dll | Application_Error | TaxiCameBack.Website.MvcApplication | 53 | Collection was of a fixed size.
+07/08/2016 07:31:38 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+07/08/2016 07:38:06 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP
+07/08/2016 08:19:03 | TaxiCameBack.Website.dll | Application_Error | TaxiCameBack.Website.MvcApplication | 53 | Collection was of a fixed size.
+07/08/2016 08:19:08 | TaxiCameBack.Website.dll | Application_Start | TaxiCameBack.Website.MvcApplication | 42 | START APP

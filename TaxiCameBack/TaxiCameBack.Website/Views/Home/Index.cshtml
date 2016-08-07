@@ -31,608 +31,473 @@
         });
 </script>
 <!--BODY_START-->
-<body id="body">
-<div id="wrapvh">
-    <div id="headervh">
-        <div id="routetcb">
-            <div class="divchesn"></div>
-            <div class="divlogtcbnew">
-                <p class="titsignew">@Home.lbl_Route</p> <a href="#" id="closeRoute">
-                    <p class="iconhp closedpopdknew closedsign"></p></a>
-                <div id="errorMessageDiv" class="alert alert-danger" role="alert" style="display: none">
-                    <label id="errorMessage" class="text-danger"/>
+<div class="container_12 clearfix">
+    <div class="grid_8 content">
+        <section id="search">
+            <div class="tabbable tabbable_red">
+                <ul class="nav-tabs">
+                    <li class="active with_icon"><a href="#search_tab_1" data-toggle="tab"><i class="icomoon-search"></i>Tìm kiếm Taxi</a></li>
+                    <li class="with_icon"><a href="#search_tab_2" data-toggle="tab" id="register_div"><i class="icomoon-plus"></i>Đăng ký xe</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="search_tab_1">
+                        <form id="homepage_search" action="#">
+                            <div class="row">
+                                <div class="span6">
+                                    <label for="type" class="dropdown_label">Điểm đi</label>
+                                    <input id="startPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_StartPoint" name="start_position">
+                                </div>
+                                <div class="span6">
+                                    <label for="category" class="dropdown_label">Điểm đến</label>
+                                    <input id="endPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_EndPoint" autocomplete="off" name="end_position">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="span6">
+                                    <label for="location" class="dropdown_label">Ngày khởi hành</label>
+                                    <input id="timestart" type="text" placeholder="@Home.plh_TimeStart" name="start_date" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="row last_row">
+                                <div class="span4">
+                                </div>
+                                <div class="span8 clear_submit_buttons">
+                                    <a id="locate" href="#" class="clear_filters"><i class="icon-screenshot"></i> Định vị</a>
+                                    <a href="#"  id="switchSearchValue" class="clear_filters"><i class="icon-exchange"></i> @Home.btn_switch_title</a>
+                                    <a class="button yellow right" id="searchCar">@Home.btn_search_title</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="search_tab_2">
+                        <form id="homepage_search" action="#">
+                            <div class="row">
+                                <div class="span6">
+                                    <label for="type" class="dropdown_label">Điểm đi</label>
+                                    <input type="text" placeholder="Nhập điểm đi của bạn" id="reg_start_position">
+                                </div>
+                                <div class="span6">
+                                    <label for="category" class="dropdown_label">Điểm đến</label>
+                                    <input type="text" placeholder="Nhập điểm đến của bạn" id="reg_end_position">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="span6">
+                                    <label for="location" class="dropdown_label">Gần vị trí</label>
+                                    <input type="text" placeholder="Nhập vị trí gần điểm đến của bạn" id="reg_near_position">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="span6">
+                                    <label for="location" class="dropdown_label">Ngày khởi hành</label>
+                                    <input type="text" placeholder="Nhập ngày giờ khởi hành của bạn" id="reg_start_date">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="span6">
+                                    <label for="location" class="dropdown_label">Họ và tên</label>
+                                    <input type="text" placeholder="Nhập họ và tên của bạn" id="reg_full_name">
+                                </div>
+                                <div class="span6">
+                                    <label for="location" class="dropdown_label">Số điện thoại</label>
+                                    <input type="text" placeholder="Nhập số điện thoại của bạn" id="reg_phone_number">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="span12">
+                                    <label for="location" class="dropdown_label">Ghi chú</label>
+                                    <textarea name="description" id="reg_note" placeholder="Nhập ghi chú của bạn"></textarea>
+                                </div>
+                            </div>
+                            <div class="row last_row">
+                                <div class="span6">
+                                </div>
+                                <div class="span6 clear_submit_buttons">
+                                    <a id="clearConditions" href="#" class="clear_filters"><i class="icon-remove"></i> Xóa điều kiện</a>
+                                    <a  id="customerRegister"  class="button submit yellow right">Đăng ký</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div id="successMessageDiv" class="alert alert-success" role="alert" style="display: none">
-                    <label id="successMessage" class="text-success"/>
+            </div>
+        </section>
+
+        <section id="featured_news" class="clearfix">
+            <div class="tabbable">
+                <label id="distanceAndTime" class="help_link"></label>
+                <ul class="nav-tabs">
+                    <li class="active"><a href="#featured_news_tab_1" data-toggle="tab">Kết quả tìm kiếm</a></li>
+                </ul>
+                <div class="tab-content custom_scrollbar">
+                    <div class="tab-pane active" id="featured_news_tab_1">
+                        <article id="noSearchResult" class="featured_post clearfix">
+                            <h4 id="noSearchResult_title">Dịch vụ tìm kiếm taxi đường dài</h4>
+                            <p>
+                                Ứng dụng tìm kiếm taxi đường dài, giá rẻ với chi phí chỉ khoảng 5 đến 6 ngàn đồng/km, rẻ bằng một nửa so với taxi truyền thống. Chúng tôi sẽ đem lại cho Quí khách hàng những chọn lựa tốt với mức chi phí thấp nhất.
+                            </p>
+                        </article>
+                    </div>
                 </div>
-                <div class="divpopsignk">
-                    <div class="divroute">
-                        <p class="ptextroute">
-                            @Home.lbl_DriverName
-                        </p>
-                        <p class="ptextroute">
-                            @Home.lbl_DriverPhone
-                        </p>
+            </div>
+        </section>
+
+        <div class="login_form_modal_container">
+            <div id="login_form" class="box">
+                <h3>Thông tin lộ trình</h3>
+                <div class="box-content clearfix">
+                    <div class="row">
+                        <label for="drivername" class="dropdown_label">Tên tài xế</label>
+                        <input id="driveName" type="text" name="drivername" value="Đỗ Anh Tú" disabled>
                     </div>
-                    <div class="divroute2">
-                        <p id="driveName" class="ptextroute2"></p>
-                        <p id="drivePhone" class="ptextroute2"></p>
+                    <div class="row">
+                        <label for="driverphone" class="dropdown_label">Số điện thoại tài xế</label>
+                        <input id="drivePhone" type="text" name="driverphone" value="098.255.2067" disabled>
                     </div>
-                    <div class="divroute2">
-                        <div class="divroute2">
-                            <p class="ptextroute">
-                                @Home.lbl_CustomerName
-                            </p>
-                            <p class="ptextroute">
-                                @Home.lbl_CustomerPhone
-                            </p>
-                            <p class="ptextroute">
-                                @Home.lbl_NearPos
-                            </p>
+                    <form action="#">
+                        <div class="row">
+                            <label for="customername" class="dropdown_label">Họ và tên</label>
+                            <input type="text" placeholder="Nhập họ và tên của bạn" name="customername">
                         </div>
-                        <div class="divroute2">
-                            <p>
-                                <input id="customerFullName" class="ptextroute3" type="text" name="fullname" value="" placeholder="@Home.plh_FullName" maxlength="50">
-                            </p>
-                            <p>
-                                <input id="customerPhoneNumber" class="ptextroute3" type="tel" name="phoneNumber" value="" placeholder="@Home.plh_PhoneNumber" maxlength="14">
-                            </p>
-                            <p>
-                                <input id="customerNearpos" class="ptextroute3" type="text" name="nearpos" value="" placeholder="@Home.plh_NearPos" maxlength="50">
-                            </p>
-                            <div class="clear"></div>
+                        <div class="row">
+                            <label for="customerphone" class="dropdown_label">Số điện thoại</label>
+                            <input type="text" placeholder="Nhập số điện thoại của bạn" name="customerphone">
                         </div>
-                        <input type="hidden" id="DriveId"/>
-                        <input type="hidden" id="ScheduleId"/>
-                        <p class="ptextroute4"><input id="customerAgreeTerm" type="checkbox" class="checkbox-style"/> @Home.lbl_reg_note</p>
-                        <p style="text-align: center;">@Home.lbl_reg_note2</p>
-                        <input type="submit" value="" id="btnCreate" name="btnCreate" class="iconhp btnsignlog">
-                    </div>
-                    <div class="clear"></div>
+                        <input type="hidden" id="DriveId" />
+                        <input type="hidden" id="ScheduleId" />
+                        <a class="button submit red right">Đăng ký</a>
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="headerhomeh">
-            <div class="logohead">
-                <a href="#" title="TaxiComeback"><img class="imglogo" src="~/Content/Images/logo/logovnl_03.png" alt="logo"/></a>
+
+    </div>
+    <div class="grid_4 sidebar">
+        <div class="box">
+            <h3>Danh sách xe đi các tỉnh</h3>
+            <div class="box-content widget-categories">
+                <ul>
+                    <li><a href="#">Nam Định<span>50</span></a></li>
+                    <li><a href="#">Thái Bình<span>25</span></a></li>
+                    <li><a href="#">Lào Cai<span>20</span></a></li>
+                    <li><a href="#">Yên Bái<span>10</span></a></li>
+                    <li><a href="#">Thanh Hóa<span>5</span></a></li>
+                </ul>
             </div>
-            <div class="loginvh0">
-                <a class="ppagevnl" href="#"><span>Giới thiệu</span></a>
-                <a class="phomevnl" href="#">Bảng giá</a>
-                <a class="phomevnl" href="#">Liên hệ</a>
-                <a class="phomevnl" href="~/Admin/Account/Login">Tài xế</a>
-                <p class="clear"></p>
+        </div>
+
+        <div class="box">
+            <h3>Trợ giúp trực tuyến</h3>
+            <div class="box-content widget_online_support">
+                <div class="row">
+                    <img src="~/Content/Images/frontend-images/johnsdoe.jpg" alt="" class="span6">
+                    <div class="span6">
+                        <span class="online_support_title">Nguyễn Xuân Phúc</span>
+                        <p>Quản trị viên</p>
+                    </div>
+                </div>
+                <a href="#" class="button blue big wide "><i class="icomoon-volume-medium"></i>098.462.2793</a>
+                <a href="#">Liên hệ với đội hỗ trợ</a><br>
             </div>
         </div>
     </div>
 </div>
-
-<div id="bodymap">
-    <div class="loadingmap"></div>
-    <div class="drelbdo">
-        <div id="mapdirdd"></div> <a href="#" id="locate2"><span class="backmapnew spandvitk btngetdv"></span></a>
-        <div style="position: absolute; top: 0; left: 0; width: 100%; z-index: 5">
-            <div class="leftbdonew">
-                <div class="topmapnew">
-                    <div class="topmapnew_1">
-                        <div class="topmapnew2">
-                            <div id="findCarBySearch" class="ptimvtri backcolorms1"> <b class="backmapnew"></b> <span>@Home.lbl_FindCar</span> </div>
-                            <div id="findCarByLocation" class="ptimduong"> <b class="backmapnew"></b> <span>@Home.lbl_EndPoint</span> </div>
-                            <p class="clear"></p>
-                            <div id="findCarBySearchPanel" class="divmstr1" style="display: block">
-                                <div class="custom-div">
-                                    <p class="pmapnewh"><span class="backmapnew ddmapz1"></span></p>
-                                    <input id="startPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_StartPoint" autocomplete="off" class="inptduongmap" maxlength="100">
-                                    <input type="button" title="@Home.btn_search_title" value="" class="backmapnew btndirect" id="searchCar">
-                                    <input type="hidden" value="subdri" id="hidsubmap">
-                                    <p class="clear"></p>
-                                </div>
-                                <div class="custom-div">
-                                    <p class="pmapnewh"><span class="backmapnew ddmapz2"></span></p>
-                                    <input id="endPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_EndPoint" autocomplete="off" class="inptduongmap" maxlength="100">
-                                    <input type="button" title="@Home.btn_switch_title" id="switchSearchValue" class="backmapnew btnwapdd">
-                                    <input type="hidden" value="subdri" id="hidsubmap">
-                                    <p class="clear"></p>
-                                </div>
-                                <div class="custom-div">
-                                    <p class="pmapnewh"><span class="backmapnew ddmapz4"></span></p>
-                                    <input id="timestart" type="text" placeholder="@Home.plh_TimeStart" class="inptduongmap" maxlength="100">
-                                    <input type="button" value="" disabled class="backmapnew btnwapdd2">
-                                </div>
-                            </div>
-                            <div id="findCarByLocationPanel" class="divmstr1" style="display: none">
-                                <div class="custom-div">
-                                    <div class="pseldate">
-                                        <p class="pcentertext"></p>
-                                    </div>
-                                    <p class="ptextroute5">
-                                        @Home.lbl_Find_Car_By_Location
-                                    </p>
-                                </div>
-                                <div class="custom-div">
-                                    <div class="pseldate">
-                                        <p class="pcentertext">25</p>
-                                    </div>
-                                    <p class="ptextroute5">
-                                        Nam Định
-                                    </p>
-                                </div>
-                                <div class="custom-div">
-                                    <div class="pseldate">
-                                        <p class="pcentertext">10</p>
-                                    </div>
-                                    <p class="ptextroute5">
-                                        Thái Bình
-                                    </p>
-                                </div>
-                                <div class="custom-div">
-                                    <div class="pseldate">
-                                        <p class="pcentertext">10</p>
-                                    </div>
-                                    <p class="ptextroute5">
-                                        Nghệ An
-                                    </p>
-                                </div>
-                                <div class="custom-div">
-                                    <div class="pseldate">
-                                        <p class="pcentertext">5</p>
-                                    </div>
-                                    <p class="ptextroute5">
-                                        Thanh Hóa
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="bottopmap">
-                                <div class="dbotm1"><a class="botuseguide" id="userguide" href="#"><b class="backmapnew"></b><span>@Home.lbl_UserGuide</span></a>
-                                </div>
-                                <div class="dbotm3 btngetdv"><a class="botuseguide" id="locate" href="#"><b class="backmapnew"></b><span>@Home.lbl_Locate</span></a>
-                                </div>
-                                <p class="clear"></p>
-                            </div>
-                        </div>
-                        <div class="backmtkiem"></div>
-                        <div class="dboxgtm" id="userGuidePanel" style="max-height: 260px; display: none">
-                            <div class="maphdan2">
-                                <p class="dboxt1">@Home.lbl_UserGuideHeader</p>
-                                <a href="#" class="botuseguide2" id="closeUserGuidePanel">
-                                    <p class="dboxt2">X</p></a>
-                                <p class="clear"></p>
-                                <div class="dboxt4">
-                                    <h2 style="margin-bottom: 6px" class="pdboxms3">Ứng dụng tìm kiếm taxi đường dài, giá rẻ với chi phí chỉ khoảng 5 đến 6 ngàn đồng/km, rẻ bằng một nửa so với taxi truyền thống. Chúng tôi sẽ đem lại cho Quí khách hàng những chọn lựa tốt với mức chi phí thấp nhất</h2>
-                                    <p class="pdboxms3">Nhập địa chỉ đến và đi, thời gian xuất hành vào khung tìm kiếm trên bản đồ hoặc click vào icon <span class="backmapnew icgetlct"></span> để hệ thống tự lấy vị trí hiện tại của bạn.
-                                    </p>
-                                    <p class="pdboxms3">Sau đó click chuột vào icon <span class="backmapnew icclick"></span> để bắt đầu quá trình tìm kiếm taxi phù hợp. Hệ thống sẽ hiển thị danh sách các chuyến xe phù hợp với lộ trình của bạn, hãy đăng kí và liên hệ với tài xế để có được thông tin cần thiết.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dboxgtm" id="directionsPanel">
-                            <div id="routeListPanel" class="maphdan">
-                                <div class="search-fixed">
-                                    <div class="psearch backcolorms1"> <b class="backmapnew"></b> <span class="search-result-header-text">@Home.lbl_SearchResult</span></div>
-                                    <div id="distanceAndTime" class="psearch-result">
-                                        <span style="font-weight: bold; margin-left: 40px;">
-                                                100 km - 1giờ 15 phút
-                                            </span>
-                                        <a href="#" class="botuseguide2" id="closeRouteListPanel">
-                                            <p class="dboxt2">X</p></a>
-                                    </div>
-                                </div>
-                                <p class="clear"></p>
-                                <div class="divresult" style="display: block">
-                                    <p class="dboxt1"></p>
-                                    <p class="clear"></p>
-                                    <br/>
-                                    <p class="clear"></p>
-                                    <div class="dboxt3" id="noSearchResult"><span style="margin: 80px;">@Home.lbl_SearchResult_Content</span></div>
-                                    <div class="dboxt3" id="searchResultContent">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div id="mapdirdd" style="display:none;">    
 </div>
-<script>
-    $(function() {
-        $.datetimepicker.setLocale('vi');
-        jQuery("#timestart").datetimepicker({
-            format: 'd-m-Y H:i',
-            minDate: 0,
-            lang: 'vi',
-            onChangeDateTime: function(dp, $input) {
-                SearchModel.setStartDate(dp);
-            }
+@section HomeFooter{
+    <script type="text/javascript">
+        $(function() {
+            $.datetimepicker.setLocale('vi');
+            jQuery("#timestart").datetimepicker({
+                format: 'd-m-Y H:i',
+                minDate: 0,
+                lang: 'vi',
+                onChangeDateTime: function(dp, $input) {
+                    SearchModel.setStartDate(dp);
+                }
+            });
         });
-    });
-    $(document).mouseup(function(e) {
-        var container = $(".divlogvnlnew");
-        if (!container.is(e.target) // if the target of the click isn't the container...
-            && container.has(e.target).length === 0) // ... nor a descendant of the container
-        {
-            if ($('#signupvnl').css("display") == 'block') {
-                $('#signupvnl').css("display", "none");
+
+        function RegisterCar(data) {
+            $("#driveName").val(data.UserFullName);
+            $("#drivePhone").val(data.UserPhoneNumber);
+            document.getElementById("DriveId").value = data.DriveId;
+            document.getElementById("ScheduleId").value = data.ScheduleId;
+            $.fancybox({ href: "#login_form" });
+            
+            //$('.login_form_modal_container').css("display", "block");
+        }
+      
+        var CustomerRegisterCar = {
+            DriveId: "",
+            CustomerFullName: "",
+            CustomerPhoneNumber: "",
+            NearLocation: "",
+            ScheduleId: ""
+        }
+    //    $('#btnCreate').click(function() {
+    //        if ($("#customerAgreeTerm").is(':checked')) {
+    //            CustomerRegisterCar.DriveId = $('#DriveId').val();
+    //            CustomerRegisterCar.CustomerFullName = $('#customerFullName').val();
+    //            CustomerRegisterCar.CustomerPhoneNumber = $('#customerPhoneNumber').val();
+    //            CustomerRegisterCar.NearLocation = $('#customerNearpos').val();
+    //
+    //            $.ajax({
+    //                url: "/Home/CustomerRegisterCar",
+    //                type: 'POST',
+    //                data: JSON.stringify(CustomerRegisterCar),
+    //                dataType: 'json',
+    //                contentType: "application/jsonrequest; charset=utf-8",
+    //                success: function(data) {
+    //                    if (data.length === undefined) {
+    //                        //test success message
+    //                        SetCustomerRegCarSuccessMessage("Đăng ký thành công");
+    //                    } else {
+    //                        SetCustomerRegCarSuccessMessage("Đăng ký thành công");
+    //                    }
+    //                }
+    //            });
+    //        } else {
+    //            SetCustomerRegCarErrorMessage("@Home.customer_agree");
+    //        }
+    //
+    //    })
+
+        var SearchModel = {
+            StartLocationLat: "",
+            StartLocationLng: "",
+            EndLocationLat: "",
+            EndLocationLng: "",
+            CarType: "",
+            StartDate: "",
+            setStartDate: function(date) {
+                var monthsName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                this.StartDate = date.getDate() + "-" + monthsName[date.getMonth()] + "-" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes();
             }
         }
-        var container2 = $(".divlogtcbnew");
-        if (!container2.is(e.target) // if the target of the click isn't the container...
-            && container2.has(e.target).length === 0) // ... nor a descendant of the container
-        {
-            if ($("#routetcb").css("display") == 'block') {
-                $("#routetcb").css("display", "none");
-                $('#errorMessageDiv').css("display", "none");
-                $('#successMessageDiv').css("display", "none");
-            }
-        }
-    });
 
-    function showRoute(data) {
-        $("#routetcb").css("display", "block");
-        $("#driveName").text(data.UserFullName);
-        $("#drivePhone").text(data.UserPhoneNumber);
-        document.getElementById("DriveId").value = data.DriveId;
-        document.getElementById("ScheduleId").value = data.ScheduleId;
-    }
+        $('#searchCar').click(function() {
+            if (startPointPlace != null && endPointPlace != null) {
+                SearchModel.StartLocationLat = startPointPlace.geometry.location.lat();
+                SearchModel.StartLocationLng = startPointPlace.geometry.location.lng();
+                SearchModel.EndLocationLat = endPointPlace.geometry.location.lat();
+                SearchModel.EndLocationLng = endPointPlace.geometry.location.lng();
+                SearchModel.CarType = ''; //$('input[name=cartype]:checked').val();
+                $.ajax({
+                    url: "/Home/Search",
+                    type: 'POST',
+                    data: JSON.stringify(SearchModel),
+                    dataType: 'json',
+                    contentType: "application/jsonrequest; charset=utf-8",
+                    success: function (data) {
+                        if (data.length === undefined) {
+                            $("#noSearchResult_title").html("<span class='text-danger'>Không có kết quả nào được tìm thấy </span>");
+                            $('#noSearchResult').css("display", "block");
+                        } else {
+                            $('#noSearchResult').css("display", "none");
 
-    function positionFooter() {
-        var window_height = $(window).height();
-        var dif = window_height - 69;
-        var dif1 = window_height - 350;
-        $("#mapdirdd").css({ height: dif + "px" });
-        $('#directionsPanel').css({ 'max-height': dif1 + "px" });
-    }
-
-    $("#findCarBySearch").click(function() {
-        $("#findCarByLocation").removeClass("backcolorms2");
-        $("#findCarBySearch").addClass("backcolorms1");
-        $("#findCarByLocationPanel").css("display", "none");
-        $("#findCarBySearchPanel").css("display", "block");
-        $("#directionsPanel").css("display", "block");
-    });
-
-    $("#findCarByLocation").click(function() {
-        $("#findCarBySearch").removeClass("backcolorms1");
-        $("#findCarByLocation").addClass("backcolorms2");
-        $("#findCarBySearchPanel").css("display", "none");
-        $("#findCarByLocationPanel").css("display", "block");
-        $("#directionsPanel").css("display", "none");
-        $("#userGuidePanel").css("display", "none");
-    });
-
-    $("#closeRoute").click(function() {
-        $("#routetcb").css("display", "none");
-        $('#errorMessageDiv').css("display", "none");
-        $('#successMessageDiv').css("display", "none");
-    });
-
-    $('#closeUserGuidePanel').click(function(e) {
-        $('#userGuidePanel').css("display", "none");
-    });
-    $('#userguide').click(function(e) {
-        $('#routeListPanel').css("display", "none");
-        $('#userGuidePanel').css("display", "block");
-    });
-
-    function SetCustomerRegCarSuccessMessage(message) {
-        $('#errorMessageDiv').css("display", "none");
-        $('#successMessageDiv').css("display", "block");
-        $('#successMessage').text(message)
-    }
-
-    function SetCustomerRegCarErrorMessage(message) {
-        $('#errorMessageDiv').css("display", "block");
-        $('#successMessageDiv').css("display", "none");
-        $('#errorMessage').text(message)
-    }
-
-    var CustomerRegisterCar = {
-        DriveId: "",
-        CustomerFullName: "",
-        CustomerPhoneNumber: "",
-        NearLocation: "",
-        ScheduleId: ""
-    }
-//    $('#btnCreate').click(function() {
-//        if ($("#customerAgreeTerm").is(':checked')) {
-//            CustomerRegisterCar.DriveId = $('#DriveId').val();
-//            CustomerRegisterCar.CustomerFullName = $('#customerFullName').val();
-//            CustomerRegisterCar.CustomerPhoneNumber = $('#customerPhoneNumber').val();
-//            CustomerRegisterCar.NearLocation = $('#customerNearpos').val();
-//
-//            $.ajax({
-//                url: "/Home/CustomerRegisterCar",
-//                type: 'POST',
-//                data: JSON.stringify(CustomerRegisterCar),
-//                dataType: 'json',
-//                contentType: "application/jsonrequest; charset=utf-8",
-//                success: function(data) {
-//                    if (data.length === undefined) {
-//                        //test success message
-//                        SetCustomerRegCarSuccessMessage("Đăng ký thành công");
-//                    } else {
-//                        SetCustomerRegCarSuccessMessage("Đăng ký thành công");
-//                    }
-//                }
-//            });
-//        } else {
-//            SetCustomerRegCarErrorMessage("@Home.customer_agree");
-//        }
-//
-//    })
-
-    var SearchModel = {
-        StartLocationLat: "",
-        StartLocationLng: "",
-        EndLocationLat: "",
-        EndLocationLng: "",
-        CarType: "",
-        StartDate: "",
-        setStartDate: function(date) {
-            var monthsName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            this.StartDate = date.getDate() + "-" + monthsName[date.getMonth()] + "-" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes();
-        }
-    }
-
-    $('#searchCar').click(function() {
-        if (startPointPlace != null && endPointPlace != null) {
-            route(origin_place_id, destination_place_id, travel_mode,
-                directionsService, directionsDisplay);
-            SearchModel.StartLocationLat = startPointPlace.geometry.location.lat();
-            SearchModel.StartLocationLng = startPointPlace.geometry.location.lng();
-            SearchModel.EndLocationLat = endPointPlace.geometry.location.lat();
-            SearchModel.EndLocationLng = endPointPlace.geometry.location.lng();
-            SearchModel.CarType = ''; //$('input[name=cartype]:checked').val();
-            $.ajax({
-                url: "/Home/Search",
-                type: 'POST',
-                data: JSON.stringify(SearchModel),
-                dataType: 'json',
-                contentType: "application/jsonrequest; charset=utf-8",
-                success: function(data) {
-                    if (data.length === undefined) {
-                        $('#searchResultContent').css("display", "none");
-                        $('#noSearchResult').css("display", "block");
-
-                    } else {
-                        $('#noSearchResult').css("display", "none");
-                        $('#searchResultContent').css("display", "block");
-                        $('#searchResultContent').empty();
-                        for (var count in data) {
-                            $('#searchResultContent').append($("<div class='custom-div2'><button href='#' onclick='showRoute(" + JSON.stringify(data[count]) + ")' class='route-btn'><span class='backmapnew ddmapz3'></span><p class='button-font-size'>Chọn xe - Lộ trình số " + ++count + "</p></button></div>"))
+                            for (var count in data) {
+                                var routeData = JSON.stringify(data[count]);
+                                var startDate = data[count].StartDate;
+                                var result_html = $("<article class='featured_post clearfix'><h4>Dịch vụ tìm kiếm taxi đường dài - Lựa chọn số" + ++count + "</h4>" +
+                                "<span class='post_date'>" + parseJsonDate(startDate)+ "</span>" +
+                                "<p>Ứng dụng tìm kiếm taxi đường dài, giá rẻ với chi phí chỉ khoảng 5 đến 6 ngàn đồng/km, rẻ bằng một nửa so với taxi truyền thống. Chúng tôi sẽ đem lại cho Quí khách hàng những chọn lựa tốt với mức chi phí thấp nhất.</p>" +
+                                "<a class='blog_comments show_login_form' href='#' onclick='RegisterCar(" + routeData + ")'>Xem thông tin</a>" +
+                                "</article>");
+                                $('#featured_news_tab_1').append(result_html);
+                            }
+                            getDistanceAndTime();
                         }
                     }
-                    getDistanceAndTime();
-                    $('#userGuidePanel').css("display", "none");
-                    $('#routeListPanel').css("display", "block");
+                });
+            }
+        })
+        function parseJsonDate(jsonDateString) {
+             
+            var today = new Date(parseInt(jsonDateString.replace('/Date(', '')));
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+
+            var yyyy = today.getFullYear();
+            var hh = addZero(today.getHours());
+            var m = addZero(today.getMinutes());
+            if (dd < 10) {
+                dd = '0' + dd
+            }
+            if (mm < 10) {
+                mm = '0' + mm
+            }
+            return today = dd + '/' + mm + '/' + yyyy + ' - ' + hh + ':' + m;
+        }
+
+        function addZero(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+        var map = null;
+        var latValue = 21.022736;
+        var lngValue = 105.8019441;
+        var startPointPlace = null;
+        var endPointPlace = null;
+        var origin_place_id = null;
+        var destination_place_id = null;
+        var directionsService = null;
+        var directionsDisplay = null;
+        var travel_mode = null;
+
+        function loadScript(src) {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            document.getElementsByTagName("head")[0].appendChild(script);
+            script.src = src;
+        }
+
+        loadScript('http://maps.googleapis.com/maps/api/js?key=AIzaSyA1naPg1USZOsy3uiEJv0A71GwcGeaOTS8&v=3&libraries=places&sensor=false&callback=initialize');
+
+        function initialize() {
+        
+            var mapOptions = {
+                mapTypeControl: true
+            };
+            map = new google.maps.Map(document.getElementById('mapdirdd'),
+                mapOptions);
+            directionsDisplay = new google.maps.DirectionsRenderer;
+            directionsService = new google.maps.DirectionsService;
+            travel_mode = google.maps.TravelMode.DRIVING
+            directionsDisplay.setMap(map);
+            var myCenter = new google.maps.LatLng(latValue, lngValue);
+
+        
+            var geocoder = new google.maps.Geocoder;
+            var infowindow = new google.maps.InfoWindow();
+
+            var latlng = { lat: latValue, lng: lngValue };
+            geocoder.geocode({ 'location': latlng }, function(results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    if (results[1]) {
+                        infowindow.setContent(results[1].formatted_address);
+                    }
+                }
+            });
+
+
+            google.maps.event.addDomListener(window, 'load', initialize);
+
+        }
+
+        $("#locate").click(function() {
+            // Try HTML5 geolocation.
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(locate, showError);
+            }
+        });
+
+        function showError(error) {
+            switch (error.code) {
+            case error.PERMISSION_DENIED:
+                console.log("User denied the request for Geolocation.")
+                break;
+            case error.POSITION_UNAVAILABLE:
+                console.log("Location information is unavailable.")
+                break;
+            case error.TIMEOUT:
+                console.log("The request to get user location timed out.")
+                break;
+            case error.UNKNOWN_ERROR:
+                console.log("An unknown error occurred.")
+                break;
+            }
+        }
+
+        function locate(position) {
+            latValue = position.coords.latitude;
+            lngValue = position.coords.longitude;
+            initialize();
+            var latlng = { lat: latValue, lng: lngValue };
+            var geocoder = new google.maps.Geocoder;
+            geocoder.geocode({ 'location': latlng }, function(results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    if (results[1]) {
+                        origin_place_id = results[1].place_id;
+                        startPointPlace = results[1];
+                        document.getElementById('startPoint').value = results[1].formatted_address;
+                    }
                 }
             });
         }
-    })
-    $("#closeRouteListPanel").on("click", function() {
-        $('#routeListPanel').css("display", "none");
-    });
 
-    var map = null;
-    var zoomValue = 12;
-    var latValue = 21.022736;
-    var lngValue = 105.8019441;
-    var startPointPlace = null;
-    var endPointPlace = null;
-    var origin_place_id = null;
-    var destination_place_id = null;
-    var directionsService = null;
-    var directionsDisplay = null;
-    var travel_mode = null;
-
-    function loadScript(src, callback) {
-        var script = document.createElement("script");
-        script.type = "text/javascript";
-        if (callback) script.onload = callback;
-        document.getElementsByTagName("head")[0].appendChild(script);
-        script.src = src;
-    }
-
-    loadScript('http://maps.googleapis.com/maps/api/js?key=AIzaSyA1naPg1USZOsy3uiEJv0A71GwcGeaOTS8&v=3&libraries=places&sensor=false&callback=initialize', function() { positionFooter(); });
-
-    function initialize() {
-
-        $(window).resize(positionFooter());
-
-        var mapOptions = {
-            zoom: zoomValue,
-            center: new google.maps.LatLng(latValue, lngValue),
-            mapTypeControl: true,
-            mapTypeControlOptions: {
-                position: google.maps.ControlPosition.TOP_RIGHT
-            },
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        map = new google.maps.Map(document.getElementById('mapdirdd'),
-            mapOptions);
-        directionsDisplay = new google.maps.DirectionsRenderer;
-        directionsService = new google.maps.DirectionsService;
-        travel_mode = google.maps.TravelMode.DRIVING
-        directionsDisplay.setMap(map);
-        var myCenter = new google.maps.LatLng(latValue, lngValue);
-
-        var marker = new google.maps.Marker({
-            position: myCenter,
-            animation: google.maps.Animation.BOUNCE,
-            icon: "/Content/Images/icons/location-icon.png"
-        });
-
-        marker.setMap(map);
-        var geocoder = new google.maps.Geocoder;
-        var infowindow = new google.maps.InfoWindow();
-
-        var latlng = { lat: latValue, lng: lngValue };
-        geocoder.geocode({ 'location': latlng }, function(results, status) {
-            if (status === google.maps.GeocoderStatus.OK) {
-                if (results[1]) {
-                    infowindow.setContent(results[1].formatted_address);
+        function calcdir(event) {
+        
+            // Create the search box and link it to the UI element.
+            var startPoint = document.getElementById('startPoint');
+            var options = {
+                componentRestrictions: { country: 'vn' } //Vietnam only
+            };
+            var startPointSearchBox = new google.maps.places.Autocomplete(startPoint, options);
+            startPointSearchBox.addListener('place_changed', function() {
+                startPointPlace = startPointSearchBox.getPlace();
+                if (!startPointPlace.geometry) {
+                    window.alert("Autocomplete's returned place contains no geometry");
+                    return;
                 }
-            }
-        });
 
-        google.maps.event.addListener(marker, 'click', function() {
-            infowindow.open(map, marker);
-        });
-
-        google.maps.event.addDomListener(window, 'load', initialize);
-
-    }
-
-    $("#locate,#locate2").click(function() {
-        zoomValue = 16;
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(locate, showError);
-        }
-    });
-
-    function showError(error) {
-        switch (error.code) {
-        case error.PERMISSION_DENIED:
-            console.log("User denied the request for Geolocation.")
-            break;
-        case error.POSITION_UNAVAILABLE:
-            console.log("Location information is unavailable.")
-            break;
-        case error.TIMEOUT:
-            console.log("The request to get user location timed out.")
-            break;
-        case error.UNKNOWN_ERROR:
-            console.log("An unknown error occurred.")
-            break;
-        }
-    }
-
-    function locate(position) {
-        latValue = position.coords.latitude;
-        lngValue = position.coords.longitude;
-        initialize();
-        var latlng = { lat: latValue, lng: lngValue };
-        var geocoder = new google.maps.Geocoder;
-        geocoder.geocode({ 'location': latlng }, function(results, status) {
-            if (status === google.maps.GeocoderStatus.OK) {
-                if (results[1]) {
-                    origin_place_id = results[1].place_id;
-                    startPointPlace = results[1];
-                    document.getElementById('startPoint').value = results[1].formatted_address;
+                // If the place has a geometry, store its place ID and route if we have
+                // the other place ID
+                origin_place_id = startPointPlace.place_id;
+            });
+            var endPoint = document.getElementById('endPoint');
+            var endPointSearchBox = new google.maps.places.Autocomplete(endPoint, options);
+            endPointSearchBox.addListener('place_changed', function() {
+                endPointPlace = endPointSearchBox.getPlace();
+                if (!endPointPlace.geometry) {
+                    window.alert("Autocomplete's returned place contains no geometry");
+                    return;
                 }
-            }
-        });
-    }
 
-    function calcdir(event) {
+                // If the place has a geometry, store its place ID and route if we have
+                // the other place ID
+                destination_place_id = endPointPlace.place_id;
+            });
 
-        function expandViewportToFitPlace(map, place) {
-            if (place.geometry.viewport) {
-                map.fitBounds(place.geometry.viewport);
-            } else {
-                map.setCenter(place.geometry.location);
-                map.setZoom(17);
-            }
+        }
+       
+
+        function getDistanceAndTime() {
+            var service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix({
+                origins: [document.getElementById('startPoint').value],
+                destinations: [document.getElementById('endPoint').value],
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.METRIC,
+                avoidHighways: false,
+                avoidTolls: false
+            }, function(response, status) {
+                if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
+                    var distance = response.rows[0].elements[0].distance.text;
+                    var duration = response.rows[0].elements[0].duration.text;
+                    $('#distanceAndTime').text(distance + ' - ' + duration);
+
+                } else {
+                    alert("Unable to find the distance via road.");
+                }
+            });
         }
 
-        // Create the search box and link it to the UI element.
-        var startPoint = document.getElementById('startPoint');
-        var options = {
-            componentRestrictions: { country: 'vn' } //Vietnam only
-        };
-        var startPointSearchBox = new google.maps.places.Autocomplete(startPoint, options);
-        startPointSearchBox.addListener('place_changed', function() {
-            startPointPlace = startPointSearchBox.getPlace();
-            if (!startPointPlace.geometry) {
-                window.alert("Autocomplete's returned place contains no geometry");
-                return;
-            }
-            expandViewportToFitPlace(map, startPointPlace);
-
-            // If the place has a geometry, store its place ID and route if we have
-            // the other place ID
-            origin_place_id = startPointPlace.place_id;
-            route(origin_place_id, destination_place_id, travel_mode,
-                directionsService, directionsDisplay);
+        $("#switchSearchValue").click(function() {
+            var startPoint = document.getElementById('startPoint');
+            var endPoint = document.getElementById('endPoint');
+            var flag = startPoint.value;
+            startPoint.value = endPoint.value;
+            endPoint.value = flag;
+            var placeFlag = startPointPlace;
+            startPointPlace = endPointPlace;
+            endPointPlace = placeFlag;
+            var flagDirection = origin_place_id;
+            origin_place_id = destination_place_id;
+            destination_place_id = flagDirection;
         });
-        var endPoint = document.getElementById('endPoint');
-        var endPointSearchBox = new google.maps.places.Autocomplete(endPoint, options);
-        endPointSearchBox.addListener('place_changed', function() {
-            endPointPlace = endPointSearchBox.getPlace();
-            if (!endPointPlace.geometry) {
-                window.alert("Autocomplete's returned place contains no geometry");
-                return;
-            }
-            expandViewportToFitPlace(map, endPointPlace);
-
-            // If the place has a geometry, store its place ID and route if we have
-            // the other place ID
-            destination_place_id = endPointPlace.place_id;
-            route(origin_place_id, destination_place_id, travel_mode,
-                directionsService, directionsDisplay);
-        });
-
+    </script>
     }
-
-
-    function route(origin_place_id, destination_place_id, travel_mode,
-        directionsService, directionsDisplay) {
-        if (!origin_place_id || !destination_place_id) {
-            return;
-        }
-        directionsService.route({
-            origin: { 'placeId': origin_place_id },
-            destination: { 'placeId': destination_place_id },
-            travelMode: travel_mode
-        }, function(response, status) {
-            if (status === google.maps.DirectionsStatus.OK) {
-                directionsDisplay.setDirections(response);
-            } else {
-                window.alert('Không thể tìm đường!');
-            }
-        });
-    }
-
-    function getDistanceAndTime() {
-        var service = new google.maps.DistanceMatrixService();
-        service.getDistanceMatrix({
-            origins: [document.getElementById('startPoint').value],
-            destinations: [document.getElementById('endPoint').value],
-            travelMode: google.maps.TravelMode.DRIVING,
-            unitSystem: google.maps.UnitSystem.METRIC,
-            avoidHighways: false,
-            avoidTolls: false
-        }, function(response, status) {
-            if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
-                var distance = response.rows[0].elements[0].distance.text;
-                var duration = response.rows[0].elements[0].duration.text;
-                $('#distanceAndTime span').text(distance + ' - ' + duration);
-
-            } else {
-                alert("Unable to find the distance via road.");
-            }
-        });
-    }
-
-    $("#switchSearchValue").click(function() {
-        var startPoint = document.getElementById('startPoint');
-        var endPoint = document.getElementById('endPoint');
-        var flag = startPoint.value;
-        startPoint.value = endPoint.value;
-        endPoint.value = flag;
-        var placeFlag = startPointPlace;
-        startPointPlace = endPointPlace;
-        endPointPlace = placeFlag;
-        var flagDirection = origin_place_id;
-        origin_place_id = destination_place_id;
-        destination_place_id = flagDirection;
-        route(origin_place_id, destination_place_id, travel_mode,
-            directionsService, directionsDisplay);
-    });
-</script>
-</body>
 <!--BODY_END-->

@@ -228,4 +228,14 @@
   <data name="customer_phone_rqr" xml:space="preserve">
     <value>Số điện thoại khách hàng không được để trống</value>
   </data>
+  <data name="search_result_html" xml:space="preserve">
+    <value>&lt;article class="featured_post clearfix"&gt;
+                            &lt;h4&gt;Dịch vụ tìm kiếm taxi đường dài - Lựa chọn số {0}&lt;/h4&gt;
+                            &lt;span class="post_date"&gt;{1}&lt;/span&gt;
+                            &lt;p&gt;
+                                Ứng dụng tìm kiếm taxi đường dài, giá rẻ với chi phí chỉ khoảng 5 đến 6 ngàn đồng/km, rẻ bằng một nửa so với taxi truyền thống. Chúng tôi sẽ đem lại cho Quí khách hàng những chọn lựa tốt với mức chi phí thấp nhất.
+                            &lt;/p&gt;
+                            &lt;a class="blog_comments show_login_form" href="#login_form" onclick="showRoute({2})"&gt;Xem thông tin&lt;/a&gt;
+                        &lt;/article&gt;</value>
+  </data>
 </root>

@@ -44,8 +44,8 @@ namespace TaxiCameBack.Website
                  ));
 
             //Register Css
-            bundles.Add(new StyleBundle("~/custom/css").Include("~/Content/custom/custom-style.css"));
-            bundles.Add(new StyleBundle("~/custom/map").Include("~/Content/custom/maps.css"));
+            //bundles.Add(new StyleBundle("~/custom/css").Include("~/Content/custom/custom-style.css"));
+            //bundles.Add(new StyleBundle("~/custom/map").Include("~/Content/custom/maps.css"));
             bundles.Add(new StyleBundle("~/jquery-ui/css").Include(
                 "~/Scripts/jquery-ui/jquery-ui.min.css", new CssRewriteUrlTransform()
                 ).Include("~/Scripts/jquery-ui/jquery-ui.theme.min.css", new CssRewriteUrlTransform()));
@@ -72,6 +72,33 @@ namespace TaxiCameBack.Website
                 "~/Content/view_calendar.css"
                 ));
 
+            //Reg Front-End CSS
+            bundles.Add(new StyleBundle("~/css/font-awesome").Include(
+                "~/Content/frontend-css/font-awesome.css",
+                 new CssRewriteUrlTransform()
+                ));
+
+            bundles.Add(new StyleBundle("~/css/icomoon").Include(
+                "~/Content/frontend-css/icomoon.css",
+                new CssRewriteUrlTransform()
+                ));
+
+            bundles.Add(new StyleBundle("~/css/fancybox").Include(
+                "~/Content/frontend-css/jquery.fancybox-1.3.4.css"
+                ));
+
+            bundles.Add(new StyleBundle("~/css/revslider").Include(
+                "~/Content/frontend-css/revslider.css"
+                ));
+
+            bundles.Add(new StyleBundle("~/css/style").Include(
+                "~/Content/frontend-css/style.css"
+                ));
+
+            bundles.Add(new StyleBundle("~/css/responsive").Include(
+               "~/Content/frontend-css/responsive.css"
+               ));
+
             bundles.Add(new ScriptBundle("~/schedule/createedit").Include(
                 "~/Scripts/ScheduleCreateEdit.js",
                 "~/Scripts/aftp.js",
@@ -80,6 +107,33 @@ namespace TaxiCameBack.Website
             bundles.Add(new ScriptBundle("~/js/signalr").Include(
                 "~/Scripts/jquery.signalR-2.2.1.min.js"));
 
+            //Reg Front-end JS
+            bundles.Add(new ScriptBundle("~/front-end-js/jquery").Include(
+                "~/Scripts/frontend-js/jquery-1.9.1.min.js",
+                "~/Scripts/frontend-js/jquery.themepunch.plugins.min.js",
+                "~/Scripts/frontend-js/jquery.themepunch.revolution.min.js"
+                ));
+            bundles.Add(new ScriptBundle("~/front-end-js/bootstrap").Include(
+                "~/Scripts/frontend-js/bootstrap.min.js"
+                ));
+            bundles.Add(new ScriptBundle("~/front-end-js/form-style").Include(
+                "~/Scripts/frontend-js/form_style.js"
+                ));
+            bundles.Add(new ScriptBundle("~/front-end-js/custom").Include(
+                "~/Scripts/frontend-js/custom.js"
+                ));
+            bundles.Add(new ScriptBundle("~/front-end-js/placeholder").Include(
+                "~/Scripts/frontend-js/jquery.placeholder.min.js"
+                ));
+            bundles.Add(new ScriptBundle("~/front-end-js/fancybox").Include(
+                "~/Scripts/frontend-js/jquery.fancybox-1.3.4.js"
+                ));
+            bundles.Add(new ScriptBundle("~/front-end-js/gmap").Include(
+                "~/Scripts/frontend-js/jquery.gmap.min.js"
+                ));
+            bundles.Add(new ScriptBundle("~/front-end-js/superfish").Include(
+                "~/Scripts/frontend-js/superfish.js"
+                ));
             BundleTable.EnableOptimizations = true;
         }
     }

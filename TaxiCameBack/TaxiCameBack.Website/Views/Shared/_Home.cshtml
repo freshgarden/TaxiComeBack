@@ -2,30 +2,131 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns="https://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="robots" content="INDEX,FOLLOW" />
-    <title>@Home.Title </title>
-    <meta name="description" content="@Home.Description" />
-    <meta name="keywords" content="@Home.Keywords" />
-    <meta http-equiv="author" charset="utf-8" content="@Home.Author" />
-    <meta property="og:site_name" content="@Home.Site_name" />
-    <meta property="og:title" itemprop="headline" content="@Home.Title" />
-    <meta property="og:description" itemprop="description" content="@Home.Description" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="format-detection" content="address=no" />
     <link rel="shortcut icon" type="image/x-icon" href="#" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>@Home.Title </title>
+    <meta name="keywords" content="@Home.Keywords">
+    <meta name="description" content="@Home.Description">
+    <meta name="author" content="@Home.Author">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--[if lt IE 9]>
+     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+   <![endif]-->
+
+    
     <!--css-->
-    @Styles.Render("~/custom/css")
-    @Styles.Render("~/custom/map")
-    @Styles.Render("~/jquery-ui/css")
+    <link rel="stylesheet" type="text/css" media="all" id="font_css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,300">
+    @Styles.Render("~/css/font-awesome")
+    @Styles.Render("~/css/icomoon")
+    @Styles.Render("~/css/fancybox")
+    @Styles.Render("~/css/revslider")
+    @Styles.Render("~/css/style")
+    @Styles.Render("~/css/responsive")
     <!--javascript-->
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryui")
-    @Scripts.Render("~/bundles/jquery-migrate")
-    <script type="text/javascript">if(top.location!= self.location){top.location = 'https://vinalo.com';}; $(document).ready(function(){b=$(window).width();  if(b<1200){ $('#headervh').attr('style','position:relative'); $('#bodyvh').attr('style','padding-top:20px'); $('#bodymap').attr('style','padding-top:0'); } })</script>
+    @Scripts.Render("~/front-end-js/jquery")
+    @Scripts.Render("~/front-end-js/superfish")
+    @Scripts.Render("~/front-end-js/bootstrap")
+    @Scripts.Render("~/front-end-js/form-style")    
+    @Scripts.Render("~/front-end-js/placeholder")
+    @Scripts.Render("~/front-end-js/fancybox")
+    @Scripts.Render("~/front-end-js/gmap")
+    @Scripts.Render("~/front-end-js/custom")
+   
 
 </head>
+<header>
+    <div id="header_main" class="clearfix">
+        <div class="container_12">
+            <div id="logo" class="grid_3">
+                <img src="../Content/Images/logo/logovnl_03.png" alt="Motor Logo">
+            </div>
+            <nav class="grid_6">
+                <ul id="main_menu" class="clearfix">
+                    <li class="current_menu_ancestor"><a href="index.html">Trang chủ</a></li>
+                    <li><a href="#">Bảng giá</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                    <li><a href="#">Giới thiệu</a></li>
+                </ul>
+                <div id="responsive_navigation">
+                    <select class="custom_select nav-responsive">
+                        <option value="#" selected="">Trang chủ</option>
+                        <option value="#">Dành cho tài xế</option>
+                        <option value="#">Bảng giá</option>
+                        <option value="#">Liên hệ</option>
+                        <option value="#">Giới thiệu</option>
+                    </select>
+                </div>
+            </nav>
+            <div id="add_listing" class="grid_3">
+                <a href="@Url.Action("Login", "Account", new { area= "Admin"})" class="button green big wide">Dành cho Tài xế</a>
+            </div>
+        </div>
+    </div>
+</header>
 
 @RenderBody()
+
+<footer>
+    <div id="footer_columns" class="clearfix">
+        <div class="container_12">
+            <div class="grid_2">
+                <h3>Motor</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="#">News</a></li>
+                </ul>
+            </div>
+            <div class="grid_2">
+                <h3>About</h3>
+                <ul>
+                    <li><a href="#">Latest News</a></li>
+                    <li><a href="#">Press Releases</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                </ul>
+            </div>
+            <div class="grid_2">
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Online Support</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="grid_3">
+                <h3>Twitter</h3>
+                <p class="tweet">
+                    <a href="#">@@bestwebsoft</a> odio magnam aspernatur corporis ducimus! <a href="#">http://bestwebsoft.com/</a><span>posted 2 days ago</span>
+                </p>
+            </div>
+            <div class="grid_3 contact_info">
+                <h3>Contact Info</h3>
+                <p class="contact_info_description">Lorem ipsum dolor sit amet<br>Ponsectetur adipisicing elit magna</p>
+                <p><strong>P.:</strong> (555) 366 - 00 - 00</p>
+                <p><strong>E.:</strong> <a href="mailto:support@ab-themes.com">support@ab-themes.com</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="container_12">
+            <div id="logo_footer" class="grid_4">
+                <img src="../Content/Images/logo/logovnl_03.png" alt="Motor Logo">
+            </div>
+            <nav class="grid_6">
+                <ul id="footer_menu" class="clearfix">
+                    <li class="current_menu_ancestor"><a href="results_list.html">Trang chủ</a></li>
+                    <li><a href="results_grid.html">Bảng giá</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                    <li><a href="#">Giới thiệu</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</footer>
+@RenderSection("HomeFooter", false)
 </html>
 
