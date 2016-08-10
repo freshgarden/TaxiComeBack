@@ -147,14 +147,11 @@
   <data name="lbl_DriverPhone" xml:space="preserve">
     <value>Điện thoại liên hệ</value>
   </data>
-  <data name="lbl_EndPoint" xml:space="preserve">
-    <value>Điểm đến</value>
-  </data>
   <data name="lbl_FindCar" xml:space="preserve">
-    <value>Tìm xe</value>
+    <value>Tìm kiếm taxi</value>
   </data>
   <data name="lbl_Find_Car_By_Location" xml:space="preserve">
-    <value>Có {0} chuyến xe đang sẵn sàng</value>
+    <value>Danh sách xe đi các tỉnh</value>
   </data>
   <data name="lbl_Locate" xml:space="preserve">
     <value>Định vị</value>
@@ -163,7 +160,7 @@
     <value>Biến số xe</value>
   </data>
   <data name="lbl_reg_note" xml:space="preserve">
-    <value>Bạn chỉ phải trả {0} cho chuyến đi này</value>
+    <value>Bạn chỉ phải trả 50% cho chuyến đi này</value>
   </data>
   <data name="lbl_reg_note2" xml:space="preserve">
     <value>(Đơn giá: {0} đ/1km)</value>
@@ -190,10 +187,10 @@
     <value>Nhập điểm đến</value>
   </data>
   <data name="plh_FullName" xml:space="preserve">
-    <value>Họ và tên</value>
+    <value>Nhập họ và tên</value>
   </data>
   <data name="plh_PhoneNumber" xml:space="preserve">
-    <value>Số điện thoại</value>
+    <value>Nhập số điện thoại</value>
   </data>
   <data name="plh_StartPoint" xml:space="preserve">
     <value>Nhập điểm bắt đầu</value>
@@ -208,10 +205,10 @@
     <value>Nhập thời gian đi</value>
   </data>
   <data name="plh_NearPos" xml:space="preserve">
-    <value>Gần vị trí</value>
+    <value>Nhập vị trí đón</value>
   </data>
   <data name="lbl_NearPos" xml:space="preserve">
-    <value>Gần vị trí</value>
+    <value>Vị trí đón khách</value>
   </data>
   <data name="btn_search_title" xml:space="preserve">
     <value>Tìm kiếm</value>
@@ -228,14 +225,37 @@
   <data name="customer_phone_rqr" xml:space="preserve">
     <value>Số điện thoại khách hàng không được để trống</value>
   </data>
-  <data name="search_result_html" xml:space="preserve">
-    <value>&lt;article class="featured_post clearfix"&gt;
-                            &lt;h4&gt;Dịch vụ tìm kiếm taxi đường dài - Lựa chọn số {0}&lt;/h4&gt;
-                            &lt;span class="post_date"&gt;{1}&lt;/span&gt;
-                            &lt;p&gt;
-                                Ứng dụng tìm kiếm taxi đường dài, giá rẻ với chi phí chỉ khoảng 5 đến 6 ngàn đồng/km, rẻ bằng một nửa so với taxi truyền thống. Chúng tôi sẽ đem lại cho Quí khách hàng những chọn lựa tốt với mức chi phí thấp nhất.
-                            &lt;/p&gt;
-                            &lt;a class="blog_comments show_login_form" href="#login_form" onclick="showRoute({2})"&gt;Xem thông tin&lt;/a&gt;
-                        &lt;/article&gt;</value>
+  <data name="btn_clear" xml:space="preserve">
+    <value>Xóa điều kiện</value>
+  </data>
+  <data name="btn_register" xml:space="preserve">
+    <value>Đăng ký</value>
+  </data>
+  <data name="lbl_administator" xml:space="preserve">
+    <value>Quản trị viên</value>
+  </data>
+  <data name="lbl_endpoint" xml:space="preserve">
+    <value>Điểm đến</value>
+  </data>
+  <data name="lbl_note" xml:space="preserve">
+    <value>Ghi chú</value>
+  </data>
+  <data name="lbl_register" xml:space="preserve">
+    <value>Đăng ký lộ trình</value>
+  </data>
+  <data name="lbl_register_taxi" xml:space="preserve">
+    <value>Đăng kí xe</value>
+  </data>
+  <data name="lbl_sp_online" xml:space="preserve">
+    <value>Trợ giúp trực tuyến</value>
+  </data>
+  <data name="lbl_startdate" xml:space="preserve">
+    <value>Thời gian xuất hành</value>
+  </data>
+  <data name="lbl_startpoint" xml:space="preserve">
+    <value>Điểm đi</value>
+  </data>
+  <data name="plh_note" xml:space="preserve">
+    <value>Nhập ghi chú</value>
   </data>
 </root>

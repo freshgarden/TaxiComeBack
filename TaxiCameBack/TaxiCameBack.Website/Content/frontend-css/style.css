@@ -289,7 +289,7 @@ License: Teamforest licence
 
 	ul{
 		margin-left: 20px;
-		list-style: square url("../../Content/Images/frontend-images/ul_dash.png");
+		list-style: square url("../images/ul_dash.png");
 	}
 
 	.sidebar{
@@ -443,15 +443,15 @@ License: Teamforest licence
 	}
 
 	.custom_radio{
-		background: url("../../Content/Images/frontend-images/radio.png") 0px 0px no-repeat;
+		background: url("../images/radio.png") 0px 0px no-repeat;
 	}
 
 	.radio_on{
-		background: url("../../Content/Images/frontend-images/radio.png") 0px -23px no-repeat;
+		background: url("../images/radio.png") 0px -23px no-repeat;
 	}
 
 	.custom_radio_light.radio_on{
-		background: url("../../Content/Images/frontend-images/radio.png") 0px -46px no-repeat;
+		background: url("../images/radio.png") 0px -46px no-repeat;
 	}
 
 	.custom_checkbox{
@@ -678,7 +678,7 @@ License: Teamforest licence
 		display: inline-block;
 		padding-right: 18px;
 		margin-right: 18px;
-		background: url("../../Content/Images/frontend-images/top_toolbar_menu_devider.png") 100% 50% no-repeat;
+		background: url("../images/top_toolbar_menu_devider.png") 100% 50% no-repeat;
 	}
 
 	.top_toolbar_menu li:last-child{
@@ -778,7 +778,7 @@ License: Teamforest licence
 
 /*-------- 04.c. Header Main Bar --------*/
 	#logo{
-		margin-top: 20px;
+		margin-top: 30px;
 	}
 
 	#header_main{
@@ -1065,7 +1065,7 @@ License: Teamforest licence
 	.post_tags{
 		font-weight: 300;
 		color: #b3b3b3;
-		background: url("../../Content/Images/frontend-images/hashtag.png") 0 3px no-repeat;
+		background: url("../images/hashtag.png") 0 3px no-repeat;
 		padding-left: 20px;
 		line-height: 13px;
 		padding-top: 0;
@@ -1365,7 +1365,7 @@ License: Teamforest licence
 
 /*-------- 07.d. download callout box --------*/
 	.download_callout_box{
-		background: #f7f7f7 url(../../Content/Images/frontend-images/callout_box_bg.png) top center no-repeat;
+		background: #f7f7f7 url(../images/callout_box_bg.png) top center no-repeat;
 		padding: 28px;
 		border: 1px solid #e5e5e5;
 		-webkit-border-radius: 4px;
@@ -1961,7 +1961,7 @@ License: Teamforest licence
 		-webkit-border-radius: 4px 0 0 4px;
 		-moz-border-radius: 4px 0 0 4px;
 		border-radius: 4px 0 0 4px;
-		background: #bcbcbc url(../../Content/Images/frontend-images/list_view.png) 50% 50% no-repeat;
+		background: #bcbcbc url(../images/list_view.png) 50% 50% no-repeat;
 	}
 
 	.sort_grid{
@@ -1969,7 +1969,7 @@ License: Teamforest licence
 		-webkit-border-radius: 0 4px 4px 0;
 		-moz-border-radius: 0 4px 4px 0;
 		border-radius: 0 4px 4px 0;
-		background: #bcbcbc url(../../Content/Images/frontend-images/grid_view.png) 50% 50% no-repeat;
+		background: #bcbcbc url(../images/grid_view.png) 50% 50% no-repeat;
 	}
 
 	.sort_list:hover,
@@ -2017,7 +2017,7 @@ License: Teamforest licence
 		right: 0;
 		width: 139px;
 		padding-left: 20px;
-		background: url("../../Content/Images/frontend-images/vendor.png") 0 1px no-repeat;
+		background: url("../images/vendor.png") 0 1px no-repeat;
 	}
 
 	.list_item .item_info{
@@ -2144,7 +2144,7 @@ License: Teamforest licence
 
 	.item_main .vendor{
 		padding-left: 20px;
-		background: url("../../Content/Images/frontend-images/vendor.png") 0 1px no-repeat;
+		background: url("../images/vendor.png") 0 1px no-repeat;
 		color: #b3b3b3;
 		font-weight: 300;
 		margin-bottom: 10px;
@@ -2181,7 +2181,7 @@ License: Teamforest licence
 /*-------- 07.u. search results item info --------*/
 	span.item_rating, span.item_rating span {
 	    display: block;
-	    background: url(../../Content/Images/frontend-images/stars.png) 0 -15px repeat-x;
+	    background: url(../images/stars.png) 0 -15px repeat-x;
 	    width: 70px;
 	    height: 15px;
 	    position: absolute;
@@ -2202,42 +2202,42 @@ License: Teamforest licence
 	}
 
 	.item_type{
-		background: url("../../Content/Images/frontend-images/car.png") 0 6px no-repeat;
+		background: url("../images/car.png") 0 6px no-repeat;
 		padding-left: 20px;
 	}
 
 	.item_drive{
-		background: url("../../Content/Images/frontend-images/drive.png") 0 6px no-repeat;
+		background: url("../images/drive.png") 0 6px no-repeat;
 		padding-left: 20px;
 	}
 
 	.item_engine{
-		background: url("../../Content/Images/frontend-images/engine.png") 0 4px no-repeat;
+		background: url("../images/engine.png") 0 4px no-repeat;
 		padding-left: 20px;
 	}
 
 	.item_transimition{
-		background: url("../../Content/Images/frontend-images/transmision.png") 0 4px no-repeat;
+		background: url("../images/transmision.png") 0 4px no-repeat;
 		padding-left: 20px;
 	}
 
 	.item_fuel{
-		background: url("../../Content/Images/frontend-images/fuel.png") 0 4px no-repeat;
+		background: url("../images/fuel.png") 0 4px no-repeat;
 		padding-left: 20px;
 	}
 
 	.item_mileage{
-		background: url("../../Content/Images/frontend-images/mileage.png") 0 6px no-repeat;
+		background: url("../images/mileage.png") 0 6px no-repeat;
 		padding-left: 20px;
 	}
 
 	.item_color{
-		background: url("../../Content/Images/frontend-images/color.png") 0 3px no-repeat;
+		background: url("../images/color.png") 0 3px no-repeat;
 		padding-left: 20px;
 	}
 
 	.item_interior_color{
-		background: url("../../Content/Images/frontend-images/seats.png") 0px 6px no-repeat;
+		background: url("../images/seats.png") 0px 6px no-repeat;
 		padding-left: 20px;
 	}
 
@@ -2320,7 +2320,7 @@ License: Teamforest licence
 	}
 
 	#featured_items .item_engine{
-		background: url("../../Content/Images/frontend-images/engine.png") 0 3px no-repeat;
+		background: url("../images/engine.png") 0 3px no-repeat;
 		padding-left: 20px;
 	}
 
@@ -2610,7 +2610,7 @@ License: Teamforest licence
 	}
 
 	#logo_footer{
-		margin-top: 20px;
+		margin-top: 30px;
 	}
 
 	footer #social_icons{
@@ -2654,16 +2654,15 @@ License: Teamforest licence
 	}
 	
 	.custom_scrollbar {
-		max-height: 500px;
+		max-height: 550px;
 		overflow-x: auto;
 	}
 	
 	.custom_scrollbar::-webkit-scrollbar {
-		width: 10px;
-		height: 10px;
+		width: .6em;
 	}
 	.custom_scrollbar::-webkit-scrollbar-track {
-		background-color: rgba(113,112,107,0.1);
+		background-color: transparent;
 		-webkit-border-radius: 5px;
 	}
 	.custom_scrollbar::-webkit-scrollbar-thumb:vertical {
@@ -2672,7 +2671,7 @@ License: Teamforest licence
 	}
 	.custom_scrollbar::-webkit-scrollbar-thumb:vertical:hover,
 	.custom_scrollbar::-webkit-scrollbar-thumb:horizontal:hover {
-		background: white;
+		background: rgba(113,112,107,0.1);
 	}
 	.custom_scrollbar::-webkit-scrollbar-thumb:horizontal {
 		background-color: rgba(0,0,0,.2);

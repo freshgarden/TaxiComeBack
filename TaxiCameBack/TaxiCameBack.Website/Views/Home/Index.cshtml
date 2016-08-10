@@ -19,13 +19,20 @@
             // Start the connection.
             $.connection.hub.start().done(function () {
                 $('#btnCreate').click(function () {
-                    CustomerRegisterCar.DriveId = $('#DriveId').val();
-                    CustomerRegisterCar.CustomerFullName = $('#customerFullName').val();
-                    CustomerRegisterCar.CustomerPhoneNumber = $('#customerPhoneNumber').val();
-                    CustomerRegisterCar.ScheduleId = $('#ScheduleId').val();
-                    CustomerRegisterCar.NearLocation = $('#customerNearpos').val();
-                    // Call the Send method on the hub.
-                    notification.server.registerTaxi(CustomerRegisterCar);
+                    if ($("#customerAgreeTerm").is(':checked'))
+                    {
+                        CustomerRegisterCar.DriveId = $('#DriveId').val();
+                        CustomerRegisterCar.CustomerFullName = $('#customerFullName').val();
+                        CustomerRegisterCar.CustomerPhoneNumber = $('#customerPhoneNumber').val();
+                        CustomerRegisterCar.ScheduleId = $('#ScheduleId').val();
+                        CustomerRegisterCar.NearLocation = $('#customerNearpos').val();
+                        // Call the Send method on the hub.
+                        notification.server.registerTaxi(CustomerRegisterCar);
+                    }
+                    else
+                    {
+                        alert("Bạn cần xác nhận lại điều kiện.")
+                    }
                 });
             });
         });
@@ -36,34 +43,35 @@
         <section id="search">
             <div class="tabbable tabbable_red">
                 <ul class="nav-tabs">
-                    <li class="active with_icon"><a href="#search_tab_1" data-toggle="tab"><i class="icomoon-search"></i>Tìm kiếm Taxi</a></li>
-                    <li class="with_icon"><a href="#search_tab_2" data-toggle="tab" id="register_div"><i class="icomoon-plus"></i>Đăng ký xe</a></li>
+                    <li class="active with_icon"><a href="#search_tab_1" data-toggle="tab"><i class="icomoon-search"></i>@Home.lbl_FindCar</a></li>
+                    <li class="with_icon"><a href="#search_tab_2" data-toggle="tab" id="register_div"><i class="icomoon-plus"></i>@Home.lbl_register_taxi</a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="search_tab_1">
                         <form id="homepage_search" action="#">
                             <div class="row">
                                 <div class="span6">
-                                    <label for="type" class="dropdown_label">Điểm đi</label>
+                                    <label for="type" class="dropdown_label">@Home.lbl_startpoint</label>
                                     <input id="startPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_StartPoint" name="start_position">
                                 </div>
                                 <div class="span6">
-                                    <label for="category" class="dropdown_label">Điểm đến</label>
+                                    <label for="category" class="dropdown_label">@Home.lbl_endpoint</label>
                                     <input id="endPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_EndPoint" autocomplete="off" name="end_position">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="span6">
-                                    <label for="location" class="dropdown_label">Ngày khởi hành</label>
+                                    <label for="location" class="dropdown_label">@Home.lbl_startdate</label>
                                     <input id="timestart" type="text" placeholder="@Home.plh_TimeStart" name="start_date" autocomplete="off">
                                 </div>
                             </div>
                             <div class="row last_row">
-                                <div class="span4">
+                                <div class="span2">
                                 </div>
-                                <div class="span8 clear_submit_buttons">
-                                    <a id="locate" href="#" class="clear_filters"><i class="icon-screenshot"></i> Định vị</a>
+                                <div class="span10 clear_submit_buttons">
+                                    <a id="locate" href="#" class="clear_filters"><i class="icon-screenshot"></i> @Home.lbl_Locate</a>
                                     <a href="#"  id="switchSearchValue" class="clear_filters"><i class="icon-exchange"></i> @Home.btn_switch_title</a>
+                                    <a href="#" class="clear_filters" id="clear_search"><i class="icon-remove"></i> @Home.btn_clear</a>
                                     <a class="button yellow right" id="searchCar">@Home.btn_search_title</a>
                                 </div>
                             </div>
@@ -73,48 +81,48 @@
                         <form id="homepage_search" action="#">
                             <div class="row">
                                 <div class="span6">
-                                    <label for="type" class="dropdown_label">Điểm đi</label>
-                                    <input type="text" placeholder="Nhập điểm đi của bạn" id="reg_start_position">
+                                    <label for="type" class="dropdown_label">@Home.lbl_startpoint</label>
+                                    <input type="text" placeholder="@Home.plh_StartPoint" id="reg_start_position">
                                 </div>
                                 <div class="span6">
-                                    <label for="category" class="dropdown_label">Điểm đến</label>
-                                    <input type="text" placeholder="Nhập điểm đến của bạn" id="reg_end_position">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="span6">
-                                    <label for="location" class="dropdown_label">Gần vị trí</label>
-                                    <input type="text" placeholder="Nhập vị trí gần điểm đến của bạn" id="reg_near_position">
+                                    <label for="category" class="dropdown_label">@Home.lbl_endpoint</label>
+                                    <input type="text" placeholder="@Home.plh_EndPoint" id="reg_end_position">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="span6">
-                                    <label for="location" class="dropdown_label">Ngày khởi hành</label>
-                                    <input type="text" placeholder="Nhập ngày giờ khởi hành của bạn" id="reg_start_date">
+                                    <label for="location" class="dropdown_label">@Home.lbl_NearPos</label>
+                                    <input type="text" placeholder="@Home.plh_NearPos" id="reg_near_position">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="span6">
-                                    <label for="location" class="dropdown_label">Họ và tên</label>
-                                    <input type="text" placeholder="Nhập họ và tên của bạn" id="reg_full_name">
+                                    <label for="location" class="dropdown_label">@Home.lbl_startdate</label>
+                                    <input type="text" placeholder="@Home.plh_TimeStart" id="reg_start_date">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="span6">
+                                    <label for="location" class="dropdown_label">@Home.lbl_CustomerName</label>
+                                    <input type="text" placeholder="@Home.plh_FullName" id="reg_full_name">
                                 </div>
                                 <div class="span6">
-                                    <label for="location" class="dropdown_label">Số điện thoại</label>
-                                    <input type="text" placeholder="Nhập số điện thoại của bạn" id="reg_phone_number">
+                                    <label for="location" class="dropdown_label">@Home.lbl_CustomerPhone</label>
+                                    <input type="text" placeholder="@Home.plh_PhoneNumber" id="reg_phone_number">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="span12">
-                                    <label for="location" class="dropdown_label">Ghi chú</label>
-                                    <textarea name="description" id="reg_note" placeholder="Nhập ghi chú của bạn"></textarea>
+                                    <label for="location" class="dropdown_label">@Home.lbl_note</label>
+                                    <textarea name="description" id="reg_note" placeholder="@Home.plh_note"></textarea>
                                 </div>
                             </div>
                             <div class="row last_row">
                                 <div class="span6">
                                 </div>
                                 <div class="span6 clear_submit_buttons">
-                                    <a id="clearConditions" href="#" class="clear_filters"><i class="icon-remove"></i> Xóa điều kiện</a>
-                                    <a  id="customerRegister"  class="button submit yellow right">Đăng ký</a>
+                                    <a id="clearConditions" href="#" class="clear_filters"><i class="icon-remove"></i> @Home.btn_clear</a>
+                                    <a id="customerRegister"  class="button submit yellow right">@Home.btn_register</a>
                                 </div>
                             </div>
                         </form>
@@ -123,50 +131,48 @@
             </div>
         </section>
 
-        <section id="featured_news" class="clearfix">
-            <div class="tabbable">
-                <label id="distanceAndTime" class="help_link"></label>
-                <ul class="nav-tabs">
-                    <li class="active"><a href="#featured_news_tab_1" data-toggle="tab">Kết quả tìm kiếm</a></li>
-                </ul>
-                <div class="tab-content custom_scrollbar">
-                    <div class="tab-pane active" id="featured_news_tab_1">
-                        <article id="noSearchResult" class="featured_post clearfix">
-                            <h4 id="noSearchResult_title">Dịch vụ tìm kiếm taxi đường dài</h4>
-                            <p>
-                                Ứng dụng tìm kiếm taxi đường dài, giá rẻ với chi phí chỉ khoảng 5 đến 6 ngàn đồng/km, rẻ bằng một nửa so với taxi truyền thống. Chúng tôi sẽ đem lại cho Quí khách hàng những chọn lựa tốt với mức chi phí thấp nhất.
-                            </p>
-                        </article>
-                    </div>
-                </div>
+        <section id="vendor" class="box" style="display:none;">
+            <h3>@Home.lbl_SearchResult</h3>
+            <p id="no_result" class="no_results" style="display:none;">
+            </p>
+            <div id="search_result" class="custom_scrollbar">
             </div>
         </section>
 
+        <section id="item_info" class="box">
+            <h3>@Home.lbl_UserGuide</h3>
+            <div class="box-content">
+                <h5>Hướng dẫn tìm kiếm xe taxi</h5>
+                <p>Nhập địa chỉ đến và đi, thời gian xuất hành vào khung tìm kiếm hoặc click vào icon <i class="icon-screenshot"></i> để hệ thống tự lấy vị trí hiện tại của bạn.</p>
+                <p>Sau đó click chuột vào nút Tìm kiếm để bắt đầu quá trình tìm kiếm taxi. Hệ thống sẽ hiển thị danh sách các chuyến xe phù hợp với lộ trình của bạn, hãy đăng kí và liên hệ với tài xế để có được thông tin cần thiết.</p>
+                <h5>Hướng dẫn đăng ký xe taxi</h5>
+                <p>Nhập địa chỉ đến và đi, thời gian xuất hành, vị trí đón, họ tên và số điện thoại của bạn cũng như ghi chú vào khung đăng kí.</p>
+                <p>Sau đó click chuột vào nút Đăng ký để thực hiện đăng ký chuyến xe. Chúng tôi sẽ liên hệ với bạn khi có chuyến xe phù hợp.</p>
+            </div>
+        </section>
+        
         <div class="login_form_modal_container">
             <div id="login_form" class="box">
-                <h3>Thông tin lộ trình</h3>
+                <h3>@Home.lbl_register</h3>
                 <div class="box-content clearfix">
                     <div class="row">
-                        <label for="drivername" class="dropdown_label">Tên tài xế</label>
-                        <input id="driveName" type="text" name="drivername" value="Đỗ Anh Tú" disabled>
+                        <label for="customername" class="dropdown_label">@Home.lbl_CustomerName</label>
+                        <input id="customerFullName" type="text" placeholder="@Home.plh_FullName" name="fullname" maxlength="50">
                     </div>
                     <div class="row">
-                        <label for="driverphone" class="dropdown_label">Số điện thoại tài xế</label>
-                        <input id="drivePhone" type="text" name="driverphone" value="098.255.2067" disabled>
+                        <label for="customerphone" class="dropdown_label">@Home.lbl_CustomerPhone</label>
+                        <input id="customerPhoneNumber" type="text" placeholder="@Home.plh_PhoneNumber" name="phoneNumber" maxlength="14">
                     </div>
-                    <form action="#">
-                        <div class="row">
-                            <label for="customername" class="dropdown_label">Họ và tên</label>
-                            <input type="text" placeholder="Nhập họ và tên của bạn" name="customername">
-                        </div>
-                        <div class="row">
-                            <label for="customerphone" class="dropdown_label">Số điện thoại</label>
-                            <input type="text" placeholder="Nhập số điện thoại của bạn" name="customerphone">
-                        </div>
-                        <input type="hidden" id="DriveId" />
-                        <input type="hidden" id="ScheduleId" />
-                        <a class="button submit red right">Đăng ký</a>
-                    </form>
+                    <div class="row">
+                        <label for="customerphone" class="dropdown_label">@Home.lbl_NearPos</label>
+                        <input id="customerNearpos" type="text" placeholder="@Home.plh_NearPos" name="nearpos" maxlength="50">
+                    </div>
+                    <div class="row">
+                        <label for="customerAgreeTerm" class="custom_checkbox custom_checkbox_light"><input type="checkbox" name="customerAgreeTerm" id="customerAgreeTerm">@Home.lbl_reg_note</label>
+                    </div>
+                    <input type="hidden" id="DriveId" />
+                    <input type="hidden" id="ScheduleId" />
+                    <a class="button submit red right" id="btnCreate">@Home.btn_register</a>
                 </div>
             </div>
         </div>
@@ -174,7 +180,7 @@
     </div>
     <div class="grid_4 sidebar">
         <div class="box">
-            <h3>Danh sách xe đi các tỉnh</h3>
+            <h3>@Home.lbl_Find_Car_By_Location</h3>
             <div class="box-content widget-categories">
                 <ul>
                     <li><a href="#">Nam Định<span>50</span></a></li>
@@ -187,19 +193,26 @@
         </div>
 
         <div class="box">
-            <h3>Trợ giúp trực tuyến</h3>
+            <h3>@Home.lbl_sp_online</h3>
             <div class="box-content widget_online_support">
                 <div class="row">
                     <img src="~/Content/Images/frontend-images/johnsdoe.jpg" alt="" class="span6">
                     <div class="span6">
                         <span class="online_support_title">Nguyễn Xuân Phúc</span>
-                        <p>Quản trị viên</p>
+                        <p>@Home.lbl_administator</p>
                     </div>
                 </div>
-                <a href="#" class="button blue big wide "><i class="icomoon-volume-medium"></i>098.462.2793</a>
-                <a href="#">Liên hệ với đội hỗ trợ</a><br>
+                <a href="#" class="button green big wide "><i class="icomoon-volume-medium"></i> 098.462.2793</a>
             </div>
         </div>
+
+        <div class="box">
+            <h3>Về chúng tôi</h3>
+            <div class="box-content">
+                <p>Ứng dụng tìm kiếm taxi đường dài, giá rẻ. Chúng tôi sẽ đem lại cho Quí khách hàng những chọn lựa tốt với mức chi phí thấp nhất.</p>
+            </div>
+        </div>
+
     </div>
 </div>
 <div id="mapdirdd" style="display:none;">    
@@ -219,13 +232,15 @@
         });
 
         function RegisterCar(data) {
-            $("#driveName").val(data.UserFullName);
-            $("#drivePhone").val(data.UserPhoneNumber);
+            $.fancybox({
+                href: "#login_form",
+                padding: 0,
+                onClosed: function () {
+                    $("#login_error").hide();
+                }
+            });
             document.getElementById("DriveId").value = data.DriveId;
             document.getElementById("ScheduleId").value = data.ScheduleId;
-            $.fancybox({ href: "#login_form" });
-            
-            //$('.login_form_modal_container').css("display", "block");
         }
       
         var CustomerRegisterCar = {
@@ -235,33 +250,6 @@
             NearLocation: "",
             ScheduleId: ""
         }
-    //    $('#btnCreate').click(function() {
-    //        if ($("#customerAgreeTerm").is(':checked')) {
-    //            CustomerRegisterCar.DriveId = $('#DriveId').val();
-    //            CustomerRegisterCar.CustomerFullName = $('#customerFullName').val();
-    //            CustomerRegisterCar.CustomerPhoneNumber = $('#customerPhoneNumber').val();
-    //            CustomerRegisterCar.NearLocation = $('#customerNearpos').val();
-    //
-    //            $.ajax({
-    //                url: "/Home/CustomerRegisterCar",
-    //                type: 'POST',
-    //                data: JSON.stringify(CustomerRegisterCar),
-    //                dataType: 'json',
-    //                contentType: "application/jsonrequest; charset=utf-8",
-    //                success: function(data) {
-    //                    if (data.length === undefined) {
-    //                        //test success message
-    //                        SetCustomerRegCarSuccessMessage("Đăng ký thành công");
-    //                    } else {
-    //                        SetCustomerRegCarSuccessMessage("Đăng ký thành công");
-    //                    }
-    //                }
-    //            });
-    //        } else {
-    //            SetCustomerRegCarErrorMessage("@Home.customer_agree");
-    //        }
-    //
-    //    })
 
         var SearchModel = {
             StartLocationLat: "",
@@ -282,7 +270,7 @@
                 SearchModel.StartLocationLng = startPointPlace.geometry.location.lng();
                 SearchModel.EndLocationLat = endPointPlace.geometry.location.lat();
                 SearchModel.EndLocationLng = endPointPlace.geometry.location.lng();
-                SearchModel.CarType = ''; //$('input[name=cartype]:checked').val();
+                SearchModel.CarType = '';
                 $.ajax({
                     url: "/Home/Search",
                     type: 'POST',
@@ -290,30 +278,36 @@
                     dataType: 'json',
                     contentType: "application/jsonrequest; charset=utf-8",
                     success: function (data) {
+                        $('#vendor').css("display", "block");
+                        $('#search_result').empty();
                         if (data.length === undefined) {
-                            $("#noSearchResult_title").html("<span class='text-danger'>Không có kết quả nào được tìm thấy </span>");
-                            $('#noSearchResult').css("display", "block");
+                            $('#no_result').css("display", "block");
+                            $('#no_result').html("Không có kết quả nào được tìm thấy");
+                            $('#search_result').css("display", "none");
                         } else {
-                            $('#noSearchResult').css("display", "none");
+                            $('#no_result').css("display", "none");
+                            $('#search_result').css("display", "block");
 
-                            for (var count in data) {
+                            for (var count in data)
+                            {
                                 var routeData = JSON.stringify(data[count]);
                                 var startDate = data[count].StartDate;
-                                var result_html = $("<article class='featured_post clearfix'><h4>Dịch vụ tìm kiếm taxi đường dài - Lựa chọn số" + ++count + "</h4>" +
-                                "<span class='post_date'>" + parseJsonDate(startDate)+ "</span>" +
-                                "<p>Ứng dụng tìm kiếm taxi đường dài, giá rẻ với chi phí chỉ khoảng 5 đến 6 ngàn đồng/km, rẻ bằng một nửa so với taxi truyền thống. Chúng tôi sẽ đem lại cho Quí khách hàng những chọn lựa tốt với mức chi phí thấp nhất.</p>" +
-                                "<a class='blog_comments show_login_form' href='#' onclick='RegisterCar(" + routeData + ")'>Xem thông tin</a>" +
-                                "</article>");
-                                $('#featured_news_tab_1').append(result_html);
+                                var result_html = $("<div class='box-content clearfix'><div class='half left'><div class='row'>" +
+                                    "<img src='/Content/Images/frontend-images/johnsdoe.jpg' alt='' class='span4'>" +
+                                    "<div class='span8 vendor_info'><span class='vendor_title'>" + data[count].UserFullName + "</span><span>Thành phố: <strong>Hà nội</strong></span><span>Loại xe: <strong>4 chỗ ngồi</strong></span><span>Thời gian: <strong>" + parseJsonDate(startDate) + "</strong></span></div>" +
+                                    "</div></div>" +
+                                    "<div class='half right'><a href='#' onclick='RegisterCar(" + routeData + ");return false;' class='button blue big wide show_login_form'><i class='icomoon-volume-medium'></i>" + data[count].UserPhoneNumber + "</a></div>" +
+                                    "</div>");
+                                $('#search_result').append(result_html);
                             }
-                            getDistanceAndTime();
                         }
+                        
                     }
                 });
             }
         })
+
         function parseJsonDate(jsonDateString) {
-             
             var today = new Date(parseInt(jsonDateString.replace('/Date(', '')));
             var dd = today.getDate();
             var mm = today.getMonth() + 1; //January is 0!
@@ -354,10 +348,9 @@
             script.src = src;
         }
 
-        loadScript('http://maps.googleapis.com/maps/api/js?key=AIzaSyA1naPg1USZOsy3uiEJv0A71GwcGeaOTS8&v=3&libraries=places&sensor=false&callback=initialize');
+        loadScript('http://maps.googleapis.com/maps/api/js?key=AIzaSyDXIEOJsracks0-TTPmqvEnnMG3YPyh36U&v=3&libraries=places&sensor=false&callback=initialize');
 
         function initialize() {
-        
             var mapOptions = {
                 mapTypeControl: true
             };
@@ -381,10 +374,7 @@
                     }
                 }
             });
-
-
             google.maps.event.addDomListener(window, 'load', initialize);
-
         }
 
         $("#locate").click(function() {
@@ -392,6 +382,10 @@
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(locate, showError);
             }
+        });
+
+        $("#clear_search").click(function () {
+            $(':input').val('');
         });
 
         function showError(error) {
@@ -429,7 +423,6 @@
         }
 
         function calcdir(event) {
-        
             // Create the search box and link it to the UI element.
             var startPoint = document.getElementById('startPoint');
             var options = {
@@ -460,9 +453,7 @@
                 // the other place ID
                 destination_place_id = endPointPlace.place_id;
             });
-
         }
-       
 
         function getDistanceAndTime() {
             var service = new google.maps.DistanceMatrixService();

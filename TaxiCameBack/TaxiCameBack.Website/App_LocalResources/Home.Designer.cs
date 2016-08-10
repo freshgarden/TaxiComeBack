@@ -70,6 +70,24 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Xóa điều kiện.
+        /// </summary>
+        public static string btn_clear {
+            get {
+                return ResourceManager.GetString("btn_clear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đăng ký.
+        /// </summary>
+        public static string btn_register {
+            get {
+                return ResourceManager.GetString("btn_register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tìm kiếm.
         /// </summary>
         public static string btn_search_title {
@@ -129,6 +147,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string Keywords {
             get {
                 return ResourceManager.GetString("Keywords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quản trị viên.
+        /// </summary>
+        public static string lbl_administator {
+            get {
+                return ResourceManager.GetString("lbl_administator", resourceCulture);
             }
         }
         
@@ -198,14 +225,14 @@ namespace TaxiCameBack.Website.App_LocalResources {
         /// <summary>
         ///   Looks up a localized string similar to Điểm đến.
         /// </summary>
-        public static string lbl_EndPoint {
+        public static string lbl_endpoint {
             get {
-                return ResourceManager.GetString("lbl_EndPoint", resourceCulture);
+                return ResourceManager.GetString("lbl_endpoint", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Có {0} chuyến xe đang sẵn sàng.
+        ///   Looks up a localized string similar to Danh sách xe đi các tỉnh.
         /// </summary>
         public static string lbl_Find_Car_By_Location {
             get {
@@ -214,7 +241,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tìm xe.
+        ///   Looks up a localized string similar to Tìm kiếm taxi.
         /// </summary>
         public static string lbl_FindCar {
             get {
@@ -232,11 +259,20 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gần vị trí.
+        ///   Looks up a localized string similar to Vị trí đón khách.
         /// </summary>
         public static string lbl_NearPos {
             get {
                 return ResourceManager.GetString("lbl_NearPos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ghi chú.
+        /// </summary>
+        public static string lbl_note {
+            get {
+                return ResourceManager.GetString("lbl_note", resourceCulture);
             }
         }
         
@@ -250,7 +286,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bạn chỉ phải trả {0} cho chuyến đi này.
+        ///   Looks up a localized string similar to Bạn chỉ phải trả 50% cho chuyến đi này.
         /// </summary>
         public static string lbl_reg_note {
             get {
@@ -264,6 +300,24 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string lbl_reg_note2 {
             get {
                 return ResourceManager.GetString("lbl_reg_note2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đăng ký lộ trình.
+        /// </summary>
+        public static string lbl_register {
+            get {
+                return ResourceManager.GetString("lbl_register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đăng kí xe.
+        /// </summary>
+        public static string lbl_register_taxi {
+            get {
+                return ResourceManager.GetString("lbl_register_taxi", resourceCulture);
             }
         }
         
@@ -291,6 +345,33 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string lbl_SearchResult_Content {
             get {
                 return ResourceManager.GetString("lbl_SearchResult_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trợ giúp trực tuyến.
+        /// </summary>
+        public static string lbl_sp_online {
+            get {
+                return ResourceManager.GetString("lbl_sp_online", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thời gian xuất hành.
+        /// </summary>
+        public static string lbl_startdate {
+            get {
+                return ResourceManager.GetString("lbl_startdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Điểm đi.
+        /// </summary>
+        public static string lbl_startpoint {
+            get {
+                return ResourceManager.GetString("lbl_startpoint", resourceCulture);
             }
         }
         
@@ -331,7 +412,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Họ và tên.
+        ///   Looks up a localized string similar to Nhập họ và tên.
         /// </summary>
         public static string plh_FullName {
             get {
@@ -340,7 +421,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gần vị trí.
+        ///   Looks up a localized string similar to Nhập vị trí đón.
         /// </summary>
         public static string plh_NearPos {
             get {
@@ -349,7 +430,16 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Số điện thoại.
+        ///   Looks up a localized string similar to Nhập ghi chú.
+        /// </summary>
+        public static string plh_note {
+            get {
+                return ResourceManager.GetString("plh_note", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nhập số điện thoại.
         /// </summary>
         public static string plh_PhoneNumber {
             get {
@@ -372,21 +462,6 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string plh_TimeStart {
             get {
                 return ResourceManager.GetString("plh_TimeStart", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;article class=&quot;featured_post clearfix&quot;&gt;
-        ///                            &lt;h4&gt;Dịch vụ tìm kiếm taxi đường dài - Lựa chọn số {0}&lt;/h4&gt;
-        ///                            &lt;span class=&quot;post_date&quot;&gt;{1}&lt;/span&gt;
-        ///                            &lt;p&gt;
-        ///                                Ứng dụng tìm kiếm taxi đường dài, giá rẻ với chi phí chỉ khoảng 5 đến 6 ngàn đồng/km, rẻ bằng một nửa so với taxi truyền thống. Chúng tôi sẽ đem lại cho Quí khách hàng những chọn lựa tốt với mức chi phí thấp nhất.
-        ///                            &lt;/p&gt;
-        ///     [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string search_result_html {
-            get {
-                return ResourceManager.GetString("search_result_html", resourceCulture);
             }
         }
         

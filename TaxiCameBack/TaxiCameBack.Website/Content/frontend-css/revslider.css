@@ -66,8 +66,7 @@ website:   	http://www.themepunch.com
 
 **************************/
 
-.pac-container{max-height:155px; overflow:hidden;box-shadow:none;}
-.pac-container:after{background-image:none !important}
+
 
 .tp-hide-revslider,.tp-caption.tp-hidden-caption	{	visibility:hidden !important; display:none !important;}
 
@@ -695,11 +694,11 @@ website:   	http://www.themepunch.com
 
 
 
-.tp-bannershadow.tp-shadow1 {	background:url(../../Content/Images/frontend-images/revslider/shadow1.png) no-repeat; background-size:100%; width:890px; height:30px; bottom:-30px;}
+.tp-bannershadow.tp-shadow1 {	background:url(../images/revslider/shadow1.png) no-repeat; background-size:100%; width:890px; height:30px; bottom:-30px;}
 
-.tp-bannershadow.tp-shadow2 {	background:url(../../Content/Images/frontend-images/revslider/shadow2.png) no-repeat; background-size:100%; width:890px; height:60px;bottom:-60px;}
+.tp-bannershadow.tp-shadow2 {	background:url(../images/revslider/shadow2.png) no-repeat; background-size:100%; width:890px; height:60px;bottom:-60px;}
 
-.tp-bannershadow.tp-shadow3 {	background:url(../../Content/Images/frontend-images/revslider/shadow3.png) no-repeat; background-size:100%; width:890px; height:60px;bottom:-60px;}
+.tp-bannershadow.tp-shadow3 {	background:url(../images/revslider/shadow3.png) no-repeat; background-size:100%; width:890px; height:60px;bottom:-60px;}
 
 
 
@@ -771,23 +770,23 @@ website:   	http://www.themepunch.com
 
 
 
-.tp-bullets.simplebullets.navbar						{ 	border:1px solid #666; border-bottom:1px solid #444; background:url(../../Content/Images/frontend-images/revslider/boxed_bgtile.png); height:40px; padding:0px 10px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px ;}
+.tp-bullets.simplebullets.navbar						{ 	border:1px solid #666; border-bottom:1px solid #444; background:url(../images/revslider/boxed_bgtile.png); height:40px; padding:0px 10px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px ;}
 
 
 
-.tp-bullets.simplebullets.navbar-old					{ 	 background:url(../../Content/Images/frontend-images/revslider/navigdots_bgtile.png); height:35px; padding:0px 10px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px ;}
+.tp-bullets.simplebullets.navbar-old					{ 	 background:url(../images/revslider/navigdots_bgtile.png); height:35px; padding:0px 10px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px ;}
 
 
 
 
 
-.tp-bullets.simplebullets.round .bullet					{	cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/bullet.png) no-Repeat top left;	width:20px;	height:20px;  margin-right:0px; float:left; margin-top:-10px; margin-left:3px;}
+.tp-bullets.simplebullets.round .bullet					{	cursor:pointer; position:relative;	background:url(../images/revslider/bullet.png) no-Repeat top left;	width:20px;	height:20px;  margin-right:0px; float:left; margin-top:-10px; margin-left:3px;}
 
 .tp-bullets.simplebullets.round .bullet.last			{	margin-right:3px;}
 
 
 
-.tp-bullets.simplebullets.round-old .bullet				{	cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/bullets.png) no-Repeat bottom left;	width:23px;	height:23px;  margin-right:0px; float:left; margin-top:-12px;}
+.tp-bullets.simplebullets.round-old .bullet				{	cursor:pointer; position:relative;	background:url(../images/revslider/bullets.png) no-Repeat bottom left;	width:23px;	height:23px;  margin-right:0px; float:left; margin-top:-12px;}
 
 .tp-bullets.simplebullets.round-old .bullet.last		{	margin-right:0px;}
 
@@ -797,7 +796,7 @@ website:   	http://www.themepunch.com
 
 /**	SQUARE BULLETS **/
 
-.tp-bullets.simplebullets.square .bullet				{	cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/bullets2.png) no-Repeat bottom left;	width:19px;	height:19px;  margin-right:0px; float:left; margin-top:-10px;}
+.tp-bullets.simplebullets.square .bullet				{	cursor:pointer; position:relative;	background:url(../images/revslider/bullets2.png) no-Repeat bottom left;	width:19px;	height:19px;  margin-right:0px; float:left; margin-top:-10px;}
 
 .tp-bullets.simplebullets.square .bullet.last			{	margin-right:0px;}
 
@@ -807,7 +806,7 @@ website:   	http://www.themepunch.com
 
 /**	SQUARE BULLETS **/
 
-.tp-bullets.simplebullets.square-old .bullet			{	cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/bullets2.png) no-Repeat bottom left;	width:19px;	height:19px;  margin-right:0px; float:left; margin-top:-10px;}
+.tp-bullets.simplebullets.square-old .bullet			{	cursor:pointer; position:relative;	background:url(../images/revslider/bullets2.png) no-Repeat bottom left;	width:19px;	height:19px;  margin-right:0px; float:left; margin-top:-10px;}
 
 .tp-bullets.simplebullets.square-old .bullet.last		{	margin-right:0px;}
 
@@ -817,7 +816,7 @@ website:   	http://www.themepunch.com
 
 /** navbar NAVIGATION VERSION **/
 
-.tp-bullets.simplebullets.navbar .bullet			{	cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/bullet_boxed.png) no-Repeat top left;	width:18px;	height:19px;   margin-right:5px; float:left; margin-top:10px;}
+.tp-bullets.simplebullets.navbar .bullet			{	cursor:pointer; position:relative;	background:url(../images/revslider/bullet_boxed.png) no-Repeat top left;	width:18px;	height:19px;   margin-right:5px; float:left; margin-top:10px;}
 
 
 
@@ -833,7 +832,7 @@ website:   	http://www.themepunch.com
 
 /** navbar NAVIGATION VERSION **/
 
-.tp-bullets.simplebullets.navbar-old .bullet			{	cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/navigdots.png) no-Repeat bottom left;	width:15px;	height:15px;  margin-left:5px !important; margin-right:5px !important;float:left; margin-top:10px;}
+.tp-bullets.simplebullets.navbar-old .bullet			{	cursor:pointer; position:relative;	background:url(../images/revslider/navigdots.png) no-Repeat bottom left;	width:15px;	height:15px;  margin-left:5px !important; margin-right:5px !important;float:left; margin-top:10px;}
 
 .tp-bullets.simplebullets.navbar-old .bullet.first		{	margin-left:0px !important;}
 
@@ -895,41 +894,41 @@ website:   	http://www.themepunch.com
 
 														}
 
-.tp-leftarrow											{	z-index:100;cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/large_left.png) no-Repeat top left;	width:40px;	height:40px;   }
+.tp-leftarrow											{	z-index:100;cursor:pointer; position:relative;	background:url(../images/revslider/large_left.png) no-Repeat top left;	width:40px;	height:40px;   }
 
-.tp-rightarrow											{	z-index:100;cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/large_right.png) no-Repeat top left;	width:40px;	height:40px;   }
-
-
-
-
-
-.tp-leftarrow.round										{	z-index:100;cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/small_left.png) no-Repeat top left;	width:19px;	height:14px;  margin-right:0px; float:left; margin-top:-7px;	}
-
-.tp-rightarrow.round									{	z-index:100;cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/small_right.png) no-Repeat top left;	width:19px;	height:14px;  margin-right:0px; float:left;	margin-top:-7px;}
+.tp-rightarrow											{	z-index:100;cursor:pointer; position:relative;	background:url(../images/revslider/large_right.png) no-Repeat top left;	width:40px;	height:40px;   }
 
 
 
 
 
-.tp-leftarrow.round-old									{	z-index:100;cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/arrow_left.png) no-Repeat top left;	width:26px;	height:26px;  margin-right:0px; float:left; margin-top:-13px;	}
+.tp-leftarrow.round										{	z-index:100;cursor:pointer; position:relative;	background:url(../images/revslider/small_left.png) no-Repeat top left;	width:19px;	height:14px;  margin-right:0px; float:left; margin-top:-7px;	}
 
-.tp-rightarrow.round-old								{	z-index:100;cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/arrow_right.png) no-Repeat top left;	width:26px;	height:26px;  margin-right:0px; float:left;	margin-top:-13px;}
-
-
-
-
-
-.tp-leftarrow.navbar									{	z-index:100;cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/small_left_boxed.png) no-Repeat top left;	width:20px;	height:15px;   float:left;	margin-right:6px; margin-top:12px;}
-
-.tp-rightarrow.navbar									{	z-index:100;cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/small_right_boxed.png) no-Repeat top left;	width:20px;	height:15px;   float:left;	margin-left:6px; margin-top:12px;}
+.tp-rightarrow.round									{	z-index:100;cursor:pointer; position:relative;	background:url(../images/revslider/small_right.png) no-Repeat top left;	width:19px;	height:14px;  margin-right:0px; float:left;	margin-top:-7px;}
 
 
 
 
 
-.tp-leftarrow.navbar-old								{	z-index:100;cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/arrowleft.png) no-Repeat top left;		width:9px;	height:16px;   float:left;	margin-right:6px; margin-top:10px;}
+.tp-leftarrow.round-old									{	z-index:100;cursor:pointer; position:relative;	background:url(../images/revslider/arrow_left.png) no-Repeat top left;	width:26px;	height:26px;  margin-right:0px; float:left; margin-top:-13px;	}
 
-.tp-rightarrow.navbar-old								{	z-index:100;cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/arrowright.png) no-Repeat top left;	width:9px;	height:16px;   float:left;	margin-left:6px; margin-top:10px;}
+.tp-rightarrow.round-old								{	z-index:100;cursor:pointer; position:relative;	background:url(../images/revslider/arrow_right.png) no-Repeat top left;	width:26px;	height:26px;  margin-right:0px; float:left;	margin-top:-13px;}
+
+
+
+
+
+.tp-leftarrow.navbar									{	z-index:100;cursor:pointer; position:relative;	background:url(../images/revslider/small_left_boxed.png) no-Repeat top left;	width:20px;	height:15px;   float:left;	margin-right:6px; margin-top:12px;}
+
+.tp-rightarrow.navbar									{	z-index:100;cursor:pointer; position:relative;	background:url(../images/revslider/small_right_boxed.png) no-Repeat top left;	width:20px;	height:15px;   float:left;	margin-left:6px; margin-top:12px;}
+
+
+
+
+
+.tp-leftarrow.navbar-old								{	z-index:100;cursor:pointer; position:relative;	background:url(../images/revslider/arrowleft.png) no-Repeat top left;		width:9px;	height:16px;   float:left;	margin-right:6px; margin-top:10px;}
+
+.tp-rightarrow.navbar-old								{	z-index:100;cursor:pointer; position:relative;	background:url(../images/revslider/arrowright.png) no-Repeat top left;	width:9px;	height:16px;   float:left;	margin-left:6px; margin-top:10px;}
 
 
 
@@ -939,29 +938,29 @@ website:   	http://www.themepunch.com
 
 
 
-.tp-leftarrow.square									{	z-index:100;cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/arrow_left2.png) no-Repeat top left;	width:12px;	height:17px;   float:left;	margin-right:0px; margin-top:-9px;}
+.tp-leftarrow.square									{	z-index:100;cursor:pointer; position:relative;	background:url(../images/revslider/arrow_left2.png) no-Repeat top left;	width:12px;	height:17px;   float:left;	margin-right:0px; margin-top:-9px;}
 
-.tp-rightarrow.square									{	z-index:100;cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/arrow_right2.png) no-Repeat top left;	width:12px;	height:17px;   float:left;	margin-left:0px; margin-top:-9px;}
-
-
-
-
-
-.tp-leftarrow.square-old								{	z-index:100;cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/arrow_left2.png) no-Repeat top left;	width:12px;	height:17px;   float:left;	margin-right:0px; margin-top:-9px;}
-
-.tp-rightarrow.square-old								{	z-index:100;cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/arrow_right2.png) no-Repeat top left;	width:12px;	height:17px;   float:left;	margin-left:0px; margin-top:-9px;}
+.tp-rightarrow.square									{	z-index:100;cursor:pointer; position:relative;	background:url(../images/revslider/arrow_right2.png) no-Repeat top left;	width:12px;	height:17px;   float:left;	margin-left:0px; margin-top:-9px;}
 
 
 
 
 
-.tp-leftarrow.default									{	z-index:100;cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/large_left.png) no-Repeat 0 0;	width:40px;	height:40px;
+.tp-leftarrow.square-old								{	z-index:100;cursor:pointer; position:relative;	background:url(../images/revslider/arrow_left2.png) no-Repeat top left;	width:12px;	height:17px;   float:left;	margin-right:0px; margin-top:-9px;}
+
+.tp-rightarrow.square-old								{	z-index:100;cursor:pointer; position:relative;	background:url(../images/revslider/arrow_right2.png) no-Repeat top left;	width:12px;	height:17px;   float:left;	margin-left:0px; margin-top:-9px;}
+
+
+
+
+
+.tp-leftarrow.default									{	z-index:100;cursor:pointer; position:relative;	background:url(../images/revslider/large_left.png) no-Repeat 0 0;	width:40px;	height:40px;
 
 
 
 														}
 
-.tp-rightarrow.default									{	z-index:100;cursor:pointer; position:relative;	background:url(../../Content/Images/frontend-images/revslider/large_right.png) no-Repeat 0 0;	width:40px;	height:40px;
+.tp-rightarrow.default									{	z-index:100;cursor:pointer; position:relative;	background:url(../images/revslider/large_right.png) no-Repeat 0 0;	width:40px;	height:40px;
 
 
 
@@ -1091,7 +1090,7 @@ website:   	http://www.themepunch.com
 
 *************************************/
 
-.tp-bannertimer								{	width:100%; height:10px; background:url(../../Content/Images/frontend-images/revslider/timer.png);position:absolute; z-index:200;}
+.tp-bannertimer								{	width:100%; height:10px; background:url(../images/revslider/timer.png);position:absolute; z-index:200;}
 
 .tp-bannertimer.tp-bottom					{	bottom:0px !important;height:5px;}
 
@@ -1217,11 +1216,11 @@ website:   	http://www.themepunch.com
 
 .caption.slidelink a div,
 
-.tp-caption.slidelink a div {	width:10000px; height:10000px;  background:url(../../Content/Images/frontend-images/revslider/coloredbg.png) repeat;}
+.tp-caption.slidelink a div {	width:10000px; height:10000px;  background:url(../images/revslider/coloredbg.png) repeat;}
 
 
 
-.tp-loader 	{	background:url(../../Content/Images/frontend-images/revslider/loader.gif) no-repeat 10px 10px; background-color:#fff;  margin:-22px -22px; top:50%; left:50%; z-index:10000; position:absolute;width:44px;height:44px;
+.tp-loader 	{	background:url(../images/revslider/loader.gif) no-repeat 10px 10px; background-color:#fff;  margin:-22px -22px; top:50%; left:50%; z-index:10000; position:absolute;width:44px;height:44px;
 
 				border-radius: 3px;
 
@@ -1235,7 +1234,7 @@ website:   	http://www.themepunch.com
 
 
 
-.tp-transparentimg {	content:"url(../../Content/Images/frontend-images/revslider/transparent.png)"}
+.tp-transparentimg {	content:"url(../images/revslider/transparent.png)"}
 
 .tp-3d				{	-webkit-transform-style: preserve-3d;
 
