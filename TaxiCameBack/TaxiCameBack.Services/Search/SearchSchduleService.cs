@@ -35,11 +35,13 @@ namespace TaxiCameBack.Services.Search
             var points = new List<PointLatLng>();
             foreach (var lstSchedule in lstSchedules)
             {
+                if (lstSchedule.Notification != null && lstSchedule.Notification.Received)
+                    continue;
                 points.AddRange(
                     lstSchedule.ScheduleGeolocations.Select(
                         schedule => new PointLatLng(schedule.Latitude, schedule.Longitude)));
-                if (Util.GeoDistanceToPolyMtrs(points, startPoint) <= 5000 
-                    && Util.GeoDistanceToPolyMtrs(points, endPoint) <= 5000 && !lstSchedule.Notification.Received)
+                if (Util.GeoDistanceToPolyMtrs(points, startPoint) <= 5000
+                    && Util.GeoDistanceToPolyMtrs(points, endPoint) <= 5000)
                 {
                     schedules.Add(lstSchedule);
                     points.Clear();
