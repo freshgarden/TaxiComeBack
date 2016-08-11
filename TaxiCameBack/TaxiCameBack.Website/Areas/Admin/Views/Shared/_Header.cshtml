@@ -107,7 +107,9 @@
                             $('#notiContent').append($('<li><a href="#">No data available</a></li>'));
                         }
                         $.each(response, function (index, value) {
-                            $('#notiContent').append($('<li><a href="#"><span><span>' + value.CustomerFullname + ' - ' + formatPhone(value.CustomerPhoneNumber) + '</span><span class="time">' + toJavaScriptDate(value.CreateDate) + '</span></span><span class="message">' + value.Message + '</span><button id="btnAccept" class="pull-right btn btn-success btn-xs" onclick="receivedRide(\'' + value.Id + '\',\'' + value.ScheduleId + '\',\'' + value.ScheduleUserId + '\');">Accept</button></a></li>'));
+                            var scheduleLocation = "Schedule: " + value.BeginLocation + " - " + value.EndLocation;
+                            var nearLocation = "Near Location: " + value.NearLocation;
+                            $('#notiContent').append($('<li><a href="#"><span><span>' + value.CustomerFullname + ' - ' + formatPhone(value.CustomerPhoneNumber) + '</span><span class="time">' + toJavaScriptDate(value.CreateDate) + '</span></span><span class="message">' + scheduleLocation + "<br/>" + nearLocation + '</span><button id="btnAccept" class="pull-right btn btn-success btn-xs" onclick="receivedRide(\'' + value.Id + '\',\'' + value.ScheduleId + '\',\'' + value.ScheduleUserId + '\');">Accept</button></a></li>'));
                         });
                     },
                     error: function (error) {
@@ -206,7 +208,7 @@
                 {
                     <!-- Notifications: style can be found in dropdown.less -->
                     <li class="dropdown notifications-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="notifications">
+                        <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown" id="notifications">
                             <i class="fa fa-bell-o"></i>
                             <span class="label label-warning"><span class="count">&nbsp;</span></span>
                         </a>

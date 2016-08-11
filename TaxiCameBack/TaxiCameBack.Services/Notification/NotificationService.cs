@@ -29,6 +29,7 @@ namespace TaxiCameBack.Services.Notification
             var result = new CrudResult();
             notification.CustomerFullname = StringUtils.SafePlainText(notification.CustomerFullname);
             notification.CustomerPhoneNumber = StringUtils.SafePlainText(notification.CustomerPhoneNumber);
+            notification.NearLocation = StringUtils.SafePlainText(notification.NearLocation);
             notification.CreateDate = DateTime.UtcNow;
 
             try
@@ -76,6 +77,7 @@ namespace TaxiCameBack.Services.Notification
             var result = new CrudResult();
             notification.CustomerFullname = StringUtils.SafePlainText(notification.CustomerFullname);
             notification.CustomerPhoneNumber = StringUtils.SafePlainText(notification.CustomerPhoneNumber);
+            notification.NearLocation = StringUtils.SafePlainText(notification.NearLocation);
             var oldNotification = _notificationRepository.GetById(notification.Id);
             try
             {

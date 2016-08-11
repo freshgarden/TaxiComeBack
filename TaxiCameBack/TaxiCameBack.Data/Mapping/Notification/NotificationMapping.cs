@@ -9,6 +9,7 @@ namespace TaxiCameBack.Data.Mapping.Notification
             HasKey(c => c.Id);
             Property(c => c.CustomerFullname).IsRequired();
             Property(c => c.CustomerPhoneNumber).IsRequired();
+            Property(c => c.NearLocation).IsRequired();
             Property(c => c.CreateDate).IsOptional();
             Property(c => c.ReceivedDate).IsOptional();
         }

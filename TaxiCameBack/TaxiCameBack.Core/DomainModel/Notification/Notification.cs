@@ -16,6 +16,8 @@ namespace TaxiCameBack.Core.DomainModel.Notification
         public string CustomerFullname { get; set; }
         [Required]
         public string CustomerPhoneNumber { get; set; }
+        [Required]
+        public string NearLocation { get; set; }
         public Guid UserId { get; set; }
         [Required]
         public DateTime CreateDate { get; set; }

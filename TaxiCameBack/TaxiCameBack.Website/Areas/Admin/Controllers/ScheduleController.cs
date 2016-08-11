@@ -140,10 +140,13 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 x.Id,
                 x.CustomerFullname,
                 x.CustomerPhoneNumber,
+                x.NearLocation,
                 x.CreateDate,
                 x.Received,
                 ScheduleId = x.Schedule.Id,
-                ScheduleUserId = x.UserId
+                ScheduleUserId = x.UserId,
+                x.Schedule.BeginLocation,
+                x.Schedule.EndLocation,
             }).OrderByDescending(x => x.CreateDate);
 
             return new JsonResult {Data = results, JsonRequestBehavior = JsonRequestBehavior.AllowGet};

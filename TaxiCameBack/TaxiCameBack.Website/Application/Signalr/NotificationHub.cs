@@ -38,6 +38,10 @@ namespace TaxiCameBack.Website.Application.Signalr
             }
         }
 
+        /// <summary>
+        /// Customer register taxi
+        /// </summary>
+        /// <param name="customer"></param>
         public void RegisterTaxi(CustomerRegisterCar customer)
         {
             var driver = _membershipService.GetById(customer.DriveId);
@@ -60,11 +64,17 @@ namespace TaxiCameBack.Website.Application.Signalr
                 return;
             }
 
+            if (string.IsNullOrEmpty(customer.NearLocation))
+            {
+                Clients.Caller.addNewMessageToPage("Near location can't be blank.");
+            }
+
             var result = _notificationService.Create(new Notification
             {
                 UserId = driver.UserId,
                 CustomerFullname = customer.CustomerFullName,
                 CustomerPhoneNumber = customer.CustomerPhoneNumber,
+                NearLocation = customer.NearLocation,
                 Received = false,
                 Schedule = schedule
             });
@@ -79,6 +89,12 @@ namespace TaxiCameBack.Website.Application.Signalr
             Clients.Client(connectionId).addRegisted("Registed taxi successful. Please wait diver contact with you.");
         }
 
+        /// <summary>
+        /// Driver receive
+        /// </summary>
+        /// <param name="notificationId"></param>
+        /// <param name="scheduleId"></param>
+        /// <param name="driverId"></param>
         public void Received(Guid notificationId, Guid scheduleId, Guid driverId)
         {
             var driver = _membershipService.GetById(driverId);
