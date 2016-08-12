@@ -150,6 +150,9 @@
   <data name="plc_StartPoint" xml:space="preserve">
     <value>Nhập điểm đi</value>
   </data>
+  <data name="plc_StartTime" xml:space="preserve">
+    <value>Nhập thời gian xuất hành</value>
+  </data>
   <data name="start_date_required" xml:space="preserve">
     <value>Thời gian xuất hành không được để trống</value>
   </data>

@@ -160,6 +160,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nhập thời gian xuất hành.
+        /// </summary>
+        public static string plc_StartTime {
+            get {
+                return ResourceManager.GetString("plc_StartTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thời gian xuất hành không được để trống.
         /// </summary>
         public static string start_date_required {

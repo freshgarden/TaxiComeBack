@@ -1,5 +1,4 @@
 ﻿@model TaxiCameBack.Website.Areas.Admin.Models.ScheduleViewModel
-@*<div data-bind="with: schedule">*@
     <div class="form-group">
         @Html.LabelFor(model => model.BeginLocation)
         @Html.TextBoxFor(model => model.BeginLocation, new { data_bind = "value: $root.schedule().BeginLocation", @class = "form-control", placeholder = CreateSchedule.plc_StartPoint })
@@ -11,9 +10,5 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.StartDate)
-        @Html.TextBoxFor(model => model.StartDate, new {data_bind = "value: $root.schedule().StartDate", @class = "form-control"})
+        @Html.TextBoxFor(model => model.StartDate, new {data_bind = "value: $root.schedule().StartDate", @class = "form-control", placeholder = CreateSchedule.plc_StartTime })
     </div>
-@*    <div>*@
-@*        @Html.HiddenFor(model => model.ScheduleGeolocations, new {data_bind = "value: $root.schedule().ScheduleGeolocations" })*@
-@*    </div>*@
-@*</div>*@

@@ -80,17 +80,17 @@
                 }
                 interval = Math.floor(seconds / 86400);
                 if (interval > 1) {
-                    return interval + " days ago";
+                    return interval + " ngày trước";
                 }
                 interval = Math.floor(seconds / 3600);
                 if (interval > 1) {
-                    return interval + " hours ago";
+                    return interval + " giờ trước";
                 }
                 interval = Math.floor(seconds / 60);
                 if (interval > 1) {
-                    return interval + " minutes ago";
+                    return interval + " phút trước";
                 }
-                return Math.floor(seconds) + " seconds ago";
+                return Math.floor(seconds) + " giây trước";
             }
 
             // update notification
@@ -104,12 +104,12 @@
                         $('#notiContent').empty();
                         $('span.count').html(response.length);
                         if (response.length === 0) {
-                            $('#notiContent').append($('<li><a href="#">No data available</a></li>'));
+                            $('#notiContent').append($('<li><a href="#">Không có kết quả nào</a></li>'));
                         }
                         $.each(response, function (index, value) {
-                            var scheduleLocation = "Schedule: " + value.BeginLocation + " - " + value.EndLocation;
-                            var nearLocation = "Near Location: " + value.NearLocation;
-                            $('#notiContent').append($('<li><a href="#"><span><span>' + value.CustomerFullname + ' - ' + formatPhone(value.CustomerPhoneNumber) + '</span><span class="time">' + toJavaScriptDate(value.CreateDate) + '</span></span><span class="message">' + scheduleLocation + "<br/>" + nearLocation + '</span><button id="btnAccept" class="pull-right btn btn-success btn-xs" onclick="receivedRide(\'' + value.Id + '\',\'' + value.ScheduleId + '\',\'' + value.ScheduleUserId + '\');">Accept</button></a></li>'));
+                            var scheduleLocation = "<b>Chuyến đi:</b> " + value.BeginLocation + " - " + value.EndLocation;
+                            var nearLocation = "<b>Vị trí đón:</b> " + value.NearLocation;
+                            $('#notiContent').append($('<li><a href="#"><span><span><b>' + value.CustomerFullname + ' - ' + formatPhone(value.CustomerPhoneNumber) + '</b></span><span class="time">' + toJavaScriptDate(value.CreateDate) + '</span></span><span class="message">' + scheduleLocation + "<br/>" + nearLocation + '</span><button id="btnAccept" class="pull-right btn btn-success btn-xs" onclick="receivedRide(\'' + value.Id + '\',\'' + value.ScheduleId + '\',\'' + value.ScheduleUserId + '\');">Nhận</button></a></li>'));
                         });
                     },
                     error: function (error) {
@@ -193,7 +193,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>TQV</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><img  src="~/Content/Images/logo/logovnl_03.png" class="img-responsive center-block" style="width:80%;" alt="Logo" /></span>
+        <span class="logo-lg"><img  src="~/Content/Images/logo/logovnl_03.png" class="img-responsive center-block" style="margin-top:5px;" alt="Logo" /></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -217,7 +217,7 @@
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu" id="notiContent"></ul>
                             </li>
-                            <li class="footer"><a href="@Url.Action("Index", "Notification")">View all</a></li>
+                            <li class="footer"><a href="@Url.Action("Index", "Notification")">Xem tất cả</a></li>
                         </ul>
                     </li>
                 }
