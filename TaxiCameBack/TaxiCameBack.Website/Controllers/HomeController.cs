@@ -1,9 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Microsoft.AspNet.SignalR;
+using TaxiCameBack.Core.DomainModel.Notification;
 using TaxiCameBack.MapUtilities;
 using TaxiCameBack.Services.Membership;
+using TaxiCameBack.Services.Notification;
 using TaxiCameBack.Services.Search;
+using TaxiCameBack.Website.Application.Extension;
+using TaxiCameBack.Website.Application.Recaptcha;
+using TaxiCameBack.Website.Application.Signalr;
 using TaxiCameBack.Website.Models;
 
 namespace TaxiCameBack.Website.Controllers
@@ -12,11 +19,13 @@ namespace TaxiCameBack.Website.Controllers
     {
         private readonly ISearchSchduleService _searchSchduleService;
         private readonly IMembershipService _membershipService;
+        private readonly INotificationService _notificationService;
 
-        public HomeController(ISearchSchduleService searchSchduleService, IMembershipService membershipService)
+        public HomeController(ISearchSchduleService searchSchduleService, IMembershipService membershipService, INotificationService notificationService)
         {
             _searchSchduleService = searchSchduleService;
             _membershipService = membershipService;
+            _notificationService = notificationService;
         }
 
         [HttpPost]
@@ -50,13 +59,64 @@ namespace TaxiCameBack.Website.Controllers
                 ? Json(new { }, JsonRequestBehavior.AllowGet)
                 : Json(results, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult CustomerRegisterCar(CustomerRegisterCar customerRegisterCar)
+
+        [CaptchaValidator]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CustomerRegisterCar(CustomerRegistrationNewScheule newScheule)
         {
-            return Json(new { },JsonRequestBehavior.AllowGet);
+            if (!ModelState.IsValid)
+                return
+                    Json(
+                        new
+                        {
+                            Status = "ERROR",
+                            Message = ModelState.SelectMany(x => x.Value.Errors).Select(x => x.ErrorMessage).ToList()[0]
+                        });
+            var context = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>();
+            var validate = NotificationHub.ValidateCustomerRegistrationNewShedule(newScheule);
+            if (!validate.Success)
+            {
+                return Json(new {Status = "ERROR", Message = validate.Errors[0]});
+            }
+
+            DateTime sDate;
+            if (!string.IsNullOrEmpty(newScheule.StartDateHidden))
+            {
+                if (!DateTime.TryParse(newScheule.StartDateHidden, out sDate))
+                {
+                    return Json(new {Status = "ERROR", Message = "Invalid start date."});
+                }
+            }
+            else
+            {
+                sDate = DateTime.UtcNow;
+            }
+            var notification = new Notification
+            {
+                CustomerFullname = newScheule.CustomerPhoneNumber,
+                CustomerPhoneNumber = newScheule.CustomerPhoneNumber,
+                NearLocation = newScheule.NearLocation
+            };
+            var notificationExtend = new NotificationExtend
+            {
+                BeginLocation = newScheule.BeginLocation,
+                EndLocation = newScheule.EndLocation,
+                StartDate = sDate,
+                Message = newScheule.Message
+            };
+            var result = _notificationService.CreateNewSchedule(notification, notificationExtend);
+            if (!result.Success)
+            {
+                return Json(new { Status = "ERROR", Message = result.Errors[0] });
+            }
+            context.Clients.Clients(NotificationHub.Connections.ToList()).updateReceived();
+            return Json(new {Status = "OK", Message = "Create schedule successfull! Please wait driver contact with you." },JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult Index()
         {
-            return View();
+            return View(new CustomerRegistrationNewScheule());
         }
 
         public ActionResult About()

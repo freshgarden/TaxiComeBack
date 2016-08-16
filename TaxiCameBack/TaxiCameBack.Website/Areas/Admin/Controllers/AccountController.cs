@@ -33,10 +33,12 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             _settingsService = settingsService;
         }
 
-        [CustomAuthorize(Roles = AppConstants.AdminRoleName)]
+        [CustomAuthorize]
         public ActionResult Index(int? p, string search)
         {
-            return ListUsers(p, search);
+            if (SessionPersister.Roles.Contains(AppConstants.AdminRoleName))
+                return ListUsers(p, search);
+            return RedirectToAction("Index", "Schedule");
         }
 
         [CustomAuthorize(Roles = AppConstants.AdminRoleName)]

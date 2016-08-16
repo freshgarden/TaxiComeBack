@@ -264,6 +264,15 @@
     <Compile Include="Application\Extension\ModelStateHelper.cs" />
     <Compile Include="Application\MemoryFile.cs" />
     <Compile Include="Application\MobileExtensions.cs" />
+    <Compile Include="Application\Recaptcha\CaptchaResponse.cs" />
+    <Compile Include="Application\Recaptcha\CaptchaTheme.cs" />
+    <Compile Include="Application\Recaptcha\CaptchaType.cs" />
+    <Compile Include="Application\Recaptcha\CaptchaValidatorAttribute.cs" />
+    <Compile Include="Application\Recaptcha\RecaptchaExtensions.cs" />
+    <Compile Include="Application\Recaptcha\RecaptchaHtmlHelper.cs" />
+    <Compile Include="Application\Recaptcha\RecaptchaKeyHelper.cs" />
+    <Compile Include="Application\Recaptcha\RecaptchaResponse.cs" />
+    <Compile Include="Application\Recaptcha\RecaptchaValidator.cs" />
     <Compile Include="Application\Security\CustomPricipal.cs" />
     <Compile Include="Application\Security\SessionPersister.cs" />
     <Compile Include="Application\ServiceFactory.cs" />
@@ -408,6 +417,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-notification\bootstrap-notifications.css" />
+    <Content Include="Content\bootstrap-notification\bootstrap-notifications.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -460,6 +471,7 @@
     <Content Include="Content\Images\frontend-images\tesla.jpg" />
     <Content Include="Content\Images\frontend-images\top_toolbar_menu_devider.png" />
     <Content Include="Content\Images\frontend-images\ul_dash.png" />
+    <Content Include="Content\Images\spinner_squares_circle.gif" />
     <Content Include="Content\jqsDialog\Images\ajax-loader.gif" />
     <Content Include="Content\jqsDialog\Images\chosen-sprite%402x.png" />
     <Content Include="Content\jqsDialog\Images\chosen-sprite.png" />
@@ -2026,6 +2038,7 @@
     <Content Include="Scripts\aftp.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\ajaxLoader.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -2177,6 +2190,7 @@
     <Content Include="Scripts\jquery-ui\jquery-ui.theme.css" />
     <Content Include="Scripts\jquery-ui\jquery-ui.theme.min.css" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.form.js" />
     <Content Include="Scripts\jquery.signalR-2.2.1.js" />
     <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />

@@ -18,12 +18,20 @@ namespace TaxiCameBack.Core.DomainModel.Notification
         public string CustomerPhoneNumber { get; set; }
         [Required]
         public string NearLocation { get; set; }
-        public Guid UserId { get; set; }
+        public Guid? UserId { get; set; }
+        public Guid? ScheduleId { get; set; }
         [Required]
         public DateTime CreateDate { get; set; }
         [Required]
         public bool Received { get; set; }
         public DateTime? ReceivedDate { get; set; }
+        public virtual NotificationExtend NotificationExtend { get; set; }
         public virtual Schedule.Schedule Schedule { get; set; }
+    }
+
+    public enum NotificationType
+    {
+        CustomerRegisted,
+        DriverRegisted
     }
 }

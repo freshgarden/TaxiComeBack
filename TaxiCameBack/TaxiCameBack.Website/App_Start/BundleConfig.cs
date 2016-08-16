@@ -111,7 +111,8 @@ namespace TaxiCameBack.Website
             bundles.Add(new ScriptBundle("~/front-end-js/jquery").Include(
                 "~/Scripts/frontend-js/jquery-1.9.1.min.js",
                 "~/Scripts/frontend-js/jquery.themepunch.plugins.min.js",
-                "~/Scripts/frontend-js/jquery.themepunch.revolution.min.js"
+                "~/Scripts/frontend-js/jquery.themepunch.revolution.min.js",
+                "~/Scripts/jquery.unobtrusive-ajax.min.js"
                 ));
             bundles.Add(new ScriptBundle("~/front-end-js/bootstrap").Include(
                 "~/Scripts/frontend-js/bootstrap.min.js"
@@ -133,6 +134,9 @@ namespace TaxiCameBack.Website
                 ));
             bundles.Add(new ScriptBundle("~/front-end-js/superfish").Include(
                 "~/Scripts/frontend-js/superfish.js"
+                ));
+            bundles.Add(new ScriptBundle("~/front-end-js/form").Include(
+                "~/Scripts/jquery.form.js"
                 ));
             BundleTable.EnableOptimizations = true;
         }

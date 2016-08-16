@@ -58,6 +58,7 @@
     <Compile Include="DomainModel\Membership\MembershipRole.cs" />
     <Compile Include="DomainModel\Membership\MembershipUser.cs" />
     <Compile Include="DomainModel\Notification\Notification.cs" />
+    <Compile Include="DomainModel\Notification\NotificationExtend.cs" />
     <Compile Include="DomainModel\PagedList\IPagedList.cs" />
     <Compile Include="DomainModel\PagedList\PagedList.cs" />
     <Compile Include="DomainModel\Schedule\Schedule.cs" />

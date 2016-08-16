@@ -53,5 +53,18 @@ namespace TaxiCameBack.Website.Application.Signalr
                     _connections.Remove(item.Key);
             }
         }
+
+        public IList<string> ToList()
+        {
+            IList<string> result = new List<string>();
+            lock (_connections)
+            {
+                foreach (var connection in _connections)
+                {
+                    result.Add(connection.Value);
+                }
+            }
+            return result;
+        }
     }
 }

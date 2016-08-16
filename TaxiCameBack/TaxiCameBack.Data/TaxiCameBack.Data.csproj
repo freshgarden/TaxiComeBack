@@ -51,6 +51,7 @@
     <Compile Include="EfUnitOfWork.cs" />
     <Compile Include="Mapping\MembershipMapping\MembershipRoleMapping.cs" />
     <Compile Include="Mapping\MembershipMapping\MembershipUserMapping.cs" />
+    <Compile Include="Mapping\Notification\NotificationExtendMapping.cs" />
     <Compile Include="Mapping\Notification\NotificationMapping.cs" />
     <Compile Include="Mapping\Schedule\ScheduleGeolocationMapping.cs" />
     <Compile Include="Mapping\Schedule\ScheduleMapping.cs" />

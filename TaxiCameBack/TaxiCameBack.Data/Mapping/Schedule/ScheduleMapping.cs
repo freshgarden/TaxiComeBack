@@ -10,7 +10,9 @@ namespace TaxiCameBack.Data.Mapping.Schedule
             Property(s => s.BeginLocation).HasMaxLength(300).IsRequired();
             Property(s => s.EndLocation).HasMaxLength(300).IsRequired();
             Property(s => s.StartDate).IsRequired();
-            HasOptional(s => s.Notification).WithRequired(x => x.Schedule);
+            HasMany(c => c.Notifications)
+                .WithOptional()
+                .HasForeignKey(s => s.ScheduleId);
         }
     }
 }

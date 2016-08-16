@@ -35,7 +35,7 @@ namespace TaxiCameBack.Services.Search
             var points = new List<PointLatLng>();
             foreach (var lstSchedule in lstSchedules)
             {
-                if (lstSchedule.Notification != null && lstSchedule.Notification.Received)
+                if (lstSchedule.Notifications != null && lstSchedule.Notifications.Any(x => x.Received))
                     continue;
                 points.AddRange(
                     lstSchedule.ScheduleGeolocations.Select(

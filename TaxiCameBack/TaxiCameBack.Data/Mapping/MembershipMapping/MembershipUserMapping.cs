@@ -26,7 +26,7 @@ namespace TaxiCameBack.Data.Mapping.MembershipMapping
                 .HasForeignKey(s => s.UserId);
 
             HasMany(c => c.Notifications)
-                .WithRequired()
+                .WithOptional()
                 .HasForeignKey(s => s.UserId);
 
             Property(x => x.Password).IsRequired().HasMaxLength(128);

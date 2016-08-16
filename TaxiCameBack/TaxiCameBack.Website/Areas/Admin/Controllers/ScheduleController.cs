@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
 using TaxiCameBack.Core.Constants;
+using TaxiCameBack.Core.DomainModel.Notification;
 using TaxiCameBack.Core.DomainModel.Schedule;
 using TaxiCameBack.Services.Notification;
 using TaxiCameBack.Services.Schedule;
@@ -124,7 +125,9 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         public int GetCountNotifications()
         {
             var notifications =
-                _notificationService.GetAllByUserId(SessionPersister.UserId).Where(x => x.Received == false).ToList();
+                _notificationService.GetAll()
+                    .Where(x => x.Received == false && (x.UserId == null || x.UserId == SessionPersister.UserId))
+                    .ToList();
             return notifications.Count;
         }
 
@@ -132,8 +135,14 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         [HttpGet]
         public JsonResult GetNotifications()
         {
+            var numberNotificationGet = 5;
             var notifications =
-                _notificationService.GetAllByUserId(SessionPersister.UserId).Where(x => x.Received == false).ToList();
+                _notificationService.GetAll()
+                    .Where(x => x.Received == false && (x.UserId == null || x.UserId == SessionPersister.UserId))
+                    .OrderByDescending(x => x.CreateDate)
+                    .ToList();
+
+            var totalNotification = notifications.Count - numberNotificationGet;
 
             var results = notifications.Select(x => new
             {
@@ -143,11 +152,14 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 x.NearLocation,
                 x.CreateDate,
                 x.Received,
-                ScheduleId = x.Schedule.Id,
-                ScheduleUserId = x.UserId,
-                x.Schedule.BeginLocation,
-                x.Schedule.EndLocation,
-            }).OrderByDescending(x => x.CreateDate);
+                Type = x.NotificationExtend != null ? NotificationType.CustomerRegisted : NotificationType.DriverRegisted,
+                ScheduleId = x.ScheduleId ?? Guid.Empty,
+                ScheduleUserId = x.UserId ?? SessionPersister.UserId,
+                BeginLocation = x.UserId != null ? x.Schedule.BeginLocation : (x.NotificationExtend != null ? x.NotificationExtend.BeginLocation : string.Empty),
+                EndLocation = x.UserId != null ? x.Schedule.EndLocation : (x.NotificationExtend != null ? x.NotificationExtend.EndLocation : string.Empty),
+                totalNotification,
+                Total = notifications.Count
+            }).Take(numberNotificationGet);
 
             return new JsonResult {Data = results, JsonRequestBehavior = JsonRequestBehavior.AllowGet};
         }

@@ -34,6 +34,7 @@
                                 <th>Customer name</th>
                                 <th>Customer phone number</th>
                                 <th>Near Location</th>
+                                <th>Type</th>
                                 <th>Create Date</th>
                                 <th>Received</th>
                                 <th>Received Date</th>
@@ -56,6 +57,16 @@
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => user.NearLocation)
+                                    </td>
+                                    <td>
+                                        @if (user.NotificationExtend != null)
+                                        {
+                                            <span class="label label-primary">Customer Registed</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="label label-success">Driver Registed</span>
+                                        }
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => user.CreateDate)

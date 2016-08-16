@@ -26,7 +26,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         private ActionResult ListNotification(int? p, string search)
         {
             var pageIndex = p ?? 1;
-            var allNotification = _notificationService.GetAllByUserId(SessionPersister.UserId, pageIndex, AppConstants.AdminListPageSize);
+            var allNotification = _notificationService.GetAllPaged(SessionPersister.UserId, pageIndex, AppConstants.AdminListPageSize);
 
             // Redisplay list of users
             var memberListModel = new NotificationListViewModel

@@ -37,11 +37,7 @@ $(document).ready(function() {
         fullWidth:"on",
         shadow:0                                //0 = no Shadow, 1,2,3 = 3 Different Art of Shadows -  (No Shadow in Fullwidth Version !)
     });
-
-    $(".submit").click(function () {
-        $(this).closest("form").submit();
-    });
-
+    
     $('input, textarea').placeholder();
 
     $('select.custom_select').customSelect().show();
