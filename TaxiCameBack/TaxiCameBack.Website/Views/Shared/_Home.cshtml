@@ -51,8 +51,8 @@
                 </ul>
                 <div id="responsive_navigation">
                     <select class="custom_select nav-responsive">
-                        <option value="#" selected="">Trang chủ</option>
-                        <option value="#">Dành cho tài xế</option>
+                        <option value="@Url.Action("Index", "Home")" selected="">Trang chủ</option>
+                        <option value="@Url.Action("Login", "Account", new { area= "Admin"})">Dành cho tài xế</option>
                         <option value="#">Bảng giá</option>
                         <option value="#">Liên hệ</option>
                         <option value="#">Giới thiệu</option>

@@ -185,8 +185,7 @@
                                     @Html.Recaptcha()
                                 </div>
                                 <div class="span6 clear_submit_buttons">
-                                    <a id="clearConditions" href="#" class="clear_filters"><i class="icon-remove"></i> @Home.btn_clear</a>
-                                    <input type="submit" class="button submit yellow right" value="@Home.btn_register" style="width: 80%; line-height: 10px;" />
+                                    <input type="submit" class="button submit yellow right" value="@Home.btn_register" style="width: 50%; line-height: 10px; height:50px;" />
                                 </div>
                             </div>
                         }
@@ -208,10 +207,10 @@
             <div class="box-content">
                 <h5>Hướng dẫn tìm kiếm xe taxi</h5>
                 <p>Nhập địa chỉ đến và đi, thời gian xuất hành vào khung tìm kiếm hoặc click vào icon <i class="icon-screenshot"></i> để hệ thống tự lấy vị trí hiện tại của bạn.</p>
-                <p>Sau đó click chuột vào nút Tìm kiếm để bắt đầu quá trình tìm kiếm taxi. Hệ thống sẽ hiển thị danh sách các chuyến xe phù hợp với lộ trình của bạn, hãy đăng kí và liên hệ với tài xế để có được thông tin cần thiết.</p>
+                <p>Sau đó click chuột vào nút <strong>Tìm kiếm</strong> để bắt đầu quá trình tìm kiếm taxi. Hệ thống sẽ hiển thị danh sách các chuyến xe phù hợp với lộ trình của bạn, hãy đăng kí và liên hệ với tài xế để có được thông tin cần thiết.</p>
                 <h5>Hướng dẫn đăng ký xe taxi</h5>
                 <p>Nhập địa chỉ đến và đi, thời gian xuất hành, vị trí đón, họ tên và số điện thoại của bạn cũng như ghi chú vào khung đăng kí.</p>
-                <p>Sau đó click chuột vào nút Đăng ký để thực hiện đăng ký chuyến xe. Chúng tôi sẽ liên hệ với bạn khi có chuyến xe phù hợp.</p>
+                <p>Sau đó click chuột vào nút <strong>Đăng ký</strong> để thực hiện đăng ký chuyến xe. Chúng tôi sẽ liên hệ với bạn khi có chuyến xe phù hợp.</p>
             </div>
         </section>
 
@@ -260,7 +259,7 @@
             <h3>@Home.lbl_sp_online</h3>
             <div class="box-content widget_online_support">
                 <div class="row">
-                    <img src="~/Content/Images/frontend-images/johnsdoe.jpg" alt="" class="span6">
+                    <img src="~/Content/Images/frontend-images/admin.jpg" alt="" class="span6">
                     <div class="span6">
                         <span class="online_support_title">Nguyễn Xuân Phúc</span>
                         <p>@Home.lbl_administator</p>
@@ -336,6 +335,19 @@
             }
         }
 
+        function FormatPhone(phonenumber)
+        {
+            if (!phonenumber) {
+                return "undefined";
+            }
+
+            if (phonenumber.toString().length === 10) {
+                return phonenumber.replace(/(\d\d\d)(\d\d\d)(\d\d\d\d)/, '$1.$2.$3');
+            }
+
+            return phonenumber.replace(/(\d\d\d\d)(\d\d\d)(\d\d\d\d)/, '$1.$2.$3');
+        }
+
         $('#searchCar').click(function () {
             if (startPointPlace != null && endPointPlace != null) {
                 SearchModel.StartLocationLat = startPointPlace.geometry.location.lat();
@@ -367,7 +379,7 @@
                                     "<img src='/Content/Images/frontend-images/johnsdoe.jpg' alt='' class='span4'>" +
                                     "<div class='span8 vendor_info'><span class='vendor_title'>" + data[count].UserFullName + "</span><span>Thành phố: <strong>Hà nội</strong></span><span>Loại xe: <strong>4 chỗ ngồi</strong></span><span>Thời gian: <strong>" + parseJsonDate(startDate) + "</strong></span></div>" +
                                     "</div></div>" +
-                                    "<div class='half right'><a href='#' onclick='RegisterCar(" + routeData + ");return false;' class='button blue big wide show_login_form'><i class='icomoon-volume-medium'></i>" + data[count].UserPhoneNumber + "</a></div>" +
+                                    "<div class='half right'><a href='#' onclick='RegisterCar(" + routeData + ");return false;' class='button blue big wide show_login_form'><i class='icomoon-volume-medium'></i>" + FormatPhone(data[count].UserPhoneNumber) + "</a></div>" +
                                     "</div>");
                                 $('#search_result').append(result_html);
                             }

@@ -117,19 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="account" xml:space="preserve">
-    <value>Tài khoản</value>
+  <data name="customer_datecreate" xml:space="preserve">
+    <value>Ngày tạo</value>
   </data>
-  <data name="log" xml:space="preserve">
-    <value>Log</value>
+  <data name="customer_datereceive" xml:space="preserve">
+    <value>Ngày nhận</value>
   </data>
-  <data name="notification" xml:space="preserve">
+  <data name="customer_end_pos" xml:space="preserve">
+    <value>Điểm đến</value>
+  </data>
+  <data name="customer_name" xml:space="preserve">
+    <value>Tên khách hàng</value>
+  </data>
+  <data name="customer_near_pos" xml:space="preserve">
+    <value>Vị trí đón</value>
+  </data>
+  <data name="customer_phone" xml:space="preserve">
+    <value>Số điện thoại</value>
+  </data>
+  <data name="customer_reg_type" xml:space="preserve">
+    <value>Khách hàng đặt xe</value>
+  </data>
+  <data name="customer_start_pos" xml:space="preserve">
+    <value>Điểm đi</value>
+  </data>
+  <data name="customer_status" xml:space="preserve">
+    <value>Trạng thái</value>
+  </data>
+  <data name="customer_type" xml:space="preserve">
+    <value>Loại</value>
+  </data>
+  <data name="driver_reg_type" xml:space="preserve">
+    <value>Tài xế đặt xe</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>STT</value>
+  </data>
+  <data name="pending_status" xml:space="preserve">
+    <value>Đang chờ</value>
+  </data>
+  <data name="receive_status" xml:space="preserve">
+    <value>Đã nhận</value>
+  </data>
+  <data name="title" xml:space="preserve">
     <value>Thông báo</value>
-  </data>
-  <data name="schedule" xml:space="preserve">
-    <value>Lịch trình</value>
-  </data>
-  <data name="setting" xml:space="preserve">
-    <value>Cài đặt</value>
   </data>
 </root>

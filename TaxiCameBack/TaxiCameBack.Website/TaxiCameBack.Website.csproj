@@ -347,6 +347,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Login.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\Notifications.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Notifications.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\Register.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -448,6 +453,7 @@
     <Content Include="Content\frontend-css\revslider.css" />
     <Content Include="Content\frontend-css\style.css" />
     <Content Include="Content\Images\default-user-image.png" />
+    <Content Include="Content\Images\frontend-images\admin.jpg" />
     <Content Include="Content\Images\frontend-images\blog_comments_ballon_after.png" />
     <Content Include="Content\Images\frontend-images\box_title_bg.png" />
     <Content Include="Content\Images\frontend-images\calendar.png" />
@@ -2489,6 +2495,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Login.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\Notifications.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Notifications.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\Register.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -79,6 +79,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thông báo.
+        /// </summary>
+        public static string notification {
+            get {
+                return ResourceManager.GetString("notification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lịch trình.
         /// </summary>
         public static string schedule {

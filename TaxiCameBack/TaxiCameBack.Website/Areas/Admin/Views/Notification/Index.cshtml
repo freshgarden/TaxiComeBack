@@ -1,7 +1,7 @@
 ﻿@model TaxiCameBack.Website.Areas.Admin.Models.NotificationListViewModel
-
+@using TaxiCameBack.Website.App_LocalResources
 @{
-    ViewBag.Title = "Notification manage";
+    ViewBag.Title = Notifications.title;
 }
 
 <link href="@Url.Content("~/Scripts/plugins/datatables/dataTables.bootstrap.css")" rel="stylesheet" />
@@ -30,14 +30,16 @@
                     <table id="example2" class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Customer name</th>
-                                <th>Customer phone number</th>
-                                <th>Near Location</th>
-                                <th>Type</th>
-                                <th>Create Date</th>
-                                <th>Received</th>
-                                <th>Received Date</th>
+                                <th>@Notifications.no</th>
+                                <th>@Notifications.customer_name</th>
+                                <th>@Notifications.customer_phone</th>
+                                <th>@Notifications.customer_type</th>
+                                <th>@Notifications.customer_start_pos</th>
+                                <th>@Notifications.customer_end_pos</th>
+                                <th>@Notifications.customer_near_pos</th>
+                                <th>@Notifications.customer_datecreate</th>
+                                <th>@Notifications.customer_status</th>
+                                <th>@Notifications.customer_datereceive</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,24 +57,45 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => user.CustomerPhoneNumber)
                                     </td>
+                                    @if (user.NotificationExtend != null)
+                                    {
+                                        <td>
+                                            <span class="label label-primary">@Notifications.customer_reg_type</span>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => user.NotificationExtend.BeginLocation)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => user.NotificationExtend.EndLocation)
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <span class="label label-success">@Notifications.driver_reg_type</span>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => user.NotificationExtend.BeginLocation)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => user.NotificationExtend.EndLocation)
+                                        </td>
+                                    }
                                     <td>
                                         @Html.DisplayFor(modelItem => user.NearLocation)
-                                    </td>
-                                    <td>
-                                        @if (user.NotificationExtend != null)
-                                        {
-                                            <span class="label label-primary">Customer Registed</span>
-                                        }
-                                        else
-                                        {
-                                            <span class="label label-success">Driver Registed</span>
-                                        }
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => user.CreateDate)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => user.Received)
+                                        @if (user.Received != false)
+                                        {
+                                            <span class="label label-success">@Notifications.receive_status</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="label label-warning">@Notifications.pending_status</span>
+                                        }
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => user.ReceivedDate)
@@ -91,7 +114,8 @@
         $('#example2').DataTable({
             "paging": true,
             "searching": true,
-            "ordering": true,
+            "ordering": false,
+            "scrollX": true,
             "language": {
                 "sProcessing": "Đang xử lý...",
                 "sLengthMenu": "Xem _MENU_ mục",

@@ -104,8 +104,8 @@
                         $.each(response, function (index, value) {
                             var scheduleLocation = "<b>Chuyến đi:</b> " + value.BeginLocation + " - " + value.EndLocation;
                             var nearLocation = "<b>Vị trí đón:</b> " + value.NearLocation;
-                            var sType = value.Type === 0 ? '<span class="label label-primary">Customer Registed</span>' : '<span class="label label-success">Driver Registed</span>';
-                            var type = "<b>Type:</b> " + sType;
+                            var sType = value.Type === 0 ? '<span class="label label-primary">Khách hàng đặt xe</span>' : '<span class="label label-success">Tài xế đặt xe</span>';
+                            var type = "<b>Loại:</b> " + sType;
                             var newNotification = $('<li class="notification"></li>');
                             var media = $('<div class="media"></div>');
                             var mediaBody = $('<div class="media-body"></div>');
