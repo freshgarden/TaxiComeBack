@@ -43,13 +43,13 @@
         notification.client.addNewMessageToPage = function (message) {
             $.fancybox.close();
             setTimeout(function () {
-                $.fancybox({ title: "Registration Complete", autoCenter: true, content: "<div><p>" + message + "</p></div>" });
+                $.fancybox({ title: "Đăng ký thành công", autoCenter: true, content: "<div><p>" + message + "</p></div>" });
             }, 1000);
         };
         notification.client.addNewErrorMessageToPage = function (message) {
             $.fancybox.close();
             setTimeout(function () {
-                $.fancybox({ title: "Registration Failed", autoCenter: true, content: "<div><p>" + message + "</p></div>" });
+                $.fancybox({ title: "Đăng ký thất bại", autoCenter: true, content: "<div><p>" + message + "</p></div>" });
             }, 1000);
         };
         // Start the connection.

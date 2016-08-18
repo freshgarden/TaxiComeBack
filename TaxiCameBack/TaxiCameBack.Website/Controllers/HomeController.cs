@@ -94,7 +94,7 @@ namespace TaxiCameBack.Website.Controllers
             }
             var notification = new Notification
             {
-                CustomerFullname = newScheule.CustomerPhoneNumber,
+                CustomerFullname = newScheule.CustomerFullName,
                 CustomerPhoneNumber = newScheule.CustomerPhoneNumber,
                 NearLocation = newScheule.NearLocation
             };
