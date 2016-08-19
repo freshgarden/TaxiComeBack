@@ -147,5 +147,24 @@ namespace TaxiCameBack.Website.Application.Security
 
             return result.Count > 0 ? result.ToArray() : null;
         }
+
+        public static void ClearAll()
+        {
+            Clear(UsernamePersister);
+            Clear(FullNamePersister);
+            Clear(RolePersister);
+            Clear(UserIdPersister);
+            Clear(UserImageUrlPersister);
+        }
+
+        public static void Clear(string name)
+        {
+            if (HttpContext.Current.Request.Cookies[name] != null)
+            {
+                var c = new HttpCookie(name);
+                c.Expires = DateTime.Now.AddDays(-1);
+                HttpContext.Current.Response.Cookies.Add(c);
+            }
+        }
     }
 }

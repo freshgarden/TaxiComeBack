@@ -171,8 +171,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
 
         public ActionResult LogOff()
         {
-            SessionPersister.Username = string.Empty;
-            Array.Clear(SessionPersister.Roles, 0, SessionPersister.Roles.Length);
+            SessionPersister.ClearAll();
             return RedirectToAction("Login", "Account", new {area = "Admin"});
         }
 
