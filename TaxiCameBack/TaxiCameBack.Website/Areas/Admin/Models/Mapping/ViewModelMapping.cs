@@ -77,5 +77,22 @@ namespace TaxiCameBack.Website.Areas.Admin.Models.Mapping
             return settingViewModel;
         }
         #endregion
+
+        public static Core.DomainModel.Notification.NotificationSearchModel SearchModelToDomainSearchModel(
+            NotificationSearchModel searchModel)
+        {
+            if (searchModel == null)
+                return null;
+            return new Core.DomainModel.Notification.NotificationSearchModel
+            {
+                CustomerFullname = searchModel.CustomerFullname,
+                CustomerPhoneNumber = searchModel.CustomerPhoneNumber,
+                NearLocation = searchModel.NearLocation,
+                Received = searchModel.Received,
+                StartDate = searchModel.StartDate,
+                CreateDate = searchModel.CreateDate,
+                ReceivedDate = searchModel.ReceivedDate
+            };
+        }
     }
 }

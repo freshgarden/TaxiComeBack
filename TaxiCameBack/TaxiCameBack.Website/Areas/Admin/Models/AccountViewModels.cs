@@ -80,6 +80,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
         public int? TotalCount { get; set; }
         public int TotalPages { get; set; }
         public string Search { get; set; }
+        public NotificationSearchModel NotificationSearchModel { get; set; }
 
     }
 }

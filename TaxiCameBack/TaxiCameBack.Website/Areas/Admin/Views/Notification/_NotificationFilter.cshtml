@@ -1,0 +1,51 @@
+﻿@model TaxiCameBack.Website.Areas.Admin.Models.NotificationSearchModel
+
+
+@using (Html.BeginForm("Filter", "Notification", FormMethod.Post, new {id = "formId"}))
+{
+
+    @Html.LabelFor(x => x.CustomerFullname)
+    @Html.TextBoxFor(x => x.CustomerFullname)
+
+    @Html.LabelFor(x => x.CustomerPhoneNumber)
+    @Html.TextBoxFor(x => x.CustomerPhoneNumber)
+
+    @Html.LabelFor(x => x.NearLocation)
+    @Html.TextBoxFor(x => x.NearLocation)
+
+    @Html.LabelFor(x => x.StartDate, new {@class = "col-sm-2 control-label"})
+    <div class="col-sm-10">
+        <div class="row">
+            <div class="col-xs-2">
+                @Html.DropDownListFor(x => x.Day, Enumerable.Range(1, 31)
+                    .Select(i => new SelectListItem {Value = i.ToString(), Text = i.ToString()}), "Day", new {@class = "form-control"})
+            </div>
+            <div class="col-xs-2">
+                @Html.DropDownListFor(x => x.Month, Enumerable.Range(1, 12)
+                    .Select(i => new SelectListItem {Value = i.ToString(), Text = i.ToString()}), "Month", new {@class = "form-control"})
+            </div>
+            <div class="col-xs-2">
+                @Html.DropDownListFor(x => x.Year, Enumerable.Range(DateTime.Now.Year, 40)
+                    .Select(i => new SelectListItem {Value = i.ToString(), Text = i.ToString()}), "Year", new {@class = "form-control"})
+            </div>
+        </div>
+    </div>
+
+    @Html.LabelFor(x => x.Received)
+    @Html.DropDownListFor(x => x.Received, new SelectList(
+
+        new[]
+        {
+            new {Value = "", Text = "(none)"},
+            new {Value = "true", Text = "Yes"},
+            new {Value = "false", Text = "No"}
+        },
+        "Value",
+        "Text",
+        Model.Received
+        ))
+    
+    <input class="btn btn-primary" type="submit" name="command" value="Search" />
+    <input class="btn btn-default" type="submit" name="command" value="Reset" />
+
+}

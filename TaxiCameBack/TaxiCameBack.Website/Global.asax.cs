@@ -40,6 +40,9 @@ namespace TaxiCameBack.Website
             var logging = _container.Resolve<ILoggingService>();
             logging.Initialise(ConfigUtils.GetAppSettingInt32("LogFileMaxSizeBytes", 10000));
             logging.Error("START APP");
+
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new RazorViewEngine());
         }
 
         protected void Application_Error(object sender, EventArgs e)

@@ -152,6 +152,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 x.NearLocation,
                 x.CreateDate,
                 x.Received,
+                Message = x.ScheduleId == null ? x.NotificationExtend.Message : string.Empty, 
                 Type = x.NotificationExtend != null ? NotificationType.CustomerRegisted : NotificationType.DriverRegisted,
                 ScheduleId = x.ScheduleId ?? Guid.Empty,
                 ScheduleUserId = x.UserId ?? SessionPersister.UserId,

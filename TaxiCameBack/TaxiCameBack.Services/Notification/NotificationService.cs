@@ -105,6 +105,56 @@ namespace TaxiCameBack.Services.Notification
             return new PagedList<Core.DomainModel.Notification.Notification>(results, pageIndex, pageSize, totalCount);
         }
 
+        public PagedList<Core.DomainModel.Notification.Notification> GetAllPaged(Guid userId, int pageIndex, int pageSize, NotificationSearchModel searchModel)
+        {
+            var totalCount = ((EfUnitOfWork)_unitOfWork).Notification.Count();
+            var results = ((EfUnitOfWork) _unitOfWork).Notification
+                .Where(x => x.UserId == userId || x.UserId == null)
+                .OrderByDescending(x => x.Received)
+                .Skip((pageIndex - 1)*pageSize)
+                .Take(pageSize);
+
+            if (searchModel != null)
+            {
+                if (!string.IsNullOrEmpty(searchModel.CustomerFullname))
+                    results = results.Where(x => x.CustomerFullname.Contains(searchModel.CustomerFullname));
+                if (!string.IsNullOrEmpty(searchModel.CustomerPhoneNumber))
+                    results = results.Where(x => x.CustomerPhoneNumber.Contains(searchModel.CustomerPhoneNumber));
+                if (!string.IsNullOrEmpty(searchModel.NearLocation))
+                    results = results.Where(x => x.NearLocation.Contains(searchModel.NearLocation));
+                if (searchModel.Received != null)
+                    results = results.Where(x => x.Received == searchModel.Received);
+                if (searchModel.StartDate != null)
+                {
+                    var resultList = new List<Core.DomainModel.Notification.Notification>();
+                    foreach (var result in results.ToList())
+                    {
+                        if (result.ScheduleId != null)
+                        {
+                            if (result.Schedule.StartDate.Date == searchModel.StartDate.Value.Date
+                                && result.Schedule.StartDate.Month == searchModel.StartDate.Value.Month
+                                && result.Schedule.StartDate.Year == searchModel.StartDate.Value.Year)
+                            {
+                                resultList.Add(result);
+                            }
+                        }
+                        else
+                        {
+                            if (result.NotificationExtend.StartDate.Date == searchModel.StartDate.Value.Date
+                                && result.NotificationExtend.StartDate.Month == searchModel.StartDate.Value.Month
+                                && result.NotificationExtend.StartDate.Year == searchModel.StartDate.Value.Year)
+                            {
+                                resultList.Add(result);
+                            }
+                        }
+                    }
+                    results = resultList.AsQueryable();
+                }
+            }
+
+            return new PagedList<Core.DomainModel.Notification.Notification>(results.ToList(), pageIndex, pageSize, totalCount);
+        }
+
         public Core.DomainModel.Notification.Notification GetById(Guid notificationId)
         {
             return _notificationRepository.GetById(notificationId);

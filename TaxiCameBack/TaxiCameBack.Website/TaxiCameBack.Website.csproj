@@ -402,6 +402,7 @@
     <Compile Include="Areas\Admin\Models\Mapping\ViewModelMapping.cs" />
     <Compile Include="Areas\Admin\Models\MemberViewModels.cs" />
     <Compile Include="Areas\Admin\Models\NotFoundModel.cs" />
+    <Compile Include="Areas\Admin\Models\NotificationSearchModel.cs" />
     <Compile Include="Areas\Admin\Models\RegisterViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ScheduleViewModel.cs" />
     <Compile Include="Areas\Admin\Models\SettingsViewModel.cs" />
@@ -2159,6 +2160,7 @@
     <None Include="Areas\Admin\Views\Notification\Index.cshtml" />
     <Content Include="Content\frontend-css\font\fontawesome-webfont.woff" />
     <Content Include="Content\frontend-css\font\icomoon.woff" />
+    <Content Include="Areas\Admin\Views\Notification\_NotificationFilter.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cache\Cache.txt" />
     <None Include="Scripts\jquery-3.0.0.intellisense.js" />

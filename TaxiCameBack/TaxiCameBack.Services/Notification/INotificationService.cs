@@ -11,6 +11,7 @@ namespace TaxiCameBack.Services.Notification
         CrudResult CreateNewSchedule(Core.DomainModel.Notification.Notification notification, NotificationExtend notificationExtend);
         List<Core.DomainModel.Notification.Notification> GetAll();
         PagedList<Core.DomainModel.Notification.Notification> GetAllPaged(Guid userId, int pageIndex, int pageSize);
+        PagedList<Core.DomainModel.Notification.Notification> GetAllPaged(Guid userId, int pageIndex, int pageSize, NotificationSearchModel searchModel);
         Core.DomainModel.Notification.Notification GetById(Guid notificationId);
         List<Core.DomainModel.Notification.Notification> GetAllByUserId(Guid userId);
         List<TaxiCameBack.Core.DomainModel.Notification.Notification> GetAllByScheduleId(Guid scheduleId);

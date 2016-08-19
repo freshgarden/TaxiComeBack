@@ -186,6 +186,12 @@ namespace TaxiCameBack.Website.Application.Signalr
                 return;
             }
 
+            if (notification.UserId != null)
+            {
+                UpdateDriverResult(connectionId, "This notification was received by other driver.");
+                return;
+            }
+
             notification.UserId = driverId;
             var result = _notificationService.UpdateRecieved(notification);
             if (!result.Success)
