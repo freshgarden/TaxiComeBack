@@ -61,7 +61,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ngày tạo.
+        ///   Looks up a localized string similar to Ngày xuất hành.
         /// </summary>
         public static string customer_datecreate {
             get {
@@ -160,7 +160,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to STT.
+        ///   Looks up a localized string similar to #.
         /// </summary>
         public static string no {
             get {

@@ -1,51 +1,40 @@
 ﻿@model TaxiCameBack.Website.Areas.Admin.Models.NotificationSearchModel
 
 
-@using (Html.BeginForm("Filter", "Notification", FormMethod.Post, new {id = "formId"}))
+@using (Html.BeginForm("Filter", "Notification", FormMethod.Post, new { id = "formId" }))
 {
-
-    @Html.LabelFor(x => x.BeginLocation)
-    @Html.TextBoxFor(x => x.BeginLocation)
-
-    @Html.LabelFor(x => x.EndLocation)
-    @Html.TextBoxFor(x => x.EndLocation)
-
-    @Html.LabelFor(x => x.NearLocation)
-    @Html.TextBoxFor(x => x.NearLocation)
-
-    @Html.LabelFor(x => x.StartDate, new {@class = "col-sm-2 control-label"})
-    <div class="col-sm-10">
-        <div class="row">
-            <div class="col-xs-2">
-                @Html.DropDownListFor(x => x.Day, Enumerable.Range(1, 31)
-                    .Select(i => new SelectListItem {Value = i.ToString(), Text = i.ToString()}), "Day", new {@class = "form-control"})
-            </div>
-            <div class="col-xs-2">
-                @Html.DropDownListFor(x => x.Month, Enumerable.Range(1, 12)
-                    .Select(i => new SelectListItem {Value = i.ToString(), Text = i.ToString()}), "Month", new {@class = "form-control"})
-            </div>
-            <div class="col-xs-2">
-                @Html.DropDownListFor(x => x.Year, Enumerable.Range(DateTime.Now.Year, 40)
-                    .Select(i => new SelectListItem {Value = i.ToString(), Text = i.ToString()}), "Year", new {@class = "form-control"})
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Tìm kiếm nâng cao</h3>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-xs-4">
+                    @Html.TextBoxFor(x => x.BeginLocation, "", new { @class = "form-control", @placeholder = "Điểm đi" })
+                </div>
+                <div class="col-xs-4">
+                    @Html.TextBoxFor(x => x.EndLocation, "", new { @class = "form-control", @placeholder = "Điểm đến" })
+                </div>
+                <div class="col-xs-2">
+                    <input type="text" class="form-control" placeholder="Ngày xuất hành">
+                </div>
+                <div class="col-xs-2">
+                    @Html.DropDownListFor(x => x.Received, new SelectList(new[]
+                    {
+                        new {Value = "", Text = "Chọn trạng thái"},
+                        new {Value = "true", Text = "Đã nhận"},
+                        new {Value = "false", Text = "Đang chờ"}
+                    },
+                    "Value",
+                    "Text",
+                    Model.Received), new { @class = "form-control"})
+                </div>
             </div>
         </div>
+        <div class="box-footer">
+            <input class="btn btn-default pull-right" type="submit" name="command" value="Xóa điều kiện" />
+            <input class="btn btn-primary" type="submit" name="command" value="Tìm kiếm" />
+        </div>
     </div>
-
-    @Html.LabelFor(x => x.Received)
-    @Html.DropDownListFor(x => x.Received, new SelectList(
-
-        new[]
-        {
-            new {Value = "", Text = "(none)"},
-            new {Value = "true", Text = "Yes"},
-            new {Value = "false", Text = "No"}
-        },
-        "Value",
-        "Text",
-        Model.Received
-        ))
-    
-    <input class="btn btn-primary" type="submit" name="command" value="Search" />
-    <input class="btn btn-default" type="submit" name="command" value="Reset" />
 
 }
