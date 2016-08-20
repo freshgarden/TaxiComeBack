@@ -4,8 +4,8 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
 {
     public class NotificationSearchModel
     {
-        public string CustomerFullname { get; set; }
-        public string CustomerPhoneNumber { get; set; }
+        public string BeginLocation { get; set; }
+        public string EndLocation { get; set; }
         public string NearLocation { get; set; }
         public DateTime? CreateDate { get; set; }
         public DateTime? StartDate { get; set; }

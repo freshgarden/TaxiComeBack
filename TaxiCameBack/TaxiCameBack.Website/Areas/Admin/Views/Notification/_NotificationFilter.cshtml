@@ -4,11 +4,11 @@
 @using (Html.BeginForm("Filter", "Notification", FormMethod.Post, new {id = "formId"}))
 {
 
-    @Html.LabelFor(x => x.CustomerFullname)
-    @Html.TextBoxFor(x => x.CustomerFullname)
+    @Html.LabelFor(x => x.BeginLocation)
+    @Html.TextBoxFor(x => x.BeginLocation)
 
-    @Html.LabelFor(x => x.CustomerPhoneNumber)
-    @Html.TextBoxFor(x => x.CustomerPhoneNumber)
+    @Html.LabelFor(x => x.EndLocation)
+    @Html.TextBoxFor(x => x.EndLocation)
 
     @Html.LabelFor(x => x.NearLocation)
     @Html.TextBoxFor(x => x.NearLocation)

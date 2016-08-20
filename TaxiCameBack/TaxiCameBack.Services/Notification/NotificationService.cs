@@ -116,10 +116,10 @@ namespace TaxiCameBack.Services.Notification
 
             if (searchModel != null)
             {
-                if (!string.IsNullOrEmpty(searchModel.CustomerFullname))
-                    results = results.Where(x => x.CustomerFullname.Contains(searchModel.CustomerFullname));
-                if (!string.IsNullOrEmpty(searchModel.CustomerPhoneNumber))
-                    results = results.Where(x => x.CustomerPhoneNumber.Contains(searchModel.CustomerPhoneNumber));
+                if (!string.IsNullOrEmpty(searchModel.BeginLocation))
+                    results = results.Where(x => x.NotificationExtend.BeginLocation.Contains(searchModel.BeginLocation));
+                if (!string.IsNullOrEmpty(searchModel.EndLocation))
+                    results = results.Where(x => x.NotificationExtend.EndLocation.Contains(searchModel.EndLocation));
                 if (!string.IsNullOrEmpty(searchModel.NearLocation))
                     results = results.Where(x => x.NearLocation.Contains(searchModel.NearLocation));
                 if (searchModel.Received != null)

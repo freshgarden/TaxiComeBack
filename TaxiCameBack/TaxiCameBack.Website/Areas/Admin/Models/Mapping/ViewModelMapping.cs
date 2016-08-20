@@ -85,8 +85,8 @@ namespace TaxiCameBack.Website.Areas.Admin.Models.Mapping
                 return null;
             return new Core.DomainModel.Notification.NotificationSearchModel
             {
-                CustomerFullname = searchModel.CustomerFullname,
-                CustomerPhoneNumber = searchModel.CustomerPhoneNumber,
+                BeginLocation = searchModel.BeginLocation,
+                EndLocation = searchModel.EndLocation,
                 NearLocation = searchModel.NearLocation,
                 Received = searchModel.Received,
                 StartDate = searchModel.StartDate,
