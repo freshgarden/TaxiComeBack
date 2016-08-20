@@ -117,9 +117,49 @@ namespace TaxiCameBack.Services.Notification
             if (searchModel != null)
             {
                 if (!string.IsNullOrEmpty(searchModel.BeginLocation))
-                    results = results.Where(x => x.NotificationExtend.BeginLocation.Contains(searchModel.BeginLocation));
+                {
+                    var resultList = new List<Core.DomainModel.Notification.Notification>();
+                    foreach (var result in results.ToList())
+                    {
+                        if (result.ScheduleId != null)
+                        {
+                            if (result.Schedule.BeginLocation == searchModel.BeginLocation)
+                            {
+                                resultList.Add(result);
+                            }
+                        }
+                        else
+                        {
+                            if (result.NotificationExtend.BeginLocation == searchModel.BeginLocation)
+                            {
+                                resultList.Add(result);
+                            }
+                        }
+                    }
+                    results = resultList.AsQueryable();
+                }
                 if (!string.IsNullOrEmpty(searchModel.EndLocation))
-                    results = results.Where(x => x.NotificationExtend.EndLocation.Contains(searchModel.EndLocation));
+                {
+                    var resultList = new List<Core.DomainModel.Notification.Notification>();
+                    foreach (var result in results.ToList())
+                    {
+                        if (result.ScheduleId != null)
+                        {
+                            if (result.Schedule.EndLocation == searchModel.EndLocation)
+                            {
+                                resultList.Add(result);
+                            }
+                        }
+                        else
+                        {
+                            if (result.NotificationExtend.EndLocation == searchModel.EndLocation)
+                            {
+                                resultList.Add(result);
+                            }
+                        }
+                    }
+                    results = resultList.AsQueryable();
+                }
                 if (!string.IsNullOrEmpty(searchModel.NearLocation))
                     results = results.Where(x => x.NearLocation.Contains(searchModel.NearLocation));
                 if (searchModel.Received != null)
