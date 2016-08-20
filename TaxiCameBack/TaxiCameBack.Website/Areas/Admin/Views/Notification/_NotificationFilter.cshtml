@@ -1,5 +1,6 @@
 ﻿@model TaxiCameBack.Website.Areas.Admin.Models.NotificationSearchModel
-
+<link href="@Url.Content("~/Content/datetimepicker/jquery.datetimepicker.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Content/datetimepicker/jquery.datetimepicker.full.min.js")"></script>
 
 @using (Html.BeginForm("Filter", "Notification", FormMethod.Post, new { id = "formId" }))
 {
@@ -16,7 +17,7 @@
                     @Html.TextBoxFor(x => x.EndLocation, "", new { @class = "form-control", @placeholder = "Điểm đến" })
                 </div>
                 <div class="col-xs-2">
-                    <input type="text" class="form-control" placeholder="Ngày xuất hành">
+                    @Html.TextBoxFor(x => x.StartDateString, "", new {@class = "form-control", placeholder = "Ngày xuất hành" })
                 </div>
                 <div class="col-xs-2">
                     @Html.DropDownListFor(x => x.Received, new SelectList(new[]
@@ -36,5 +37,12 @@
             <input class="btn btn-primary" type="submit" name="command" value="Tìm kiếm" />
         </div>
     </div>
-
 }
+
+<script>
+    jQuery("#StartDateString").datetimepicker({
+        timepicker: false,
+        format: 'd-m-Y',
+        lang: 'vi'
+    });
+</script>

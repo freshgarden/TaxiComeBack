@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
-using System.Web.Routing;
 using TaxiCameBack.Core.Constants;
+using TaxiCameBack.Core.Utilities;
 using TaxiCameBack.Services.Notification;
 using TaxiCameBack.Website.Application.Attributes;
 using TaxiCameBack.Website.Application.Security;
@@ -28,7 +28,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         [CustomAuthorize(Roles = AppConstants.StandardMembers)]
         public ActionResult Filter(NotificationSearchModel searchModel, string command)
         {
-            if (command == "Reset")
+            if (command == "Xóa điều kiện")
                 return RedirectToAction("Index");
             return ListNotification(null, searchModel);
         }
@@ -36,8 +36,25 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         [CustomAuthorize(Roles = AppConstants.StandardMembers)]
         private ActionResult ListNotification(int? p, NotificationSearchModel search)
         {
-            if (search != null && search.Day > 0 && search.Month > 0 && search.Year > 0)
-                search.StartDate = new DateTime(search.Year, search.Month, search.Day);
+            if (!string.IsNullOrEmpty(search?.StartDateString))
+            {
+                var datetime = search.StartDateString.Split('-');
+                if (datetime.Length == 3)
+                {
+                    int checkIsInt;
+                    if (int.TryParse(datetime[0], out checkIsInt) && datetime[0].ToInt32() > 0 && datetime[0].ToInt32() < 31)
+                    {
+                        if (int.TryParse(datetime[1], out checkIsInt) && datetime[1].ToInt32() > 0 && datetime[1].ToInt32() < 12)
+                        {
+                            if (int.TryParse(datetime[2], out checkIsInt) && datetime[2].ToInt32() > 2015 &&
+                                datetime[2].ToInt32() <= DateTime.Now.Year)
+                            {
+                                search.StartDate = new DateTime(datetime[2].ToInt32(), datetime[1].ToInt32(), datetime[0].ToInt32());
+                            }
+                    }
+                    }
+                }
+            }
             var notiSearch = ViewModelMapping.SearchModelToDomainSearchModel(search);
             var pageIndex = p ?? 1;
             var allNotification = _notificationService.GetAllPaged(SessionPersister.UserId, pageIndex, AppConstants.AdminListPageSize, notiSearch);

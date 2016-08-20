@@ -9,9 +9,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
         public string NearLocation { get; set; }
         public DateTime? CreateDate { get; set; }
         public DateTime? StartDate { get; set; }
-        public int Day { get; set; }
-        public int Month { get; set; }
-        public int Year { get; set; }
+        public string StartDateString { get; set; }
         public bool? Received { get; set; }
         public DateTime? ReceivedDate { get; set; }
     }
