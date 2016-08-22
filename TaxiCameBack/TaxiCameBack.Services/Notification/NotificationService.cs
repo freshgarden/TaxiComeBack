@@ -123,14 +123,14 @@ namespace TaxiCameBack.Services.Notification
                     {
                         if (result.ScheduleId != null)
                         {
-                            if (result.Schedule.BeginLocation == searchModel.BeginLocation)
+                            if (result.Schedule.BeginLocation.Contains(searchModel.BeginLocation))
                             {
                                 resultList.Add(result);
                             }
                         }
                         else
                         {
-                            if (result.NotificationExtend.BeginLocation == searchModel.BeginLocation)
+                            if (result.NotificationExtend.BeginLocation.Contains(searchModel.BeginLocation))
                             {
                                 resultList.Add(result);
                             }
@@ -145,14 +145,14 @@ namespace TaxiCameBack.Services.Notification
                     {
                         if (result.ScheduleId != null)
                         {
-                            if (result.Schedule.EndLocation == searchModel.EndLocation)
+                            if (result.Schedule.EndLocation.Contains(searchModel.EndLocation))
                             {
                                 resultList.Add(result);
                             }
                         }
                         else
                         {
-                            if (result.NotificationExtend.EndLocation == searchModel.EndLocation)
+                            if (result.NotificationExtend.EndLocation.Contains(searchModel.EndLocation))
                             {
                                 resultList.Add(result);
                             }
