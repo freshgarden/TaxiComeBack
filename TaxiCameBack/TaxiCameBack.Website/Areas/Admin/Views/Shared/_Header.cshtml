@@ -52,6 +52,30 @@
                 return phonenumber.replace(/(\d\d\d\d)(\d\d\d)(\d\d\d\d)/, '$1.$2.$3');
             }
 
+            window.formatDate = function (jsonDateString) {
+                var today = new Date(parseInt(jsonDateString.replace('/Date(', '')));
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1; //January is 0!
+
+                var yyyy = today.getFullYear();
+                var hh = addZero(today.getHours());
+                var m = addZero(today.getMinutes());
+                if (dd < 10) {
+                    dd = '0' + dd
+                }
+                if (mm < 10) {
+                    mm = '0' + mm
+                }
+                return today = dd + '/' + mm + '/' + yyyy + ' - ' + hh + ':' + m;
+            }
+
+            window.addZero = function (i) {
+                if (i < 10) {
+                    i = "0" + i;
+                }
+                return i;
+            }
+
             window.toJavaScriptDate = function (value) {
                 var pattern = /Date\(([^)]+)\)/;
                 var results = pattern.exec(value);
@@ -103,6 +127,7 @@
                         }
                         $.each(response, function (index, value) {
                             var scheduleLocation = "<b>Chuyến đi:</b> " + value.BeginLocation + " - " + value.EndLocation;
+                            var startDate = "<b>Thời gian:</b> " + formatDate(value.StartDate);
                             var nearLocation = "<b>Vị trí đón:</b> " + value.NearLocation;
                             var message = "<b>Lời nhắn:</b> " + value.Message;
                             var sType = value.Type === 0 ? '<span class="label label-primary">Khách hàng đặt xe</span>' : '<span class="label label-success">Tài xế đặt xe</span>';
@@ -113,7 +138,7 @@
                             var notificationTitle = $('<strong class="notification-title">' + value.CustomerFullname + ' - ' + formatPhone(value.CustomerPhoneNumber) + '</strong>');
                             var description;
                             if (value.Message) {
-                                description = $('<p class="notification-desc">' + scheduleLocation + '<br/>' + nearLocation + '<br/>' + type + "<br/>" + message + '</p>');
+                                description = $('<p class="notification-desc">' + scheduleLocation + '<br/>' + startDate + '<br/>' + nearLocation + '<br/>' + type + "<br/>" + message + '</p>');
                             } else {
                                 description = $('<p class="notification-desc">' + scheduleLocation + '<br/>' + nearLocation + '<br/>' + type + '</p>');
                             }

@@ -85,9 +85,18 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => user.NearLocation)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => user.NotificationExtend.StartDate)
-                                </td>
+                                @if (user.NotificationExtend != null)
+                                {
+                                    <td>
+                                        @Html.DisplayFor(modelItem => user.NotificationExtend.StartDate)
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        @Html.DisplayFor(modelItem => user.Schedule.StartDate)
+                                    </td>
+                                }
                                 <td>
                                     @if (user.Received != false)
                                     {
