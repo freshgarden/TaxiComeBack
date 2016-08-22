@@ -120,12 +120,11 @@
                                 </div>
                             </div>
                             <div class="row last_row">
-                                <div class="span2">
+                                <div class="span5">
                                 </div>
-                                <div class="span10 clear_submit_buttons">
+                                <div class="span7 clear_submit_buttons">
                                     <a id="locate" href="#" class="clear_filters"><i class="icon-screenshot"></i> @Home.lbl_Locate</a>
                                     <a href="#" id="switchSearchValue" class="clear_filters"><i class="icon-exchange"></i> @Home.btn_switch_title</a>
-                                    <a href="#" class="clear_filters" id="clear_search"><i class="icon-remove"></i> @Home.btn_clear</a>
                                     <a class="button yellow right" id="searchCar">@Home.btn_search_title</a>
                                 </div>
                             </div>
@@ -138,7 +137,7 @@
                             OnSuccess = "onSuccess",
                             OnBegin = "onBegin",
                             OnFailure = "onFailure"
-                        }))
+                        }, new { id = "homepage_search" }))
                         {
                             @Html.AntiForgeryToken()
                             <div class="row">
@@ -185,7 +184,7 @@
                                     @Html.Recaptcha()
                                 </div>
                                 <div class="span6 clear_submit_buttons">
-                                    <input type="submit" class="button submit yellow right" value="@Home.btn_register" style="width: 50%; line-height: 10px; height:50px;" />
+                                    <input type="submit" class="button submit yellow right" value="@Home.btn_register" style="width: 50%; line-height: 10px; height:45px;" />
                                 </div>
                             </div>
                         }
@@ -265,7 +264,7 @@
                         <p>@Home.lbl_administator</p>
                     </div>
                 </div>
-                <a href="#" class="button green big wide "><i class="icomoon-volume-medium"></i> 098.462.2793</a>
+                <a href="#" class="button blue big wide"><i class="icomoon-volume-medium"></i> 098.577.6625</a>
             </div>
         </div>
 
@@ -431,7 +430,7 @@
             script.src = src;
         }
 
-        loadScript('http://maps.googleapis.com/maps/api/js?key=AIzaSyDXIEOJsracks0-TTPmqvEnnMG3YPyh36U&v=3&libraries=places&sensor=false&callback=initialize');
+        loadScript('http://maps.googleapis.com/maps/api/js?key=AIzaSyBY-qXMevEW_S4cggUKWNzt62Y8eUwZzes&v=3&libraries=places&sensor=false&callback=initialize');
 
         function initialize() {
             var mapOptions = {
@@ -465,10 +464,6 @@
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(locate, showError);
             }
-        });
-
-        $("#clear_search").click(function () {
-            $(':input').val('');
         });
 
         function showError(error) {

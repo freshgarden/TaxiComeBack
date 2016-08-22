@@ -139,7 +139,7 @@
     <value>Tên khách hàng</value>
   </data>
   <data name="lbl_CustomerPhone" xml:space="preserve">
-    <value>Số điện thoại KH</value>
+    <value>Số điện thoại khách hàng</value>
   </data>
   <data name="lbl_DriverName" xml:space="preserve">
     <value>Tên tài xế</value>

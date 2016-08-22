@@ -44,7 +44,7 @@ namespace TaxiCameBack.Data.Migrations
             }
 
             // If the admin user exists then don't do anything else
-            const string adminUserEmail = "admin@local.com";
+            const string adminUserEmail = "taxiquayve@gmail.com";
             if (context.MembershipUser.FirstOrDefault(x => x.Email == adminUserEmail) == null)
             {
                 // create the admin user and put him in the admin role
@@ -52,9 +52,9 @@ namespace TaxiCameBack.Data.Migrations
                 {
                     Email = adminUserEmail,
                     Active = true,
-                    FullName = "Administrator",
-                    Password = "password",
-                    PhoneNumber = "0932142817",
+                    FullName = "Nguyễn Xuân Phúc",
+                    Password = "taxiquayve2016",
+                    PhoneNumber = "0985776625",
                     CreatedOnUtc = DateTime.UtcNow,
                     LastLoginDateUtc = DateTime.UtcNow,
                     IsLockedOut = false,
