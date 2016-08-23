@@ -82,7 +82,7 @@ namespace TaxiCameBack.Data.Migrations
                 {
                     SiteName = "Taxi Came Back",
                     SiteUrl = "http://www.domain.com",
-                    AdminEmailAddress = "my@email.com",
+                    AdminEmailAddress = adminUserEmail,
                     NotificationReplyEmail = "noreply@myemail.com",
                     SMTPEnableSSL = false,
                     NewMemberStartingRole = standardRole
