@@ -284,7 +284,8 @@
         $(function () {
             $.datetimepicker.setLocale('vi');
             jQuery("#timestart").datetimepicker({
-                format: 'd-m-Y H:i',
+                format: 'd-m-Y',
+                timepicker: false,
                 minDate: 0,
                 lang: 'vi',
                 onChangeDateTime: function (dp, $input) {
@@ -330,7 +331,7 @@
             StartDate: "",
             setStartDate: function (date) {
                 var monthsName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-                this.StartDate = date.getDate() + "-" + monthsName[date.getMonth()] + "-" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes();
+                this.StartDate = date.getDate() + "-" + monthsName[date.getMonth()] + "-" + date.getFullYear();
             }
         }
 
