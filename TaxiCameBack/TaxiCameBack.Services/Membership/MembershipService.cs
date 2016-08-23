@@ -375,6 +375,16 @@ namespace TaxiCameBack.Services.Membership
             if (ValidateUser(userEmail, password, 48))
             {
                 var user = GetUser(userEmail);
+                if (!user.Active)
+                {
+                    LastLoginStatus = LoginAttemptStatus.Banned;
+                    return crudReuslt;
+                }
+                if (user.IsLockedOut)
+                {
+                    LastLoginStatus = LoginAttemptStatus.UserLockedOut;
+                    return crudReuslt;
+                }
                 if (user.Active && !user.IsLockedOut)
                 {
                     user.LastLoginDateUtc = DateTime.UtcNow;

@@ -141,6 +141,9 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                         case LoginAttemptStatus.UserNotApproved:
                             ModelState.AddModelError("ErrorMessage", App_LocalResources.Login.user_not_approve);
                             break;
+                        case LoginAttemptStatus.Banned:
+                            ModelState.AddModelError("ErrorMessage", @"Account has been banned.");
+                            break;
                     }
                     if (ModelState.Errors() != null)
                     {

@@ -107,7 +107,10 @@ namespace TaxiCameBack.Website.Application.Signalr
             {
                 ReceivedCustomerRegistration(notificationId, scheduleId, driverId);
             }
-            ReceivedCustomerRegistrationNewSchedule(notificationId, driverId);
+            else
+            {
+                ReceivedCustomerRegistrationNewSchedule(notificationId, driverId);
+            }
         }
 
         /// <summary>

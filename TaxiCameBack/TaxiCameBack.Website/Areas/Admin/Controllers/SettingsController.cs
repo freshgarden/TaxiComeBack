@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using TaxiCameBack.Core.Constants;
 using TaxiCameBack.Core.DomainModel.Email;
@@ -72,7 +73,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult SendTestEmail()
+        public async Task<ActionResult> SendTestEmail()
         {
             var sb = new StringBuilder();
             sb.AppendFormat("<p>{0}</p>",
@@ -94,7 +95,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
 
             try
             {
-                _emailService.SendMail(email);
+                await Task.Run(() => _emailService.SendMail(email));
             }
             catch (Exception ex)
             {

@@ -35,6 +35,8 @@ namespace TaxiCameBack.Services.Email
 
         public void SendMail(List<Core.DomainModel.Email.Email> email)
         {
+            if (Emails == null)
+                Emails = new List<Core.DomainModel.Email.Email>();
             Emails.AddRange(email);
             ProcessMail();
         }
@@ -117,6 +119,7 @@ namespace TaxiCameBack.Services.Email
 
                         emailsToDelete.Add(message);
                     }
+                    Emails = Emails.Except(emailsToDelete).ToList();
                 }
             }
             catch (Exception exception)
