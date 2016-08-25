@@ -151,7 +151,7 @@
     <value>Mật khẩu</value>
   </data>
   <data name="plc_username" xml:space="preserve">
-    <value>Tên tài khoản</value>
+    <value>Email</value>
   </data>
   <data name="rqr_password" xml:space="preserve">
     <value>Mật khẩu không được để trống</value>
@@ -167,5 +167,8 @@
   </data>
   <data name="user_not_approve" xml:space="preserve">
     <value>Tài khoản chưa được duyệt !</value>
+  </data>
+  <data name="note" xml:space="preserve">
+    <value>Hãy sử dụng email và mật khẩu khi đăng ký để đăng nhập vào hệ thống</value>
   </data>
 </root>

@@ -31,6 +31,7 @@
         </div>
         <div class="register-box-body">
             <p class="login-box-msg">@Register.register_form</p>
+            <p class="login-box-msg text-red">@Register.note</p>
             @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()

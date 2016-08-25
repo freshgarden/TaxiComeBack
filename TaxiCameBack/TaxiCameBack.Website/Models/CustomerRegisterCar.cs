@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Web.UI.WebControls;
 
 namespace TaxiCameBack.Website.Models
 {
     public class CustomerRegisterCar
     {
         public Guid DriveId { get; set; }
-        
+
         public string CustomerFullName { get; set; }
-        
+
         public string CustomerPhoneNumber { get; set; }
 
         public Guid ScheduleId { get; set; }

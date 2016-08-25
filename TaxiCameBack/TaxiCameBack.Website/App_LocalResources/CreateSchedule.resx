@@ -144,6 +144,9 @@
   <data name="lbl_start_date" xml:space="preserve">
     <value>Thời gian xuất hành</value>
   </data>
+  <data name="note" xml:space="preserve">
+    <value>Nhập các thông tin chuyến xe quay về</value>
+  </data>
   <data name="plc_EndPoint" xml:space="preserve">
     <value>Nhập điểm đến</value>
   </data>

@@ -32,6 +32,7 @@
         <!-- /.login-logo -->
         <div class="login-box-body">
             <p class="login-box-msg">@Login.login_form</p>
+            <p class="login-box-msg text-red">@Login.note</p>
             @using (Html.BeginForm("Login", "Account", FormMethod.Post))
             {
                 if(ViewData.ModelState["ErrorMessage"] != null)

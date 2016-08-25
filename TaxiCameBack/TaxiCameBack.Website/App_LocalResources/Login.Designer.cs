@@ -124,6 +124,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hãy sử dụng email và mật khẩu khi đăng ký để đăng nhập vào hệ thống.
+        /// </summary>
+        public static string note {
+            get {
+                return ResourceManager.GetString("note", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mật khẩu vượt quá giới hạn.
         /// </summary>
         public static string password_attemp {
@@ -160,7 +169,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tên tài khoản.
+        ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string plc_username {
             get {

@@ -289,7 +289,7 @@ License: Teamforest licence
 
 	ul{
 		margin-left: 20px;
-		list-style: square url("../images/ul_dash.png");
+		list-style: square url("../../Content/Images/frontend-images/ul_dash.png");
 	}
 
 	.sidebar{

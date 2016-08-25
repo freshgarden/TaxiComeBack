@@ -180,4 +180,7 @@
   <data name="rqr_re_password" xml:space="preserve">
     <value>Nhập lại mật khẩu không được để trống</value>
   </data>
+  <data name="note" xml:space="preserve">
+    <value>Lưu y: Bạn hãy chọn email có thật để đăng ký</value>
+  </data>
 </root>

@@ -31,7 +31,7 @@
         if (ajaxLoading) ajaxLoading.remove();
         grecaptcha.reset();
         $('form').clearForm();
-        $.fancybox({ title: data.Status, autoCenter: true, content: "<div><p>" + data.Message + "</p></div>" });
+        $.fancybox({ padding: 0, content: "<div id='login_form' class='box'><h3>Lỗi đăng ký</h3><div class='box-content'><ul><li>" + data.Message + "</ul></div></div>" });
     };
     var onFailure = function () {
         if (ajaxLoading) ajaxLoading.remove();
@@ -43,13 +43,13 @@
         notification.client.addNewMessageToPage = function (message) {
             $.fancybox.close();
             setTimeout(function () {
-                $.fancybox({ title: "Đăng ký thành công", autoCenter: true, content: "<div><p>" + message + "</p></div>" });
+                $.fancybox({ padding: 0, content: "<div id='login_form' class='box'><h3>Đăng ký thành công</h3><div class='box-content'><p>" + message + "</p></div></div>" });
             }, 1000);
         };
         notification.client.addNewErrorMessageToPage = function (message) {
             $.fancybox.close();
             setTimeout(function () {
-                $.fancybox({ title: "Đăng ký thất bại", autoCenter: true, content: "<div><p>" + message + "</p></div>" });
+                $.fancybox({ padding: 0, content: "<div id='login_form' class='box'><h3>Đăng ký thất bại</h3><div class='box-content'><p>" + message + "</p></div></div>" });
             }, 1000);
         };
         // Start the connection.
@@ -86,7 +86,7 @@
     }
 
     .ajax_loader {
-        background: url("Content/Images/spinner_squares_circle.gif") no-repeat center center transparent;
+        background: url("/Content/Images/spinner_squares_circle.gif") no-repeat center center transparent;
         width: 100%;
         height: 100%;
     }
@@ -106,7 +106,7 @@
                             <div class="row">
                                 <div class="span6">
                                     <label for="type" class="dropdown_label">@Home.lbl_startpoint</label>
-                                    <input id="startPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_StartPoint" name="start_position">
+                                    <input id="startPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_StartPoint" autocomplete="off" name="start_position">
                                 </div>
                                 <div class="span6">
                                     <label for="category" class="dropdown_label">@Home.lbl_endpoint</label>
@@ -143,11 +143,11 @@
                             <div class="row">
                                 <div class="span6">
                                     @Html.LabelFor(x => x.BeginLocation, Home.lbl_startpoint, new { @class = "dropdown_label" })
-                                    @Html.TextBoxFor(x => x.BeginLocation, new { placeholder = Home.plh_StartPoint, autocomplete = "off" })
+                                    @Html.TextBoxFor(x => x.BeginLocation, new { placeholder = Home.plh_StartPoint, autocomplete = "off", id = "start_point_reg", onkeypress = "return calcdir(event)" })
                                 </div>
                                 <div class="span6">
                                     @Html.LabelFor(x => x.EndLocation, Home.lbl_endpoint, new { @class = "dropdown_label" })
-                                    @Html.TextBoxFor(x => x.EndLocation, new { placeholder = Home.plh_EndPoint, autocomplete = "off" })
+                                    @Html.TextBoxFor(x => x.EndLocation, new { placeholder = Home.plh_EndPoint, autocomplete = "off", id = "end_point_reg", onkeypress = "return calcdir(event)" })
                                 </div>
                             </div>
                             <div class="row">
@@ -155,8 +155,6 @@
                                     @Html.LabelFor(x => x.NearLocation, Home.lbl_NearPos, new { @class = "dropdown_label" })
                                     @Html.TextBoxFor(x => x.NearLocation, new { placeholder = Home.plh_NearPos, autocomplete = "off" })
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="span6">
                                     @Html.LabelFor(x => x.StartDateDisplay, Home.lbl_startdate, new { @class = "dropdown_label" })
                                     @Html.TextBoxFor(x => x.StartDateDisplay, new { placeholder = Home.plh_TimeStart, id = "reg_start_date", autocomplete = "off" })
@@ -231,6 +229,7 @@
                     </div>
                     <div class="row">
                         <label for="customerAgreeTerm" class="custom_checkbox custom_checkbox_light"><input type="checkbox" name="customerAgreeTerm" id="customerAgreeTerm">@Home.lbl_reg_note</label>
+                        <br/><label class="custom_checkbox_light" id="lbl_custom_agreeterm"></label>
                     </div>
                     <input type="hidden" id="DriveId" />
                     <input type="hidden" id="ScheduleId" />
@@ -369,6 +368,7 @@
                             $('#no_result').html("Không có kết quả nào được tìm thấy");
                             $('#search_result').css("display", "none");
                         } else {
+                            getDistanceAndTime();
                             $('#no_result').css("display", "none");
                             $('#search_result').css("display", "block");
 
@@ -431,7 +431,7 @@
             script.src = src;
         }
 
-        loadScript('http://maps.googleapis.com/maps/api/js?key=AIzaSyBY-qXMevEW_S4cggUKWNzt62Y8eUwZzes&v=3&libraries=places&sensor=false&callback=initialize');
+        loadScript('http://maps.google.com/maps/api/js?language=vi&libraries=places&sensor=false&key=AIzaSyDXIEOJsracks0-TTPmqvEnnMG3YPyh36U');
 
         function initialize() {
             var mapOptions = {
@@ -502,12 +502,17 @@
         }
 
         function calcdir(event) {
-            // Create the search box and link it to the UI element.
-            var startPoint = document.getElementById('startPoint');
+
             var options = {
                 componentRestrictions: { country: 'vn' } //Vietnam only
             };
+
+            // Create the search box and link it to the UI element.
+            var startPoint = document.getElementById('startPoint');
+            var startPointReg = document.getElementById('start_point_reg');
             var startPointSearchBox = new google.maps.places.Autocomplete(startPoint, options);
+            var startPointRegisterBox = new google.maps.places.Autocomplete(startPointReg, options);
+
             startPointSearchBox.addListener('place_changed', function () {
                 startPointPlace = startPointSearchBox.getPlace();
                 if (!startPointPlace.geometry) {
@@ -519,8 +524,24 @@
                 // the other place ID
                 origin_place_id = startPointPlace.place_id;
             });
+
+            startPointRegisterBox.addListener('place_changed', function () {
+                startPointPlace = startPointRegisterBox.getPlace();
+                if (!startPointPlace.geometry) {
+                    window.alert("Autocomplete's returned place contains no geometry");
+                    return;
+                }
+
+                // If the place has a geometry, store its place ID and route if we have
+                // the other place ID
+                origin_place_id = startPointPlace.place_id;
+            });
+
             var endPoint = document.getElementById('endPoint');
+            var endPointReg = document.getElementById('end_point_reg');
             var endPointSearchBox = new google.maps.places.Autocomplete(endPoint, options);
+            var endPointRegisterBox = new google.maps.places.Autocomplete(endPointReg, options);
+
             endPointSearchBox.addListener('place_changed', function () {
                 endPointPlace = endPointSearchBox.getPlace();
                 if (!endPointPlace.geometry) {
@@ -532,6 +553,27 @@
                 // the other place ID
                 destination_place_id = endPointPlace.place_id;
             });
+
+            endPointRegisterBox.addListener('place_changed', function () {
+                endPointPlace = endPointRegisterBox.getPlace();
+                if (!endPointPlace.geometry) {
+                    window.alert("Autocomplete's returned place contains no geometry");
+                    return;
+                }
+
+                // If the place has a geometry, store its place ID and route if we have
+                // the other place ID
+                destination_place_id = endPointPlace.place_id;
+            });
+        }
+
+        String.format = function() {
+            var s = arguments[0];
+            for (var i = 0; i < arguments.length - 1; i++) {       
+                var reg = new RegExp("\\{" + i + "\\}", "gm");             
+                s = s.replace(reg, arguments[i + 1]);
+            }
+            return s;
         }
 
         function getDistanceAndTime() {
@@ -547,8 +589,8 @@
                 if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
                     var distance = response.rows[0].elements[0].distance.text;
                     var duration = response.rows[0].elements[0].duration.text;
-                    $('#distanceAndTime').text(distance + ' - ' + duration);
-
+                    $("#lbl_custom_agreeterm").empty();
+                    $("#lbl_custom_agreeterm").append(String.format("@Home.lbl_reg_note2", distance));
                 } else {
                     alert("Unable to find the distance via road.");
                 }

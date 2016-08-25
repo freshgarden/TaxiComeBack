@@ -97,6 +97,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lưu y: Bạn hãy chọn email có thật để đăng ký.
+        /// </summary>
+        public static string note {
+            get {
+                return ResourceManager.GetString("note", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mật khẩu có độ dài tối đa 50 ký tự.
         /// </summary>
         public static string password_length {

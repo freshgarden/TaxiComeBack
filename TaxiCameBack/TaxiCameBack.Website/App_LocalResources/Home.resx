@@ -148,7 +148,7 @@
     <value>Điện thoại liên hệ</value>
   </data>
   <data name="lbl_FindCar" xml:space="preserve">
-    <value>Tìm kiếm taxi</value>
+    <value>Khách hàng tìm kiếm taxi</value>
   </data>
   <data name="lbl_Find_Car_By_Location" xml:space="preserve">
     <value>Danh sách xe đi các tỉnh</value>
@@ -163,7 +163,7 @@
     <value>Bạn chỉ phải trả 50% cho chuyến đi này</value>
   </data>
   <data name="lbl_reg_note2" xml:space="preserve">
-    <value>(Đơn giá: {0} đ/1km)</value>
+    <value>Quãng đường: {0} - Đơn giá: 5.000 đ/1km</value>
   </data>
   <data name="lbl_Route" xml:space="preserve">
     <value>Lộ trình</value>
@@ -244,7 +244,7 @@
     <value>Đăng ký lộ trình</value>
   </data>
   <data name="lbl_register_taxi" xml:space="preserve">
-    <value>Đăng kí xe</value>
+    <value>Khách hàng đăng ký taxi</value>
   </data>
   <data name="lbl_sp_online" xml:space="preserve">
     <value>Trợ giúp trực tuyến</value>
@@ -257,5 +257,44 @@
   </data>
   <data name="plh_note" xml:space="preserve">
     <value>Nhập ghi chú</value>
+  </data>
+  <data name="begin_location_required" xml:space="preserve">
+    <value>Điểm đi không được để trống</value>
+  </data>
+  <data name="begin_location_stringlength" xml:space="preserve">
+    <value>Điểm đi không được dài quá 100 kí tự</value>
+  </data>
+  <data name="customer_fullname_required" xml:space="preserve">
+    <value>Tên khách hàng không được để trống</value>
+  </data>
+  <data name="customer_fullname_stringlength" xml:space="preserve">
+    <value>Tên khách hàng không được dài quá 30 kí tự</value>
+  </data>
+  <data name="end_location_required" xml:space="preserve">
+    <value>Điểm đến không được để trống</value>
+  </data>
+  <data name="end_location_stringlength" xml:space="preserve">
+    <value>Điểm đến không được dài quá 100 kí tự</value>
+  </data>
+  <data name="fullname_length" xml:space="preserve">
+    <value>Họ và tên không được dài quá 50 kí tự</value>
+  </data>
+  <data name="nearlocation_length" xml:space="preserve">
+    <value>Vị trí đón không được dài quá 50 kí tự</value>
+  </data>
+  <data name="rqr_fullname" xml:space="preserve">
+    <value>Họ và tên không được để trống</value>
+  </data>
+  <data name="rqr_nearlocation" xml:space="preserve">
+    <value>Vị trí đón không được để trống</value>
+  </data>
+  <data name="rqr_phone" xml:space="preserve">
+    <value>Số điện thoại không được để trống</value>
+  </data>
+  <data name="start_date_required" xml:space="preserve">
+    <value>Thời gian xuất hành không được để trống</value>
+  </data>
+  <data name="valid_phone" xml:space="preserve">
+    <value>Số điện thoại không hợp lệ</value>
   </data>
 </root>
