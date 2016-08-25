@@ -90,6 +90,12 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             }
             else
             {
+                var message = new GenericMessageViewModel
+                {
+                    Message = "Edit successfull!",
+                    MessageType = GenericMessages.success
+                };
+                TempData[AppConstants.MessageViewBagName] = message;
                 return RedirectToAction("Index", "Account", new {area = "Admin"});
             }
 

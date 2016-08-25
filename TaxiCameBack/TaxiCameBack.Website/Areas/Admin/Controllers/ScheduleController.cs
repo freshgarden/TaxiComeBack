@@ -55,6 +55,12 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             var result = _scheduleService.SaveScheduleInformation(schedule);
             if (!result.Success)
                 return Json(new {status = "ERROR", messenge = result.Errors}, JsonRequestBehavior.AllowGet);
+            var message = new GenericMessageViewModel
+            {
+                Message = "Save successfull!",
+                MessageType = GenericMessages.success
+            };
+            TempData[AppConstants.MessageViewBagName] = message;
             return Json(new {status = "OK"});
         }
 
@@ -77,6 +83,12 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             var result = _scheduleService.UpdateScheduleInformation(schedule);
             if (!result.Success)
                 return Json(new {status = "ERROR", messenge = result.Errors}, JsonRequestBehavior.AllowGet);
+            var message = new GenericMessageViewModel
+            {
+                Message = "Update successfull!",
+                MessageType = GenericMessages.success
+            };
+            TempData[AppConstants.MessageViewBagName] = message;
             return Json(new {status = "OK"});
         }
 
