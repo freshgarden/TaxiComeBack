@@ -15,7 +15,7 @@ namespace TaxiCameBack.Website.Application.Security
         private const string UserIdPersister = "userid";
         private const string FullNamePersister = "fullname";
         private const string UserImageUrlPersister = "userimageurl";
-        private const int Expires = 48;
+        private const int Expires = 24;
 
         public static string Username
         {

@@ -20,22 +20,22 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             return View("NotFound", model);
         }
 
-//        protected override void HandleUnknownAction(string actionName)
-//        {
-//            var name = GetViewName(ControllerContext, $"~/Views/Errors/{actionName}.cshtml",
-//                                  "~/Views/Error/Error.cshtml",
-//                                  "~/Views/Error/General.cshtml",
-//                                  "~/Views/Shared/Error.cshtml");
-//            var controllerName = (string)RouteData.Values["controller"];
-//            var model = new HandleErrorInfo(Server.GetLastError(), controllerName, actionName);
-//            var result = new ViewResult
-//            {
-//                ViewName = name,
-//                ViewData = new ViewDataDictionary<HandleErrorInfo>(model),
-//            };
-//            Response.StatusCode = 501;
-//            result.ExecuteResult(ControllerContext);
-//        }
+        protected override void HandleUnknownAction(string actionName)
+        {
+            var name = GetViewName(ControllerContext, $"~/Views/Errors/{actionName}.cshtml",
+                                  "~/Views/Error/Error.cshtml",
+                                  "~/Views/Error/General.cshtml",
+                                  "~/Views/Shared/Error.cshtml");
+            var controllerName = (string)RouteData.Values["controller"];
+            var model = new HandleErrorInfo(Server.GetLastError(), controllerName, actionName);
+            var result = new ViewResult
+            {
+                ViewName = name,
+                ViewData = new ViewDataDictionary<HandleErrorInfo>(model),
+            };
+            Response.StatusCode = 501;
+            result.ExecuteResult(ControllerContext);
+        }
         protected string GetViewName(ControllerContext context, params string[] names)
         {
             foreach (var name in names)
