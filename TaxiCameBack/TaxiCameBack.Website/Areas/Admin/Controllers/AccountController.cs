@@ -377,6 +377,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             return RedirectToAction("EditProfile");
         }
         
+        [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
             // Create the empty view forgot password model
