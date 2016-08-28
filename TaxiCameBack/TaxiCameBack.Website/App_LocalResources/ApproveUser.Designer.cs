@@ -79,6 +79,24 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cấp quyền cho tài xế thất bại..
+        /// </summary>
+        public static string approve_user_failed {
+            get {
+                return ResourceManager.GetString("approve_user_failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cấp quyền cho tài xế thành công..
+        /// </summary>
+        public static string approve_user_success {
+            get {
+                return ResourceManager.GetString("approve_user_success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quay lại.
         /// </summary>
         public static string btn_Back {

@@ -79,7 +79,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email không tồn tại trong hệ thống. Xin nhập lại..
+        ///   Looks up a localized string similar to Email không tồn tại trong hệ thống..
         /// </summary>
         public static string ERR_MESSAGE_NO_EXIST {
             get {
@@ -106,6 +106,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quay lại đăng nhập.
+        /// </summary>
+        public static string lbl_login_back {
+            get {
+                return ResourceManager.GetString("lbl_login_back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hãy sử dụng email đã đăng ký để lấy lại mật khẩu.
         /// </summary>
         public static string note {
@@ -124,7 +133,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reset mật khẩu bị lỗi : {0}.
+        ///   Looks up a localized string similar to Hệ thống không gửi được email đến bạn..
         /// </summary>
         public static string reset_password_error {
             get {

@@ -171,4 +171,7 @@
   <data name="note" xml:space="preserve">
     <value>Hãy sử dụng email và mật khẩu khi đăng ký để đăng nhập vào hệ thống</value>
   </data>
+  <data name="user_banned" xml:space="preserve">
+    <value>Tài khoản đã bị vô hiệu !</value>
+  </data>
 </root>

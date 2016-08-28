@@ -88,6 +88,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thay đổi mật khẩu thất bại.
+        /// </summary>
+        public static string reset_password_error {
+            get {
+                return ResourceManager.GetString("reset_password_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thay đổi mật khẩu.
         /// </summary>
         public static string reset_password_form {

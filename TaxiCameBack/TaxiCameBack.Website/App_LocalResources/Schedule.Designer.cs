@@ -61,6 +61,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tạo lịch trình thành công.
+        /// </summary>
+        public static string create_schedule_success {
+            get {
+                return ResourceManager.GetString("create_schedule_success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đăng ký lộ trình.
         /// </summary>
         public static string lbl_create_schedule {
@@ -93,6 +102,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string title {
             get {
                 return ResourceManager.GetString("title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cập nhật lịch trình thành công.
+        /// </summary>
+        public static string update_schedule_success {
+            get {
+                return ResourceManager.GetString("update_schedule_success", resourceCulture);
             }
         }
     }

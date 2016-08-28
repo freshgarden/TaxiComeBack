@@ -25,7 +25,8 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <table id="example2" class="table table-bordered table-hover">
+                    @Html.Partial("_GenericMessage")
+                    <table id="example2" class="table table-bordered table-hover" style="width: 2000px;">
                         <thead>
                             <tr>
                                 <th>@AccountManager.stt_column_header</th>
@@ -100,13 +101,13 @@
             "ordering": false,
             "scrollX": true,
             "columnDefs": [
-                { "width": "5%", "targets": 0 },
-                { "width": "15%", "targets": 1 },
-                { "width": "15%", "targets": 2 },
-                { "width": "15%", "targets": 3 },
-                { "width": "15%", "targets": 4 },
-                { "width": "15%", "targets": 5 },
-                { "width": "5%", "targets": 6 }
+                { "width": "5px", "targets": 0 },
+                { "width": "200px", "targets": 1 },
+                { "width": "200px", "targets": 2 },
+                { "width": "200px", "targets": 3 },
+                { "width": "150px", "targets": 4 },
+                { "width": "150px", "targets": 5 },
+                { "width": "5px", "targets": 6 }
             ],
             "language": {
                 "sProcessing": "Đang xử lý...",

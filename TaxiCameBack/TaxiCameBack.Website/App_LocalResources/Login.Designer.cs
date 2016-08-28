@@ -196,6 +196,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tài khoản đã bị vô hiệu !.
+        /// </summary>
+        public static string user_banned {
+            get {
+                return ResourceManager.GetString("user_banned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tài khoản đang bị tạm khóa !.
         /// </summary>
         public static string user_locked {

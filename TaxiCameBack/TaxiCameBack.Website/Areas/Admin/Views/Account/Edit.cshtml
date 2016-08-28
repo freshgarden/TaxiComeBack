@@ -17,21 +17,23 @@
 <section class="content">
     <div class="row">
         <div class="col-md-6">
-            <!-- Profile Image -->
             <div class="box box-primary">
-                <div class="box-body box-profile">
-                    @using (Html.BeginForm("Edit", "Account", FormMethod.Post))
+                <div class="box-header with-border">
+                    <h3 class="box-title">@ApproveUser.user_profile</h3>
+                </div>
+                @using (Html.BeginForm("Edit", "Account", FormMethod.Post))
+                {
+                    @Html.HiddenFor(x => Model.Id)
+                    @Html.AntiForgeryToken()
+                    if (ViewData.ModelState["ErrorMessage"] != null)
                     {
-                        @Html.HiddenFor(x => Model.Id)
-                        @Html.AntiForgeryToken()
-                        if (ViewData.ModelState["ErrorMessage"] != null)
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                                @Html.ValidationMessage("ErrorMessage")
-                            </div>
-                        }
+                        <div class="alert alert-danger" role="alert">
+                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                            @Html.ValidationMessage("ErrorMessage")
+                        </div>
+                    }
 
+                    <div class="box-body">
                         <div class="form-group">
                             @Html.LabelFor(x => x.Email)
                             @Html.TextBoxFor(x => x.Email, new { @class = "form-control", type = "email", @readonly = "readonly" })
@@ -39,27 +41,27 @@
                         </div>
                         <div class="checkbox">
                             @using (Html.BeginLabelFor(m => m.IsApproved, new { @class = "checkbox" }))
-                {
-                                @Html.CheckBoxFor(m => m.IsApproved)
+                            {
+                                @Html.CheckBoxFor(m => m.IsApproved, new { name = "auth" })
                             }
                             @Html.ValidationMessageFor(m => m.IsApproved, "", new { @class = "text-danger" })
                         </div>
+                        <div class="checkbox">
+                            @using (Html.BeginLabelFor(m => m.IsLockedOut, new { @class = "checkbox" }))
+                            {
+                                @Html.CheckBoxFor(m => m.IsLockedOut, new { name = "auth" })
+                            }
+                            @Html.ValidationMessageFor(m => m.IsLockedOut, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-                                <div class="checkbox">
-                                    @using (Html.BeginLabelFor(m => m.IsLockedOut, new { @class = "checkbox" }))
-                                    {
-                                        @Html.CheckBoxFor(m => m.IsLockedOut)
-                                    }
-                                    @Html.ValidationMessageFor(m => m.IsLockedOut, "", new { @class = "text-danger" })
-                                </div>
-
-                                <div class="submit-holder">
-                                    <a class="btn btn-default pull-left" onclick="history.go(-1); return false;" href="#">@ApproveUser.btn_Back</a>
-                                    <input type="submit" class="btn btn-primary pull-right" value="@(buttonText)" />
-                                </div>
-                    }
-
-                </div>
+                    <div class="box-footer">
+                        <div class="submit-holder">
+                            <a class="btn btn-default pull-left" onclick="history.go(-1); return false;" href="#">@ApproveUser.btn_Back</a>
+                            <input type="submit" class="btn btn-primary pull-right" value="@(buttonText)" />
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>

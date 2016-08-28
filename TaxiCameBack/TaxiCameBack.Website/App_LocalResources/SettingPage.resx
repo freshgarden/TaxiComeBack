@@ -129,10 +129,22 @@
   <data name="general" xml:space="preserve">
     <value>Cài đặt chung</value>
   </data>
+  <data name="test_email_failed" xml:space="preserve">
+    <value>Gửi email để kiểm tra thất bại</value>
+  </data>
   <data name="test_email_setting" xml:space="preserve">
     <value>Kiểm tra email cài đặt</value>
   </data>
+  <data name="test_email_success" xml:space="preserve">
+    <value>Đã gửi email để kiểm tra thành công</value>
+  </data>
   <data name="title" xml:space="preserve">
     <value>Cài đặt</value>
+  </data>
+  <data name="update_setting_failed" xml:space="preserve">
+    <value>Cài đặt thất bại</value>
+  </data>
+  <data name="update_setting_success" xml:space="preserve">
+    <value>Cài đặt thành công</value>
   </data>
 </root>

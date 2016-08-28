@@ -51,7 +51,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                     // All good clear cache and get reliant lists
                     TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
                     {
-                        Message = "Settings Updated",
+                        Message = App_LocalResources.SettingPage.update_setting_success,
                         MessageType = GenericMessages.success
                     };
                 }
@@ -59,7 +59,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 {
                     TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
                     {
-                        Message = result.Errors[0],
+                        Message = App_LocalResources.SettingPage.update_setting_failed,
                         MessageType = GenericMessages.danger
                     };
                 }
@@ -87,22 +87,21 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             email.Body = _emailService.EmailTemplate(email.NameTo, sb.ToString());
 
 
-            var message = new GenericMessageViewModel
-            {
-                Message = "Test Email Sent",
-                MessageType = GenericMessages.success
-            };
+            var message = new GenericMessageViewModel();
 
             try
             {
                 await Task.Run(() => _emailService.SendMail(email));
+                message.Message = App_LocalResources.SettingPage.test_email_success;
+                message.MessageType = GenericMessages.success;
             }
             catch (Exception ex)
             {
                 LoggingService.Error(ex);
-                message.Message = "Error sending email";
+                message.Message = App_LocalResources.SettingPage.test_email_failed;
                 message.MessageType = GenericMessages.danger;
             }
+
             TempData[AppConstants.MessageViewBagName] = message;
 
             return RedirectToAction("Index");

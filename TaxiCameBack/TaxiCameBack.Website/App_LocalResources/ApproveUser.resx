@@ -123,6 +123,12 @@
   <data name="admin_specific" xml:space="preserve">
     <value>Quản trị</value>
   </data>
+  <data name="approve_user_failed" xml:space="preserve">
+    <value>Cấp quyền cho tài xế thất bại.</value>
+  </data>
+  <data name="approve_user_success" xml:space="preserve">
+    <value>Cấp quyền cho tài xế thành công.</value>
+  </data>
   <data name="btn_Back" xml:space="preserve">
     <value>Quay lại</value>
   </data>

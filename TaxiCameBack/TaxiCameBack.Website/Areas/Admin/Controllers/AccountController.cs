@@ -86,20 +86,20 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
 
             if (result.Errors.Count > 0)
             {
-                ModelState.AddModelError("ErrorMessage", result.Errors[0]);
+                ModelState.AddModelError("ErrorMessage", App_LocalResources.ApproveUser.approve_user_failed);
+                return View(userModel);
             }
             else
             {
                 var message = new GenericMessageViewModel
                 {
-                    Message = "Edit successfull!",
+                    Message = App_LocalResources.ApproveUser.approve_user_success,
                     MessageType = GenericMessages.success
                 };
+
                 TempData[AppConstants.MessageViewBagName] = message;
                 return RedirectToAction("Index", "Account", new {area = "Admin"});
             }
-
-            return View(userModel);
         }
 
         [AllowAnonymous]
@@ -131,26 +131,28 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
 
                     switch (loginStatus)
                     {
+                        // Account or password wrong!
                         case LoginAttemptStatus.UserNotFound:
                         case LoginAttemptStatus.PasswordIncorrect:
                             ModelState.AddModelError("ErrorMessage", App_LocalResources.Login.password_incorect);
                             break;
-
-                        case LoginAttemptStatus.PasswordAttemptsExceeded:
-                            ModelState.AddModelError("ErrorMessage", App_LocalResources.Login.password_attemp);
-                            break;
-
+                        // Account locked
                         case LoginAttemptStatus.UserLockedOut:
                             ModelState.AddModelError("ErrorMessage", App_LocalResources.Login.user_locked);
                             break;
-                            
+                        case LoginAttemptStatus.PasswordAttemptsExceeded:
+                            ModelState.AddModelError("ErrorMessage", App_LocalResources.Login.password_attemp);
+                            break;
+                        // Account not approved
                         case LoginAttemptStatus.UserNotApproved:
                             ModelState.AddModelError("ErrorMessage", App_LocalResources.Login.user_not_approve);
                             break;
+                        // Account banned
                         case LoginAttemptStatus.Banned:
-                            ModelState.AddModelError("ErrorMessage", @"Account has been banned.");
+                            ModelState.AddModelError("ErrorMessage", App_LocalResources.Login.user_banned);
                             break;
                     }
+                    // If have not error redirect to Index Backend
                     if (ModelState.Errors() != null)
                     {
                         return View(loginViewModel);
@@ -161,11 +163,6 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                     SessionPersister.Roles = _membershipService.GetRolesForUser(loginViewModel.UserName).ToArray();
                     SessionPersister.FullName = _membershipService.GetUser(loginViewModel.UserName).FullName;
                     SessionPersister.UserImageUrl = _membershipService.GetUser(loginViewModel.UserName).Avatar;
-                    //                    if (Url.IsLocalUrl(loginViewModel.ReturnUrl) && loginViewModel.ReturnUrl.Length > 1 && loginViewModel.ReturnUrl.StartsWith("/")
-                    //                                        && !loginViewModel.ReturnUrl.StartsWith("//") && !loginViewModel.ReturnUrl.StartsWith("/\\"))
-                    //                    {
-                    //                        return Redirect(loginViewModel.ReturnUrl);
-                    //                    }
 
                     return _membershipService.GetRolesForUser(SessionPersister.Username).Contains(AppConstants.AdminRoleName) ? RedirectToAction("Index", "Account", new {area = "Admin"}) : RedirectToAction("Index", "Schedule", new {area = "Admin"});
                 }
@@ -195,32 +192,31 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         [AllowAnonymous]
         public ActionResult Register(RegisterViewModel registerViewModel)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-//                var error = string.Join("; ", ModelState.Values
-//                                        .SelectMany(x => x.Errors)
-//                                        .Select(x => x.ErrorMessage));
-//                ModelState.AddModelError(string.Empty, error);
+                var userToSave = new Core.DomainModel.Membership.MembershipUser
+                {
+                    Email = registerViewModel.Email,
+                    Password = registerViewModel.Password,
+                    FullName = registerViewModel.FullName,
+                    PhoneNumber = registerViewModel.Phone
+                };
+
+                var createStatus = _membershipService.CreateUser(userToSave);
+
+                if (createStatus.Errors.Count != 0)
+                {
+                    ModelState.AddModelError("ErrorMessage", App_LocalResources.Register.register_failed);
+                    return View(registerViewModel);
+                }
+
+                TempData["Message"] = App_LocalResources.Register.register_success;
+                return RedirectToAction("Login", "Account", new { area = "Admin" });
+            }
+            else
+            {
                 return View(registerViewModel);
             }
-
-            var userToSave = new Core.DomainModel.Membership.MembershipUser
-            {
-                Email = registerViewModel.Email,
-                Password = registerViewModel.Password,
-                FullName = registerViewModel.FullName,
-                PhoneNumber = registerViewModel.Phone
-            };
-
-            var createStatus = _membershipService.CreateUser(userToSave);
-
-            if (createStatus.Errors.Count != 0)
-            {
-                ModelState.AddModelError("ErrorMessage", createStatus.Errors[0]);
-                return View(registerViewModel);
-            }
-            TempData["Message"] = App_LocalResources.Register.register_success;
-            return RedirectToAction("Login", "Account", new {area = "Admin"});
         }
         
         private static MemberViewModels.SelfMemberEditViewModel PopulateMemberViewModel(MembershipUser user)
@@ -380,65 +376,62 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
-            // Create the empty view forgot password model
-            var viewForgotPasswordModel = new MemberViewModels.ForgotPasswordViewModel();
-            viewForgotPasswordModel.Message = (string)TempData["Message"];
-            return View(viewForgotPasswordModel);
+            return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ForgotPassword(MemberViewModels.ForgotPasswordViewModel forgotPasswordViewModel)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(forgotPasswordViewModel);
-            }
+                var user = _membershipService.GetUser(forgotPasswordViewModel.EmailAddress);
 
-            var user = _membershipService.GetUser(forgotPasswordViewModel.EmailAddress);
-
-            // If the email address is not registered then display the 'email sent' confirmation the same as if 
-            // the email address was registered. There is no harm in doing this and it avoids exposing registered 
-            // email addresses which could be a privacy issue if the forum is of a sensitive nature. */
-            if (user == null)
-            {
-//                TempData["Message"] = App_LocalResources.ForgotPassword.ERR_MESSAGE_NO_EXIST;
-                return RedirectToAction("ForgotPassword", "Account", new { area = "Admin" });
-            }
-            
-            // If the user is registered then create a security token and a timestamp that will allow a change of password
-            if (!_membershipService.UpdatePasswordResetToken(user).Success)
-            {
-                return View(forgotPasswordViewModel);
-            }
-            
-            // At this point the email address is registered and a security token has been created
-            // so send an email with instructions on how to change the password
-            try
-            {
-                var url = new Uri(string.Concat(_settingsService.GetSettings().SiteName.TrimEnd('/'), Url.Action("ResetPassword", "Account", new { user.Email, token = user.PasswordResetToken })));
-
-                var sb = new StringBuilder();
-                sb.AppendFormat("<p>{0}</p>", string.Format(AppConstants.ResetPasswordEmailText, _settingsService.GetSettings().SiteName));
-                sb.AppendFormat("<p><a href=\"{0}\">{0}</a></p>", url);
-
-                var email = new Email
+                // not exist user
+                if (user == null)
                 {
-                    EmailTo = user.Email,
-                    NameTo = user.FullName,
-                    Subject = AppConstants.ForgotPasswordSubject
-                };
-                email.Body = _emailService.EmailTemplate(email.NameTo, sb.ToString());
-                _emailService.SendMail(email);
+                    ModelState.AddModelError("ErrorMessage", App_LocalResources.ForgotPassword.ERR_MESSAGE_NO_EXIST);
+                    return View(forgotPasswordViewModel);
+                }
+
+                // If the user is registered then create a security token and a timestamp that will allow a change of password
+                if (!_membershipService.UpdatePasswordResetToken(user).Success)
+                {
+                    return View(forgotPasswordViewModel);
+                }
+
+                // At this point the email address is registered and a security token has been created
+                // so send an email with instructions on how to change the password
+                try
+                {
+                    var url = new Uri(string.Concat(_settingsService.GetSettings().SiteName.TrimEnd('/'), Url.Action("ResetPassword", "Account", new { user.Email, token = user.PasswordResetToken })));
+
+                    var sb = new StringBuilder();
+                    sb.AppendFormat("<p>{0}</p>", string.Format(AppConstants.ResetPasswordEmailText, _settingsService.GetSettings().SiteName));
+                    sb.AppendFormat("<p><a href=\"{0}\">{0}</a></p>", url);
+
+                    var email = new Email
+                    {
+                        EmailTo = user.Email,
+                        NameTo = user.FullName,
+                        Subject = AppConstants.ForgotPasswordSubject
+                    };
+                    email.Body = _emailService.EmailTemplate(email.NameTo, sb.ToString());
+                    _emailService.SendMail(email);
+
+                    TempData["Message"] = App_LocalResources.ForgotPassword.SUC_MESSAGE_SEND_EMAIL;
+                    return RedirectToAction("Login", "Account", new { area = "Admin" });
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError("ErrorMessage", App_LocalResources.ForgotPassword.reset_password_error);
+                    return View(forgotPasswordViewModel);
+                }
             }
-            catch (Exception exception)
+            else
             {
-                ModelState.AddModelError("ErrorMessage", string.Format(App_LocalResources.ForgotPassword.reset_password_error, exception.Message));
                 return View(forgotPasswordViewModel);
             }
-
-//            TempData["Message"] = App_LocalResources.ForgotPassword.SUC_MESSAGE_SEND_EMAIL;
-            return RedirectToAction("Login", "Account", new { area = "Admin" });
         }
 
         [HttpGet]
@@ -452,7 +445,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(token))
             {
-                ModelState.AddModelError(string.Empty, AppConstants.ResetPasswordInvalidToken);
+                ModelState.AddModelError("ErrorMessage", App_LocalResources.ResetPassword.reset_password_error);
             }
 
             return View(model);
@@ -462,32 +455,33 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ResetPassword(MemberViewModels.ResetPasswordViewModel postedViewModel)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
+            {
+                if (!string.IsNullOrEmpty(postedViewModel.Email))
+                {
+                    var user = _membershipService.GetUser(postedViewModel.Email);
+
+                    // if the user id wasn't found then we can't proceed
+                    // if the token submitted is not valid then do not proceed
+                    if (user == null || user.PasswordResetToken == null || !_membershipService.IsPasswordResetTokenValid(user, postedViewModel.Token))
+                    {
+                        ModelState.AddModelError("ErrorMessage", App_LocalResources.ResetPassword.reset_password_error);
+                        return View(postedViewModel);
+                    }
+
+                    if (!_membershipService.ResetPassword(user, postedViewModel.NewPassword))
+                    {
+                        ModelState.AddModelError("ErrorMessage", App_LocalResources.ResetPassword.reset_password_error);
+                        return View(postedViewModel);
+                    }
+                }
+                TempData["Message"] = App_LocalResources.ResetPassword.SUC_MESSAGE_RESET_PASSWORD;
+                return RedirectToAction("Login", "Account", new { area = "Admin" });
+            }
+            else
             {
                 return View(postedViewModel);
             }
-
-            if (!string.IsNullOrEmpty(postedViewModel.Email))
-            {
-                var user = _membershipService.GetUser(postedViewModel.Email);
-
-                // if the user id wasn't found then we can't proceed
-                // if the token submitted is not valid then do not proceed
-                if (user == null || user.PasswordResetToken == null || !_membershipService.IsPasswordResetTokenValid(user, postedViewModel.Token))
-                {
-                    ModelState.AddModelError(string.Empty, AppConstants.ResetPasswordInvalidToken);
-                    return View(postedViewModel);
-                }
-
-                if (!_membershipService.ResetPassword(user, postedViewModel.NewPassword))
-                {
-                    ModelState.AddModelError(string.Empty, AppConstants.ResetPasswordInvalidToken);
-                    return View(postedViewModel);
-                }
-            }
-
-//            TempData["Message"] = App_LocalResources.ResetPassword.SUC_MESSAGE_RESET_PASSWORD;
-            return RedirectToAction("Login", "Account", new { area = "Admin" });
         }
     }
 }

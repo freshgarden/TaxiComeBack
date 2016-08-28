@@ -97,7 +97,16 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lưu y: Bạn hãy chọn email có thật để đăng ký.
+        ///   Looks up a localized string similar to Quay lại đăng nhập.
+        /// </summary>
+        public static string lbl_login_back {
+            get {
+                return ResourceManager.GetString("lbl_login_back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lưu ý: Bạn hãy chọn email có thật để đăng ký.
         /// </summary>
         public static string note {
             get {
@@ -165,6 +174,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string re_password_match {
             get {
                 return ResourceManager.GetString("re_password_match", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đăng ký thất bại, bạn hãy thử lại lần nữa..
+        /// </summary>
+        public static string register_failed {
+            get {
+                return ResourceManager.GetString("register_failed", resourceCulture);
             }
         }
         

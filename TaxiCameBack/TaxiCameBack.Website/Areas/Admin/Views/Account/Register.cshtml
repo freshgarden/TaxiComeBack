@@ -68,7 +68,7 @@
                     @Html.ValidationMessageFor(model => model.RetypePassword, "", new { @class = "text-danger" })
                 </div>
                 <div class="row">
-                    <div class="col-xs-8">
+                    <div class="col-xs-12">
                         <div class="checkbox icheck">
                             <label>
                                 @Html.CheckBoxFor(model => model.AgreeTerm, "") @Register.lbl_agree_term
@@ -76,13 +76,14 @@
                         </div>
                         @Html.ValidationMessageFor(model => model.AgreeTerm, "", new { @class = "text-danger" })
                     </div>
-                    <!-- /.col -->
-                    <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">@Register.btn_register</button>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button type="submit" class="btn btn-primary btn-flat center-block">@Register.btn_register</button>
                     </div>
-                    <!-- /.col -->
                 </div>
             }
+            <a href="@Url.Action("Login", "Account")">@Register.lbl_login_back</a><br>
         </div>
         <!-- /.form-box -->
     </div>

@@ -57,7 +57,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 return Json(new {status = "ERROR", messenge = result.Errors}, JsonRequestBehavior.AllowGet);
             var message = new GenericMessageViewModel
             {
-                Message = "Save successfull!",
+                Message = App_LocalResources.Schedule.create_schedule_success,
                 MessageType = GenericMessages.success
             };
             TempData[AppConstants.MessageViewBagName] = message;
@@ -85,7 +85,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 return Json(new {status = "ERROR", messenge = result.Errors}, JsonRequestBehavior.AllowGet);
             var message = new GenericMessageViewModel
             {
-                Message = "Update successfull!",
+                Message = App_LocalResources.Schedule.update_schedule_success,
                 MessageType = GenericMessages.success
             };
             TempData[AppConstants.MessageViewBagName] = message;

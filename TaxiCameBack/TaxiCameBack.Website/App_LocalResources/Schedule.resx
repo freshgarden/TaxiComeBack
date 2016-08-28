@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="create_schedule_success" xml:space="preserve">
+    <value>Tạo lịch trình thành công</value>
+  </data>
   <data name="lbl_create_schedule" xml:space="preserve">
     <value>Đăng ký lộ trình</value>
   </data>
@@ -128,5 +131,8 @@
   </data>
   <data name="title" xml:space="preserve">
     <value>Lịch trình</value>
+  </data>
+  <data name="update_schedule_success" xml:space="preserve">
+    <value>Cập nhật lịch trình thành công</value>
   </data>
 </root>
