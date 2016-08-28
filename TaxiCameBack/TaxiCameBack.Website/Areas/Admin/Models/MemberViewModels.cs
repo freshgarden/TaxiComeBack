@@ -9,7 +9,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
     {
         public class ForgotPasswordViewModel
         {
-            [EmailAddress(ErrorMessageResourceType = typeof(ForgotPassword),ErrorMessageResourceName = "email_type")]
+            [EmailAddress(ErrorMessageResourceType = typeof(ForgotPassword),ErrorMessageResourceName = "email_type", ErrorMessage = null)]
             [Required(ErrorMessageResourceType = typeof(ForgotPassword),ErrorMessageResourceName = "rqr_email")]
             public string EmailAddress { get; set; }
 
