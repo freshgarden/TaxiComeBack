@@ -79,6 +79,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quay lại.
+        /// </summary>
+        public static string btn_Back {
+            get {
+                return ResourceManager.GetString("btn_Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tạo.
         /// </summary>
         public static string btn_create {

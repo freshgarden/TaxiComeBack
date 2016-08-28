@@ -123,6 +123,9 @@
   <data name="admin_specific" xml:space="preserve">
     <value>Quản trị</value>
   </data>
+  <data name="btn_Back" xml:space="preserve">
+    <value>Quay lại</value>
+  </data>
   <data name="btn_create" xml:space="preserve">
     <value>Tạo</value>
   </data>

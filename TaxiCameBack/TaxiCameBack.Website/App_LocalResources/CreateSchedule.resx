@@ -129,6 +129,9 @@
   <data name="btnUpdate" xml:space="preserve">
     <value>Cập nhật</value>
   </data>
+  <data name="btn_Back" xml:space="preserve">
+    <value>Quay lại</value>
+  </data>
   <data name="end_location_required" xml:space="preserve">
     <value>Điểm đến không được để trống</value>
   </data>

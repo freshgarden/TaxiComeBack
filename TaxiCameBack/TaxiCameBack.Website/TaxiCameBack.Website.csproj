@@ -453,6 +453,7 @@
     <Content Include="Content\frontend-css\responsive.css" />
     <Content Include="Content\frontend-css\revslider.css" />
     <Content Include="Content\frontend-css\style.css" />
+    <Content Include="Content\Images\background.jpg" />
     <Content Include="Content\Images\default-user-image.png" />
     <Content Include="Content\Images\frontend-images\admin.jpg" />
     <Content Include="Content\Images\frontend-images\blog_comments_ballon_after.png" />

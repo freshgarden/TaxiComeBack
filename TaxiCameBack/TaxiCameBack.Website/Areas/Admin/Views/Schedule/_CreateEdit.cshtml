@@ -1,9 +1,10 @@
 ﻿@model TaxiCameBack.Website.Areas.Admin.Models.ScheduleViewModel
-@{ 
+@{
     if (ViewBag.Type == 0)
     {
         ViewBag.Title = CreateSchedule.title;
-    }else
+    }
+    else
     {
         ViewBag.Title = EditSchedule.title;
     }
@@ -38,7 +39,8 @@
                     @Html.AntiForgeryToken()
 
                     @Html.Partial("_ScheduleField")
-                    <hr/>
+                    <hr />
+                    <a class="btn btn-default pull-left" onclick="history.go(-1); return false;" href="#">@CreateSchedule.btn_Back</a>
                     @{
                         if (ViewBag.Type == 0)
                         {
@@ -48,7 +50,7 @@
                         {
                             <button class="btn btn-primary pull-right" data-bind="click: saveSchedule">@CreateSchedule.btnUpdate</button>
                         }
-                    }   
+                    }
                 </div>
             </div>
         </div>
