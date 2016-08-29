@@ -39,13 +39,13 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
             public DateTime? DateOfBirth { get; set; }
 
             [Display(ResourceType = typeof(UserProfile), Name = "day")]
-            public int Day { get; set; }
+            public int? Day { get; set; }
 
             [Display(ResourceType = typeof(UserProfile), Name = "month")]
-            public int Month { get; set; }
+            public int? Month { get; set; }
 
             [Display(ResourceType = typeof(UserProfile), Name = "year")]
-            public int Year { get; set; }
+            public int? Year { get; set; }
 
             [Display(ResourceType = typeof(UserProfile), Name = "address")]
             public string Address { get; set; }

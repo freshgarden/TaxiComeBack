@@ -310,7 +310,8 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 loggedOnUser.FullName = editViewModel.FullName;
                 if (editViewModel.Day > 0 && editViewModel.Month > 0 && editViewModel.Year > 0)
                 {
-                    loggedOnUser.DateOfBirth = new DateTime(editViewModel.Year, editViewModel.Month, editViewModel.Day);
+                    if (editViewModel.Day.HasValue && editViewModel.Month.HasValue && editViewModel.Year.HasValue)
+                        loggedOnUser.DateOfBirth = new DateTime(editViewModel.Year.Value, editViewModel.Month.Value, editViewModel.Day.Value);
                 }
 
                 var result = _membershipService.ProfileUpdated(loggedOnUser);
