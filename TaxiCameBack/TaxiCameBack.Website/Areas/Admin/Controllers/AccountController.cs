@@ -315,6 +315,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 }
 
                 var result = _membershipService.ProfileUpdated(loggedOnUser);
+
                 if (result.Success)
                 {
                     TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
@@ -324,9 +325,10 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                     };
                     return RedirectToAction("EditProfile");
                 }
+
                 TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
                 {
-                    Message = result.Errors[0],
+                    Message = UserProfile.profile_update_fail,
                     MessageType = GenericMessages.danger
                 };
                 return View(editViewModel);
@@ -357,14 +359,15 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                     // We use temp data because we are doing a redirect
                     TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
                     {
-                        Message = "Change Password Success",
+                        Message = App_LocalResources.ChangePassword.change_password_success,
                         MessageType = GenericMessages.success
                     };
                     return RedirectToAction("EditProfile");
                 }
+
                 TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
                 {
-                    Message = "Change Password Error",
+                    Message = App_LocalResources.ChangePassword.change_password_fail,
                     MessageType = GenericMessages.danger
                 };
                 return RedirectToAction("EditProfile");

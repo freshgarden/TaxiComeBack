@@ -68,5 +68,23 @@ namespace TaxiCameBack.Website.App_LocalResources {
                 return ResourceManager.GetString("btn_change_password", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đổi mật khẩu thất bại.
+        /// </summary>
+        public static string change_password_fail {
+            get {
+                return ResourceManager.GetString("change_password_fail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đổi mật khẩu thành công.
+        /// </summary>
+        public static string change_password_success {
+            get {
+                return ResourceManager.GetString("change_password_success", resourceCulture);
+            }
+        }
     }
 }

@@ -1,21 +1,36 @@
-﻿@{
-    ViewBag.Title = "Send Test Email";
+﻿@using TaxiCameBack.Website.Application.Extension
+@{
+    ViewBag.Title = SettingPage.test_email_title;
 }
 
-<div class="panel">
-    <div class="panel-heading">
-        <h5>@ViewBag.Title</h5>
-    </div>
-    <div class="panel-content">
-        @using (Html.BeginForm("SendTestEmail", "Settings", FormMethod.Post))
-        {
-            @Html.ValidationSummary(false)
-            <p>Click the button below to send the test email, you must have saved your SMTP details on the previous page.</p>
-            <div class="submit-holder">
-                <input type="submit" class="btn-mvc-green btn-mvc-large" value="Send Test Email" />
-            </div>
-        }
+    <section class="content-header">
+        <h1>
+            @ViewBag.Title
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index")"><i class="fa fa-dashboard"></i> @HomeBackEnd.home_breadcrumb</a></li>
+            <li class="active">@ViewBag.Title</li>
+        </ol>
+    </section>
 
-    </div>
-</div>
+    <!-- Main content -->
+    <section class="content">
+        <!-- Info boxes -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        @using (Html.BeginForm("SendTestEmail", "Settings", FormMethod.Post))
+                        {
+                            @Html.ValidationSummary(false)
+                            <p>@SettingPage.test_email_note</p>
+                            <div class="submit-holder">
+                                <input type="submit" class="btn btn-primary" value="@SettingPage.btn_send_test_email" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 

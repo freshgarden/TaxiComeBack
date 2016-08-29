@@ -133,7 +133,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mật khẩu vượt quá giới hạn.
+        ///   Looks up a localized string similar to Mật khẩu đã quá giới hạn cho phép nhập..
         /// </summary>
         public static string password_attemp {
             get {
@@ -205,7 +205,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tài khoản đang bị tạm khóa !.
+        ///   Looks up a localized string similar to Bạn đã đăng nhập sai 5 lần. Tài khoản tạm thời bị khóa !.
         /// </summary>
         public static string user_locked {
             get {
@@ -214,7 +214,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tài khoản chưa được duyệt !.
+        ///   Looks up a localized string similar to Tài khoản chưa được chấp thuận !.
         /// </summary>
         public static string user_not_approve {
             get {

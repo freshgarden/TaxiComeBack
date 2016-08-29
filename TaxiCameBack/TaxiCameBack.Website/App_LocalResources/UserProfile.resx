@@ -171,6 +171,9 @@
   <data name="profile_updated" xml:space="preserve">
     <value>Hồ sơ đã được cập nhật</value>
   </data>
+  <data name="profile_update_fail" xml:space="preserve">
+    <value>Hồ sơ cập nhật thất bại</value>
+  </data>
   <data name="upload_avatar" xml:space="preserve">
     <value>Hình đại diện</value>
   </data>

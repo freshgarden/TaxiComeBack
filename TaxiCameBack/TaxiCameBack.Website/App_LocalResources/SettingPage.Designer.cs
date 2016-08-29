@@ -70,6 +70,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gửi.
+        /// </summary>
+        public static string btn_send_test_email {
+            get {
+                return ResourceManager.GetString("btn_send_test_email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cài đặt email.
         /// </summary>
         public static string email_setting {
@@ -106,6 +115,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hãy nhấn nút bên dưới để hệ thống kiểm tra việc gửi email..
+        /// </summary>
+        public static string test_email_note {
+            get {
+                return ResourceManager.GetString("test_email_note", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kiểm tra email cài đặt.
         /// </summary>
         public static string test_email_setting {
@@ -120,6 +138,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string test_email_success {
             get {
                 return ResourceManager.GetString("test_email_success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kiểm tra gửi Email.
+        /// </summary>
+        public static string test_email_title {
+            get {
+                return ResourceManager.GetString("test_email_title", resourceCulture);
             }
         }
         

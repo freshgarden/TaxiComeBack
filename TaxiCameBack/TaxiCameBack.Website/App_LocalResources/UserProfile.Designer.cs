@@ -214,6 +214,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hồ sơ cập nhật thất bại.
+        /// </summary>
+        public static string profile_update_fail {
+            get {
+                return ResourceManager.GetString("profile_update_fail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hồ sơ đã được cập nhật.
         /// </summary>
         public static string profile_updated {

@@ -139,7 +139,7 @@
     <value>TaxiQuayVe | Đăng nhập</value>
   </data>
   <data name="password_attemp" xml:space="preserve">
-    <value>Mật khẩu vượt quá giới hạn</value>
+    <value>Mật khẩu đã quá giới hạn cho phép nhập.</value>
   </data>
   <data name="password_incorect" xml:space="preserve">
     <value>Tên tài khoản hoặc mật khẩu không đúng</value>
@@ -163,10 +163,10 @@
     <value>Tên tài khoản có độ dài tối đa 50 ký tự</value>
   </data>
   <data name="user_locked" xml:space="preserve">
-    <value>Tài khoản đang bị tạm khóa !</value>
+    <value>Bạn đã đăng nhập sai 5 lần. Tài khoản tạm thời bị khóa !</value>
   </data>
   <data name="user_not_approve" xml:space="preserve">
-    <value>Tài khoản chưa được duyệt !</value>
+    <value>Tài khoản chưa được chấp thuận !</value>
   </data>
   <data name="note" xml:space="preserve">
     <value>Hãy sử dụng email và mật khẩu khi đăng ký để đăng nhập vào hệ thống</value>

@@ -120,6 +120,9 @@
   <data name="btn_save" xml:space="preserve">
     <value>Lưu cài đặt</value>
   </data>
+  <data name="btn_send_test_email" xml:space="preserve">
+    <value>Gửi</value>
+  </data>
   <data name="email_setting" xml:space="preserve">
     <value>Cài đặt email</value>
   </data>
@@ -132,11 +135,17 @@
   <data name="test_email_failed" xml:space="preserve">
     <value>Gửi email để kiểm tra thất bại</value>
   </data>
+  <data name="test_email_note" xml:space="preserve">
+    <value>Hãy nhấn nút bên dưới để hệ thống kiểm tra việc gửi email.</value>
+  </data>
   <data name="test_email_setting" xml:space="preserve">
     <value>Kiểm tra email cài đặt</value>
   </data>
   <data name="test_email_success" xml:space="preserve">
     <value>Đã gửi email để kiểm tra thành công</value>
+  </data>
+  <data name="test_email_title" xml:space="preserve">
+    <value>Kiểm tra gửi Email</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Cài đặt</value>

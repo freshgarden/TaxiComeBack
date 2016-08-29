@@ -78,6 +78,7 @@
                     <li><a href="#changepassword" data-toggle="tab">@UserProfile.change_password</a></li>
                 </ul>
                 <div class="tab-content">
+                    @Html.Partial("_GenericMessage")
                     <!-- /.tab-pane -->
                     <div class="active tab-pane" id="editprofile">
                         @using (Html.BeginForm("EditProfile", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
