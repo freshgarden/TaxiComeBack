@@ -44,7 +44,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Models.Mapping
             existingSettings.Id = settingsViewModel.Id;
             existingSettings.SiteName = settingsViewModel.SiteName;
             existingSettings.SiteUrl = settingsViewModel.SiteUrl;
-            existingSettings.AdminEmailAddress = settingsViewModel.AdminEmailAddress;
+//            existingSettings.AdminEmailAddress = settingsViewModel.AdminEmailAddress;
             existingSettings.NotificationReplyEmail = settingsViewModel.NotificationReplyEmail;
             existingSettings.SMTP = settingsViewModel.SMTP;
             existingSettings.SMTPUsername = settingsViewModel.SMTPUsername;
@@ -62,7 +62,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Models.Mapping
                 Id = currentSettings.Id,
                 SiteName = currentSettings.SiteName,
                 SiteUrl = currentSettings.SiteUrl,
-                AdminEmailAddress = currentSettings.AdminEmailAddress,
+//                AdminEmailAddress = currentSettings.AdminEmailAddress,
                 NotificationReplyEmail = currentSettings.NotificationReplyEmail,
                 SMTP = currentSettings.SMTP,
                 SMTPUsername = currentSettings.SMTPUsername,

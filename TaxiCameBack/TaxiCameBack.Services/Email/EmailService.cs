@@ -88,6 +88,7 @@ namespace TaxiCameBack.Services.Email
                     var mySmtpClient = new SmtpClient(smtp);
                     if (!string.IsNullOrEmpty(smtpUsername) && !string.IsNullOrEmpty(smtpPassword))
                     {
+                        mySmtpClient.UseDefaultCredentials = false;
                         mySmtpClient.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
                     }
 

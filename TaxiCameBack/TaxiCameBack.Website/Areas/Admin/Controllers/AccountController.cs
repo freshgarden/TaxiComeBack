@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web.Hosting;
 using System.Web.Mvc;
 using TaxiCameBack.Core.Constants;
@@ -385,7 +386,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ForgotPassword(MemberViewModels.ForgotPasswordViewModel forgotPasswordViewModel)
+        public async Task<ActionResult> ForgotPassword(MemberViewModels.ForgotPasswordViewModel forgotPasswordViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -408,7 +409,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 // so send an email with instructions on how to change the password
                 try
                 {
-                    var url = new Uri(string.Concat(_settingsService.GetSettings().SiteName.TrimEnd('/'), Url.Action("ResetPassword", "Account", new { user.Email, token = user.PasswordResetToken })));
+                    var url = new Uri(string.Concat(_settingsService.GetSettings().SiteUrl.TrimEnd('/'), Url.Action("ResetPassword", "Account", new { user.Email, token = user.PasswordResetToken })));
 
                     var sb = new StringBuilder();
                     sb.AppendFormat("<p>{0}</p>", string.Format(AppConstants.ResetPasswordEmailText, _settingsService.GetSettings().SiteName));
@@ -421,7 +422,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                         Subject = AppConstants.ForgotPasswordSubject
                     };
                     email.Body = _emailService.EmailTemplate(email.NameTo, sb.ToString());
-                    _emailService.SendMail(email);
+                    await Task.Run(() => _emailService.SendMail(email));
 
                     TempData["Message"] = App_LocalResources.ForgotPassword.SUC_MESSAGE_SEND_EMAIL;
                     return RedirectToAction("Login", "Account", new { area = "Admin" });
