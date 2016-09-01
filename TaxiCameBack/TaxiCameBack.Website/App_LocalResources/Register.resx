@@ -120,17 +120,14 @@
   <data name="btn_register" xml:space="preserve">
     <value>Đăng ký</value>
   </data>
-  <data name="email_length" xml:space="preserve">
-    <value>Email có độ dài tối đa 50 ký tự</value>
-  </data>
   <data name="fullname_length" xml:space="preserve">
-    <value>Họ và tên có độ dài tối đa 50 ký tự</value>
+    <value>Họ và tên có độ dài tối đa 20 ký tự</value>
   </data>
   <data name="lbl_agree_term" xml:space="preserve">
     <value>Tôi đồng ý với các điều khoản</value>
   </data>
   <data name="password_length" xml:space="preserve">
-    <value>Mật khẩu có độ dài tối đa 50 ký tự</value>
+    <value>Mật khẩu có độ dài từ 8 đến 20 kí tự</value>
   </data>
   <data name="plc_email" xml:space="preserve">
     <value>Email</value>
@@ -154,7 +151,7 @@
     <value>TaxiQuayVe</value>
   </data>
   <data name="register_success" xml:space="preserve">
-    <value>Đăng ký tài khoản thành công ! Vui lòng chờ để chúng tôi duyệt tài khoản của bạn.</value>
+    <value>Đăng ký tài khoản thành công ! Xin đợi email xác nhận</value>
   </data>
   <data name="register_title" xml:space="preserve">
     <value>TaxiQuayVe | Đăng ký tài khoản</value>
@@ -188,5 +185,17 @@
   </data>
   <data name="register_failed" xml:space="preserve">
     <value>Đăng ký thất bại, bạn hãy thử lại lần nữa.</value>
+  </data>
+  <data name="uniq_email" xml:space="preserve">
+    <value>Email này đã được sử dụng để đăng ký.</value>
+  </data>
+  <data name="valid_email" xml:space="preserve">
+    <value>Email không hợp lệ</value>
+  </data>
+  <data name="valid_password" xml:space="preserve">
+    <value>Mật khẩu không hợp lệ</value>
+  </data>
+  <data name="valid_phone" xml:space="preserve">
+    <value>Số điện thoại không hợp lệ</value>
   </data>
 </root>

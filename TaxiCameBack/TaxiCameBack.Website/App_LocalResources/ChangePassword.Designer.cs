@@ -86,5 +86,86 @@ namespace TaxiCameBack.Website.App_LocalResources {
                 return ResourceManager.GetString("change_password_success", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu mới.
+        /// </summary>
+        public static string new_password {
+            get {
+                return ResourceManager.GetString("new_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu cũ.
+        /// </summary>
+        public static string old_password {
+            get {
+                return ResourceManager.GetString("old_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu cũ không được để trống.
+        /// </summary>
+        public static string old_rqr_password {
+            get {
+                return ResourceManager.GetString("old_rqr_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu mới phải có độ dài từ 8 - 20 kí tự.
+        /// </summary>
+        public static string password_length {
+            get {
+                return ResourceManager.GetString("password_length", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Xác nhận mật khẩu.
+        /// </summary>
+        public static string re_new_password {
+            get {
+                return ResourceManager.GetString("re_new_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nhập lại mật khẩu không khớp.
+        /// </summary>
+        public static string re_password_match {
+            get {
+                return ResourceManager.GetString("re_password_match", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu mới không được để trống.
+        /// </summary>
+        public static string rqr_password {
+            get {
+                return ResourceManager.GetString("rqr_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nhập lại mật khẩu không được để trống.
+        /// </summary>
+        public static string rqr_re_password {
+            get {
+                return ResourceManager.GetString("rqr_re_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu mới không hợp lệ.
+        /// </summary>
+        public static string valid_password {
+            get {
+                return ResourceManager.GetString("valid_password", resourceCulture);
+            }
+        }
     }
 }

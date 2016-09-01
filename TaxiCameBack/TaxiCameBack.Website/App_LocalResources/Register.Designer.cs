@@ -70,16 +70,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email có độ dài tối đa 50 ký tự.
-        /// </summary>
-        public static string email_length {
-            get {
-                return ResourceManager.GetString("email_length", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Họ và tên có độ dài tối đa 50 ký tự.
+        ///   Looks up a localized string similar to Họ và tên có độ dài tối đa 20 ký tự.
         /// </summary>
         public static string fullname_length {
             get {
@@ -115,7 +106,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mật khẩu có độ dài tối đa 50 ký tự.
+        ///   Looks up a localized string similar to Mật khẩu có độ dài từ 8 đến 20 kí tự.
         /// </summary>
         public static string password_length {
             get {
@@ -205,7 +196,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Đăng ký tài khoản thành công ! Vui lòng chờ để chúng tôi duyệt tài khoản của bạn..
+        ///   Looks up a localized string similar to Đăng ký tài khoản thành công ! Xin đợi email xác nhận.
         /// </summary>
         public static string register_success {
             get {
@@ -273,6 +264,42 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string rqr_re_password {
             get {
                 return ResourceManager.GetString("rqr_re_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email này đã được sử dụng để đăng ký..
+        /// </summary>
+        public static string uniq_email {
+            get {
+                return ResourceManager.GetString("uniq_email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email không hợp lệ.
+        /// </summary>
+        public static string valid_email {
+            get {
+                return ResourceManager.GetString("valid_email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu không hợp lệ.
+        /// </summary>
+        public static string valid_password {
+            get {
+                return ResourceManager.GetString("valid_password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số điện thoại không hợp lệ.
+        /// </summary>
+        public static string valid_phone {
+            get {
+                return ResourceManager.GetString("valid_phone", resourceCulture);
             }
         }
     }

@@ -31,7 +31,7 @@
         if (ajaxLoading) ajaxLoading.remove();
         grecaptcha.reset();
         $('form').clearForm();
-        $.fancybox({ padding: 0, content: "<div id='login_form' class='box'><h3>Lỗi đăng ký</h3><div class='box-content'><ul><li>" + data.Message + "</ul></div></div>" });
+        $.fancybox({ padding: 0, content: "<div id='login_form' class='box'><h3>Thông báo</h3><div class='box-content'><ul><li>" + data.Message + "</ul></div></div>" });
     };
     var onFailure = function () {
         if (ajaxLoading) ajaxLoading.remove();
@@ -43,13 +43,13 @@
         notification.client.addNewMessageToPage = function (message) {
             $.fancybox.close();
             setTimeout(function () {
-                $.fancybox({ padding: 0, content: "<div id='login_form' class='box'><h3>Đăng ký thành công</h3><div class='box-content'><p>" + message + "</p></div></div>" });
+                $.fancybox({ padding: 0, content: "<div id='login_form' class='box'><h3>Thông báo</h3><div class='box-content'><p>" + message + "</p></div></div>" });
             }, 1000);
         };
         notification.client.addNewErrorMessageToPage = function (message) {
             $.fancybox.close();
             setTimeout(function () {
-                $.fancybox({ padding: 0, content: "<div id='login_form' class='box'><h3>Đăng ký thất bại</h3><div class='box-content'><p>" + message + "</p></div></div>" });
+                $.fancybox({ padding: 0, content: "<div id='login_form' class='box'><h3>Thông báo</h3><div class='box-content'><p>" + message + "</p></div></div>" });
             }, 1000);
         };
         // Start the connection.

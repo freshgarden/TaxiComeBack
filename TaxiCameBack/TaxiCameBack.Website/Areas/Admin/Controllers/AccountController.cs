@@ -182,6 +182,15 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             return RedirectToAction("Login", "Account", new {area = "Admin"});
         }
 
+        [HttpPost]
+        public JsonResult doesUserNameExist(string email)
+        {
+
+            var user = _membershipService.GetUser(email);
+
+            return Json(user == null);
+        }
+
         [AllowAnonymous]
         public ActionResult Register()
         {

@@ -96,7 +96,7 @@
                                 @Html.LabelFor(x => x.FullName, new { @class = "col-sm-2 control-label" })
                                 <div class="col-sm-10">
                                     @Html.TextBoxFor(x => x.FullName, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(x => x.FullName, "", new { @class = "text-danger", @placeholder = UserProfile.full_name })
+                                    @Html.ValidationMessageFor(x => x.FullName, "", new { @class = "text-danger", @placeholder = UserProfile.full_name, maxlength = 20 })
                                 </div>
                             </div>
 
@@ -133,11 +133,11 @@
                                         <div class="radio">
                                             <label>
                                                 @Html.RadioButtonFor(x => x.Gender, "Male")
-                                                Nam
+                                                @UserProfile.lbl_Male
                                             </label>
                                             <label>
                                                 @Html.RadioButtonFor(x => x.Gender, "Female")
-                                                Nữ
+                                                @UserProfile.lbl_Female
                                             </label>
                                         </div>
                                     </div>
@@ -166,7 +166,7 @@
                                 <div class="form-group">
                                     @Html.LabelFor(x => x.Address, new { @class = "col-sm-2 control-label" })
                                     <div class="col-sm-10">
-                                        @Html.TextBoxFor(x => x.Address, new { @class = "form-control", @placeholder = UserProfile.address })
+                                        @Html.TextBoxFor(x => x.Address, new { @class = "form-control", @placeholder = UserProfile.address, maxlenght = 50 })
                                         @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -174,7 +174,7 @@
                                 <div class="form-group">
                                     @Html.LabelFor(x => x.PhoneNumber, new { @class = "col-sm-2 control-label" })
                                     <div class="col-sm-10">
-                                        @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control", type = "number", @placeholder = UserProfile.phone })
+                                        @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control", @placeholder = UserProfile.phone, maxlength = 11 })
                                         @Html.ValidationMessageFor(x => x.PhoneNumber, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@
                                 <div class="form-group">
                                     @Html.LabelFor(x => x.CarNumber, new { @class = "col-sm-2 control-label" })
                                     <div class="col-sm-10">
-                                        @Html.TextBoxFor(x => x.CarNumber, new { @class = "form-control", @placeholder = UserProfile.plate_number })
+                                        @Html.TextBoxFor(x => x.CarNumber, new { @class = "form-control", @placeholder = UserProfile.plate_number, maxlength = 15 })
                                         @Html.ValidationMessageFor(x => x.CarNumber, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -190,7 +190,7 @@
                                 <div class="form-group">
                                     @Html.LabelFor(x => x.Carmakers, new { @class = "col-sm-2 control-label" })
                                     <div class="col-sm-10">
-                                        @Html.TextBoxFor(x => x.Carmakers, new { @class = "form-control", @placeholder = UserProfile.car_branch })
+                                        @Html.TextBoxFor(x => x.Carmakers, new { @class = "form-control", @placeholder = UserProfile.car_branch, maxlength = 20 })
                                         @Html.ValidationMessageFor(x => x.Carmakers, "", new { @class = "text-danger" })
                                     </div>
                                 </div>

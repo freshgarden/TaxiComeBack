@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Web;
 using TaxiCameBack.Website.App_LocalResources;
 
@@ -30,7 +31,8 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
             public HttpPostedFileBase File { get; set; }
 
             [Display(ResourceType = typeof(UserProfile), Name = "full_name")]
-            [Required]
+            [Required(ErrorMessageResourceType = typeof(UserProfile), ErrorMessageResourceName = "rqr_fullname")]
+            [StringLength(20, ErrorMessageResourceType = typeof(UserProfile), ErrorMessageResourceName = "fullname_length")]
             public string FullName { get; set; }
 
             public string Avatar { get; set; }
@@ -54,8 +56,8 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
             public string Gender { get; set; }
 
             [Display(ResourceType = typeof(UserProfile), Name = "phone")]
-            [Required]
-            [RegularExpression(@"^(0\d{9,10})$", ErrorMessageResourceType = typeof(UserProfile),ErrorMessageResourceName = "invalid_phone_number")]
+            [Required(ErrorMessageResourceType = typeof(UserProfile), ErrorMessageResourceName = "rqr_phone")]
+            [RegularExpression(@"^(0\d{9,10})$", ErrorMessageResourceType = typeof(UserProfile), ErrorMessageResourceName = "valid_phone")]
             public string PhoneNumber { get; set; }
             
             [Display(ResourceType = typeof(UserProfile), Name = "plate_number")]

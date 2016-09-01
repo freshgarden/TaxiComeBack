@@ -151,6 +151,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Họ và tên chỉ có tối đa 20 kí tự.
+        /// </summary>
+        public static string fullname_length {
+            get {
+                return ResourceManager.GetString("fullname_length", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Giới tính.
         /// </summary>
         public static string gender {
@@ -165,6 +174,24 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string invalid_phone_number {
             get {
                 return ResourceManager.GetString("invalid_phone_number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nữ.
+        /// </summary>
+        public static string lbl_Female {
+            get {
+                return ResourceManager.GetString("lbl_Female", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nam.
+        /// </summary>
+        public static string lbl_Male {
+            get {
+                return ResourceManager.GetString("lbl_Male", resourceCulture);
             }
         }
         
@@ -232,6 +259,24 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Họ và tên không được để trống.
+        /// </summary>
+        public static string rqr_fullname {
+            get {
+                return ResourceManager.GetString("rqr_fullname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số điện thoại không được để trống.
+        /// </summary>
+        public static string rqr_phone {
+            get {
+                return ResourceManager.GetString("rqr_phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hình đại diện.
         /// </summary>
         public static string upload_avatar {
@@ -246,6 +291,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string user_profile_title {
             get {
                 return ResourceManager.GetString("user_profile_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số điện thoại không hợp lệ.
+        /// </summary>
+        public static string valid_phone {
+            get {
+                return ResourceManager.GetString("valid_phone", resourceCulture);
             }
         }
         

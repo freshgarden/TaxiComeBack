@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using TaxiCameBack.Website.App_LocalResources;
 
 namespace TaxiCameBack.Website.Models
 {
@@ -41,20 +42,19 @@ namespace TaxiCameBack.Website.Models
 
     public class ChangePasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(ChangePassword), ErrorMessageResourceName = "old_rqr_password")]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
         public string OldPassword { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessageResourceType = typeof(ChangePassword), ErrorMessageResourceName = "rqr_password")]
+        [StringLength(20, MinimumLength = 8, ErrorMessageResourceType = typeof(ChangePassword), ErrorMessageResourceName = "password_length")]
+        [RegularExpression(@"^\S*$", ErrorMessageResourceType = typeof(ChangePassword), ErrorMessageResourceName = "valid_password")]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
         public string NewPassword { get; set; }
 
+        [Required(ErrorMessageResourceType = typeof(ChangePassword), ErrorMessageResourceName = "rqr_re_password")]
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Compare("NewPassword", ErrorMessageResourceType = typeof(ChangePassword), ErrorMessageResourceName = "re_password_match")]
         public string ConfirmPassword { get; set; }
     }
 

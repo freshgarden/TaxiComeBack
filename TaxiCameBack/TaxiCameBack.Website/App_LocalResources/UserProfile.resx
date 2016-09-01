@@ -183,4 +183,22 @@
   <data name="year" xml:space="preserve">
     <value>Năm</value>
   </data>
+  <data name="fullname_length" xml:space="preserve">
+    <value>Họ và tên chỉ có tối đa 20 kí tự</value>
+  </data>
+  <data name="lbl_Female" xml:space="preserve">
+    <value>Nữ</value>
+  </data>
+  <data name="lbl_Male" xml:space="preserve">
+    <value>Nam</value>
+  </data>
+  <data name="rqr_fullname" xml:space="preserve">
+    <value>Họ và tên không được để trống</value>
+  </data>
+  <data name="rqr_phone" xml:space="preserve">
+    <value>Số điện thoại không được để trống</value>
+  </data>
+  <data name="valid_phone" xml:space="preserve">
+    <value>Số điện thoại không hợp lệ</value>
+  </data>
 </root>
