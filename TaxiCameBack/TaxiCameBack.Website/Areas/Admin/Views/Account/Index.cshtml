@@ -57,22 +57,20 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => user.Phone)
                                     </td>
+                                    @if (user.IsApproved)
+                                    {
+                                        <td><span class="label label-success">@AccountManager.approve_title</span></td>
+                                    }
+                                    else
+                                    {
+                                        <td><span class="label label-warning">@AccountManager.pending_title</span></td>
+                                    }
+
                                     @if (user.IsLockedOut)
                                     {
-                                        <td></td>
                                         <td><span class="label label-danger">@AccountManager.lock_title</span></td>
                                     }else
                                     {
-                                        <td>
-                                            @if (user.IsApproved)
-                                            {
-                                                <span class="label label-success">@AccountManager.approve_title</span>
-                                            }
-                                            else
-                                            {
-                                                <span class="label label-warning">@AccountManager.pending_title</span>
-                                            }
-                                        </td>
                                         <td></td>
                                     }
 

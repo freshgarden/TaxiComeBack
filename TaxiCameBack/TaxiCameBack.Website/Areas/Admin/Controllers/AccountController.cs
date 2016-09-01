@@ -101,13 +101,13 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 if (isApprove && userModel.IsApproved)
                 {
                     var url = string.Concat(_settingsService.GetSettings().SiteUrl.TrimEnd('/'), Url.Action("Login", "Account"));
-                    SendInformEmail(user, AppConstants.ApproveUserEmailText, url, "Your account has approved");
+                    SendInformEmail(user, ApproveUser.approve_content_mail, url, ApproveUser.approve_subject_mail);
                 }
 
                 // reject
                 else if (isApprove && !userModel.IsApproved)
                 {
-                    SendInformEmail(user, AppConstants.RejectUserEmailText, "", "Your account has rejected");
+                    SendInformEmail(user, ApproveUser.reject_content_mail, "", ApproveUser.reject_subject_mail);
                 }
 
                 var message = new GenericMessageViewModel
@@ -246,11 +246,6 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             {
                 // check existed email address
                 var existedUser = _membershipService.GetUser(registerViewModel.Email);
-                if (existedUser != null)
-                {
-                    ModelState.AddModelError("ErrorMessage", "An Email already existed.");
-                    return View(registerViewModel);
-                }
 
                 var userToSave = new Core.DomainModel.Membership.MembershipUser
                 {
@@ -397,6 +392,24 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 : RedirectToAction("Index", "Schedule", new { area = "Admin" });
         }
 
+        [HttpPost]
+        public JsonResult doesOldPasswordMatch(string OldPassword)
+        {
+            var loggedOnUser = _membershipService.GetUser(SessionPersister.Username);
+            var oldPassword = StringUtils.SafePlainText(OldPassword);
+
+            var salt = loggedOnUser.PasswordSalt;
+            var oldHash = StringUtils.GenerateSaltedHash(oldPassword, salt);
+
+            if (oldHash != loggedOnUser.Password)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }else
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         [CustomAuthorize]
         public PartialViewResult ChangePassword()
         {
@@ -411,19 +424,6 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var loggedOnUser = _membershipService.GetUser(SessionPersister.Username);
-                var oldPassword = StringUtils.SafePlainText(model.OldPassword);
-                
-                var salt = loggedOnUser.PasswordSalt;
-                var oldHash = StringUtils.GenerateSaltedHash(oldPassword, salt);
-                if (oldHash != loggedOnUser.Password)
-                {
-                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
-                    {
-                        Message = "Old password is wrong.",
-                        MessageType = GenericMessages.danger
-                    };
-                    return RedirectToAction("EditProfile");
-                }
 
                 var result = _membershipService.ChangePassword(loggedOnUser, model.OldPassword, model.NewPassword);
                 if (result)

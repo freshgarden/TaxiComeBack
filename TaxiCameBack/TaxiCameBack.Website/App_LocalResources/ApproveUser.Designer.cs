@@ -79,7 +79,25 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cấp quyền cho tài xế thất bại..
+        ///   Looks up a localized string similar to Tài khoản của bạn đã được chấp thuận bởi quản trị viên. Xin vui lòng di chuyển tới trang {0} để đăng nhập vào hệ thống. Xin cảm ơn..
+        /// </summary>
+        public static string approve_content_mail {
+            get {
+                return ResourceManager.GetString("approve_content_mail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tài khoản được chấp thuận.
+        /// </summary>
+        public static string approve_subject_mail {
+            get {
+                return ResourceManager.GetString("approve_subject_mail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thay đổi quyền cho tài xế thành công..
         /// </summary>
         public static string approve_user_failed {
             get {
@@ -88,7 +106,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cấp quyền cho tài xế thành công..
+        ///   Looks up a localized string similar to Thay đổi quyền cho tài xế thất bại..
         /// </summary>
         public static string approve_user_success {
             get {
@@ -151,6 +169,24 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tài khoản của bạn đã bị bị từ chối đăng nhập bởi quản trị viên. Hãy liên lạc với quản trị viên để biết thêm thông tin. Xin cảm ơn.
+        /// </summary>
+        public static string reject_content_mail {
+            get {
+                return ResourceManager.GetString("reject_content_mail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tài khoản bị từ chối đăng nhập.
+        /// </summary>
+        public static string reject_subject_mail {
+            get {
+                return ResourceManager.GetString("reject_subject_mail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nhóm tài khoản.
         /// </summary>
         public static string roles {
@@ -169,7 +205,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tài khoản không được chấp thuận.
+        ///   Looks up a localized string similar to Tài khoản bị khóa (Do nhập sai quá 5 lần mật khẩu khi đăng nhập).
         /// </summary>
         public static string user_locked {
             get {

@@ -97,6 +97,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu cũ không chính xác.
+        /// </summary>
+        public static string old_pass_not_match {
+            get {
+                return ResourceManager.GetString("old_pass_not_match", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mật khẩu cũ.
         /// </summary>
         public static string old_password {

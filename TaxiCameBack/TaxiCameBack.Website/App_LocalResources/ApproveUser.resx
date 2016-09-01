@@ -123,11 +123,17 @@
   <data name="admin_specific" xml:space="preserve">
     <value>Quản trị</value>
   </data>
+  <data name="approve_content_mail" xml:space="preserve">
+    <value>Tài khoản của bạn đã được chấp thuận bởi quản trị viên. Xin vui lòng di chuyển tới trang {0} để đăng nhập vào hệ thống. Xin cảm ơn.</value>
+  </data>
+  <data name="approve_subject_mail" xml:space="preserve">
+    <value>Tài khoản được chấp thuận</value>
+  </data>
   <data name="approve_user_failed" xml:space="preserve">
-    <value>Cấp quyền cho tài xế thất bại.</value>
+    <value>Thay đổi quyền cho tài xế thành công.</value>
   </data>
   <data name="approve_user_success" xml:space="preserve">
-    <value>Cấp quyền cho tài xế thành công.</value>
+    <value>Thay đổi quyền cho tài xế thất bại.</value>
   </data>
   <data name="btn_Back" xml:space="preserve">
     <value>Quay lại</value>
@@ -147,6 +153,12 @@
   <data name="email_address" xml:space="preserve">
     <value>Địa chỉ email</value>
   </data>
+  <data name="reject_content_mail" xml:space="preserve">
+    <value>Tài khoản của bạn đã bị bị từ chối đăng nhập bởi quản trị viên. Hãy liên lạc với quản trị viên để biết thêm thông tin. Xin cảm ơn</value>
+  </data>
+  <data name="reject_subject_mail" xml:space="preserve">
+    <value>Tài khoản bị từ chối đăng nhập</value>
+  </data>
   <data name="roles" xml:space="preserve">
     <value>Nhóm tài khoản</value>
   </data>
@@ -154,7 +166,7 @@
     <value>Tài khoản được chấp thuận</value>
   </data>
   <data name="user_locked" xml:space="preserve">
-    <value>Tài khoản không được chấp thuận</value>
+    <value>Tài khoản bị khóa (Do nhập sai quá 5 lần mật khẩu khi đăng nhập)</value>
   </data>
   <data name="user_profile" xml:space="preserve">
     <value>Quản trị tài khoản</value>

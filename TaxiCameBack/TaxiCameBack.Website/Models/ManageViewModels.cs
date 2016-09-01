@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using TaxiCameBack.Website.App_LocalResources;
+using System.Web.Mvc;
 
 namespace TaxiCameBack.Website.Models
 {
@@ -36,13 +37,14 @@ namespace TaxiCameBack.Website.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
 
     public class ChangePasswordViewModel
     {
         [Required(ErrorMessageResourceType = typeof(ChangePassword), ErrorMessageResourceName = "old_rqr_password")]
+        [Remote("doesOldPasswordMatch", "Account", HttpMethod = "POST", ErrorMessageResourceType = typeof(ChangePassword), ErrorMessageResourceName = "old_pass_not_match")]
         [DataType(DataType.Password)]
         public string OldPassword { get; set; }
 
@@ -54,7 +56,7 @@ namespace TaxiCameBack.Website.Models
 
         [Required(ErrorMessageResourceType = typeof(ChangePassword), ErrorMessageResourceName = "rqr_re_password")]
         [DataType(DataType.Password)]
-        [Compare("NewPassword", ErrorMessageResourceType = typeof(ChangePassword), ErrorMessageResourceName = "re_password_match")]
+        [System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessageResourceType = typeof(ChangePassword), ErrorMessageResourceName = "re_password_match")]
         public string ConfirmPassword { get; set; }
     }
 
