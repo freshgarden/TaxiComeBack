@@ -2507,6 +2507,7 @@
     <EmbeddedResource Include="App_LocalResources\Register.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Register.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\ResetPassword.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

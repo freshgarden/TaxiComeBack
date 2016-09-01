@@ -8,7 +8,9 @@ using System.Web.Mvc;
 using TaxiCameBack.Core.Constants;
 using TaxiCameBack.Core.DomainModel.Email;
 using TaxiCameBack.Core.DomainModel.Membership;
+using TaxiCameBack.Core.Utilities;
 using TaxiCameBack.Services.Email;
+using TaxiCameBack.Services.Logging;
 using TaxiCameBack.Services.Membership;
 using TaxiCameBack.Services.Settings;
 using TaxiCameBack.Website.Application;
@@ -27,11 +29,14 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         private readonly IMembershipService _membershipService;
         private readonly IEmailService _emailService;
         private readonly ISettingsService _settingsService;
-        public AccountController(IMembershipService membershipService, IEmailService emailService, ISettingsService settingsService)
+        private readonly ILoggingService _loggingService;
+
+        public AccountController(IMembershipService membershipService, IEmailService emailService, ISettingsService settingsService, ILoggingService loggingService)
         {
             _membershipService = membershipService;
             _emailService = emailService;
             _settingsService = settingsService;
+            _loggingService = loggingService;
         }
 
         [CustomAuthorize]
@@ -78,7 +83,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         public ActionResult Edit(MemberEditViewModel userModel)
         {
             var user = _membershipService.GetById(userModel.Id);
-
+            var isApprove = userModel.IsApproved != user.Active;
             user.Email = userModel.Email;
             user.Active = userModel.IsApproved;
             user.IsLockedOut = userModel.IsLockedOut;
@@ -92,6 +97,19 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             }
             else
             {
+                // Is Approved
+                if (isApprove && userModel.IsApproved)
+                {
+                    var url = string.Concat(_settingsService.GetSettings().SiteUrl.TrimEnd('/'), Url.Action("Login", "Account"));
+                    SendInformEmail(user, AppConstants.ApproveUserEmailText, url, "Your account has approved");
+                }
+
+                // reject
+                else if (isApprove && !userModel.IsApproved)
+                {
+                    SendInformEmail(user, AppConstants.RejectUserEmailText, "", "Your account has rejected");
+                }
+
                 var message = new GenericMessageViewModel
                 {
                     Message = App_LocalResources.ApproveUser.approve_user_success,
@@ -100,6 +118,28 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
 
                 TempData[AppConstants.MessageViewBagName] = message;
                 return RedirectToAction("Index", "Account", new {area = "Admin"});
+            }
+        }
+
+        private void SendInformEmail(MembershipUser user, string emailText, string url, string subject)
+        {
+            try
+            {
+                var sb = new StringBuilder();
+                sb.AppendFormat("<p>{0}</p>", !string.IsNullOrEmpty(url) ? string.Format(emailText, url) : emailText);
+
+                var email = new Email
+                {
+                    EmailTo = user.Email,
+                    NameTo = user.FullName,
+                    Subject = subject
+                };
+                email.Body = _emailService.EmailTemplate(email.NameTo, sb.ToString());
+                Task.Run(() => _emailService.SendMail(email));
+            }
+            catch (Exception exception)
+            {
+                _loggingService.Error(exception);
             }
         }
 
@@ -204,6 +244,14 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                // check existed email address
+                var existedUser = _membershipService.GetUser(registerViewModel.Email);
+                if (existedUser != null)
+                {
+                    ModelState.AddModelError("ErrorMessage", "An Email already existed.");
+                    return View(registerViewModel);
+                }
+
                 var userToSave = new Core.DomainModel.Membership.MembershipUser
                 {
                     Email = registerViewModel.Email,
@@ -363,6 +411,20 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var loggedOnUser = _membershipService.GetUser(SessionPersister.Username);
+                var oldPassword = StringUtils.SafePlainText(model.OldPassword);
+                
+                var salt = loggedOnUser.PasswordSalt;
+                var oldHash = StringUtils.GenerateSaltedHash(oldPassword, salt);
+                if (oldHash != loggedOnUser.Password)
+                {
+                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                    {
+                        Message = "Old password is wrong.",
+                        MessageType = GenericMessages.danger
+                    };
+                    return RedirectToAction("EditProfile");
+                }
+
                 var result = _membershipService.ChangePassword(loggedOnUser, model.OldPassword, model.NewPassword);
                 if (result)
                 {
