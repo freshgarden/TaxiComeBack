@@ -258,7 +258,9 @@
   <ItemGroup>
     <Compile Include="Application\AppHelpers.cs" />
     <Compile Include="Application\Attributes\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Application\Attributes\ImageValidateAttribute.cs" />
     <Compile Include="Application\Attributes\ModelAttribute.cs" />
+    <Compile Include="Application\Extension\CollectionsExtensions.cs" />
     <Compile Include="Application\Extension\Extensions.cs" />
     <Compile Include="Application\Extension\HtmlLabelExtensions.cs" />
     <Compile Include="Application\Extension\ModelStateHelper.cs" />
@@ -2165,6 +2167,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cache\Cache.txt" />
     <None Include="Scripts\jquery-3.0.0.intellisense.js" />
+    <Content Include="Scripts\CustomValidation.js" />
     <Content Include="Scripts\frontend-js\bootstrap.min.js" />
     <Content Include="Scripts\frontend-js\custom.js" />
     <Content Include="Scripts\frontend-js\form_style.js" />

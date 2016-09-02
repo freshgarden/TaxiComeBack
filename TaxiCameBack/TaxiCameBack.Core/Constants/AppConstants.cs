@@ -20,7 +20,7 @@
 
         public const string MessageViewBagName = "Message";
         
-        public const int FileUploadMaximumFileSizeInBytes = 5242880;
+        public const int FileUploadMaximumFileSizeInBytes = 1048576;
         public const string FileUploadAllowedExtensions = "jpg,jpeg,png,gif,pdf";
         public const string UploadFolderPath = "~/content/uploads/";
         public const int AvatarProfileSize = 85;

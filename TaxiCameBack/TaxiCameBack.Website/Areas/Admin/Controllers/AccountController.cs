@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
 using TaxiCameBack.Core.Constants;
@@ -314,12 +317,17 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 ? RedirectToAction("Index", "Account", new { area = "Admin" })
                 : RedirectToAction("Index", "Schedule", new { area = "Admin" });
         }
-
+        
         [CustomAuthorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditProfile(MemberViewModels.SelfMemberEditViewModel editViewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(editViewModel);
+            }
+
             var loggedOnUser = _membershipService.GetById(editViewModel.Id);
             if (SessionPersister.Roles.Contains(AppConstants.AdminRoleName) ||
                 loggedOnUser.Email.Equals(SessionPersister.Username))

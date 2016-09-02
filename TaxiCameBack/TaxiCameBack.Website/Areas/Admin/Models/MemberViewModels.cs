@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+using TaxiCameBack.Website.Application.Attributes;
 using TaxiCameBack.Website.App_LocalResources;
 
 namespace TaxiCameBack.Website.Areas.Admin.Models
@@ -27,6 +29,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
             [Required]
             public string Email { get; set; }
             
+            [ImageValidate("jpeg|png|jpg|gif", 1 * 1024 * 1024)]
             [Display(ResourceType = typeof(UserProfile), Name = "upload_avatar")]
             public HttpPostedFileBase File { get; set; }
 
