@@ -36,7 +36,16 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         public JsonResult GetScheduleById(Guid id)
         {
             var schedule = _scheduleService.FindScheduleById(id);
-            return Json(schedule, JsonRequestBehavior.AllowGet);
+            return Json(new
+            {
+                schedule.Id,
+                schedule.BeginLocation,
+                schedule.EndLocation,
+                schedule.ScheduleGeolocations,
+                schedule.StartDate,
+                schedule.UserId,
+                CanUpdate = schedule.Notifications != null ? 0 : 1
+            }, JsonRequestBehavior.AllowGet);
         }
         [CustomAuthorize(Roles = AppConstants.StandardMembers)]
         public ActionResult Create()
@@ -77,9 +86,21 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
                 return Json(new {status = "ERROR", messenge = ModelState.Errors()}, JsonRequestBehavior.AllowGet);
-            if (_scheduleService.FindScheduleById(id).UserId != SessionPersister.UserId)
+
+            var existedSchedule = _scheduleService.FindScheduleById(id);
+            if (existedSchedule.Notifications != null)
+                return Json(new {status = "ERROR", messenge = "Can not delete this schedule which has been registed by customer."});
+            if (existedSchedule.UserId != SessionPersister.UserId)
                 return Json(new {status = "ERROR", messenge = "Wrong id!"});
             schedule.UserId = SessionPersister.UserId;
+
+            // if has notification, we donot edit schedule, just edit status
+            if (existedSchedule.Notifications != null)
+            {
+                schedule.BeginLocation = existedSchedule.BeginLocation;
+                schedule.EndLocation = existedSchedule.EndLocation;
+                schedule.StartDate = existedSchedule.StartDate;
+            }
             var result = _scheduleService.UpdateScheduleInformation(schedule);
             if (!result.Success)
                 return Json(new {status = "ERROR", messenge = result.Errors}, JsonRequestBehavior.AllowGet);

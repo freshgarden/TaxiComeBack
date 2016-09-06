@@ -2456,6 +2456,7 @@
     <EmbeddedResource Include="App_LocalResources\ApproveUser.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ApproveUser.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\ChangePassword.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

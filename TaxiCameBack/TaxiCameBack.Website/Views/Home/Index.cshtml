@@ -143,32 +143,32 @@
                             <div class="row">
                                 <div class="span6">
                                     @Html.LabelFor(x => x.BeginLocation, Home.lbl_startpoint, new { @class = "dropdown_label" })
-                                    @Html.TextBoxFor(x => x.BeginLocation, new { placeholder = Home.plh_StartPoint, autocomplete = "off", id = "start_point_reg", onkeypress = "return calcdir(event)" })
+                                    @Html.TextBoxFor(x => x.BeginLocation, new { placeholder = Home.plh_StartPoint, id = "start_point_reg", onkeypress = "return calcdir(event)" })
                                 </div>
                                 <div class="span6">
                                     @Html.LabelFor(x => x.EndLocation, Home.lbl_endpoint, new { @class = "dropdown_label" })
-                                    @Html.TextBoxFor(x => x.EndLocation, new { placeholder = Home.plh_EndPoint, autocomplete = "off", id = "end_point_reg", onkeypress = "return calcdir(event)" })
+                                    @Html.TextBoxFor(x => x.EndLocation, new { placeholder = Home.plh_EndPoint, id = "end_point_reg", onkeypress = "return calcdir(event)" })
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="span6">
                                     @Html.LabelFor(x => x.NearLocation, Home.lbl_NearPos, new { @class = "dropdown_label" })
-                                    @Html.TextBoxFor(x => x.NearLocation, new { placeholder = Home.plh_NearPos, autocomplete = "off" })
+                                    @Html.TextBoxFor(x => x.NearLocation, new { placeholder = Home.plh_NearPos })
                                 </div>
                                 <div class="span6">
                                     @Html.LabelFor(x => x.StartDateDisplay, Home.lbl_startdate, new { @class = "dropdown_label" })
-                                    @Html.TextBoxFor(x => x.StartDateDisplay, new { placeholder = Home.plh_TimeStart, id = "reg_start_date", autocomplete = "off" })
+                                    @Html.TextBoxFor(x => x.StartDateDisplay, new { placeholder = Home.plh_TimeStart, id = "reg_start_date" })
                                     @Html.HiddenFor(x => x.StartDateHidden, new { id = "start_date_hidden" })
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="span6">
                                     @Html.LabelFor(x => x.CustomerFullName, Home.lbl_CustomerName, new { @class = "dropdown_label" })
-                                    @Html.TextBoxFor(x => x.CustomerFullName, new { placeholder = Home.plh_FullName, autocomplete = "off" })
+                                    @Html.TextBoxFor(x => x.CustomerFullName, new { placeholder = Home.plh_FullName })
                                 </div>
                                 <div class="span6">
                                     @Html.LabelFor(x => x.CustomerPhoneNumber, Home.lbl_CustomerPhone, new { @class = "dropdown_label" })
-                                    @Html.TextBoxFor(x => x.CustomerPhoneNumber, new { placeholder = Home.plh_PhoneNumber, autocomplete = "off" })
+                                    @Html.TextBoxFor(x => x.CustomerPhoneNumber, new { placeholder = Home.plh_PhoneNumber })
                                 </div>
                             </div>
                             <div class="row">

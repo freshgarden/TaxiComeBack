@@ -28,7 +28,7 @@ namespace TaxiCameBack.Services.Search
             if (!Util.IsValidatePoint(endPoint))
                 throw new ArgumentOutOfRangeException();
 
-            startDate = startDate >= DateTime.UtcNow ? startDate : DateTime.UtcNow;
+            startDate = startDate >= DateTime.UtcNow.AddHours(7) ? startDate : DateTime.UtcNow.AddHours(7);
 
             var schedules = new List<Core.DomainModel.Schedule.Schedule>();
             var lstSchedules = _scheduleRepository.GetAll().Where(x => x.StartDate.Date >= startDate.Date).ToList();

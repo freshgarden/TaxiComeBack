@@ -90,7 +90,7 @@ namespace TaxiCameBack.Website.Controllers
             }
             else
             {
-                sDate = DateTime.UtcNow;
+                sDate = DateTime.UtcNow.AddHours(7);
             }
             var notification = new Notification
             {

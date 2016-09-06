@@ -55,8 +55,8 @@ namespace TaxiCameBack.Data.Migrations
                     FullName = "Nguyễn Xuân Phúc",
                     Password = "taxiquayve2016",
                     PhoneNumber = "0985776625",
-                    CreatedOnUtc = DateTime.UtcNow,
-                    LastLoginDateUtc = DateTime.UtcNow,
+                    CreatedOnUtc = DateTime.UtcNow.AddHours(7),
+                    LastLoginDateUtc = DateTime.UtcNow.AddHours(7),
                     IsLockedOut = false,
                     LastLockoutDate = null
                 };

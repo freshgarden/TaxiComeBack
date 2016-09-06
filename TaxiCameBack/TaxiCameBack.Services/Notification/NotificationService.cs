@@ -36,7 +36,7 @@ namespace TaxiCameBack.Services.Notification
             notification.CustomerFullname = StringUtils.SafePlainText(notification.CustomerFullname);
             notification.CustomerPhoneNumber = StringUtils.SafePlainText(notification.CustomerPhoneNumber);
             notification.NearLocation = StringUtils.SafePlainText(notification.NearLocation);
-            notification.CreateDate = DateTime.UtcNow;
+            notification.CreateDate = DateTime.UtcNow.AddHours(7);
 
             try
             {
@@ -58,14 +58,14 @@ namespace TaxiCameBack.Services.Notification
             notification.CustomerPhoneNumber = StringUtils.SafePlainText(notification.CustomerPhoneNumber);
             notification.NearLocation = StringUtils.SafePlainText(notification.NearLocation);
             notification.Received = false;
-            notification.CreateDate = DateTime.UtcNow;
+            notification.CreateDate = DateTime.UtcNow.AddHours(7);
 
             notificationExtend.BeginLocation = StringUtils.SafePlainText(notificationExtend.BeginLocation);
             notificationExtend.EndLocation = StringUtils.SafePlainText(notificationExtend.EndLocation);
             notificationExtend.Message = StringUtils.SafePlainText(notificationExtend.Message);
-            if (notificationExtend.StartDate < DateTime.UtcNow)
+            if (notificationExtend.StartDate < DateTime.UtcNow.AddHours(7))
             {
-                notificationExtend.StartDate = DateTime.UtcNow;
+                notificationExtend.StartDate = DateTime.UtcNow.AddHours(7);
             }
             notificationExtend.Notification = notification;
 
@@ -258,7 +258,7 @@ namespace TaxiCameBack.Services.Notification
             notifications.ForEach(x =>
             {
                 x.Received = true;
-                x.ReceivedDate = DateTime.UtcNow;
+                x.ReceivedDate = DateTime.UtcNow.AddHours(7);
             });
 
             try
@@ -284,7 +284,7 @@ namespace TaxiCameBack.Services.Notification
             notification.NearLocation = StringUtils.SafePlainText(notification.NearLocation);
 
             notification.Received = true;
-            notification.ReceivedDate = DateTime.UtcNow;
+            notification.ReceivedDate = DateTime.UtcNow.AddHours(7);
             var oldNotification = _notificationRepository.GetById(notification.Id);
 
             try

@@ -84,6 +84,17 @@ $(function () {
                 async: false,
                 dataType: 'json',
                 success: function (json) {
+                    var buttonUpdate = document.getElementById("btnUpdateSchedule");
+                    if (buttonUpdate) {
+                        if (json.CanUpdate === 0) {
+                            document.getElementById("BeginLocation").disabled = true;
+                            document.getElementById("EndLocation").disabled = true;
+                            document.getElementById("StartDate").disabled = true;
+                            buttonUpdate.style.visibility = 'hidden';
+                        } else {
+                            buttonUpdate.style.visibility = 'visible';
+                        }
+                    }
                     self.schedule = ko.observable(new Schedule(json));
                 }
             });

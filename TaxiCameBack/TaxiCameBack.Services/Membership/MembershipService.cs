@@ -82,8 +82,8 @@ namespace TaxiCameBack.Services.Membership
                 };
 
                 // set dates
-                newUser.CreatedOnUtc = DateTime.UtcNow;
-                newUser.LastLoginDateUtc = DateTime.UtcNow;
+                newUser.CreatedOnUtc = DateTime.UtcNow.AddHours(7);
+                newUser.LastLoginDateUtc = DateTime.UtcNow.AddHours(7);
                 newUser.IsLockedOut = false;
                 newUser.Active = false;
 
@@ -192,7 +192,7 @@ namespace TaxiCameBack.Services.Membership
                 return result;
             }
             existingUser.PasswordResetToken = CreatePasswordResetToken();
-            existingUser.PasswordResetTokenCreatedAt = DateTime.UtcNow;
+            existingUser.PasswordResetTokenCreatedAt = DateTime.UtcNow.AddHours(7);
 
             try
             {
@@ -248,7 +248,7 @@ namespace TaxiCameBack.Services.Membership
                 return false;
             }
             // The security token is only valid for 48 hours
-            if ((DateTime.UtcNow - existingUser.PasswordResetTokenCreatedAt.Value).TotalHours >= 48)
+            if ((DateTime.UtcNow.AddHours(7) - existingUser.PasswordResetTokenCreatedAt.Value).TotalHours >= 48)
             {
                 return false;
             }
@@ -304,7 +304,7 @@ namespace TaxiCameBack.Services.Membership
             if (user.FailedPasswordAttemptCount >= allowedPasswordAttempts)
             {
                 user.IsLockedOut = true;
-                user.LastLockoutDate = DateTime.UtcNow;
+                user.LastLockoutDate = DateTime.UtcNow.AddHours(7);
             }
 
             if (!passwordMatches)
@@ -372,7 +372,7 @@ namespace TaxiCameBack.Services.Membership
         public CrudResult Logon(string userEmail, string password, bool remember)
         {
             var crudReuslt = new CrudResult();
-            if (ValidateUser(userEmail, password, 48))
+            if (ValidateUser(userEmail, password, 5))
             {
                 var user = GetUser(userEmail);
                 if (!user.Active)
@@ -387,19 +387,18 @@ namespace TaxiCameBack.Services.Membership
                 }
                 if (user.Active && !user.IsLockedOut)
                 {
-                    user.LastLoginDateUtc = DateTime.UtcNow;
-
-                    try
-                    {
-                        _membershipRepository.UnitOfWork.Commit();
-                    }
-                    catch (Exception ex)
-                    {
-                        _membershipRepository.UnitOfWork.Rollback();
-                        crudReuslt.AddError(ex.Message);
-                        _loggingService.Error(ex);
-                    }
+                    user.LastLoginDateUtc = DateTime.UtcNow.AddHours(7);
                 }
+            }
+            try
+            {
+                _membershipRepository.UnitOfWork.Commit();
+            }
+            catch (Exception ex)
+            {
+                _membershipRepository.UnitOfWork.Rollback();
+                crudReuslt.AddError(ex.Message);
+                _loggingService.Error(ex);
             }
             return crudReuslt;
         }

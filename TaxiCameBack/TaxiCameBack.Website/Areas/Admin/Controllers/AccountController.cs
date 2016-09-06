@@ -90,6 +90,10 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             user.Email = userModel.Email;
             user.Active = userModel.IsApproved;
             user.IsLockedOut = userModel.IsLockedOut;
+            if (!userModel.IsLockedOut)
+            {
+                user.FailedPasswordAttemptCount = 0;
+            }
 
             var result = _membershipService.UpdateUser(user);
 
