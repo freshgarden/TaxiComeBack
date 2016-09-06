@@ -249,12 +249,12 @@ namespace TaxiCameBack.Services.Notification
             return result;
         }
 
-        public CrudResult UpdateRecieved(Guid scheduleId)
+        public CrudResult UpdateRecieved(Guid scheduleId, Guid notificationId)
         {
             var result = new CrudResult();
 
             var notifications =
-                _notificationRepository.FindBy(x => x.ScheduleId == scheduleId && x.Received == false).ToList();
+                _notificationRepository.FindBy(x => x.ScheduleId == scheduleId && x.Id == notificationId && x.Received == false).ToList();
             notifications.ForEach(x =>
             {
                 x.Received = true;

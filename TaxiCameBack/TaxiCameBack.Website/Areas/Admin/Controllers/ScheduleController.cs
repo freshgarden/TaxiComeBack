@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
@@ -159,7 +160,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         {
             var notifications =
                 _notificationService.GetAll()
-                    .Where(x => x.Received == false && (x.UserId == null || x.UserId == SessionPersister.UserId))
+                    .Where(x => x.Received == false && (x.UserId == null || x.UserId == SessionPersister.UserId) && x.Schedule.Notifications.All(s => s.Received == false))
                     .ToList();
             return notifications.Count;
         }
@@ -171,7 +172,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             var numberNotificationGet = 5;
             var notifications =
                 _notificationService.GetAll()
-                    .Where(x => x.Received == false && (x.UserId == null || x.UserId == SessionPersister.UserId))
+                    .Where(x => x.Received == false && (x.UserId == null || x.UserId == SessionPersister.UserId) && x.Schedule.Notifications.All(s => s.Received == false))
                     .OrderByDescending(x => x.CreateDate)
                     .ToList();
 
@@ -185,7 +186,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 x.NearLocation,
                 x.CreateDate,
                 x.Received,
-                StartDate = x.NotificationExtend == null ? x.Schedule.StartDate : x.NotificationExtend.StartDate,
+                StartDate = x.NotificationExtend?.StartDate ?? x.Schedule.StartDate,
                 Message = x.ScheduleId == null ? x.NotificationExtend.Message : string.Empty, 
                 Type = x.NotificationExtend != null ? NotificationType.CustomerRegisted : NotificationType.DriverRegisted,
                 ScheduleId = x.ScheduleId ?? Guid.Empty,

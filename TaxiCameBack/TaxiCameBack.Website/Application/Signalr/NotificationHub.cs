@@ -166,7 +166,7 @@ namespace TaxiCameBack.Website.Application.Signalr
                 UpdateDriverResult(connectionId, "This schedule was received.");
                 return;
             }
-            var result = _notificationService.UpdateRecieved(scheduleId);
+            var result = _notificationService.UpdateRecieved(schedule.Id, notification.Id);
             if (!result.Success)
             {
                 UpdateDriverResult(connectionId, "Receive fail: " + result.Errors[0]);

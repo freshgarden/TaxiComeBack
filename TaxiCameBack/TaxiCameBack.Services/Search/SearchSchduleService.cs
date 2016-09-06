@@ -31,7 +31,7 @@ namespace TaxiCameBack.Services.Search
             startDate = startDate >= DateTime.UtcNow.AddHours(7) ? startDate : DateTime.UtcNow.AddHours(7);
 
             var schedules = new List<Core.DomainModel.Schedule.Schedule>();
-            var lstSchedules = _scheduleRepository.GetAll().Where(x => x.StartDate.Date >= startDate.Date).ToList();
+            var lstSchedules = _scheduleRepository.GetAll().Where(x => x.StartDate.Date == startDate.Date).ToList();
             var points = new List<PointLatLng>();
             foreach (var lstSchedule in lstSchedules)
             {

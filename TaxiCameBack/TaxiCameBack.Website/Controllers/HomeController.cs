@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Microsoft.AspNet.SignalR;
@@ -8,7 +7,6 @@ using TaxiCameBack.MapUtilities;
 using TaxiCameBack.Services.Membership;
 using TaxiCameBack.Services.Notification;
 using TaxiCameBack.Services.Search;
-using TaxiCameBack.Website.Application.Extension;
 using TaxiCameBack.Website.Application.Recaptcha;
 using TaxiCameBack.Website.Application.Signalr;
 using TaxiCameBack.Website.Models;
