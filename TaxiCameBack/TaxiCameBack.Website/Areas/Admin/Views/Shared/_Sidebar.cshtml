@@ -40,18 +40,18 @@
             if (!string.IsNullOrEmpty(SessionPersister.Username)
                 && SessionPersister.Roles.Contains(AppConstants.StandardMembers))
             {
-                <li class="@(currentController == "schedule" ? "active" : "")  treeview">
-                    <a href="@Url.Action("Index", "Schedule")">
-                        <i class="fa fa-calendar"></i> <span>@SideBar.schedule</span>
+                <li class="@(currentController == "notification" ? "active" : "")  treeview">
+                    <a href="@Url.Action("Index", "Notification")">
+                        <i class="fa fa-bell-o"></i> <span>@SideBar.notification</span>
                     </a>
                 </li>
             }
             if (!string.IsNullOrEmpty(SessionPersister.Username)
                 && SessionPersister.Roles.Contains(AppConstants.StandardMembers))
             {
-                <li class="@(currentController == "notification" ? "active" : "")  treeview">
-                    <a href="@Url.Action("Index", "Notification")">
-                        <i class="fa fa-bell-o"></i> <span>@SideBar.notification</span>
+                <li class="@(currentController == "schedule" ? "active" : "")  treeview">
+                    <a href="@Url.Action("Index", "Schedule")">
+                        <i class="fa fa-calendar"></i> <span>@SideBar.schedule</span>
                     </a>
                 </li>
             }

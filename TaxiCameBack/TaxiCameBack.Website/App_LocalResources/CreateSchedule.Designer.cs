@@ -124,7 +124,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Điểm đi.
+        ///   Looks up a localized string similar to Điểm đi của tài xế.
         /// </summary>
         public static string lbl_begin_location {
             get {
@@ -133,7 +133,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Điểm đến.
+        ///   Looks up a localized string similar to Điểm đến của tài xế.
         /// </summary>
         public static string lbl_end_location {
             get {
@@ -151,7 +151,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nhập các thông tin chuyến xe quay về.
+        ///   Looks up a localized string similar to Tài xế hãy nhập các thông tin chuyến xe quay về.
         /// </summary>
         public static string note {
             get {

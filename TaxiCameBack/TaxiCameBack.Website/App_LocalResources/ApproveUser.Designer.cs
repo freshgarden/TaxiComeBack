@@ -97,7 +97,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thay đổi quyền cho tài xế thành công..
+        ///   Looks up a localized string similar to Thay đổi quyền cho tài xế thất bại..
         /// </summary>
         public static string approve_user_failed {
             get {
@@ -106,7 +106,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thay đổi quyền cho tài xế thất bại..
+        ///   Looks up a localized string similar to Thay đổi quyền cho tài xế thành công..
         /// </summary>
         public static string approve_user_success {
             get {
@@ -205,7 +205,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tài khoản bị khóa (Do nhập sai quá 5 lần mật khẩu khi đăng nhập).
+        ///   Looks up a localized string similar to Tài khoản bị khóa.
         /// </summary>
         public static string user_locked {
             get {

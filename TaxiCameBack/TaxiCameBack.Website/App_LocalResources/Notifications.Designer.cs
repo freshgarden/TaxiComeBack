@@ -61,6 +61,24 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Xóa điều kiện.
+        /// </summary>
+        public static string btn_delete_con {
+            get {
+                return ResourceManager.GetString("btn_delete_con", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tìm kiếm.
+        /// </summary>
+        public static string btn_search {
+            get {
+                return ResourceManager.GetString("btn_search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ngày xuất hành.
         /// </summary>
         public static string customer_datecreate {

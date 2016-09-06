@@ -163,7 +163,7 @@
     <value>Tên tài khoản có độ dài tối đa 50 ký tự</value>
   </data>
   <data name="user_locked" xml:space="preserve">
-    <value>Bạn đã đăng nhập sai 5 lần. Tài khoản tạm thời bị khóa !</value>
+    <value>Tài khoản tạm thời bị khóa !</value>
   </data>
   <data name="user_not_approve" xml:space="preserve">
     <value>Tài khoản chưa được chấp thuận !</value>

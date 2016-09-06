@@ -111,7 +111,7 @@ namespace TaxiCameBack.Website.Controllers
                 return Json(new { Status = "ERROR", Message = result.Errors[0] });
             }
             context.Clients.Clients(NotificationHub.Connections.ToList()).updateReceived();
-            return Json(new {Status = "OK", Message = "Create schedule successfull! Please wait driver contact with you." },JsonRequestBehavior.AllowGet);
+            return Json(new {Status = "OK", Message = App_LocalResources.Home.register_success },JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Index()

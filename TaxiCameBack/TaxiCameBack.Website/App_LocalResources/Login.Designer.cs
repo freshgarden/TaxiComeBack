@@ -205,7 +205,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bạn đã đăng nhập sai 5 lần. Tài khoản tạm thời bị khóa !.
+        ///   Looks up a localized string similar to Tài khoản tạm thời bị khóa !.
         /// </summary>
         public static string user_locked {
             get {

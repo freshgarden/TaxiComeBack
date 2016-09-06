@@ -19,12 +19,13 @@
 </section>
 <!-- Main content -->
 <section class="content">
+    @Html.Partial("_NotificationFilter", Model.NotificationSearchModel)
     <!-- Info boxes -->
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    @Html.Partial("_NotificationFilter", Model.NotificationSearchModel)
+                    <h3 class="box-title">@ViewBag.Title</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">

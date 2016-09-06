@@ -235,7 +235,7 @@
     <value>Quản trị viên</value>
   </data>
   <data name="lbl_endpoint" xml:space="preserve">
-    <value>Điểm đến</value>
+    <value>Điểm đến của khách hàng</value>
   </data>
   <data name="lbl_note" xml:space="preserve">
     <value>Ghi chú</value>
@@ -253,10 +253,10 @@
     <value>Thời gian xuất hành</value>
   </data>
   <data name="lbl_startpoint" xml:space="preserve">
-    <value>Điểm đi</value>
+    <value>Điểm đi của khách hàng</value>
   </data>
   <data name="plh_note" xml:space="preserve">
-    <value>Nhập ghi chú</value>
+    <value>Nhập ghi chú của khách hàng</value>
   </data>
   <data name="begin_location_required" xml:space="preserve">
     <value>Điểm đi không được để trống</value>
@@ -296,5 +296,8 @@
   </data>
   <data name="valid_phone" xml:space="preserve">
     <value>Số điện thoại không hợp lệ</value>
+  </data>
+  <data name="register_success" xml:space="preserve">
+    <value>Đăng kí chuyến xe thành công, xin đợi tài xế liên hệ với bạn.</value>
   </data>
 </root>

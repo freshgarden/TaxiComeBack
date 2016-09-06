@@ -56,19 +56,26 @@ namespace TaxiCameBack.Website.Application.Signalr
 
             if (string.IsNullOrEmpty(customer.CustomerFullName))
             {
-                Clients.Caller.addNewErrorMessageToPage("Full name can't be blank.");
+                Clients.Caller.addNewErrorMessageToPage(App_LocalResources.Home.customer_fullname_required);
                 return;
             }
 
             if (string.IsNullOrEmpty(customer.CustomerPhoneNumber))
             {
-                Clients.Caller.addNewErrorMessageToPage("Phone number can't be blank.");
+                Clients.Caller.addNewErrorMessageToPage(App_LocalResources.Home.customer_phone_rqr);
+                return;
+            }
+
+            var regex = new Regex(@"^(0\d{9,10})$");
+            if (!regex.IsMatch(customer.CustomerPhoneNumber))
+            {
+                Clients.Caller.addNewErrorMessageToPage(App_LocalResources.Home.valid_phone);
                 return;
             }
 
             if (string.IsNullOrEmpty(customer.NearLocation))
             {
-                Clients.Caller.addNewErrorMessageToPage("Near location can't be blank.");
+                Clients.Caller.addNewErrorMessageToPage(App_LocalResources.Home.rqr_nearlocation);
             }
 
             var result = _notificationService.Create(new Notification
@@ -92,7 +99,7 @@ namespace TaxiCameBack.Website.Application.Signalr
             {
                 Clients.Client(connectionId).addRegisted();
             }
-            Clients.Caller.addNewMessageToPage("Registed taxi successful. Please wait diver contact with you.");
+            Clients.Caller.addNewMessageToPage(App_LocalResources.Home.register_success);
         }
 
         /// <summary>
@@ -251,33 +258,33 @@ namespace TaxiCameBack.Website.Application.Signalr
 
             if (string.IsNullOrEmpty(newScheule.BeginLocation))
             {
-                result.AddError("Begin location is required.");
+                result.AddError(App_LocalResources.Home.begin_location_required);
                 return result;
             }
             if (string.IsNullOrEmpty(newScheule.EndLocation))
             {
-                result.AddError("End location is required.");
+                result.AddError(App_LocalResources.Home.end_location_required);
                 return result;
             }
             if (string.IsNullOrEmpty(newScheule.CustomerFullName))
             {
-                result.AddError("Full name is required.");
+                result.AddError(App_LocalResources.Home.customer_fullname_required);
                 return result;
             }
             if (string.IsNullOrEmpty(newScheule.CustomerPhoneNumber))
             {
-                result.AddError("Phone number is required.");
+                result.AddError(App_LocalResources.Home.customer_phone_rqr);
                 return result;
             }
             if (string.IsNullOrEmpty(newScheule.NearLocation))
             {
-                result.AddError("Near location is required.");
+                result.AddError(App_LocalResources.Home.rqr_nearlocation);
                 return result;
             }
-            var regex = new Regex("^(01[2689]|09|08[689])[0-9]{8}$");
+            var regex = new Regex(@"^(0\d{9,10})$");
             if (!regex.IsMatch(newScheule.CustomerPhoneNumber))
             {
-                result.AddError("Wrong phone number format.");
+                result.AddError(App_LocalResources.Home.valid_phone);
             }
 
             return result;

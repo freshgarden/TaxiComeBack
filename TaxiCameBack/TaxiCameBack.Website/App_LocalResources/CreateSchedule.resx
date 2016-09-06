@@ -139,16 +139,16 @@
     <value>Điểm đến không được vượt quá 600 ký tự</value>
   </data>
   <data name="lbl_begin_location" xml:space="preserve">
-    <value>Điểm đi</value>
+    <value>Điểm đi của tài xế</value>
   </data>
   <data name="lbl_end_location" xml:space="preserve">
-    <value>Điểm đến</value>
+    <value>Điểm đến của tài xế</value>
   </data>
   <data name="lbl_start_date" xml:space="preserve">
     <value>Thời gian xuất hành</value>
   </data>
   <data name="note" xml:space="preserve">
-    <value>Nhập các thông tin chuyến xe quay về</value>
+    <value>Tài xế hãy nhập các thông tin chuyến xe quay về</value>
   </data>
   <data name="plc_EndPoint" xml:space="preserve">
     <value>Nhập điểm đến</value>

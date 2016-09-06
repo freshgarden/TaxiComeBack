@@ -130,10 +130,10 @@
     <value>Tài khoản được chấp thuận</value>
   </data>
   <data name="approve_user_failed" xml:space="preserve">
-    <value>Thay đổi quyền cho tài xế thành công.</value>
+    <value>Thay đổi quyền cho tài xế thất bại.</value>
   </data>
   <data name="approve_user_success" xml:space="preserve">
-    <value>Thay đổi quyền cho tài xế thất bại.</value>
+    <value>Thay đổi quyền cho tài xế thành công.</value>
   </data>
   <data name="btn_Back" xml:space="preserve">
     <value>Quay lại</value>
@@ -166,7 +166,7 @@
     <value>Tài khoản được chấp thuận</value>
   </data>
   <data name="user_locked" xml:space="preserve">
-    <value>Tài khoản bị khóa (Do nhập sai quá 5 lần mật khẩu khi đăng nhập)</value>
+    <value>Tài khoản bị khóa</value>
   </data>
   <data name="user_profile" xml:space="preserve">
     <value>Quản trị tài khoản</value>

@@ -98,7 +98,7 @@
             <div class="tabbable tabbable_red">
                 <ul class="nav-tabs">
                     <li class="active with_icon"><a href="#search_tab_1" data-toggle="tab"><i class="icomoon-search"></i>@Home.lbl_FindCar</a></li>
-                    <li class="with_icon"><a href="#search_tab_2" data-toggle="tab" id="register_div"><i class="icomoon-plus"></i>@Home.lbl_register_taxi</a></li>
+                    <li class="with_icon"><a href="#search_tab_2" data-toggle="tab"><i class="icomoon-plus"></i>@Home.lbl_register_taxi</a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="search_tab_1">
@@ -217,11 +217,11 @@
                 <div class="box-content clearfix">
                     <div class="row">
                         <label for="customerFullName" class="dropdown_label">@Home.lbl_CustomerName</label>
-                        <input id="customerFullName" type="text" placeholder="@Home.plh_FullName" name="fullname" maxlength="50">
+                        <input id="customerFullName" type="text" placeholder="@Home.plh_FullName" name="fullname" maxlength="20">
                     </div>
                     <div class="row">
                         <label for="customerPhoneNumber" class="dropdown_label">@Home.lbl_CustomerPhone</label>
-                        <input id="customerPhoneNumber" type="text" placeholder="@Home.plh_PhoneNumber" name="phoneNumber" maxlength="14">
+                        <input id="customerPhoneNumber" type="text" placeholder="@Home.plh_PhoneNumber" name="phoneNumber" maxlength="11">
                     </div>
                     <div class="row">
                         <label for="customerNearpos" class="dropdown_label">@Home.lbl_NearPos</label>
@@ -349,6 +349,7 @@
 
         $('#searchCar').click(function () {
             if (startPointPlace != null && endPointPlace != null) {
+                $.fancybox.showActivity();
                 SearchModel.StartLocationLat = startPointPlace.geometry.location.lat();
                 SearchModel.StartLocationLng = startPointPlace.geometry.location.lng();
                 SearchModel.EndLocationLat = endPointPlace.geometry.location.lat();
@@ -364,10 +365,12 @@
                         $('#vendor').css("display", "block");
                         $('#search_result').empty();
                         if (data.length === undefined) {
+                            $.fancybox.hideActivity();
                             $('#no_result').css("display", "block");
                             $('#no_result').html("Không có kết quả nào được tìm thấy");
                             $('#search_result').css("display", "none");
                         } else {
+                            $.fancybox.hideActivity();
                             getDistanceAndTime();
                             $('#no_result').css("display", "none");
                             $('#search_result').css("display", "block");
@@ -389,6 +392,10 @@
                 });
             }
         })
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            $('#vendor').css("display", "none");
+        });
 
         function parseJsonDate(jsonDateString) {
             var today = new Date(parseInt(jsonDateString.replace('/Date(', '')));

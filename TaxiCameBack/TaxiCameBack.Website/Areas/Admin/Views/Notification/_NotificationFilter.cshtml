@@ -2,42 +2,52 @@
 <link href="@Url.Content("~/Content/datetimepicker/jquery.datetimepicker.css")" rel="stylesheet" />
 <script src="@Url.Content("~/Content/datetimepicker/jquery.datetimepicker.full.min.js")"></script>
 
-@using (Html.BeginForm("Filter", "Notification", FormMethod.Post, new { id = "formId" }))
-{
-    <div class="box box-primary">
-        <div class="box-header with-border">
-            <h3 class="box-title">Tìm kiếm nâng cao</h3>
-        </div>
+
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Tìm kiếm nâng cao</h3>
+    </div>
+    @using (Html.BeginForm("Filter", "Notification", FormMethod.Post, new { id = "formId" }))
+            {
         <div class="box-body">
             <div class="row">
-                <div class="col-xs-4">
-                    @Html.TextBoxFor(x => x.BeginLocation, "", new { @class = "form-control", @placeholder = "Điểm đi" })
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="start_point">Điểm đi</label>
+                        @Html.TextBoxFor(x => x.BeginLocation, "", new { @class = "form-control", id = "start_point", @placeholder = Notifications.customer_start_pos })
+                    </div>
+                    <div class="form-group">
+                        <label for="end_point">Điểm đến</label>
+                        @Html.TextBoxFor(x => x.EndLocation, "", new { @class = "form-control", id = "end_point", @placeholder = Notifications.customer_end_pos })
+                    </div>
                 </div>
-                <div class="col-xs-4">
-                    @Html.TextBoxFor(x => x.EndLocation, "", new { @class = "form-control", @placeholder = "Điểm đến" })
-                </div>
-                <div class="col-xs-2">
-                    @Html.TextBoxFor(x => x.StartDateString, "", new {@class = "form-control", placeholder = "Ngày xuất hành" })
-                </div>
-                <div class="col-xs-2">
-                    @Html.DropDownListFor(x => x.Received, new SelectList(new[]
-                    {
-                        new {Value = "", Text = "Chọn trạng thái"},
-                        new {Value = "true", Text = "Đã nhận"},
-                        new {Value = "false", Text = "Đang chờ"}
-                    },
-                    "Value",
-                    "Text",
-                    Model.Received), new { @class = "form-control"})
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="StartDateString">Thời gian xuất hành</label>
+                        @Html.TextBoxFor(x => x.StartDateString, "", new { @class = "form-control", id = "StartDateString", placeholder = Notifications.customer_datecreate })
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Trạng thái</label>
+                        @Html.DropDownListFor(x => x.Received, new SelectList(new[]
+                                {
+                                    new {Value = "", Text = Notifications.customer_status},
+                                    new {Value = "true", Text = Notifications.receive_status},
+                                    new {Value = "false", Text = Notifications.pending_status}
+                                },
+                                "Value",
+                                "Text",
+                                Model.Received), new { @class = "form-control" })
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="box-footer">
-            <input class="btn btn-default pull-right" type="submit" name="command" value="Xóa điều kiện" />
-            <input class="btn btn-primary" type="submit" name="command" value="Tìm kiếm" />
-        </div>
-    </div>
-}
+                <div class="box-footer">
+                    <input class="btn btn-default" type="submit" name="command" value="@Notifications.btn_delete_con" />
+                    <input class="btn btn-primary pull-right" type="submit" name="command" value="@Notifications.btn_search" />
+                </div>
+    }
+</div>
+
 
 <script>
     jQuery("#StartDateString").datetimepicker({

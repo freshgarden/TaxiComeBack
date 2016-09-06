@@ -286,7 +286,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Điểm đến.
+        ///   Looks up a localized string similar to Điểm đến của khách hàng.
         /// </summary>
         public static string lbl_endpoint {
             get {
@@ -430,7 +430,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Điểm đi.
+        ///   Looks up a localized string similar to Điểm đi của khách hàng.
         /// </summary>
         public static string lbl_startpoint {
             get {
@@ -502,7 +502,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nhập ghi chú.
+        ///   Looks up a localized string similar to Nhập ghi chú của khách hàng.
         /// </summary>
         public static string plh_note {
             get {
@@ -534,6 +534,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string plh_TimeStart {
             get {
                 return ResourceManager.GetString("plh_TimeStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đăng kí chuyến xe thành công, xin đợi tài xế liên hệ với bạn..
+        /// </summary>
+        public static string register_success {
+            get {
+                return ResourceManager.GetString("register_success", resourceCulture);
             }
         }
         

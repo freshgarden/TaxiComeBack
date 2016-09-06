@@ -208,7 +208,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                     SessionPersister.FullName = _membershipService.GetUser(loginViewModel.UserName).FullName;
                     SessionPersister.UserImageUrl = _membershipService.GetUser(loginViewModel.UserName).Avatar;
 
-                    return _membershipService.GetRolesForUser(SessionPersister.Username).Contains(AppConstants.AdminRoleName) ? RedirectToAction("Index", "Account", new {area = "Admin"}) : RedirectToAction("Index", "Schedule", new {area = "Admin"});
+                    return _membershipService.GetRolesForUser(SessionPersister.Username).Contains(AppConstants.AdminRoleName) ? RedirectToAction("Index", "Account", new {area = "Admin"}) : RedirectToAction("Index", "Notification", new {area = "Admin"});
                 }
                 ModelState.AddModelError(string.Empty, reuslt.Errors[0]);
             }
