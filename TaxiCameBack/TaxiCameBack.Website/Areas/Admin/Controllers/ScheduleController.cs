@@ -160,8 +160,14 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         {
             var notifications =
                 _notificationService.GetAll()
-                    .Where(x => x.Received == false && (x.UserId == null || x.UserId == SessionPersister.UserId) && x.Schedule.Notifications.All(s => s.Received == false))
+                    .Where(x => x.Received == false && (x.UserId == null || x.UserId == SessionPersister.UserId))
                     .ToList();
+            var excludeNotifications =
+                notifications.Where(
+                    notification =>
+                        notification.Schedule != null && notification.Schedule.Notifications.Any(s => s.Received))
+                    .ToList();
+            notifications = notifications.Except(excludeNotifications).ToList();
             return notifications.Count;
         }
 
@@ -172,9 +178,15 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             var numberNotificationGet = 5;
             var notifications =
                 _notificationService.GetAll()
-                    .Where(x => x.Received == false && (x.UserId == null || x.UserId == SessionPersister.UserId) && x.Schedule.Notifications.All(s => s.Received == false))
+                    .Where(x => x.Received == false && (x.UserId == null || x.UserId == SessionPersister.UserId))
                     .OrderByDescending(x => x.CreateDate)
                     .ToList();
+            var excludeNotifications =
+                notifications.Where(
+                    notification =>
+                        notification.Schedule != null && notification.Schedule.Notifications.Any(s => s.Received))
+                    .ToList();
+            notifications = notifications.Except(excludeNotifications).ToList();
 
             var totalNotification = notifications.Count - numberNotificationGet;
 
