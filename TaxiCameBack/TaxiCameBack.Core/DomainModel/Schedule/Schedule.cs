@@ -10,6 +10,7 @@ namespace TaxiCameBack.Core.DomainModel.Schedule
         public Schedule()
         {
             Id = GuidComb.GenerateComb();
+            IsCancel = false;
         }
         [Key]
         public Guid Id { get; set; }
@@ -23,6 +24,8 @@ namespace TaxiCameBack.Core.DomainModel.Schedule
         public string EndLocation { get; set; }
         [Required]
         public System.DateTime StartDate { get; set; }
+        [Required]
+        public bool IsCancel { get; set; }
         public virtual ICollection<ScheduleGeolocation> ScheduleGeolocations { get; set; }
 
         public virtual ICollection<Notification.Notification> Notifications { get; set; }

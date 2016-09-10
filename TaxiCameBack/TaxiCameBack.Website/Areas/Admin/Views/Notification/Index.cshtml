@@ -29,90 +29,103 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <table id="example2" class="table table-bordered table-hover" style="width: 3000px;">
+                    <table id="example2" class="table table-bordered table-hover" style="width: auto;">
                         <thead>
-                        <tr>
-                            <th>@Notifications.no</th>
-                            <th>@Notifications.customer_name</th>
-                            <th>@Notifications.customer_phone</th>
-                            <th>@Notifications.customer_type</th>
-                            <th>@Notifications.customer_start_pos</th>
-                            <th>@Notifications.customer_end_pos</th>
-                            <th>@Notifications.customer_near_pos</th>
-                            <th>@Notifications.customer_datecreate</th>
-                            <th>@Notifications.customer_status</th>
-                            <th>@Notifications.customer_datereceive</th>
-                        </tr>
+                            <tr>
+                                <th>@Notifications.no</th>
+                                <th>@Notifications.customer_name</th>
+                                <th>@Notifications.customer_phone</th>
+                                <th>@Notifications.customer_type</th>
+                                <th>@Notifications.customer_start_pos</th>
+                                <th>@Notifications.customer_end_pos</th>
+                                <th>@Notifications.customer_near_pos</th>
+                                <th>@Notifications.customer_datecreate</th>
+                                <th>@Notifications.customer_status</th>
+                                <th>@Notifications.customer_datereceive</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        @{ int count = 0;}
-                        @foreach (var user in Model.Notifications)
-                        {
-                            count++;
-                            <tr>
-                                <td>
-                                    @count
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => user.CustomerFullname)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => user.CustomerPhoneNumber)
-                                </td>
-                                @if (user.NotificationExtend != null)
-                                {
+                            @{ int count = 0;}
+                            @foreach (var user in Model.Notifications)
+                            {
+                                count++;
+                                <tr>
                                     <td>
-                                        <span class="label label-primary">@Notifications.customer_reg_type</span>
+                                        @count
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => user.NotificationExtend.BeginLocation)
+                                        @Html.DisplayFor(modelItem => user.CustomerFullname)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => user.NotificationExtend.EndLocation)
+                                        @Html.DisplayFor(modelItem => user.CustomerPhoneNumber)
                                     </td>
-                                }
-                                else
-                                {
-                                    <td>
-                                        <span class="label label-success">@Notifications.driver_reg_type</span>
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => user.Schedule.BeginLocation)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => user.Schedule.EndLocation)
-                                    </td>
-                                }
-                                <td>
-                                    @Html.DisplayFor(modelItem => user.NearLocation)
-                                </td>
-                                @if (user.NotificationExtend != null)
-                                {
-                                    <td>
-                                        @Html.DisplayFor(modelItem => user.NotificationExtend.StartDate)
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td>
-                                        @Html.DisplayFor(modelItem => user.Schedule.StartDate)
-                                    </td>
-                                }
-                                <td>
-                                    @if (user.Received != false)
+                                    @if (user.NotificationExtend != null)
                                     {
-                                        <span class="label label-success">@Notifications.receive_status</span>
+                                        <td>
+                                            <span class="label label-primary">@Notifications.customer_reg_type</span>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => user.NotificationExtend.BeginLocation)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => user.NotificationExtend.EndLocation)
+                                        </td>
                                     }
                                     else
                                     {
-                                        <span class="label label-warning">@Notifications.pending_status</span>
+                                        <td>
+                                            <span class="label label-success">@Notifications.driver_reg_type</span>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => user.Schedule.BeginLocation)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => user.Schedule.EndLocation)
+                                        </td>
                                     }
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => user.ReceivedDate)
-                                </td>
-                            </tr>
-                        }
+                                    <td>
+                                        @Html.DisplayFor(modelItem => user.NearLocation)
+                                    </td>
+                                    @if (user.NotificationExtend != null)
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => user.NotificationExtend.StartDate)
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            @Html.DisplayFor(modelItem => user.Schedule.StartDate)
+                                        </td>
+                                    }
+                                    <td>
+
+                                        @if (user.IsCancel)
+                                        {
+                                            <span class="lable label-danger">Cancel</span>
+                                        }
+                                        else if (user.Received)
+                                        {
+                                            <span class="label label-success">@Notifications.receive_status</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="label label-warning">@Notifications.pending_status</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => user.ReceivedDate)
+                                    </td>
+                                    <td>
+                                        @if (!user.IsCancel && user.NotificationExtend != null)
+                                        {
+                                            <a href="@Url.Action("Cancel", new { user.Id })" class="btn btn-danger btn-sm">
+                                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                            </a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -129,7 +142,7 @@
             "scrollX": true,
             "columnDefs": [
                 { "width": "5px", "targets": 0 },
-                { "width": "100px", "targets": 1 },
+                { "width": "50px", "targets": 1 },
                 { "width": "100px", "targets": 2 },
                 { "width": "100px", "targets": 3 },
                 { "width": "300px", "targets": 4 },

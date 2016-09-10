@@ -29,7 +29,7 @@
     </ol>
 </section>
 <style>
-    #btnUpdateSchedule, #btnDeleteSchedule {
+    #btnUpdateSchedule, #btnDeleteSchedule, #btnCancelSchedule {
         visibility:hidden
     }
 </style>
@@ -46,6 +46,7 @@
                     @Html.Partial("_ScheduleField")
                     <hr/>
                     <button id="btnDeleteSchedule" class="btn btn-default pull-left" data-bind="click: deleteSchedule">Delete</button>
+                    <button id="btnCancelSchedule" class="btn btn-default pull-left" data-bind="click: cancelSchedule">Cancel</button>
                     @{
                         if (ViewBag.Type == 0)
                         {

@@ -301,5 +301,25 @@ namespace TaxiCameBack.Services.Notification
 
             return result;
         }
+
+        public CrudResult Cancel(Core.DomainModel.Notification.Notification notification)
+        {
+            var resutl = new CrudResult();
+
+            try
+            {
+                var oldNotification = _notificationRepository.GetById(notification.Id);
+                notification.IsCancel = true;
+                notification.UserId = null;
+                _notificationRepository.Merge(oldNotification, notification);
+                _notificationRepository.UnitOfWork.Commit();
+            }
+            catch (Exception exception)
+            {
+                resutl.AddError(exception.Message);
+                _loggingService.Error(exception);
+            }
+            return resutl;
+        }
     }
 }

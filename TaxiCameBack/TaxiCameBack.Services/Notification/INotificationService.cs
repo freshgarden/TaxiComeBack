@@ -19,5 +19,6 @@ namespace TaxiCameBack.Services.Notification
         CrudResult Update(Core.DomainModel.Notification.Notification notification);
         CrudResult UpdateRecieved(Guid scheduleId, Guid notificationId);
         CrudResult UpdateRecieved(Core.DomainModel.Notification.Notification notification);
+        CrudResult Cancel(Core.DomainModel.Notification.Notification notification);
     }
 }

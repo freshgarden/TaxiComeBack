@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Web.Mvc;
+using Microsoft.AspNet.SignalR;
 using TaxiCameBack.Core.Constants;
 using TaxiCameBack.Core.Utilities;
 using TaxiCameBack.Services.Notification;
 using TaxiCameBack.Website.Application.Attributes;
 using TaxiCameBack.Website.Application.Security;
+using TaxiCameBack.Website.Application.Signalr;
 using TaxiCameBack.Website.Areas.Admin.Models;
 using TaxiCameBack.Website.Areas.Admin.Models.Mapping;
 
@@ -69,6 +71,58 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 NotificationSearchModel = search ?? new NotificationSearchModel()
             };
             return View("Index", notificationListViewModel);
+        }
+
+        [CustomAuthorize(Roles = AppConstants.StandardMembers)]
+        public ActionResult Cancel(Guid id)
+        {
+            var notification = _notificationService.GetById(id);
+            var error = string.Empty;
+            if (notification.IsCancel)
+            {
+                error = "Cannot cancel notification which was cancel.";
+                var message = new GenericMessageViewModel
+                {
+                    Message = error,
+                    MessageType = GenericMessages.success
+                };
+                TempData[AppConstants.MessageViewBagName] = message;
+                return RedirectToAction("Index");
+            }
+            if (notification.NotificationExtend == null)
+            {
+                error = "Cannot cancel notification which is driver registed.";
+                var message = new GenericMessageViewModel
+                {
+                    Message = error,
+                    MessageType = GenericMessages.success
+                };
+                TempData[AppConstants.MessageViewBagName] = message;
+                return RedirectToAction("Index");
+            }
+
+            var result = _notificationService.Cancel(notification);
+            if (!result.Success)
+            {
+                error = "Error Cancel notification.";
+                var message = new GenericMessageViewModel
+                {
+                    Message = error,
+                    MessageType = GenericMessages.success
+                };
+                TempData[AppConstants.MessageViewBagName] = message;
+                return RedirectToAction("Index");
+            }
+
+            var context = GlobalHost.ConnectionManager.GetHubContext<NotificationHub>();
+            context.Clients.Clients(NotificationHub.Connections.ToList()).updateReceived();
+            TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+            {
+                Message = "Cancel success.",
+                MessageType = GenericMessages.success
+            };
+
+            return RedirectToAction("Index");
         }
     }
 }

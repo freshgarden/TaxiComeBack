@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
+using Castle.Core.Internal;
 using TaxiCameBack.Core;
 using TaxiCameBack.Core.DomainModel.Schedule;
 using TaxiCameBack.Core.Utilities;
@@ -13,13 +14,13 @@ namespace TaxiCameBack.Services.Schedule
     {
         private readonly IRepository<Core.DomainModel.Schedule.Schedule> _scheduleRepository;
         private readonly IRepository<ScheduleGeolocation> _scheduleGeolocationRepository;
+        private readonly IRepository<Core.DomainModel.Notification.Notification> _notificationRepository;
         private readonly ILoggingService _loggingService;
-        public ScheduleService(IRepository<Core.DomainModel.Schedule.Schedule> repository,
-            IRepository<ScheduleGeolocation> scheduleGeolocationRepository,
-            ILoggingService loggingService)
+        public ScheduleService(IRepository<Core.DomainModel.Schedule.Schedule> scheduleRepository, IRepository<ScheduleGeolocation> scheduleGeolocationRepository, IRepository<Core.DomainModel.Notification.Notification> notificationRepository, ILoggingService loggingService)
         {
-            _scheduleRepository = repository;
+            _scheduleRepository = scheduleRepository;
             _scheduleGeolocationRepository = scheduleGeolocationRepository;
+            _notificationRepository = notificationRepository;
             _loggingService = loggingService;
         }
 
@@ -138,6 +139,26 @@ namespace TaxiCameBack.Services.Schedule
             }
 
             return result;
+        }
+
+        public ScheduleCreateResult CancelSchedule(Core.DomainModel.Schedule.Schedule schedule)
+        {
+            var results = new ScheduleCreateResult();
+
+            var oldSchedule = _scheduleRepository.GetById(schedule.Id);
+            try
+            {
+                schedule.Notifications?.ForEach(x => x.IsCancel = true);
+                schedule.IsCancel = true;
+                _scheduleRepository.Merge(oldSchedule, schedule);
+                _scheduleRepository.UnitOfWork.Commit();
+            }
+            catch (Exception exception)
+            {
+                _loggingService.Error(exception);
+                results.AddError(exception.Message);
+            }
+            return results;
         }
 
         private void Validate(ScheduleCreateResult result, Core.DomainModel.Schedule.Schedule schedule)

@@ -86,6 +86,7 @@ $(function () {
                 success: function (json) {
                     var buttonUpdate = document.getElementById("btnUpdateSchedule");
                     var buttonDelete = document.getElementById("btnDeleteSchedule");
+                    var buttonCancel = document.getElementById("btnCancelSchedule");
                     if (buttonUpdate) {
                         if (json.CanUpdate === 0) {
                             document.getElementById("BeginLocation").disabled = true;
@@ -101,6 +102,13 @@ $(function () {
                             buttonDelete.style.visibility = 'visible';
                         } else {
                             buttonDelete.style.visibility = 'hidden';
+                        }
+                    }
+                    if (buttonCancel) {
+                        if (json.CanCancel === 0) {
+                            buttonCancel.style.visibility = 'hidden';
+                        } else {
+                            buttonCancel.style.visibility = 'visible';
                         }
                     }
                     self.schedule = ko.observable(new Schedule(json));
@@ -228,7 +236,7 @@ $(function () {
                 type: "POST",
                 cache: false,
                 dataType: "json",
-                url: urlSchedule + "/DeleteScheduleInfomation?id=" + ko.toJS(self.schedule().Id),
+                url: urlSchedule + "/DeleteSchedule?id=" + ko.toJS(self.schedule().Id),
                 data: ko.toJS(self.schedule().Id),
                 contentType: "application/x-www-form-urlencoded",
                 async: false,
@@ -274,6 +282,63 @@ $(function () {
                     self.showErrorPopup(container, popup);
                 },
                 complete: function() {}
+            });
+        }
+        self.cancelSchedule = function() {
+            if (ko.toJS(self.schedule().Id) === scheduleGuid) {
+                return;
+            }
+            var popup;
+            $.ajaxAntiForgery({
+                type: "POST",
+                cache: false,
+                dataType: "json",
+                url: urlSchedule + "/CancelSchedule?id=" + ko.toJS(self.schedule().Id),
+                data: ko.toJS(self.schedule().Id),
+                contentType: "application/x-www-form-urlencoded",
+                async: false,
+                beforeSend: function () {
+                    popup = container.jqsDialog("showProgressBar");
+                    popup.setHeader("no-x");
+                },
+                success: function (data) {
+                    if (data.status === 'OK') {
+                        popup.close();
+                        window.location.href = urlSchedule;
+                    }
+                    else if (data.status === "ERROR") {
+                        if (data.messenge) {
+                            if (data.messenge[0].Value[0]) {
+                                self.showErrorPopup(container, popup, data.messenge[0].Value[0]);
+                                return;
+                            }
+                            self.showErrorPopup(container, popup, data.messenge[0]);
+                            return;
+                        }
+                        self.showErrorPopup(container, popup, data.messenge);
+                    }
+                },
+                error: function (err) {
+                    var err = JSON.parse(err.responseText);
+                    var errors = '';
+                    for (var key in err) {
+                        if (err.hasOwnProperty(key)) {
+                            errors += key.replace("schedule.", "") + " : " + err[key];
+                        }
+                    }
+                    $("<div></div>").html(errors).dialog({
+                        modal: true,
+                        title: JSON.parse(err.responseText).Message,
+                        buttons: {
+                            "Ok": function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    }).show();
+
+                    self.showErrorPopup(container, popup);
+                },
+                complete: function () { }
             });
         }
     }
