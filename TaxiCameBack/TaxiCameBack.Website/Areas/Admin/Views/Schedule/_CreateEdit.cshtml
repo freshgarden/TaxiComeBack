@@ -29,7 +29,7 @@
     </ol>
 </section>
 <style>
-    #btnUpdateSchedule {
+    #btnUpdateSchedule, #btnDeleteSchedule {
         visibility:hidden
     }
 </style>
@@ -44,7 +44,8 @@
                     @Html.AntiForgeryToken()
 
                     @Html.Partial("_ScheduleField")
-                    <hr />
+                    <hr/>
+                    <button id="btnDeleteSchedule" class="btn btn-default pull-left" data-bind="click: deleteSchedule">Delete</button>
                     @{
                         if (ViewBag.Type == 0)
                         {

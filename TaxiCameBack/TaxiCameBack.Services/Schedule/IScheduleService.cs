@@ -22,7 +22,7 @@ namespace TaxiCameBack.Services.Schedule
         /// To Delete a schedule
         /// </summary>
         /// <param name="scheduleId"></param>
-        void DeleteSchedule(int scheduleId);
+        ScheduleCreateResult DeleteSchedule(Guid scheduleId);
 
         /// <summary>
         /// Add new schedule

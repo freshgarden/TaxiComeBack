@@ -85,6 +85,7 @@ $(function () {
                 dataType: 'json',
                 success: function (json) {
                     var buttonUpdate = document.getElementById("btnUpdateSchedule");
+                    var buttonDelete = document.getElementById("btnDeleteSchedule");
                     if (buttonUpdate) {
                         if (json.CanUpdate === 0) {
                             document.getElementById("BeginLocation").disabled = true;
@@ -93,6 +94,13 @@ $(function () {
                             buttonUpdate.style.visibility = 'hidden';
                         } else {
                             buttonUpdate.style.visibility = 'visible';
+                        }
+                    }
+                    if (buttonDelete) {
+                        if (json.CanUpdate === 1) {
+                            buttonDelete.style.visibility = 'visible';
+                        } else {
+                            buttonDelete.style.visibility = 'hidden';
                         }
                     }
                     self.schedule = ko.observable(new Schedule(json));
@@ -209,6 +217,64 @@ $(function () {
                     complete: function() {}
                 });
             }
+        }
+
+        self.deleteSchedule = function () {
+            if (ko.toJS(self.schedule().Id) === scheduleGuid) {
+                return;
+            }
+            var popup;
+            $.ajaxAntiForgery({
+                type: "POST",
+                cache: false,
+                dataType: "json",
+                url: urlSchedule + "/DeleteScheduleInfomation?id=" + ko.toJS(self.schedule().Id),
+                data: ko.toJS(self.schedule().Id),
+                contentType: "application/x-www-form-urlencoded",
+                async: false,
+                beforeSend: function () {
+                    popup = container.jqsDialog("showProgressBar");
+                    popup.setHeader("no-x");
+                },
+                success: function (data) {
+                    if (data.status === 'OK') {
+                        popup.close();
+                        window.location.href = urlSchedule;
+                    }
+                    else if (data.status === "ERROR") {
+                        if (data.messenge) {
+                            if (data.messenge[0].Value[0]) {
+                                self.showErrorPopup(container, popup, data.messenge[0].Value[0]);
+                                return;
+                            }
+                            self.showErrorPopup(container, popup, data.messenge[0]);
+                            return;
+                        }
+                        self.showErrorPopup(container, popup, data.messenge);
+                    }
+                },
+                error: function(err) {
+                    var err = JSON.parse(err.responseText);
+                    var errors = '';
+                    for (var key in err) {
+                        if (err.hasOwnProperty(key)) {
+                            errors += key.replace("schedule.", "") + " : " + err[key];
+                        }
+                    }
+                    $("<div></div>").html(errors).dialog({
+                        modal: true,
+                        title: JSON.parse(err.responseText).Message,
+                        buttons: {
+                            "Ok": function() {
+                                $(this).dialog("close");
+                            }
+                        }
+                    }).show();
+
+                    self.showErrorPopup(container, popup);
+                },
+                complete: function() {}
+            });
         }
     }
     window.vm = new ScheduleCollection();

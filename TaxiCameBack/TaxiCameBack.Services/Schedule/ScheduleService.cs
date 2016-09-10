@@ -11,9 +11,9 @@ namespace TaxiCameBack.Services.Schedule
 {
     public class ScheduleService : IScheduleService
     {
-        private IRepository<Core.DomainModel.Schedule.Schedule> _scheduleRepository;
-        private IRepository<ScheduleGeolocation> _scheduleGeolocationRepository;
-        private ILoggingService _loggingService;
+        private readonly IRepository<Core.DomainModel.Schedule.Schedule> _scheduleRepository;
+        private readonly IRepository<ScheduleGeolocation> _scheduleGeolocationRepository;
+        private readonly ILoggingService _loggingService;
         public ScheduleService(IRepository<Core.DomainModel.Schedule.Schedule> repository,
             IRepository<ScheduleGeolocation> scheduleGeolocationRepository,
             ILoggingService loggingService)
@@ -35,9 +35,38 @@ namespace TaxiCameBack.Services.Schedule
             return _scheduleRepository.GetById(id);
         }
 
-        public void DeleteSchedule(int scheduleId)
+        public ScheduleCreateResult DeleteSchedule(Guid scheduleId)
         {
-            throw new NotImplementedException();
+            var result = new ScheduleCreateResult();
+            var schedule = _scheduleRepository.GetById(scheduleId);
+            var scheduleGeolocations = _scheduleGeolocationRepository.FindBy(x => x.ScheduleId == scheduleId).ToList();
+            if (schedule == null)
+            {
+                result.AddError("Schedule not existed.");
+                return result;
+            }
+            if (scheduleGeolocations.Count == 0)
+            {
+                result.AddError("Schedule Geolocaiton not existed.");
+                return result;
+            }
+            try
+            {
+                foreach (var scheduleGeolocation in scheduleGeolocations)
+                {
+                    _scheduleGeolocationRepository.Delete(scheduleGeolocation);
+                }
+                _scheduleGeolocationRepository.UnitOfWork.Commit();
+
+                _scheduleRepository.Delete(schedule);
+                _scheduleRepository.UnitOfWork.Commit();
+            }
+            catch (Exception exception)
+            {
+                _loggingService.Error(exception);
+                result.AddError(exception.Message);
+            }
+            return result;
         }
 
         public ScheduleCreateResult SaveScheduleInformation(Core.DomainModel.Schedule.Schedule schedule)
