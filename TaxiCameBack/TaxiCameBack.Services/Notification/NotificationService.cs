@@ -310,7 +310,6 @@ namespace TaxiCameBack.Services.Notification
             {
                 var oldNotification = _notificationRepository.GetById(notification.Id);
                 notification.IsCancel = true;
-                notification.UserId = null;
                 _notificationRepository.Merge(oldNotification, notification);
                 _notificationRepository.UnitOfWork.Commit();
             }

@@ -36,6 +36,5 @@ namespace TaxiCameBack.Services.Schedule
         /// </summary>
         /// <param name="schedule"></param>
         ScheduleCreateResult UpdateScheduleInformation(Core.DomainModel.Schedule.Schedule schedule);
-        ScheduleCreateResult CancelSchedule(Core.DomainModel.Schedule.Schedule schedule);
     }
 }

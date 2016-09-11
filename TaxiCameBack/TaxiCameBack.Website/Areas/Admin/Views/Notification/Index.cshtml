@@ -42,6 +42,7 @@
                                 <th>@Notifications.customer_datecreate</th>
                                 <th>@Notifications.customer_status</th>
                                 <th>@Notifications.customer_datereceive</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -117,7 +118,13 @@
                                         @Html.DisplayFor(modelItem => user.ReceivedDate)
                                     </td>
                                     <td>
-                                        @if (!user.IsCancel && user.NotificationExtend != null)
+                                        @if (!user.IsCancel && !user.Received)
+                                        {
+                                            <a href="@Url.Action("Received", new { user.Id })" class="btn btn-success btn-sm">
+                                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                            </a>
+                                        }
+                                        @if (!user.IsCancel && user.Received)
                                         {
                                             <a href="@Url.Action("Cancel", new { user.Id })" class="btn btn-danger btn-sm">
                                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -140,18 +147,6 @@
             "searching": false,
             "ordering": false,
             "scrollX": true,
-            "columnDefs": [
-                { "width": "5px", "targets": 0 },
-                { "width": "50px", "targets": 1 },
-                { "width": "100px", "targets": 2 },
-                { "width": "100px", "targets": 3 },
-                { "width": "300px", "targets": 4 },
-                { "width": "300px", "targets": 5 },
-                { "width": "200px", "targets": 6 },
-                { "width": "100px", "targets": 7 },
-                { "width": "100px", "targets": 8 },
-                { "width": "100px", "targets": 9 }
-            ],
             "language": {
                 "sProcessing": "Đang xử lý...",
                 "sLengthMenu": "Xem _MENU_ mục",

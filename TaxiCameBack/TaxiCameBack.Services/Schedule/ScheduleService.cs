@@ -141,26 +141,6 @@ namespace TaxiCameBack.Services.Schedule
             return result;
         }
 
-        public ScheduleCreateResult CancelSchedule(Core.DomainModel.Schedule.Schedule schedule)
-        {
-            var results = new ScheduleCreateResult();
-
-            var oldSchedule = _scheduleRepository.GetById(schedule.Id);
-            try
-            {
-                schedule.Notifications?.ForEach(x => x.IsCancel = true);
-                schedule.IsCancel = true;
-                _scheduleRepository.Merge(oldSchedule, schedule);
-                _scheduleRepository.UnitOfWork.Commit();
-            }
-            catch (Exception exception)
-            {
-                _loggingService.Error(exception);
-                results.AddError(exception.Message);
-            }
-            return results;
-        }
-
         private void Validate(ScheduleCreateResult result, Core.DomainModel.Schedule.Schedule schedule)
         {
             schedule.BeginLocation = StringUtils.SafePlainText(schedule.BeginLocation);

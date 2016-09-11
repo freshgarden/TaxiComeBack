@@ -45,8 +45,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 schedule.ScheduleGeolocations,
                 schedule.StartDate,
                 schedule.UserId,
-                CanUpdate = schedule.Notifications != null ? 0 : 1,
-                CanCancel = schedule.IsCancel ? 0 : 1
+                CanUpdate = schedule.Notifications != null ? 0 : 1
             }, JsonRequestBehavior.AllowGet);
         }
         [CustomAuthorize(Roles = AppConstants.StandardMembers)]
@@ -94,10 +93,6 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 return Json(new {status = "ERROR", messenge = "Can not delete this schedule which has been registed by customer."});
             if (existedSchedule.UserId != SessionPersister.UserId)
                 return Json(new {status = "ERROR", messenge = "Wrong id!"});
-            if (existedSchedule.IsCancel)
-            {
-                return Json(new {status = "ERROR", messenge = "Cannot update this schedule which has been cancel."});
-            }
             schedule.UserId = SessionPersister.UserId;
 
             // if has notification, we donot edit schedule, just edit status
@@ -140,11 +135,6 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
                 return Json(new {status = "ERROR", messenge = "Cannot delete this Schedule beucase the Schedule has been received."});
             }
 
-            if (existedSchedule.IsCancel)
-            {
-                return Json(new {status = "ERROR", messenge = "Cannot delete this Schedule which has been cancel."});
-            }
-
             if (existedSchedule.UserId != SessionPersister.UserId)
             {
                 return Json(new {status = "ERROR", messenge = "Cannot delete schedule of other user."});
@@ -156,39 +146,6 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             var message = new GenericMessageViewModel
             {
                 Message = "Delete schedule success.",
-                MessageType = GenericMessages.success
-            };
-            TempData[AppConstants.MessageViewBagName] = message;
-            return Json(new { status = "OK" });
-        }
-
-        [CustomAuthorize(Roles = AppConstants.StandardMembers)]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public JsonResult CancelSchedule(Guid id)
-        {
-            var existedSchedule = _scheduleService.FindScheduleById(id);
-            if (existedSchedule == null)
-            {
-                return Json(new {status = "ERROR", messenge = "Schedule is not existed."});
-            }
-
-            if (existedSchedule.IsCancel)
-            {
-                return Json(new {status = "ERROR", messenge = "This schedule has cancel."});
-            }
-
-            if (existedSchedule.UserId != SessionPersister.UserId)
-            {
-                return Json(new { status = "ERROR", messenge = "Cannot delete schedule of other user." });
-            }
-
-            var result = _scheduleService.CancelSchedule(existedSchedule);
-            if (!result.Success)
-                return Json(new { status = "ERROR", messenge = result.Errors }, JsonRequestBehavior.AllowGet);
-            var message = new GenericMessageViewModel
-            {
-                Message = "Cancel schedule success.",
                 MessageType = GenericMessages.success
             };
             TempData[AppConstants.MessageViewBagName] = message;
@@ -246,7 +203,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             var excludeNotifications =
                 notifications.Where(
                     notification =>
-                        notification.Schedule != null && (notification.Schedule.Notifications.Any(s => s.Received) || notification.Schedule.IsCancel))
+                        notification.Schedule != null && notification.Schedule.Notifications.Any(s => s.Received))
                     .ToList();
             notifications = notifications.Except(excludeNotifications).ToList();
             return notifications.Count;
@@ -265,11 +222,13 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             var excludeNotifications =
                 notifications.Where(
                     notification =>
-                        notification.Schedule != null && (notification.Schedule.Notifications.Any(s => s.Received) || notification.Schedule.IsCancel))
+                        notification.Schedule != null && notification.Schedule.Notifications.Any(s => s.Received))
                     .ToList();
             notifications = notifications.Except(excludeNotifications).ToList();
 
-            var totalNotification = notifications.Count - numberNotificationGet;
+            var totalNotification = notifications.Count > numberNotificationGet
+                ? notifications.Count - numberNotificationGet
+                : 0;
 
             var results = notifications.Select(x => new
             {
