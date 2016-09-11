@@ -105,6 +105,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             if (notification.Schedule == null && notification.NotificationExtend != null)
             {
                 notification.Received = false;
+                notification.UserId = null;
                 result = _notificationService.Update(notification);
             }
             else
