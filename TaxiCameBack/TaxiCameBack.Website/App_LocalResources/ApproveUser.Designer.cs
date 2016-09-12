@@ -214,7 +214,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quản trị tài khoản.
+        ///   Looks up a localized string similar to Quản lý tài khoản.
         /// </summary>
         public static string user_profile {
             get {

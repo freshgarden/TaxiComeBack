@@ -9,8 +9,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@Login.login_title</title>
-    <!-- Tell the browser to be responsive to screen width -->
+
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/Images/favicon.jpg" />
     <link rel="stylesheet" type="text/css" media="all" id="font_css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro::400,700,800,300">
     @Styles.Render("~/admin/css")
     @Styles.Render("~/css/icheck")
@@ -26,20 +27,16 @@
 </head>
 <body class="hold-transition login-page">
     <div class="login-box">
-        <div class="login-logo">
-            <a href="#"><img src="~/Content/Images/logo/logovnl_03.png" class="img-responsive center-block" alt="Logo"/></a>
-        </div>
-        <!-- /.login-logo -->
         <div class="login-box-body">
             <p class="login-box-msg">@Login.login_form</p>
             <p class="login-box-msg text-red">@Login.note</p>
             @using (Html.BeginForm("Login", "Account", FormMethod.Post))
             {
-                if(ViewData.ModelState["ErrorMessage"] != null)
+                if (ViewData.ModelState["ErrorMessage"] != null)
                 {
                     <div class="alert alert-danger" role="alert">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                        @Html.ValidationMessage("ErrorMessage") 
+                        @Html.ValidationMessage("ErrorMessage")
                     </div>
                 }
                 @Html.AntiForgeryToken()
@@ -75,23 +72,20 @@
                     </div>
                 </div>
                 @Html.HiddenFor(model => model.ReturnUrl)
-                }
+            }
 
-                <!-- /.social-auth-links -->
-                <a href="@Url.Action("ForgotPassword", "Account")">@Login.lbl_forget_acc</a><br>
-                <a href="@Url.Action("Register","Account")" class="text-center">@Login.lbl_reg_new_acc</a>
-            </div>
-        <!-- /.login-box-body -->
+            <a href="@Url.Action("ForgotPassword", "Account")">@Login.lbl_forget_acc</a><br>
+            <a href="@Url.Action("Register","Account")" class="text-center">@Login.lbl_reg_new_acc</a>
+        </div>
     </div>
-    <!-- /.login-box -->
     <script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' // optional
-    });
-  });
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+        });
     </script>
 </body>
 </html>

@@ -61,7 +61,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tạo lịch trình thành công.
+        ///   Looks up a localized string similar to Tạo lịch trình quay về thành công.
         /// </summary>
         public static string create_schedule_success {
             get {
@@ -70,7 +70,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Đăng ký lộ trình.
+        ///   Looks up a localized string similar to Đăng ký lịch trình quay về.
         /// </summary>
         public static string lbl_create_schedule {
             get {
@@ -79,7 +79,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quản lý lộ trình.
+        ///   Looks up a localized string similar to Quản lý lịch trình quay về.
         /// </summary>
         public static string lbl_manage_schedule {
             get {
@@ -88,7 +88,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lịch trình.
+        ///   Looks up a localized string similar to Lịch trình quay về.
         /// </summary>
         public static string schedule_breadcrumb {
             get {
@@ -97,7 +97,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lịch trình.
+        ///   Looks up a localized string similar to Lịch trình quay về.
         /// </summary>
         public static string title {
             get {
@@ -106,7 +106,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cập nhật lịch trình thành công.
+        ///   Looks up a localized string similar to Cập nhật lịch trình quay về thành công.
         /// </summary>
         public static string update_schedule_success {
             get {

@@ -61,7 +61,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sửa lộ trình.
+        ///   Looks up a localized string similar to Sửa lịch trình quay về.
         /// </summary>
         public static string title {
             get {

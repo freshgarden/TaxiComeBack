@@ -61,6 +61,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hủy chuyến.
+        /// </summary>
+        public static string btn_cancel {
+            get {
+                return ResourceManager.GetString("btn_cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Xóa điều kiện.
         /// </summary>
         public static string btn_delete_con {
@@ -70,11 +79,38 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nhận chuyến.
+        /// </summary>
+        public static string btn_received {
+            get {
+                return ResourceManager.GetString("btn_received", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tìm kiếm.
         /// </summary>
         public static string btn_search {
             get {
                 return ResourceManager.GetString("btn_search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đã hủy.
+        /// </summary>
+        public static string cancel_status {
+            get {
+                return ResourceManager.GetString("cancel_status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lựa chọn.
+        /// </summary>
+        public static string customer_action {
+            get {
+                return ResourceManager.GetString("customer_action", resourceCulture);
             }
         }
         
@@ -169,7 +205,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tài xế đặt xe.
+        ///   Looks up a localized string similar to Tài xế đặt xe quay về.
         /// </summary>
         public static string driver_reg_type {
             get {
@@ -183,6 +219,78 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string no {
             get {
                 return ResourceManager.GetString("no", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lịch trình đã bị hủy.
+        /// </summary>
+        public static string notification_cancel {
+            get {
+                return ResourceManager.GetString("notification_cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Không thể hủy lịch trình này.
+        /// </summary>
+        public static string notification_cancel_err {
+            get {
+                return ResourceManager.GetString("notification_cancel_err", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hủy lịch trình thành công.
+        /// </summary>
+        public static string notification_cancel_suc {
+            get {
+                return ResourceManager.GetString("notification_cancel_suc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Không thể hủy lịch trình này khi lịch trình đã bị hủy rồi..
+        /// </summary>
+        public static string notification_cancel_was_cancel {
+            get {
+                return ResourceManager.GetString("notification_cancel_was_cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lịch trình không tồn tại.
+        /// </summary>
+        public static string notification_not_found {
+            get {
+                return ResourceManager.GetString("notification_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nhận lịch trình thất bại.
+        /// </summary>
+        public static string notification_receive_err {
+            get {
+                return ResourceManager.GetString("notification_receive_err", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nhận lịch trình thành công..
+        /// </summary>
+        public static string notification_receive_suc {
+            get {
+                return ResourceManager.GetString("notification_receive_suc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Không thể nhận lịch trình này khi lịch trình đã được nhận bởi tài xế khác.
+        /// </summary>
+        public static string notification_receive_was_receive {
+            get {
+                return ResourceManager.GetString("notification_receive_was_receive", resourceCulture);
             }
         }
         
@@ -201,6 +309,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         public static string receive_status {
             get {
                 return ResourceManager.GetString("receive_status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tìm kiếm nâng cao.
+        /// </summary>
+        public static string search_title {
+            get {
+                return ResourceManager.GetString("search_title", resourceCulture);
             }
         }
         

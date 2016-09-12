@@ -2145,8 +2145,6 @@
     <Content Include="Areas\Admin\Views\Account\Register.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Errors\AcessDenied.cshtml" />
-    <Content Include="Areas\Admin\Views\Errors\NotFound.cshtml" />
     <Content Include="Areas\Admin\Views\Schedule\_CreateEdit.cshtml" />
     <Content Include="Areas\Admin\Views\Account\EditProfile.cshtml" />
     <None Include="Areas\Admin\Views\Account\ForgotPassword.cshtml" />
@@ -2391,7 +2389,9 @@
     <Content Include="Scripts\tinymce\tinymce.min.js" />
     <Content Include="Scripts\view_calendar.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

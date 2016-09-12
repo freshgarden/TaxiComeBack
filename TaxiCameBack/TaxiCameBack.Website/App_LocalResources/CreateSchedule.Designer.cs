@@ -88,6 +88,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Xóa lịch trình.
+        /// </summary>
+        public static string btn_Delete {
+            get {
+                return ResourceManager.GetString("btn_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đăng ký.
         /// </summary>
         public static string btnCreate {
@@ -124,7 +133,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Điểm đi của tài xế.
+        ///   Looks up a localized string similar to Điểm đi chuyến xe quay về.
         /// </summary>
         public static string lbl_begin_location {
             get {
@@ -133,7 +142,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Điểm đến của tài xế.
+        ///   Looks up a localized string similar to Điểm đến chuyến xe quay về.
         /// </summary>
         public static string lbl_end_location {
             get {
@@ -196,7 +205,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tạo lộ trình.
+        ///   Looks up a localized string similar to Tạo lịch trình quay về.
         /// </summary>
         public static string title {
             get {

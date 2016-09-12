@@ -3,34 +3,32 @@
     ViewBag.Title = SettingPage.test_email_title;
 }
 
-    <section class="content-header">
-        <h1>
-            @ViewBag.Title
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="@Url.Action("Index")"><i class="fa fa-dashboard"></i> @HomeBackEnd.home_breadcrumb</a></li>
-            <li class="active">@ViewBag.Title</li>
-        </ol>
-    </section>
+<section class="content-header">
+    <h1>
+        @ViewBag.Title
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index")"><i class="fa fa-dashboard"></i> @HomeBackEnd.home_breadcrumb</a></li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</section>
 
-    <!-- Main content -->
-    <section class="content">
-        <!-- Info boxes -->
-        <div class="row">
-            <div class="col-md-6">
-                <div class="box box-primary">
-                    <div class="box-body">
-                        @using (Html.BeginForm("SendTestEmail", "Settings", FormMethod.Post))
-                        {
-                            @Html.ValidationSummary(false)
-                            <p>@SettingPage.test_email_note</p>
+<section class="content">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-body">
+                    @using (Html.BeginForm("SendTestEmail", "Settings", FormMethod.Post))
+                    {
+                        @Html.ValidationSummary(false)
+                        <p>@SettingPage.test_email_note</p>
                             <div class="submit-holder">
                                 <input type="submit" class="btn btn-primary" value="@SettingPage.btn_send_test_email" />
                             </div>
-                        }
-                    </div>
+                    }
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 

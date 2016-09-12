@@ -84,8 +84,8 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             {
                 var message = new GenericMessageViewModel
                 {
-                    Message = "The notification not existed.",
-                    MessageType = GenericMessages.success
+                    Message = App_LocalResources.Notifications.notification_not_found,
+                    MessageType = GenericMessages.danger
                 };
                 TempData[AppConstants.MessageViewBagName] = message;
                 return RedirectToAction("Index");
@@ -94,8 +94,8 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             {
                 var message = new GenericMessageViewModel
                 {
-                    Message = "Cannot cancel notification which was cancel.",
-                    MessageType = GenericMessages.success
+                    Message = App_LocalResources.Notifications.notification_cancel_was_cancel,
+                    MessageType = GenericMessages.danger
                 };
                 TempData[AppConstants.MessageViewBagName] = message;
                 return RedirectToAction("Index");
@@ -117,8 +117,8 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             {
                 var message = new GenericMessageViewModel
                 {
-                    Message = "Error Cancel notification.",
-                    MessageType = GenericMessages.success
+                    Message = App_LocalResources.Notifications.notification_cancel_err,
+                    MessageType = GenericMessages.danger
                 };
                 TempData[AppConstants.MessageViewBagName] = message;
                 return RedirectToAction("Index");
@@ -128,7 +128,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             context.Clients.Clients(NotificationHub.Connections.ToList()).updateReceived();
             TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
             {
-                Message = "Cancel success.",
+                Message = App_LocalResources.Notifications.notification_cancel_suc,
                 MessageType = GenericMessages.success
             };
 
@@ -143,7 +143,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             {
                 TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
                 {
-                    Message = "Notification not existed.",
+                    Message = App_LocalResources.Notifications.notification_not_found,
                     MessageType = GenericMessages.danger
                 };
 
@@ -153,7 +153,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             {
                 TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
                 {
-                    Message = "Cannot cancel notification which hasn't received.",
+                    Message = App_LocalResources.Notifications.notification_receive_was_receive,
                     MessageType = GenericMessages.danger
                 };
 
@@ -173,7 +173,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             {
                 TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
                 {
-                    Message = "Notification has cancel.",
+                    Message = App_LocalResources.Notifications.notification_cancel,
                     MessageType = GenericMessages.danger
                 };
 
@@ -184,7 +184,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             {
                 TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
                 {
-                    Message = "This notification cannot existed.",
+                    Message = App_LocalResources.Notifications.notification_not_found,
                     MessageType = GenericMessages.danger
                 };
 
@@ -199,7 +199,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             {
                 TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
                 {
-                    Message = result.Errors[0],
+                    Message = App_LocalResources.Notifications.notification_receive_err,
                     MessageType = GenericMessages.danger
                 };
                 return RedirectToAction("Index");
@@ -211,7 +211,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             }
             TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
             {
-                Message = "Cancel success.",
+                Message = App_LocalResources.Notifications.notification_receive_suc,
                 MessageType = GenericMessages.success
             };
 

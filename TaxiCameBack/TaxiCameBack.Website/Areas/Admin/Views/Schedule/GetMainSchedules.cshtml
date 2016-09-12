@@ -1,5 +1,4 @@
-﻿<!-- Content Header (Page header) -->
-<section class="content-header">
+﻿<section class="content-header">
     <h1>
         @Schedule.title
     </h1>
@@ -8,6 +7,7 @@
         <li class="active">@Schedule.schedule_breadcrumb</li>
     </ol>
 </section>
+
 <style>
     span.fc-title {
         padding: 5px !important;
@@ -16,9 +16,8 @@
         white-space: pre-line;
     }
 </style>
-<!-- Main content -->
+
 <section class="content">
-    <!-- Info boxes -->
     <div class="row">
         <div class="col-md-12">
             <div class="box box-primary">
@@ -28,7 +27,6 @@
                 <div class="box-body">
                     @Html.Partial("_GenericMessage")
                     <div class="row">
-                        <!-- Calendar div -->
                         <div id="calendar">
                         </div>
                         <div style="clear: both"></div>
@@ -37,6 +35,4 @@
             </div>
         </div>
     </div>
-    <!-- /.row -->
 </section>
-<!-- /.content -->

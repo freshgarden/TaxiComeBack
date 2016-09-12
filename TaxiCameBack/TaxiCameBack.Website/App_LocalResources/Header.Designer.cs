@@ -70,6 +70,15 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thông báo.
+        /// </summary>
+        public static string lbl_notification {
+            get {
+                return ResourceManager.GetString("lbl_notification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đăng xuất.
         /// </summary>
         public static string sign_out {

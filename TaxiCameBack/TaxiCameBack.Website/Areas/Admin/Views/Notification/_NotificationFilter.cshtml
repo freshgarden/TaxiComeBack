@@ -1,34 +1,36 @@
 ﻿@model TaxiCameBack.Website.Areas.Admin.Models.NotificationSearchModel
+
 <link href="@Url.Content("~/Content/datetimepicker/jquery.datetimepicker.css")" rel="stylesheet" />
 <script src="@Url.Content("~/Content/datetimepicker/jquery.datetimepicker.full.min.js")"></script>
 
-
-<div class="box box-primary">
-    <div class="box-header with-border">
-        <h3 class="box-title">Tìm kiếm nâng cao</h3>
-    </div>
-    @using (Html.BeginForm("Filter", "Notification", FormMethod.Post, new { id = "formId" }))
+<div class="row">
+    <div class="col-xs-8">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">@Notifications.search_title</h3>
+            </div>
+            @using (Html.BeginForm("Filter", "Notification", FormMethod.Post, new { id = "formId" }))
             {
-        <div class="box-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="start_point">Điểm đi</label>
-                        @Html.TextBoxFor(x => x.BeginLocation, "", new { @class = "form-control", id = "start_point", @placeholder = Notifications.customer_start_pos })
-                    </div>
-                    <div class="form-group">
-                        <label for="end_point">Điểm đến</label>
-                        @Html.TextBoxFor(x => x.EndLocation, "", new { @class = "form-control", id = "end_point", @placeholder = Notifications.customer_end_pos })
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="StartDateString">Thời gian xuất hành</label>
-                        @Html.TextBoxFor(x => x.StartDateString, "", new { @class = "form-control", id = "StartDateString", placeholder = Notifications.customer_datecreate })
-                    </div>
-                    <div class="form-group">
-                        <label for="status">Trạng thái</label>
-                        @Html.DropDownListFor(x => x.Received, new SelectList(new[]
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="start_point">@Notifications.customer_start_pos</label>
+                                @Html.TextBoxFor(x => x.BeginLocation, "", new { @class = "form-control", id = "start_point", @placeholder = Notifications.customer_start_pos })
+                            </div>
+                            <div class="form-group">
+                                <label for="end_point">@Notifications.customer_end_pos</label>
+                                @Html.TextBoxFor(x => x.EndLocation, "", new { @class = "form-control", id = "end_point", @placeholder = Notifications.customer_end_pos })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="StartDateString">@Notifications.customer_datecreate</label>
+                                @Html.TextBoxFor(x => x.StartDateString, "", new { @class = "form-control", id = "StartDateString", placeholder = Notifications.customer_datecreate })
+                            </div>
+                            <div class="form-group">
+                                <label for="status">@Notifications.customer_status</label>
+                                @Html.DropDownListFor(x => x.Received, new SelectList(new[]
                                 {
                                     new {Value = "", Text = Notifications.customer_status},
                                     new {Value = "true", Text = Notifications.receive_status},
@@ -37,17 +39,34 @@
                                 "Value",
                                 "Text",
                                 Model.Received), new { @class = "form-control" })
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
                 <div class="box-footer">
-                    <input class="btn btn-default" type="submit" name="command" value="@Notifications.btn_delete_con" />
+                    <input class="btn btn-danger" type="submit" name="command" value="@Notifications.btn_delete_con" />
                     <input class="btn btn-primary pull-right" type="submit" name="command" value="@Notifications.btn_search" />
                 </div>
-    }
+            }
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="box box-danger">
+            <div class="box-body">
+                <b>Hướng dẫn:</b>
+                <p>Tài xế tùy chọn điều kiện tìm kiếm theo các tiêu chí:</p>
+                <ul>
+                    <li>Điểm đi</li>
+                    <li>Điểm đến</li>
+                    <li>Thời gian xuất hành</li>
+                    <li>Trạng thái chuyến đi</li>
+                </ul>
+                <p>Thông tin của tất cả lịch trình bao gồm <b>Lịch trình quay về</b> của tài xế đăng ký và <b>Lịch trình của khách hàng đăng ký</b> khi đã xác nhận thành công sẽ hiển thị trong bảng.</p>
+                <p>Tài xế có thể theo dõi và cập nhật lịch trình phù hợp</p>
+            </div>
+        </div>
+    </div>
 </div>
-
 
 <script>
     jQuery("#StartDateString").datetimepicker({

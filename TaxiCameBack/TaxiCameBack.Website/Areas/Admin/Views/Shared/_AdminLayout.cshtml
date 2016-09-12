@@ -11,11 +11,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@ViewBag.Title</title>
-    <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/Images/favicon.jpg" />
     <link rel="stylesheet" type="text/css" media="all" id="font_css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro::400,700,800,300">
     @Styles.Render("~/admin/css")
     @Styles.Render("~/css/skins")
+
     @Scripts.Render("~/admin/js")
     @Scripts.Render("~/app/js")
 
@@ -26,32 +27,20 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script type="text/javascript">
-    var app_base = '@Url.Content("~/")';
+        var app_base = '@Url.Content("~/")';
     </script>
     @RenderSection("AdminHeader", false)
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
         @Html.Partial("_Header")
-
-        <!-- Left side column. contains the logo and sidebar -->
         <aside class="main-sidebar">
             @Html.Partial("_Sidebar")
         </aside>
-        <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             @RenderBody()
         </div>
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> 1.0
-            </div>
-            <strong>Copyright &copy; 2016 <a href="#">Fresh Garden Team</a>.</strong> All rights
-            reserved.
-        </footer>        
         <div class="control-sidebar-bg" style="position: fixed; height: auto;"></div>
     </div>
 </body>
-
 </html>

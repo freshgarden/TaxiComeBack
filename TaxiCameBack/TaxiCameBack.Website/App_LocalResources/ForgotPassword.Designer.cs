@@ -88,7 +88,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quên mật khẩu.
+        ///   Looks up a localized string similar to QUÊN MẬT KHẨU.
         /// </summary>
         public static string forgot_form {
             get {
@@ -115,7 +115,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hãy sử dụng email đã đăng ký để lấy lại mật khẩu.
+        ///   Looks up a localized string similar to Hãy sử dụng Email đã đăng ký để lấy lại mật khẩu.
         /// </summary>
         public static string note {
             get {

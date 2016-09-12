@@ -169,6 +169,6 @@
     <value>Tài khoản bị khóa</value>
   </data>
   <data name="user_profile" xml:space="preserve">
-    <value>Quản trị tài khoản</value>
+    <value>Quản lý tài khoản</value>
   </data>
 </root>

@@ -61,7 +61,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tài khoản.
+        ///   Looks up a localized string similar to Quản lý tài khoản.
         /// </summary>
         public static string account {
             get {
@@ -88,7 +88,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lịch trình.
+        ///   Looks up a localized string similar to Lịch trình quay về.
         /// </summary>
         public static string schedule {
             get {

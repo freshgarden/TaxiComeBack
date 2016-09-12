@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="create_schedule_success" xml:space="preserve">
-    <value>Tạo lịch trình thành công</value>
+    <value>Tạo lịch trình quay về thành công</value>
   </data>
   <data name="lbl_create_schedule" xml:space="preserve">
-    <value>Đăng ký lộ trình</value>
+    <value>Đăng ký lịch trình quay về</value>
   </data>
   <data name="lbl_manage_schedule" xml:space="preserve">
-    <value>Quản lý lộ trình</value>
+    <value>Quản lý lịch trình quay về</value>
   </data>
   <data name="schedule_breadcrumb" xml:space="preserve">
-    <value>Lịch trình</value>
+    <value>Lịch trình quay về</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Lịch trình</value>
+    <value>Lịch trình quay về</value>
   </data>
   <data name="update_schedule_success" xml:space="preserve">
-    <value>Cập nhật lịch trình thành công</value>
+    <value>Cập nhật lịch trình quay về thành công</value>
   </data>
 </root>

@@ -4,22 +4,25 @@
     ViewBag.Title = (string.IsNullOrEmpty(Model.Id.ToString())) ? ApproveUser.add_user : ApproveUser.edit_user;
     var buttonText = (string.IsNullOrEmpty(Model.Id.ToString())) ? ApproveUser.btn_create : ApproveUser.btn_save;
 }
+
 <section class="content-header">
     <h1>
         @ApproveUser.user_profile
     </h1>
+
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> @HomeBackEnd.home_breadcrumb</a></li>
-        <li><a href="#">@AccountManager.approve_column_header</a></li>
         <li class="active">@ApproveUser.user_profile</li>
+        <li><a href="#">@AccountManager.approve_column_header</a></li>
     </ol>
 </section>
+
 <section class="content">
     <div class="row">
         <div class="col-md-6">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">@ApproveUser.user_profile</h3>
+                    <h3 class="box-title">@AccountManager.approve_column_header</h3>
                 </div>
                 @using (Html.BeginForm("Edit", "Account", FormMethod.Post))
                 {
@@ -40,16 +43,16 @@
                             @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
                         </div>
                         <div class="checkbox">
-                            @using (Html.BeginLabelFor(m => m.IsApproved, new { @class = "checkbox" }))
+                            @using (Html.BeginLabelFor(m => m.IsApproved, new { @class = "checkbox text-green" }))
                             {
-                                @Html.CheckBoxFor(m => m.IsApproved, new { name = "auth" })
+                                @Html.CheckBoxFor(m => m.IsApproved)
                             }
                             @Html.ValidationMessageFor(m => m.IsApproved, "", new { @class = "text-danger" })
                         </div>
                         <div class="checkbox">
-                            @using (Html.BeginLabelFor(m => m.IsLockedOut, new { @class = "checkbox" }))
+                            @using (Html.BeginLabelFor(m => m.IsLockedOut, new { @class = "checkbox text-red" }))
                             {
-                                @Html.CheckBoxFor(m => m.IsLockedOut, new { name = "auth" })
+                                @Html.CheckBoxFor(m => m.IsLockedOut)
                             }
                             @Html.ValidationMessageFor(m => m.IsLockedOut, "", new { @class = "text-danger" })
                         </div>
@@ -57,11 +60,29 @@
 
                     <div class="box-footer">
                         <div class="submit-holder">
-                            <a class="btn btn-default pull-left" onclick="history.go(-1); return false;" href="#">@ApproveUser.btn_Back</a>
                             <input type="submit" class="btn btn-primary pull-right" value="@(buttonText)" />
                         </div>
                     </div>
                 }
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="box box-danger">
+                <div class="box-body">
+                    <b>Hướng dẫn:</b>
+                    <p>Quản trị viên quản lý tài khoản sử dụng hệ thống của tài xế</p>
+                    <b>Cấp quyền cho tài xế</b>
+                    <ul>
+                        <li>Chọn Tài khoản được chấp thuận khi Quản trị viên đồng ý để tài xế sử dụng tài khoản này đăng nhập hệ thống.</li>
+                        <li>Bỏ chọn Tài khoản được chấp thuận khi Quản trị viên không đồng ý để tài xế sử dụng tài khoản này đăng nhập hệ thống.</li>
+                    </ul>
+                    <b>Khóa tài khoản tài xế</b>
+                    <ul>
+                        <li>Chọn Tài khoản bị khóa khi Quản trị viên muốn khóa tạm thời tài khoản của tài xế để không đăng nhập được vào hệ thống.</li>
+                        <li>Bỏ chọn Tài khoản bị khóa khi Quản trị viên muốn khôi phục lại tài khoản của tài xế để đăng nhập được vào hệ thống.</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

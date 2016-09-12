@@ -97,7 +97,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thay đổi mật khẩu.
+        ///   Looks up a localized string similar to THAY ĐỔI MẬT KHẨU.
         /// </summary>
         public static string reset_password_form {
             get {

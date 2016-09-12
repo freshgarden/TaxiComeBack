@@ -97,7 +97,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lưu ý: Bạn hãy chọn email có thật để đăng ký.
+        ///   Looks up a localized string similar to Hãy chọn tài khoản Gmail để đăng ký.
         /// </summary>
         public static string note {
             get {
@@ -178,7 +178,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Đăng ký mới tài khoản tài xế.
+        ///   Looks up a localized string similar to ĐĂNG KÝ TÀI KHOẢN TÀI XẾ.
         /// </summary>
         public static string register_form {
             get {
@@ -205,7 +205,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TaxiQuayVe | Đăng ký tài khoản.
+        ///   Looks up a localized string similar to Đăng ký tài khoản.
         /// </summary>
         public static string register_title {
             get {

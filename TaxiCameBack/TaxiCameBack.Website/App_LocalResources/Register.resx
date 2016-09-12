@@ -145,7 +145,7 @@
     <value>Nhập lại mật khẩu</value>
   </data>
   <data name="register_form" xml:space="preserve">
-    <value>Đăng ký mới tài khoản tài xế</value>
+    <value>ĐĂNG KÝ TÀI KHOẢN TÀI XẾ</value>
   </data>
   <data name="register_logo" xml:space="preserve">
     <value>TaxiQuayVe</value>
@@ -154,7 +154,7 @@
     <value>Đăng ký tài khoản thành công ! Xin đợi email xác nhận</value>
   </data>
   <data name="register_title" xml:space="preserve">
-    <value>TaxiQuayVe | Đăng ký tài khoản</value>
+    <value>Đăng ký tài khoản</value>
   </data>
   <data name="re_password_match" xml:space="preserve">
     <value>Mật khẩu nhập lại không khớp</value>
@@ -178,7 +178,7 @@
     <value>Nhập lại mật khẩu không được để trống</value>
   </data>
   <data name="note" xml:space="preserve">
-    <value>Lưu ý: Bạn hãy chọn email có thật để đăng ký</value>
+    <value>Hãy chọn tài khoản Gmail để đăng ký</value>
   </data>
   <data name="lbl_login_back" xml:space="preserve">
     <value>Quay lại đăng nhập</value>

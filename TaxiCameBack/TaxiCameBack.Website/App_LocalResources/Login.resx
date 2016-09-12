@@ -130,13 +130,13 @@
     <value>Đăng ký tài khoản tài xế</value>
   </data>
   <data name="login_form" xml:space="preserve">
-    <value>Đăng nhập</value>
+    <value>ĐĂNG NHẬP</value>
   </data>
   <data name="login_logo" xml:space="preserve">
     <value>TaxiQuayVe</value>
   </data>
   <data name="login_title" xml:space="preserve">
-    <value>TaxiQuayVe | Đăng nhập</value>
+    <value>Đăng nhập</value>
   </data>
   <data name="password_attemp" xml:space="preserve">
     <value>Mật khẩu đã quá giới hạn cho phép nhập.</value>
@@ -169,7 +169,7 @@
     <value>Tài khoản chưa được chấp thuận !</value>
   </data>
   <data name="note" xml:space="preserve">
-    <value>Hãy sử dụng email và mật khẩu khi đăng ký để đăng nhập vào hệ thống</value>
+    <value>Hãy sử dụng Email và Mật khẩu khi đăng ký để đăng nhập vào hệ thống</value>
   </data>
   <data name="user_banned" xml:space="preserve">
     <value>Tài khoản đã bị vô hiệu !</value>

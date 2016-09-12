@@ -8,8 +8,8 @@
     {
         ViewBag.Title = EditSchedule.title;
     }
-
 }
+
 <link href="@Url.Content("~/Content/datetimepicker/jquery.datetimepicker.css")" rel="stylesheet" />
 <link href="@Url.Content("~/Content/jqsDialog/jqsDialog.css")" rel="stylesheet" />
 <script src="@Url.Content("~/Content/datetimepicker/jquery.datetimepicker.full.min.js")"></script>
@@ -19,6 +19,7 @@
 <script src="@Url.Content("~/Scripts/moment.min.js")"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?language=vi&libraries=places&sensor=false&key=AIzaSyDXIEOJsracks0-TTPmqvEnnMG3YPyh36U"></script>
 @Scripts.Render("~/schedule/createedit")
+
 <section class="content-header">
     <h1>
         @ViewBag.Title
@@ -28,24 +29,22 @@
         <li class="active">@ViewBag.Title</li>
     </ol>
 </section>
+
 <style>
     #btnUpdateSchedule, #btnDeleteSchedule {
-        visibility:hidden
+        visibility: hidden;
     }
 </style>
-<!-- Main content -->
+
 <section class="content">
-    <!-- Info boxes -->
     <div class="row">
         <div class="col-md-4">
             <div class="box box-default">
                 <div class="box-body">
-                    <p class="help-block text-red">@CreateSchedule.note</p>
                     @Html.AntiForgeryToken()
-
                     @Html.Partial("_ScheduleField")
-                    <hr/>
-                    <button id="btnDeleteSchedule" class="btn btn-default pull-left" data-bind="click: deleteSchedule">Delete</button>
+                    <hr />
+                    <button id="btnDeleteSchedule" class="btn btn-danger pull-left" data-bind="click: deleteSchedule">@CreateSchedule.btn_Delete</button>
                     @{
                         if (ViewBag.Type == 0)
                         {
@@ -58,13 +57,18 @@
                     }
                 </div>
             </div>
+            <div class="box box-danger">
+                <div class="box-body">
+                    <b>Hướng dẫn:</b>
+                    <p>Đối với các lịch trình quay về chưa có khách hàng đăng kí, tài xế có thể <b>Cập nhật</b> hoặc <b>Xóa lịch trình</b> quay về đó.</p>
+                    <p>Khi lịch trình quay về đã có khách hàng đăng ký tài xế <b>không thể Cập nhật hay Xóa lịch trình</b> được nữa, muốn hủy lịch trình đó, tài xế chuyển sang phần <b>Thông báo</b> tìm đến lịch trình cần tìm để hủy lịch trình.</p>
+                </div>
+            </div>
         </div>
         <div class="col-md-8">
             <div class="box box-default">
-                <div id="dvMap" style="height: 450px;"></div>
+                <div id="dvMap" style="height: 500px;"></div>
             </div>
         </div>
     </div>
-    <!-- /.row -->
 </section>
-<!-- /.content -->

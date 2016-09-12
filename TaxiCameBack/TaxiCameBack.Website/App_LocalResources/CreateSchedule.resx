@@ -132,6 +132,9 @@
   <data name="btn_Back" xml:space="preserve">
     <value>Quay lại</value>
   </data>
+  <data name="btn_Delete" xml:space="preserve">
+    <value>Xóa lịch trình</value>
+  </data>
   <data name="end_location_required" xml:space="preserve">
     <value>Điểm đến không được để trống</value>
   </data>
@@ -139,10 +142,10 @@
     <value>Điểm đến không được vượt quá 600 ký tự</value>
   </data>
   <data name="lbl_begin_location" xml:space="preserve">
-    <value>Điểm đi của tài xế</value>
+    <value>Điểm đi chuyến xe quay về</value>
   </data>
   <data name="lbl_end_location" xml:space="preserve">
-    <value>Điểm đến của tài xế</value>
+    <value>Điểm đến chuyến xe quay về</value>
   </data>
   <data name="lbl_start_date" xml:space="preserve">
     <value>Thời gian xuất hành</value>
@@ -163,6 +166,6 @@
     <value>Thời gian xuất hành không được để trống</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Tạo lộ trình</value>
+    <value>Tạo lịch trình quay về</value>
   </data>
 </root>

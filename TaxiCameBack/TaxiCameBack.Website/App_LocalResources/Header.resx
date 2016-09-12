@@ -120,6 +120,9 @@
   <data name="default_full_name" xml:space="preserve">
     <value>Người dùng chưa cập nhật</value>
   </data>
+  <data name="lbl_notification" xml:space="preserve">
+    <value>Thông báo</value>
+  </data>
   <data name="sign_out" xml:space="preserve">
     <value>Đăng xuất</value>
   </data>
