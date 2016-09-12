@@ -159,16 +159,16 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
 
                 return RedirectToAction("Index");
             }
-            //if (notification.Schedule != null && notification.Schedule.Notifications.Any(x => x.Received))
-            //{
-            //    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
-            //    {
-            //        Message = "Cannot receive schedule which has received.",
-            //        MessageType = GenericMessages.danger
-            //    };
+            if (notification.Schedule != null && notification.Schedule.Notifications.Any(x => x.Received && !x.IsCancel))
+            {
+                TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                {
+                    Message = "Cannot receive schedule which has received.",
+                    MessageType = GenericMessages.danger
+                };
 
-            //    return RedirectToAction("Index");
-            //}
+                return RedirectToAction("Index");
+            }
             if (notification.IsCancel)
             {
                 TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
