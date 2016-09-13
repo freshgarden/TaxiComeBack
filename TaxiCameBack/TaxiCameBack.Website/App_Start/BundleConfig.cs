@@ -40,7 +40,7 @@ namespace TaxiCameBack.Website
                 "~/Scripts/moment.min.js",
                  "~/Scripts/plugins/fullcalendar/fullcalendar.min.js",
                  "~/Scripts/view_calendar.js",
-                 "~/Scripts/plugins/fullcalendar/lang/vi.js"
+                 "~/Scripts/plugins/fullcalendar/locale-all.js"
                  ));
 
             //Register Css
@@ -68,8 +68,7 @@ namespace TaxiCameBack.Website
                 "~/Scripts/plugins/iCheck/square/blue.css", new CssRewriteUrlTransform()
                 ));
             bundles.Add(new StyleBundle("~/css/calendar").Include(
-                "~/Scripts/plugins/fullcalendar/fullcalendar.min.css",
-                "~/Content/view_calendar.css"
+                "~/Scripts/plugins/fullcalendar/fullcalendar.min.css"
                 ));
 
             //Reg Front-End CSS

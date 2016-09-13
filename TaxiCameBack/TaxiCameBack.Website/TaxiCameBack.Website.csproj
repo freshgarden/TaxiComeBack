@@ -2040,7 +2040,6 @@
     <Content Include="Content\uploads\afe9517a-2139-40ca-a7f4-a02800e572a4\bbb42d4d-cd4e-4f37-9d75-a1a500aebffc_file-three.txt" />
     <Content Include="Content\uploads\afe9517a-2139-40ca-a7f4-a02800e572a4\e7928396-d57a-404a-be5d-a1a501287fbd_capture.jpg" />
     <Content Include="Content\uploads\readme.txt" />
-    <Content Include="Content\view_calendar.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
