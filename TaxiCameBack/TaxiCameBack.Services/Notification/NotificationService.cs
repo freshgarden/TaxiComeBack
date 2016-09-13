@@ -107,7 +107,7 @@ namespace TaxiCameBack.Services.Notification
 
         public PagedList<Core.DomainModel.Notification.Notification> GetAllPaged(Guid userId, int pageIndex, int pageSize, NotificationSearchModel searchModel)
         {
-            var totalCount = ((EfUnitOfWork)_unitOfWork).Notification.Count();
+            var totalCount = ((EfUnitOfWork)_unitOfWork).Notification.ToList().Count;
             var results = ((EfUnitOfWork) _unitOfWork).Notification
                 .Where(x => x.UserId == userId || x.UserId == null)
                 .OrderByDescending(x => x.Received)
