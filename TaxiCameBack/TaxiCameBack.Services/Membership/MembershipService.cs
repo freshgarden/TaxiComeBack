@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Security;
 using TaxiCameBack.Core;
@@ -270,6 +271,13 @@ namespace TaxiCameBack.Services.Membership
         public bool ValidateUser(string userEmail, string password, int maxInvalidPasswordAttempts)
         {
             userEmail = StringUtils.SafePlainText(userEmail);
+
+            if(!Regex.IsMatch(password, @"^\S*$"))
+            {
+                LastLoginStatus = LoginAttemptStatus.PasswordIncorrect;
+                return false;
+            }
+
             password = StringUtils.SafePlainText(password);
 
             LastLoginStatus = LoginAttemptStatus.LoginSuccessful;

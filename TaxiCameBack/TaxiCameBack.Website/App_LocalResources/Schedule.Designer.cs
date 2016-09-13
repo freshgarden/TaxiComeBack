@@ -70,6 +70,51 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Xóa lịch trình thất bại..
+        /// </summary>
+        public static string delete_schedule_err {
+            get {
+                return ResourceManager.GetString("delete_schedule_err", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lịch trình không tồn tại. Bạn không thể xóa lịch trình..
+        /// </summary>
+        public static string delete_schedule_not_found {
+            get {
+                return ResourceManager.GetString("delete_schedule_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Không thể xóa lịch trinh của tài xế khác tạo..
+        /// </summary>
+        public static string delete_schedule_other_driver {
+            get {
+                return ResourceManager.GetString("delete_schedule_other_driver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Không thể xóa lịch trình khi đã có khách hàng nhận đặt..
+        /// </summary>
+        public static string delete_schedule_registed_cus {
+            get {
+                return ResourceManager.GetString("delete_schedule_registed_cus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Xóa lịch trình thành công..
+        /// </summary>
+        public static string delete_schedule_suc {
+            get {
+                return ResourceManager.GetString("delete_schedule_suc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đăng ký lịch trình quay về.
         /// </summary>
         public static string lbl_create_schedule {

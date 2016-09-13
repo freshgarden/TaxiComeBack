@@ -31,7 +31,7 @@
     var onSuccess = function (data) {
         if (ajaxLoading) ajaxLoading.remove();
         grecaptcha.reset();
-        $.fancybox({ padding: 0, content: "<div id='login_form' class='box'><h3>Thông báo</h3><div class='box-content'><ul><li>" + data.Message + "</ul></div></div>" });
+        $.fancybox({ padding: 0, content: "<div id='login_form' class='box'><h3>Thông báo</h3><div class='box-content'><p>" + data.Message + "</p></div></div>" });
     };
     var onFailure = function () {
         if (ajaxLoading) ajaxLoading.remove();
@@ -215,25 +215,27 @@
             <div id="login_form" class="box">
                 <h3>@Home.lbl_register</h3>
                 <div class="box-content clearfix">
-                    <div class="row">
-                        <label for="customerFullName" class="dropdown_label">@Home.lbl_CustomerName</label>
-                        <input id="customerFullName" type="text" placeholder="@Home.plh_FullName" name="fullname" maxlength="20">
-                    </div>
-                    <div class="row">
-                        <label for="customerPhoneNumber" class="dropdown_label">@Home.lbl_CustomerPhone</label>
-                        <input id="customerPhoneNumber" type="text" placeholder="@Home.plh_PhoneNumber" name="phoneNumber" maxlength="11">
-                    </div>
-                    <div class="row">
-                        <label for="customerNearpos" class="dropdown_label">@Home.lbl_NearPos</label>
-                        <input id="customerNearpos" type="text" placeholder="@Home.plh_NearPos" name="nearpos" maxlength="50">
-                    </div>
-                    <div class="row">
-                        <label for="customerAgreeTerm" class="custom_checkbox custom_checkbox_light"><input type="checkbox" name="customerAgreeTerm" id="customerAgreeTerm">@Home.lbl_reg_note</label>
-                        <br/><label class="custom_checkbox_light" id="lbl_custom_agreeterm"></label>
-                    </div>
-                    <input type="hidden" id="DriveId" />
-                    <input type="hidden" id="ScheduleId" />
-                    <a class="button submit red right" id="btnCreate">@Home.btn_register</a>
+                    <form id="cus_register" action="#">
+                        <div class="row">
+                            <label for="customerFullName" class="dropdown_label">@Home.lbl_CustomerName</label>
+                            <input id="customerFullName" type="text" placeholder="@Home.plh_FullName" name="fullname" maxlength="20">
+                        </div>
+                        <div class="row">
+                            <label for="customerPhoneNumber" class="dropdown_label">@Home.lbl_CustomerPhone</label>
+                            <input id="customerPhoneNumber" type="text" placeholder="@Home.plh_PhoneNumber" name="phoneNumber" maxlength="11">
+                        </div>
+                        <div class="row">
+                            <label for="customerNearpos" class="dropdown_label">@Home.lbl_NearPos</label>
+                            <input id="customerNearpos" type="text" placeholder="@Home.plh_NearPos" name="nearpos" maxlength="50">
+                        </div>
+                        <div class="row">
+                            <label for="customerAgreeTerm" class="custom_checkbox custom_checkbox_light"><input type="checkbox" name="customerAgreeTerm" id="customerAgreeTerm">@Home.lbl_reg_note</label>
+                            <br /><label class="custom_checkbox_light" id="lbl_custom_agreeterm"></label>
+                        </div>
+                        <input type="hidden" id="DriveId" />
+                        <input type="hidden" id="ScheduleId" />
+                        <a class="button submit red right" id="btnCreate">@Home.btn_register</a>
+                    </form>
                 </div>
             </div>
         </div>
@@ -395,6 +397,17 @@
 
         $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             $('#vendor').css("display", "none");
+            var target = $(e.target).attr("href") // activated tab
+            if(target == "#search_tab_2")
+            {
+                $(".tab-content").css("background", "#3781cf");
+                $(".tab-content").css("border", "1px solid #3678b5");
+            }
+            else
+            {
+                $(".tab-content").css("background", "#d84949");
+                $(".tab-content").css("border", "1px solid #b83e3e");
+            }
         });
 
         function parseJsonDate(jsonDateString) {

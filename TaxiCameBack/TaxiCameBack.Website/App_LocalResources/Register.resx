@@ -190,7 +190,7 @@
     <value>Email này đã được sử dụng để đăng ký.</value>
   </data>
   <data name="valid_email" xml:space="preserve">
-    <value>Email không hợp lệ</value>
+    <value>Địa chỉ email không hợp lệ</value>
   </data>
   <data name="valid_password" xml:space="preserve">
     <value>Mật khẩu không hợp lệ</value>

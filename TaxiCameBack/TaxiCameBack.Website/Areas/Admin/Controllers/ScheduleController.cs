@@ -122,30 +122,30 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             var existedSchedule = _scheduleService.FindScheduleById(id);
             if (existedSchedule == null)
             {
-                return Json(new {status = "ERROR", messenge = "Schedule is not existed."});
+                return Json(new {status = "ERROR", messenge = App_LocalResources.Schedule.delete_schedule_not_found});
             }
 
             if (existedSchedule.Notifications != null)
             {
-                return Json(new {status = "ERROR", messenge = "Cannot delete this Schedule which registed by customer."});
+                return Json(new {status = "ERROR", messenge = App_LocalResources.Schedule.delete_schedule_registed_cus});
             }
 
             if (existedSchedule.Notifications != null && existedSchedule.Notifications.Any(x => x.Received))
             {
-                return Json(new {status = "ERROR", messenge = "Cannot delete this Schedule beucase the Schedule has been received."});
+                return Json(new {status = "ERROR", messenge = App_LocalResources.Schedule.delete_schedule_registed_cus});
             }
 
             if (existedSchedule.UserId != SessionPersister.UserId)
             {
-                return Json(new {status = "ERROR", messenge = "Cannot delete schedule of other user."});
+                return Json(new {status = "ERROR", messenge = App_LocalResources.Schedule.delete_schedule_other_driver});
             }
 
             var result = _scheduleService.DeleteSchedule(existedSchedule.Id);
             if (!result.Success)
-                return Json(new { status = "ERROR", messenge = result.Errors }, JsonRequestBehavior.AllowGet);
+                return Json(new { status = "ERROR", messenge = App_LocalResources.Schedule.delete_schedule_err }, JsonRequestBehavior.AllowGet);
             var message = new GenericMessageViewModel
             {
-                Message = "Delete schedule success.",
+                Message = App_LocalResources.Schedule.delete_schedule_suc,
                 MessageType = GenericMessages.success
             };
             TempData[AppConstants.MessageViewBagName] = message;

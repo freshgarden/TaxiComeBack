@@ -120,6 +120,21 @@
   <data name="create_schedule_success" xml:space="preserve">
     <value>Tạo lịch trình quay về thành công</value>
   </data>
+  <data name="delete_schedule_err" xml:space="preserve">
+    <value>Xóa lịch trình thất bại.</value>
+  </data>
+  <data name="delete_schedule_not_found" xml:space="preserve">
+    <value>Lịch trình không tồn tại. Bạn không thể xóa lịch trình.</value>
+  </data>
+  <data name="delete_schedule_other_driver" xml:space="preserve">
+    <value>Không thể xóa lịch trinh của tài xế khác tạo.</value>
+  </data>
+  <data name="delete_schedule_registed_cus" xml:space="preserve">
+    <value>Không thể xóa lịch trình khi đã có khách hàng nhận đặt.</value>
+  </data>
+  <data name="delete_schedule_suc" xml:space="preserve">
+    <value>Xóa lịch trình thành công.</value>
+  </data>
   <data name="lbl_create_schedule" xml:space="preserve">
     <value>Đăng ký lịch trình quay về</value>
   </data>

@@ -277,7 +277,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email không hợp lệ.
+        ///   Looks up a localized string similar to Địa chỉ email không hợp lệ.
         /// </summary>
         public static string valid_email {
             get {

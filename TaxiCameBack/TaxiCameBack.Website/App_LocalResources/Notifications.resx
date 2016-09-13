@@ -172,10 +172,10 @@
     <value>#</value>
   </data>
   <data name="notification_cancel" xml:space="preserve">
-    <value>Lịch trình đã bị hủy</value>
+    <value>Lịch trình đã bị hủy. Bạn không thể nhận lịch trình</value>
   </data>
   <data name="notification_cancel_err" xml:space="preserve">
-    <value>Không thể hủy lịch trình này</value>
+    <value>Hủy lịch trình thất bại</value>
   </data>
   <data name="notification_cancel_suc" xml:space="preserve">
     <value>Hủy lịch trình thành công</value>
@@ -184,7 +184,13 @@
     <value>Không thể hủy lịch trình này khi lịch trình đã bị hủy rồi.</value>
   </data>
   <data name="notification_not_found" xml:space="preserve">
-    <value>Lịch trình không tồn tại</value>
+    <value>Lịch trình không tồn tại. Bạn không thể nhận lịch trình.</value>
+  </data>
+  <data name="notification_not_receive_other" xml:space="preserve">
+    <value>Bạn không thể nhận lịch trình mà tài xế khác tạo</value>
+  </data>
+  <data name="notification_not_receive_twice" xml:space="preserve">
+    <value>Bạn đã nhận lịch trình rồi. Bạn không thể nhận lại lần nữa.</value>
   </data>
   <data name="notification_receive_err" xml:space="preserve">
     <value>Nhận lịch trình thất bại</value>
@@ -193,7 +199,7 @@
     <value>Nhận lịch trình thành công.</value>
   </data>
   <data name="notification_receive_was_receive" xml:space="preserve">
-    <value>Không thể nhận lịch trình này khi lịch trình đã được nhận bởi tài xế khác</value>
+    <value>Không thể nhận lịch trình này khi lịch trình đã được nhận.</value>
   </data>
   <data name="pending_status" xml:space="preserve">
     <value>Đang chờ</value>

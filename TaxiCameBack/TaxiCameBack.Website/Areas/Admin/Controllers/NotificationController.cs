@@ -163,7 +163,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             {
                 TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
                 {
-                    Message = "Cannot receive schedule which has received.",
+                    Message = App_LocalResources.Notifications.notification_receive_was_receive,
                     MessageType = GenericMessages.danger
                 };
 
@@ -184,7 +184,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
             {
                 TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
                 {
-                    Message = App_LocalResources.Notifications.notification_not_found,
+                    Message = App_LocalResources.Notifications.notification_not_receive_other,
                     MessageType = GenericMessages.danger
                 };
 

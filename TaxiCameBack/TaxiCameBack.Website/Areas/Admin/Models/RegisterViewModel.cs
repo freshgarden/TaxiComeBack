@@ -15,7 +15,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
         [RegularExpression(@"^(0\d{9,10})$", ErrorMessageResourceType = typeof(Register), ErrorMessageResourceName = "valid_phone")]
         public string Phone { get; set; }
 
-        [EmailAddress(ErrorMessageResourceType = typeof(Register), ErrorMessageResourceName = "valid_email", ErrorMessage = null)]
+        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessageResourceType = typeof(Register), ErrorMessageResourceName = "valid_email")]
         [Required(ErrorMessageResourceType = typeof(Register), ErrorMessageResourceName = "rqr_email")]
         [Remote("doesUserNameExist", "Account", HttpMethod = "POST", ErrorMessageResourceType = typeof(Register), ErrorMessageResourceName = "uniq_email")]
         public string Email { get; set; }

@@ -12,7 +12,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
     {
         public class ForgotPasswordViewModel
         {
-            [EmailAddress(ErrorMessageResourceType = typeof(ForgotPassword),ErrorMessageResourceName = "email_type", ErrorMessage = null)]
+            [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessageResourceType = typeof(ForgotPassword), ErrorMessageResourceName = "email_type")]            
             [Required(ErrorMessageResourceType = typeof(ForgotPassword),ErrorMessageResourceName = "rqr_email")]
             public string EmailAddress { get; set; }
 
@@ -79,13 +79,15 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
             [Required]
             public string Token { get; set; }
 
-            [Required]
-            [StringLength(100, MinimumLength = 6)]
+            [Required(ErrorMessageResourceType = typeof(Register), ErrorMessageResourceName = "rqr_password")]
+            [StringLength(20, MinimumLength = 8, ErrorMessageResourceType = typeof(Register), ErrorMessageResourceName = "password_length")]
+            [RegularExpression(@"^\S*$", ErrorMessageResourceType = typeof(Register), ErrorMessageResourceName = "valid_password")]
             [DataType(DataType.Password)]
             public string NewPassword { get; set; }
 
+            [Required(ErrorMessageResourceType = typeof(Register), ErrorMessageResourceName = "rqr_re_password")]
             [DataType(DataType.Password)]
-            [System.ComponentModel.DataAnnotations.Compare("NewPassword")]
+            [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessageResourceType = typeof(Register), ErrorMessageResourceName = "re_password_match")]
             public string ConfirmPassword { get; set; }
 
         }

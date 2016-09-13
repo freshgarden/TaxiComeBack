@@ -223,7 +223,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lịch trình đã bị hủy.
+        ///   Looks up a localized string similar to Lịch trình đã bị hủy. Bạn không thể nhận lịch trình.
         /// </summary>
         public static string notification_cancel {
             get {
@@ -232,7 +232,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Không thể hủy lịch trình này.
+        ///   Looks up a localized string similar to Hủy lịch trình thất bại.
         /// </summary>
         public static string notification_cancel_err {
             get {
@@ -259,11 +259,29 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lịch trình không tồn tại.
+        ///   Looks up a localized string similar to Lịch trình không tồn tại. Bạn không thể nhận lịch trình..
         /// </summary>
         public static string notification_not_found {
             get {
                 return ResourceManager.GetString("notification_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bạn không thể nhận lịch trình mà tài xế khác tạo.
+        /// </summary>
+        public static string notification_not_receive_other {
+            get {
+                return ResourceManager.GetString("notification_not_receive_other", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bạn đã nhận lịch trình rồi. Bạn không thể nhận lại lần nữa..
+        /// </summary>
+        public static string notification_not_receive_twice {
+            get {
+                return ResourceManager.GetString("notification_not_receive_twice", resourceCulture);
             }
         }
         
@@ -286,7 +304,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Không thể nhận lịch trình này khi lịch trình đã được nhận bởi tài xế khác.
+        ///   Looks up a localized string similar to Không thể nhận lịch trình này khi lịch trình đã được nhận..
         /// </summary>
         public static string notification_receive_was_receive {
             get {

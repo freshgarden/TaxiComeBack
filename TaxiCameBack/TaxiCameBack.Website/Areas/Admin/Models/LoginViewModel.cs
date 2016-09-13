@@ -12,7 +12,6 @@ namespace TaxiCameBack.Website.Areas.Admin.Models
         
         [Required(ErrorMessageResourceType = typeof(Login), ErrorMessageResourceName = "rqr_password")]
         [StringLength(50, ErrorMessageResourceType = typeof(Login), ErrorMessageResourceName = "password_length")]
-        [RegularExpression(@"^\S*$", ErrorMessage = "Invalid Password")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
