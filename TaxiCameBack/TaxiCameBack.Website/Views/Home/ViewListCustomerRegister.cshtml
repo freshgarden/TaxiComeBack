@@ -1,0 +1,93 @@
+﻿@model TaxiCameBack.Website.Areas.Admin.Models.NotificationListViewModel
+@using TaxiCameBack.Website.App_LocalResources
+@{
+    Layout = "~/Views/Shared/_Home.cshtml";
+}
+
+<style>
+    .search-table-outter {
+        overflow-x: scroll;
+        margin-bottom:40px;
+    }
+
+    th, td {
+        min-width: 200px;
+        text-align: center;
+    }
+</style>
+
+<section id="content" class="clearfix" style="min-height:400px;">
+    <div class="container_12">
+        <div class="grid_12">
+            <h2 class="page_title with_filter">Danh sách khách hàng đăng ký đặt xe</h2>
+            <div class="search-table-outter wrapper">
+                <table class="motor_table condensed">
+                    <tbody>
+                        <tr>
+                            <th>@Notifications.customer_name</th>
+                            <th>@Notifications.customer_phone</th>
+                            <th>@Notifications.customer_start_pos</th>
+                            <th>@Notifications.customer_end_pos</th>
+                            <th>@Notifications.customer_near_pos</th>
+                            <th>@Notifications.customer_datecreate</th>
+                            <th>@Notifications.customer_status</th>
+                            <th>@Notifications.customer_datereceive</th>
+                        </tr>
+
+                        @foreach (var user in Model.Notifications)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => user.CustomerFullname)
+                                </td>
+                                <td>
+                                    @{
+                                        var phone = user.CustomerPhoneNumber.Length == 10
+                                            ? $"{user.CustomerPhoneNumber.Substring(0, 3)}.{user.CustomerPhoneNumber.Substring(3, 3)}.{user.CustomerPhoneNumber.Substring(6, 4)}"
+                                            : $"{user.CustomerPhoneNumber.Substring(0, 4)}.{user.CustomerPhoneNumber.Substring(4, 3)}.{user.CustomerPhoneNumber.Substring(7, 4)}";
+                                    }
+                                    @phone
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => user.NotificationExtend.BeginLocation)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => user.NotificationExtend.EndLocation)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => user.NearLocation)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => user.NotificationExtend.StartDate)
+                                </td>
+                                <td>
+                                    @if (user.IsCancel)
+                                    {
+                                        @Notifications.cancel_status
+                                    }
+                                    else if (user.Received)
+                                    {
+                                        @Notifications.receive_status
+                                    }
+                                    else
+                                    {
+                                        @Notifications.pending_status
+                                    }
+                                </td>
+                                <td>
+                                    @if(user.ReceivedDate != null)
+                                    {
+                                        @Html.DisplayFor(modelItem => user.ReceivedDate)
+                                    }else
+                                    {
+                                        @Html.DisplayName("-")
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

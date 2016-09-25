@@ -79,7 +79,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thông báo.
+        ///   Looks up a localized string similar to Danh sách khách hàng.
         /// </summary>
         public static string notification {
             get {

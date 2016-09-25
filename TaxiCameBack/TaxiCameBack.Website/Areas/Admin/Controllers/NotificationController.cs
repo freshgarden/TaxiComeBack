@@ -32,7 +32,7 @@ namespace TaxiCameBack.Website.Areas.Admin.Controllers
         [CustomAuthorize(Roles = AppConstants.StandardMembers)]
         public ActionResult Filter(NotificationSearchModel searchModel, string command)
         {
-            if (command == "Xóa điều kiện")
+            if (command == "Bỏ điều kiện")
                 return RedirectToAction("Index");
             return ListNotification(null, searchModel);
         }

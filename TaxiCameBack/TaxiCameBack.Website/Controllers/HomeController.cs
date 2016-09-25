@@ -10,6 +10,7 @@ using TaxiCameBack.Services.Search;
 using TaxiCameBack.Website.Application.Recaptcha;
 using TaxiCameBack.Website.Application.Signalr;
 using TaxiCameBack.Website.Models;
+using TaxiCameBack.Website.Areas.Admin.Models;
 
 namespace TaxiCameBack.Website.Controllers
 {
@@ -129,6 +130,30 @@ namespace TaxiCameBack.Website.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult ViewListCustomerRegister()
+        {
+            var allNotification = _notificationService.GetAll().Where(noti => noti.NotificationExtend != null).ToList();
+
+            var notificationListViewModel = new NotificationListViewModel
+            {
+                Notifications = allNotification
+            };
+
+            return View("ViewListCustomerRegister", notificationListViewModel);
+        }
+
+        public ActionResult ViewListCustomerRegisterComeback()
+        {
+            var allNotification = _notificationService.GetAll().Where(noti => noti.NotificationExtend == null).ToList();
+
+            var notificationListViewModel = new NotificationListViewModel
+            {
+                Notifications = allNotification
+            };
+
+            return View("ViewListCustomerRegisterComeback", notificationListViewModel);
         }
     }
 }

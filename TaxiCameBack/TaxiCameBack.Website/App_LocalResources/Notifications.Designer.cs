@@ -70,7 +70,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Xóa điều kiện.
+        ///   Looks up a localized string similar to Bỏ điều kiện.
         /// </summary>
         public static string btn_delete_con {
             get {
@@ -331,7 +331,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tìm kiếm nâng cao.
+        ///   Looks up a localized string similar to Lọc khách hàng.
         /// </summary>
         public static string search_title {
             get {
@@ -340,7 +340,7 @@ namespace TaxiCameBack.Website.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Thông báo.
+        ///   Looks up a localized string similar to Danh sách khách hàng.
         /// </summary>
         public static string title {
             get {

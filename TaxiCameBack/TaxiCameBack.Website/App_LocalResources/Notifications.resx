@@ -121,7 +121,7 @@
     <value>Hủy chuyến</value>
   </data>
   <data name="btn_delete_con" xml:space="preserve">
-    <value>Xóa điều kiện</value>
+    <value>Bỏ điều kiện</value>
   </data>
   <data name="btn_received" xml:space="preserve">
     <value>Nhận chuyến</value>
@@ -208,9 +208,9 @@
     <value>Đã nhận</value>
   </data>
   <data name="search_title" xml:space="preserve">
-    <value>Tìm kiếm nâng cao</value>
+    <value>Lọc khách hàng</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Thông báo</value>
+    <value>Danh sách khách hàng</value>
   </data>
 </root>

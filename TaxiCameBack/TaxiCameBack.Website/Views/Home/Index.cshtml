@@ -97,26 +97,26 @@
         <section id="search">
             <div class="tabbable tabbable_red">
                 <ul class="nav-tabs">
-                    <li class="active with_icon"><a href="#search_tab_1" data-toggle="tab"><i class="icomoon-search"></i>@Home.lbl_FindCar</a></li>
-                    <li class="with_icon"><a href="#search_tab_2" data-toggle="tab"><i class="icomoon-plus"></i>@Home.lbl_register_taxi</a></li>
+                    <li class="active with_icon"><a href="#search_tab_2" data-toggle="tab"><i class="icomoon-plus"></i>@Home.lbl_register_taxi</a></li>
+                    <li class="with_icon"><a href="#search_tab_1" data-toggle="tab"><i class="icomoon-search"></i>@Home.lbl_FindCar</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="search_tab_1">
+                    <div class="tab-pane" id="search_tab_1">
                         <form id="homepage_search" action="#">
                             <div class="row">
                                 <div class="span6">
                                     <label for="type" class="dropdown_label">@Home.lbl_startpoint</label>
-                                    <input id="startPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_StartPoint" autocomplete="off" name="start_position">
+                                    <input id="startPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_StartPoint" name="start_position">
                                 </div>
                                 <div class="span6">
                                     <label for="category" class="dropdown_label">@Home.lbl_endpoint</label>
-                                    <input id="endPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_EndPoint" autocomplete="off" name="end_position">
+                                    <input id="endPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_EndPoint" name="end_position">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="span6">
                                     <label for="location" class="dropdown_label">@Home.lbl_startdate</label>
-                                    <input id="timestart" type="text" placeholder="@Home.plh_TimeStart" name="start_date" autocomplete="off">
+                                    <input id="timestart" type="text" placeholder="@Home.plh_TimeStart" name="start_date">
                                 </div>
                             </div>
                             <div class="row last_row">
@@ -130,7 +130,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="tab-pane" id="search_tab_2">
+                    <div class="tab-pane active" id="search_tab_2">
                         @using (Ajax.BeginForm("CustomerRegisterCar", "Home", new AjaxOptions
                         {
                             HttpMethod = "POST",
@@ -192,7 +192,7 @@
         </section>
 
         <section id="vendor" class="box" style="display:none;">
-            <h3>@Home.lbl_SearchResult</h3>
+            <h3><i class="icomoon-numbered-list"></i> @Home.lbl_SearchResult</h3>
             <p id="no_result" class="no_results" style="display:none;">
             </p>
             <div id="search_result" class="custom_scrollbar">
@@ -200,7 +200,7 @@
         </section>
 
         <section id="item_info" class="box">
-            <h3>@Home.lbl_UserGuide</h3>
+            <h3><i class="icomoon-question"></i> @Home.lbl_UserGuide</h3>
             <div class="box-content">
                 <h5>Hướng dẫn tìm kiếm xe Taxi</h5>
                 <p>Nhập địa chỉ đến và đi, thời gian xuất hành vào khung tìm kiếm hoặc click vào icon <i class="icon-screenshot"></i> để hệ thống tự lấy vị trí hiện tại của bạn.</p>
@@ -243,7 +243,19 @@
     </div>
     <div class="grid_4 sidebar">
         <div class="box">
-            <h3>@Home.lbl_Find_Car_By_Location</h3>
+            <h3><i class="icomoon-book"></i> Danh sách khách hàng</h3>
+            <div class="box-content">
+                <p class="centered_content">
+                    <a href="~/Home/ViewListCustomerRegister" class="button red">Khách hàng đăng ký đặt xe</a>
+                </p>
+                <p class="centered_content">
+                    <a href="~/Home/ViewListCustomerRegisterComeback" class="button red">Khách hàng đăng ký xe quay về</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3><i class="icomoon-list"></i> @Home.lbl_Find_Car_By_Location</h3>
             <div class="box-content widget-categories">
                 <ul>
                     <li><a href="#">Nam Định<span>50</span></a></li>
@@ -256,14 +268,14 @@
         </div>
 
         <div class="box">
-            <h3>Về chúng tôi</h3>
+            <h3><i class="icomoon-address-book"></i> Về chúng tôi</h3>
             <div class="box-content">
                 <p>Ứng dụng tìm kiếm taxi đường dài, giá rẻ. Chúng tôi sẽ đem lại cho Quí khách hàng những chọn lựa tốt với mức chi phí thấp nhất.</p>
             </div>
         </div>
 
         <div class="box">
-            <h3>@Home.lbl_sp_online</h3>
+            <h3><i class="icomoon-phone"></i> @Home.lbl_sp_online</h3>
             <div class="box-content widget_online_support">
                 <div class="row">
                     <img src="~/Content/Images/frontend-images/admin.jpg" alt="" class="span6">
@@ -400,13 +412,13 @@
             var target = $(e.target).attr("href") // activated tab
             if(target == "#search_tab_2")
             {
-                $(".tab-content").css("background", "#3781cf");
-                $(".tab-content").css("border", "1px solid #3678b5");
+                $(".tab-content").css("background", "#d84949");
+                $(".tab-content").css("border", "1px solid #b83e3e");
             }
             else
             {
-                $(".tab-content").css("background", "#d84949");
-                $(".tab-content").css("border", "1px solid #b83e3e");
+                $(".tab-content").css("background", "#3781cf");
+                $(".tab-content").css("border", "1px solid #3678b5");
             }
         });
 
