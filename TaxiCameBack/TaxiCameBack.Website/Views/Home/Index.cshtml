@@ -94,42 +94,12 @@
 
 <div class="container_12 clearfix">
     <div class="grid_8 content">
-        <section id="search">
+        <section id="register">
             <div class="tabbable tabbable_red">
                 <ul class="nav-tabs">
                     <li class="active with_icon"><a href="#search_tab_2" data-toggle="tab"><i class="icomoon-plus"></i>@Home.lbl_register_taxi</a></li>
-                    <li class="with_icon"><a href="#search_tab_1" data-toggle="tab"><i class="icomoon-search"></i>@Home.lbl_FindCar</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane" id="search_tab_1">
-                        <form id="homepage_search" action="#">
-                            <div class="row">
-                                <div class="span6">
-                                    <label for="type" class="dropdown_label">@Home.lbl_startpoint</label>
-                                    <input id="startPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_StartPoint" name="start_position">
-                                </div>
-                                <div class="span6">
-                                    <label for="category" class="dropdown_label">@Home.lbl_endpoint</label>
-                                    <input id="endPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_EndPoint" name="end_position">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="span6">
-                                    <label for="location" class="dropdown_label">@Home.lbl_startdate</label>
-                                    <input id="timestart" type="text" placeholder="@Home.plh_TimeStart" name="start_date">
-                                </div>
-                            </div>
-                            <div class="row last_row">
-                                <div class="span5">
-                                </div>
-                                <div class="span7 clear_submit_buttons">
-                                    <a id="locate" href="#" class="clear_filters"><i class="icon-screenshot"></i> @Home.lbl_Locate</a>
-                                    <a href="#" id="switchSearchValue" class="clear_filters"><i class="icon-exchange"></i> @Home.btn_switch_title</a>
-                                    <a class="button yellow right" id="searchCar">@Home.btn_search_title</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
                     <div class="tab-pane active" id="search_tab_2">
                         @using (Ajax.BeginForm("CustomerRegisterCar", "Home", new AjaxOptions
                         {
@@ -182,10 +152,49 @@
                                     @Html.Recaptcha()
                                 </div>
                                 <div class="span6 clear_submit_buttons">
-                                    <input type="submit" class="button submit yellow right" value="@Home.btn_register" style="width: 50%; line-height: 10px; height:45px;" />
+                                    <input type="submit" class="button submit yellow right" value="@Home.btn_register" style="width: 45%; height:43px;" />
                                 </div>
                             </div>
                         }
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="search">
+            <div class="tabbable tabbable_red">
+                <ul class="nav-tabs">
+                    <li class="active with_icon"><a href="#search_tab_1" data-toggle="tab"><i class="icomoon-search"></i>@Home.lbl_FindCar</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="active tab-pane" id="search_tab_1">
+                        <form id="homepage_search" action="#">
+                            <div class="row">
+                                <div class="span6">
+                                    <label for="type" class="dropdown_label">@Home.lbl_startpoint</label>
+                                    <input id="startPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_StartPoint" name="start_position">
+                                </div>
+                                <div class="span6">
+                                    <label for="category" class="dropdown_label">@Home.lbl_endpoint</label>
+                                    <input id="endPoint" onkeypress="return calcdir(event)" type="text" placeholder="@Home.plh_EndPoint" name="end_position">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="span6">
+                                    <label for="location" class="dropdown_label">@Home.lbl_startdate</label>
+                                    <input id="timestart" type="text" placeholder="@Home.plh_TimeStart" name="start_date">
+                                </div>
+                            </div>
+                            <div class="row last_row">
+                                <div class="span5">
+                                </div>
+                                <div class="span7 clear_submit_buttons">
+                                    <a id="locate" href="#" class="clear_filters"><i class="icon-screenshot"></i> @Home.lbl_Locate</a>
+                                    <a href="#" id="switchSearchValue" class="clear_filters"><i class="icon-exchange"></i> @Home.btn_switch_title</a>
+                                    <a class="button yellow right" id="searchCar">@Home.btn_search_title</a>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -246,10 +255,10 @@
             <h3><i class="icomoon-book"></i> Danh sách khách hàng</h3>
             <div class="box-content">
                 <p class="centered_content">
-                    <a href="~/Home/ViewListCustomerRegister" class="button red">Khách hàng đăng ký đặt xe</a>
+                    <a href="~/Home/ViewListCustomerRegister" class="button red">Khách hàng đã đăng ký đặt xe</a>
                 </p>
                 <p class="centered_content">
-                    <a href="~/Home/ViewListCustomerRegisterComeback" class="button red">Khách hàng đăng ký xe quay về</a>
+                    <a href="~/Home/ViewListCustomerRegisterComeback" class="button red">Khách hàng đã đăng ký xe quay về</a>
                 </p>
             </div>
         </div>
@@ -271,6 +280,11 @@
             <h3><i class="icomoon-address-book"></i> Về chúng tôi</h3>
             <div class="box-content">
                 <p>Ứng dụng tìm kiếm taxi đường dài, giá rẻ. Chúng tôi sẽ đem lại cho Quí khách hàng những chọn lựa tốt với mức chi phí thấp nhất.</p>
+                <ul>
+                    <li><i class="icomoon-checkmark"></i> Đảm bảo giá tốt nhất</li>
+                    <li><i class="icomoon-star"></i> Cam kết chất lượng hoàn hảo</li>
+                    <li><i class="icomoon-sunglasses"></i> Tiện ích, dịch vụ đi kèm</li>
+                </ul>
             </div>
         </div>
 
@@ -407,20 +421,20 @@
             }
         })
 
-        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-            $('#vendor').css("display", "none");
-            var target = $(e.target).attr("href") // activated tab
-            if(target == "#search_tab_2")
-            {
-                $(".tab-content").css("background", "#d84949");
-                $(".tab-content").css("border", "1px solid #b83e3e");
-            }
-            else
-            {
-                $(".tab-content").css("background", "#3781cf");
-                $(".tab-content").css("border", "1px solid #3678b5");
-            }
-        });
+        //$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        //    $('#vendor').css("display", "none");
+        //    var target = $(e.target).attr("href") // activated tab
+        //    if(target == "#search_tab_2")
+        //    {
+        //        $(".tab-content").css("background", "#d84949");
+        //        $(".tab-content").css("border", "1px solid #b83e3e");
+        //    }
+        //    else
+        //    {
+        //        $(".tab-content").css("background", "#3781cf");
+        //        $(".tab-content").css("border", "1px solid #3678b5");
+        //    }
+        //});
 
         function parseJsonDate(jsonDateString) {
             var today = new Date(parseInt(jsonDateString.replace('/Date(', '')));
